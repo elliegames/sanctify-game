@@ -1,0 +1,43 @@
+[gd_scene load_steps=10 format=3 uid="uid://lo85ehhs6t05"]
+
+[ext_resource type="PackedScene" uid="uid://dh8c1djp02gij" path="res://models/themed_blocks/sand_stone/sand_stone_pillar.blend" id="1_2dmjx"]
+[ext_resource type="Texture2D" uid="uid://bc4t6c7khcugr" path="res://models/themed_blocks/sand_stone/textures/PillarBody.png" id="2_0vxbv"]
+[ext_resource type="Texture2D" uid="uid://c8k23htgcm8t6" path="res://models/themed_blocks/sand_stone/textures/Stylobate.png" id="2_2kuoh"]
+[ext_resource type="Texture2D" uid="uid://ihlvkeiqcm0o" path="res://models/themed_blocks/sand_stone/textures/JonicOrdung.png" id="2_3r8e0"]
+[ext_resource type="Texture2D" uid="uid://sjsne1dnlltp" path="res://models/themed_blocks/sand_stone/textures/Entableture.png" id="3_nm6v1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_egox8"]
+diffuse_mode = 2
+albedo_texture = ExtResource("2_2kuoh")
+roughness = 0.9
+roughness_texture = ExtResource("2_2kuoh")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuqnf"]
+diffuse_mode = 2
+albedo_texture = ExtResource("2_0vxbv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x6axf"]
+diffuse_mode = 2
+albedo_texture = ExtResource("2_3r8e0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxn6o"]
+diffuse_mode = 2
+albedo_texture = ExtResource("3_nm6v1")
+texture_filter = 4
+texture_repeat = false
+
+[node name="sand_stone_pillar" instance=ExtResource("1_2dmjx")]
+
+[node name="Stylobate" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_egox8")
+
+[node name="PillarBody" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_iuqnf")
+lod_bias = 0.6
+
+[node name="JonicOrdung" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_x6axf")
+lod_bias = 0.1
+
+[node name="Entableture" parent="." index="3"]
+material_override = SubResource("StandardMaterial3D_dxn6o")

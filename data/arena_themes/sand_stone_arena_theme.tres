@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="ArenaTheme" load_steps=2 format=3 uid="uid://cnfu2cqie4ou2"]
+
+[ext_resource type="Script" path="res://src/arena_theme.gd" id="1_oyelt"]
+
+[resource]
+script = ExtResource("1_oyelt")
+opponent = "Hades"
+volumetric_color = Color(0.831373, 0.556863, 0.0823529, 1)
+ambient_sound_loop = ""
+dust_particles = ""
+tile = "res://prefabs/themed_blocks/sand_stone/sandstone_tile.tscn"
+north_walls_inner_layer = "res://prefabs/themed_blocks/sand_stone/sand_stone_pillar.tscn"
+north_walls_inner_layer_alt = "res://prefabs/themed_blocks/sand_stone/sand_stone_pillar_beam.tscn"
+north_walls_outer_layer = "res://prefabs/themed_blocks/sand_stone/sand_stone_north_outer_wall_door.tscn"
+north_walls_outer_layer_alt = "res://prefabs/themed_blocks/sand_stone/sand_stone_outer_wall.tscn"
+south_walls = "res://prefabs/themed_blocks/sand_stone/sand_stone_wall.tscn"
+east_walls_inner_layer = "res://prefabs/themed_blocks/sand_stone/sand_stone_pillar.tscn"
+east_walls_inner_layer_alt = "res://prefabs/themed_blocks/sand_stone/sand_stone_pillar_beam.tscn"
+east_walls_outer_layer = "res://prefabs/themed_blocks/sand_stone/sand_stone_outer_wall.tscn"
+east_walls_outer_layer_alt = "res://prefabs/themed_blocks/sand_stone/sand_stone_outer_wall_window.tscn"
+west_walls = "res://prefabs/themed_blocks/sand_stone/sand_stone_wall.tscn"
+north_door = "res://prefabs/themed_blocks/sand_stone/sand_stone_north_door.tscn"
+south_door = "res://prefabs/themed_blocks/sand_stone/sand_stone_door.tscn"
+north_east_corner = "res://prefabs/themed_blocks/sand_stone/sand_stone_north_east_corner.tscn"
+south_east_corner = "res://prefabs/themed_blocks/sand_stone/sand_stone_south_east_corner.tscn"
+north_west_corner = "res://prefabs/themed_blocks/sand_stone/sand_stone_north_west_corner.tscn"
+south_west_corner = "res://prefabs/themed_blocks/sand_stone/sand_stone_wall_corner.tscn"
+starting_animation = ""

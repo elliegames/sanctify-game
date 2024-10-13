@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://ckslmkhh480x8"]
+
+[ext_resource type="PackedScene" uid="uid://bqqdqipo0bruk" path="res://models/themed_blocks/sand_stone/sand_stone_wall_corner.blend" id="1_ukiqm"]
+[ext_resource type="Texture2D" uid="uid://c8mcle0si60qd" path="res://models/themed_blocks/sand_stone/textures/MainWallCorner.png" id="2_88qb6"]
+[ext_resource type="Texture2D" uid="uid://cdbfvtyp0rw0l" path="res://models/themed_blocks/sand_stone/textures/WallBaseCorner.png" id="3_bvuw1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6t8vx"]
+diffuse_mode = 2
+albedo_texture = ExtResource("2_88qb6")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aypxa"]
+diffuse_mode = 2
+specular_mode = 2
+albedo_color = Color(0.839216, 0.654902, 0.462745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hth06"]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("3_bvuw1")
+
+[node name="sand_stone_wall_corner" instance=ExtResource("1_ukiqm")]
+
+[node name="MainWall" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_6t8vx")
+
+[node name="MassiveWall" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_aypxa")
+
+[node name="Base_001" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_hth06")

@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://c06wixb1nkbto"]
+
+[ext_resource type="PackedScene" uid="uid://bf46tnpndk2i" path="res://models/themed_blocks/sand_stone/sand_stone_wall.blend" id="1_ghkvg"]
+[ext_resource type="Texture2D" uid="uid://bbobiut684d5h" path="res://models/themed_blocks/sand_stone/textures/MainWall.png" id="2_5e4dr"]
+[ext_resource type="Texture2D" uid="uid://b2nga5833vw5x" path="res://models/themed_blocks/sand_stone/textures/Base.png" id="2_w3xi2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aypxa"]
+diffuse_mode = 2
+specular_mode = 2
+albedo_color = Color(0.839216, 0.654902, 0.462745, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4350w"]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("2_w3xi2")
+roughness = 0.9
+roughness_texture = ExtResource("2_w3xi2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdqf7"]
+diffuse_mode = 2
+albedo_texture = ExtResource("2_5e4dr")
+roughness = 0.95
+roughness_texture = ExtResource("2_5e4dr")
+texture_filter = 1
+
+[node name="sand_stone_wall" instance=ExtResource("1_ghkvg")]
+
+[node name="SupportPillar" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_aypxa")
+
+[node name="Base" parent="." index="1"]
+material_override = SubResource("StandardMaterial3D_4350w")
+
+[node name="MainWall" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_pdqf7")
+
+[node name="MassiveWall" parent="." index="3"]
+material_override = SubResource("StandardMaterial3D_aypxa")
+
+[node name="Plane" parent="." index="4"]
+transform = Transform3D(4.37114e-08, -1, 1.50996e-07, -1, -4.37114e-08, 0, 6.60024e-15, -1.50996e-07, -1, 0.260259, 0.999989, 0)
+cast_shadow = 3

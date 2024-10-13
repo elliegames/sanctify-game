@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://ff18p311pn1h"]
+
+[ext_resource type="PackedScene" uid="uid://c06wixb1nkbto" path="res://prefabs/themed_blocks/sand_stone/sand_stone_wall.tscn" id="1_ap7al"]
+[ext_resource type="PackedScene" uid="uid://bx3ryxjqt1lcx" path="res://prefabs/themed_blocks/sand_stone/sand_stone_outer_wall.tscn" id="2_hs6ck"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jsyq1"]
+size = Vector3(1, 1.5, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f1o4h"]
+size = Vector3(0.1, 20, 22)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ftw2u"]
+size = Vector3(0.32, 20, 0.395)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k5i6i"]
+
+[node name="Wall" type="MeshInstance3D"]
+mesh = SubResource("BoxMesh_jsyq1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.301, -7.996, 10.5)
+mesh = SubResource("BoxMesh_f1o4h")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44, -11.464, 0)
+mesh = SubResource("BoxMesh_ftw2u")
+
+[node name="sand_stone_wall" parent="." instance=ExtResource("1_ap7al")]
+
+[node name="SandStoneOuterWall" parent="." instance=ExtResource("2_hs6ck")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+mesh = SubResource("BoxMesh_k5i6i")

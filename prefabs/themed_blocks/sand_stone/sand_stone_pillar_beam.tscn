@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://d4j6vdx6dd8sl"]
+
+[ext_resource type="PackedScene" uid="uid://bo1whr4e6o71d" path="res://models/themed_blocks/sand_stone/sand_stone_pillar_beam.blend" id="1_jsast"]
+[ext_resource type="Texture2D" uid="uid://krxj4oh8kreb" path="res://models/themed_blocks/sand_stone/textures/SandStonePillarBeam.png" id="2_bx2c8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76vun"]
+shading_mode = 2
+diffuse_mode = 2
+albedo_texture = ExtResource("2_bx2c8")
+
+[node name="sand_stone_pillar_beam" instance=ExtResource("1_jsast")]
+
+[node name="Cube_001" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_76vun")

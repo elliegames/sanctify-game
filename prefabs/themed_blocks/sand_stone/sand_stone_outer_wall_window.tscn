@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwilajrholqo3"]
+
+[ext_resource type="PackedScene" uid="uid://jnukvrlbynmn" path="res://models/themed_blocks/sand_stone/sand_stone_outer_wall_window.blend" id="1_rj56v"]
+[ext_resource type="Texture2D" uid="uid://bm66ddn6e14m5" path="res://models/themed_blocks/sand_stone/textures/EastOuterWallWindow.png" id="2_xhryg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2bams"]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("2_xhryg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pwji6"]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 0.752397, 0.20048, 1)
+emission_energy_multiplier = 16.0
+disable_receive_shadows = true
+
+[node name="sand_stone_outer_wall_window" instance=ExtResource("1_rj56v")]
+
+[node name="Plane" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_2bams")
+
+[node name="ShadowMesh" parent="." index="1"]
+cast_shadow = 3
+
+[node name="GlowMesh" parent="." index="2"]
+material_override = SubResource("StandardMaterial3D_pwji6")
+cast_shadow = 0
+
+[node name="OmniLight3D" type="SpotLight3D" parent="GlowMesh" index="0"]
+transform = Transform3D(0, -0.965926, -0.258819, -4.37114e-08, 0.258819, -0.965926, 2, 2.26267e-08, -8.44439e-08, -3.95484, -3.55175, -2.67756e-07)
+light_color = Color(0.9, 0.864, 0.684, 1)
+light_energy = 3.0
+light_specular = 1.0
+light_bake_mode = 1
+light_cull_mask = 4294967247
+shadow_enabled = true
+shadow_blur = 2.0
+distance_fade_enabled = true
+distance_fade_begin = 20.0
+distance_fade_shadow = 20.0
+spot_range = 16.0
+spot_attenuation = 0.5

@@ -1,0 +1,663 @@
+[gd_scene load_steps=30 format=3 uid="uid://d2ho5gg1g3mc"]
+
+[ext_resource type="Script" path="res://src/cursor.gd" id="1_g23o2"]
+[ext_resource type="PackedScene" uid="uid://boqyewvnknlqk" path="res://models/cursor/cursor_mesh.tscn" id="2_eayil"]
+[ext_resource type="Texture2D" uid="uid://btn3fn8xu0gc7" path="res://data/images/cleansing_circle.png" id="2_gqp8l"]
+[ext_resource type="Texture2D" uid="uid://4b2po6fnjabx" path="res://data/images/losing_circle.png" id="3_6b7xi"]
+[ext_resource type="Texture2D" uid="uid://bho5ebiexfrsi" path="res://data/images/cleansing_circle_bootup.png" id="3_pmkwr"]
+
+[sub_resource type="Curve" id="Curve_g13s2"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.228956, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_c8576"]
+curve = SubResource("Curve_g13s2")
+
+[sub_resource type="Gradient" id="Gradient_67j4x"]
+offsets = PackedFloat32Array(0, 0.527881, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_dy5kk"]
+gradient = SubResource("Gradient_67j4x")
+
+[sub_resource type="Curve" id="Curve_t2fmk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.302198, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ml5a4"]
+curve = SubResource("Curve_t2fmk")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bpmve"]
+emission_shape_scale = Vector3(0.1, 0.1, 0.1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, -0.5, 0)
+color_ramp = SubResource("GradientTexture1D_dy5kk")
+alpha_curve = SubResource("CurveTexture_c8576")
+emission_curve = SubResource("CurveTexture_ml5a4")
+turbulence_enabled = true
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v77s4"]
+shading_mode = 2
+diffuse_mode = 1
+specular_mode = 2
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 16.0
+texture_filter = 0
+disable_receive_shadows = true
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_4j0ch"]
+material = SubResource("StandardMaterial3D_v77s4")
+size = Vector2(0.02, 0.02)
+
+[sub_resource type="Animation" id="Animation_snevp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_078vl"]
+resource_name = "pulse"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.366667, 0.766667, 1.03333, 1.46667, 2, 2.2, 2.36667, 2.76667, 3.03333, 3.46667, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.5, 1.2, 0.5, 2.0, 0.5, 1.2, 0.5, 1.2, 0.5, 2.0, 0.5, 1.2, 0.5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-6.28319, 6.28319, -6.28319), Vector3(6.28319, -6.28319, 6.28319)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0uala"]
+_data = {
+"RESET": SubResource("Animation_snevp"),
+"pulse": SubResource("Animation_078vl")
+}
+
+[sub_resource type="Animation" id="Animation_j70dk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CleansingPattern:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CleansingPattern/CleansingCircleBoot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CleansingPattern/CleansingCircleBoot:material_override:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CleansingPattern/CleansingCircle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CleansingPattern/CleansingCircle:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CleansingPattern/CleansingCircle:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CleansingPattern/OmniLight3D:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CleansingPattern/LosingCircle:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../CleansingPattern/Rays:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../CleansingPattern/Rays:mesh:material:albedo_texture:fill_from")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.5, 0.9)]
+}
+
+[sub_resource type="Animation" id="Animation_pcmcf"]
+resource_name = "cleansing"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.93333),
+"transitions": PackedFloat32Array(1, 4.75683, 0.277392, 1),
+"update": 0,
+"values": [Vector3(0, 0.3, 0), Vector3(0, 0.4, 0), Vector3(0, 0, 0), Vector3(0, 0.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CleansingPattern:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.03333, 2.06667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CleansingPattern/CleansingCircleBoot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.06667, 2.3, 2.33333, 2.36667, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01), Vector3(1.5, 1.5, 1.5), Vector3(0.01, 0.01, 0.01), Vector3(0.01, 0.01, 0.01), Vector3(1.5, 1.5, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CleansingPattern/CleansingCircleBoot:material_override:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.06667, 2.3, 2.33333, 2.36667, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CleansingPattern/CleansingCircle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.53333, 2.56667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CleansingPattern/CleansingCircle:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.56667, 2.86667),
+"transitions": PackedFloat32Array(0.406126, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CleansingPattern/CleansingCircle:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.44026, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CleansingPattern/OmniLight3D:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2.56667, 2.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 2.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CleansingPattern/LosingCircle:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../CleansingPattern/Rays:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../CleansingPattern/Rays:mesh:material:albedo_texture:fill_from")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(2.6, 3.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.9), Vector2(0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2rnvm"]
+resource_name = "losing"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 2.93333),
+"transitions": PackedFloat32Array(1, 4.75683, 0.277392, 1),
+"update": 0,
+"values": [Vector3(0, 0.3, 0), Vector3(0, 0.4, 0), Vector3(0, 0, 0), Vector3(0, 0.5, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CleansingPattern:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.03333, 2.06667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../CleansingPattern/CleansingCircleBoot:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.06667, 2.3, 2.33333, 2.36667, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.01, 0.01, 0.01), Vector3(1.5, 1.5, 1.5), Vector3(0.01, 0.01, 0.01), Vector3(0.01, 0.01, 0.01), Vector3(1.5, 1.5, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../CleansingPattern/CleansingCircleBoot:material_override:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.06667, 2.3, 2.33333, 2.36667, 2.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 0, 0, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../CleansingPattern/LosingCircle:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(2.53333, 2.56667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../CleansingPattern/LosingCircle:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(2.56667, 2.86667),
+"transitions": PackedFloat32Array(0.406126, 1),
+"update": 0,
+"values": [Vector3(0.01, 0.01, 0.01), Vector3(1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CleansingPattern/LosingCircle:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.44026, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../CleansingPattern/OmniLight3D:light_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../CleansingPattern/CleansingCircle:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8k8ed"]
+_data = {
+"RESET": SubResource("Animation_j70dk"),
+"cleansing": SubResource("Animation_pcmcf"),
+"losing": SubResource("Animation_2rnvm")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8msof"]
+transparency = 1
+blend_mode = 1
+no_depth_test = true
+shading_mode = 0
+diffuse_mode = 1
+specular_mode = 2
+disable_ambient_light = true
+albedo_texture = ExtResource("2_gqp8l")
+disable_receive_shadows = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_8dhyo"]
+size = Vector2(4, 4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_11k4a"]
+transparency = 1
+blend_mode = 1
+no_depth_test = true
+shading_mode = 0
+diffuse_mode = 1
+specular_mode = 2
+disable_ambient_light = true
+albedo_texture = ExtResource("3_6b7xi")
+disable_receive_shadows = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oktoc"]
+transparency = 1
+blend_mode = 1
+no_depth_test = true
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+albedo_texture = ExtResource("3_pmkwr")
+
+[sub_resource type="Gradient" id="Gradient_6savr"]
+offsets = PackedFloat32Array(0, 0.849624, 0.966165)
+colors = PackedColorArray(0.65, 0.4875, 0, 0, 1, 0.75, 0, 1, 1, 0.75, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bc6pa"]
+gradient = SubResource("Gradient_6savr")
+fill_from = Vector2(0.5, 0.9)
+fill_to = Vector2(0.5, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_igjx2"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = SubResource("GradientTexture2D_bc6pa")
+disable_receive_shadows = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7xum6"]
+material = SubResource("StandardMaterial3D_igjx2")
+top_radius = 2.0
+bottom_radius = 1.7
+height = 0.5
+radial_segments = 24
+rings = 1
+cap_top = false
+cap_bottom = false
+
+[node name="Cursor" type="Node3D"]
+script = ExtResource("1_g23o2")
+
+[node name="CursorMesh" type="Node3D" parent="."]
+transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0.3, 0)
+
+[node name="CursorMesh" parent="CursorMesh" instance=ExtResource("2_eayil")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+light_color = Color(0.6308, 0.7277, 0.76, 1)
+light_energy = 0.0
+light_specular = 1.0
+shadow_enabled = true
+omni_range = 4.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252854, 0)
+cast_shadow = 0
+amount = 16
+lifetime = 5.0
+randomness = 0.24
+process_material = SubResource("ParticleProcessMaterial_bpmve")
+draw_pass_1 = SubResource("QuadMesh_4j0ch")
+
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="GPUParticles3D"]
+strength = 1.75
+radius = 1.75
+
+[node name="PulseAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CursorMesh")
+libraries = {
+"": SubResource("AnimationLibrary_0uala")
+}
+
+[node name="Timer" type="Timer" parent="PulseAnimation"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
+[node name="CleansingAnimation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../CursorMesh")
+libraries = {
+"": SubResource("AnimationLibrary_8k8ed")
+}
+
+[node name="CleansingPattern" type="Node3D" parent="."]
+visible = false
+
+[node name="CleansingCircle" type="MeshInstance3D" parent="CleansingPattern"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.1, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_8msof")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_8dhyo")
+skeleton = NodePath("../../CursorMesh")
+
+[node name="LosingCircle" type="MeshInstance3D" parent="CleansingPattern"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.1, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_11k4a")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_8dhyo")
+skeleton = NodePath("../../CursorMesh")
+
+[node name="CleansingCircleBoot" type="MeshInstance3D" parent="CleansingPattern"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.1, 0)
+material_override = SubResource("StandardMaterial3D_oktoc")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_8dhyo")
+skeleton = NodePath("../../CursorMesh")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="CleansingPattern"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+light_color = Color(0.976631, 0.703403, 0.296172, 1)
+light_energy = 0.0
+spot_angle = 89.0
+spot_angle_attenuation = 0.129408
+
+[node name="Rays" type="MeshInstance3D" parent="CleansingPattern"]
+transform = Transform3D(-0.660675, 0, 0.750672, 0, 1, 0, -0.750672, 0, -0.660675, 0, 0.370873, 0)
+visible = false
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_7xum6")
+
+[connection signal="timeout" from="PulseAnimation/Timer" to="PulseAnimation" method="play" binds= ["pulse"]]
