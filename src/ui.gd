@@ -79,6 +79,7 @@ func give_up():
 	$AnimationPlayer.play("end_game")
 	end_game = true
 	$PostGame/Pattern.visible = true
+	$PostGame/VBoxContainer/MarginContainer/BackButton.grab_focus()
 
 
 func go_back():
@@ -110,6 +111,7 @@ func win(final_word: String, seconds: float):
 	$PostGame/LosingTexture.visible = false
 	$AnimationPlayer/EndTimer.start()
 	$PostGame/Pattern.visible = true
+	$PostGame/VBoxContainer/MarginContainer/BackButton.grab_focus()
 
 
 func lose(final_word: String, tiles_left: int):
@@ -124,3 +126,4 @@ func lose(final_word: String, tiles_left: int):
 	$PostGame/Pattern.visible = true
 	$PostGame/Pattern.self_modulate = Color("#ff0022b8")
 	$PostGame/Pattern/Light.color = Color("purple")
+	$PostGame/VBoxContainer/MarginContainer/BackButton.grab_focus()

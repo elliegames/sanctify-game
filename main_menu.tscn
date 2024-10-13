@@ -341,6 +341,7 @@ text = "Arena Size"
 clip_children = 2
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
+focus_neighbor_bottom = NodePath("../ArenaThemeSelect")
 icon_alignment = 2
 expand_icon = true
 selected = 0
@@ -381,6 +382,8 @@ text = "Location"
 clip_children = 2
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
+focus_neighbor_top = NodePath("../ArenaSizeSelect")
+focus_neighbor_bottom = NodePath("../PlayButton")
 icon_alignment = 2
 expand_icon = true
 selected = 0
@@ -406,6 +409,8 @@ expand_mode = 1
 clip_children = 2
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
+focus_neighbor_top = NodePath("../ArenaThemeSelect")
+focus_neighbor_bottom = NodePath("../QuitButton")
 
 [node name="Gradient" type="TextureRect" parent="VBoxContainer/PlayButton"]
 layout_mode = 1
@@ -432,6 +437,13 @@ theme_override_font_sizes/font_size = 12
 text = "Begin"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+focus_neighbor_top = NodePath("../PlayButton")
+text = "Quit"
 
 [connection signal="timeout" from="Pattern/AnimationPlayer/Timer" to="Pattern/AnimationPlayer" method="play" binds= ["throb"]]
 [connection signal="item_selected" from="VBoxContainer/ArenaSizeSelect" to="." method="set_arena_size"]

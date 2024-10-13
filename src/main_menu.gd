@@ -7,6 +7,8 @@ var light_theme: Theme
 
 var dark = DisplayServer.is_dark_mode()
 
+var gamepad_connected = false
+
 func _ready():
 	DisplayServer.window_set_min_size(Vector2i(800, 600))
 	
@@ -19,12 +21,14 @@ func _ready():
 		theme = light_theme
 		
 	preload("res://arena.tscn")
+	$VBoxContainer/PlayButton.grab_focus()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var pos = get_viewport().get_mouse_position()
-	light.position = pos
+	if not gamepad_connected:
+		var pos = get_viewport().get_mouse_position()
+		light.position = pos
 	
 	if DisplayServer.is_dark_mode() != dark:
 		dark = DisplayServer.is_dark_mode()
@@ -43,3 +47,8 @@ func set_arena_theme(idx: int):
 
 func begin():
 	get_tree().change_scene_to_file("res://arena.tscn")
+
+func _input(event: InputEvent) -> void:
+	if not Input.get_connected_joypads().is_empty():
+		gamepad_connected = true
+		light.position = get_viewport_rect().size / 2
