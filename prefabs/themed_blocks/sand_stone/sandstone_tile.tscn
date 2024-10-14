@@ -105,12 +105,11 @@ skeleton = NodePath("../Tile")
 
 [node name="Imperfection" type="Decal" parent="." index="3"]
 visible = false
-layers = 32
 size = Vector3(6, 2, 6)
 texture_albedo = ExtResource("3_nankk")
 texture_normal = SubResource("NoiseTexture2D_tvua2")
 texture_orm = ExtResource("4_veu2f")
-cull_mask = 1048455
+cull_mask = 1048450
 
 [node name="Flags" type="Node3D" parent="." index="4"]
 visible = false

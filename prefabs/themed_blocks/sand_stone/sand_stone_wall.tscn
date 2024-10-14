@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b2nga5833vw5x" path="res://models/themed_blocks/sand_stone/textures/Base.png" id="2_w3xi2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aypxa"]
+shading_mode = 2
 diffuse_mode = 2
 specular_mode = 2
 albedo_color = Color(0.839216, 0.654902, 0.462745, 1)
