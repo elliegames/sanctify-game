@@ -22,6 +22,7 @@ func _ready():
 		
 	preload("res://arena.tscn")
 	$VBoxContainer/PlayButton.grab_focus()
+	$LoadingScreen.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -46,6 +47,10 @@ func set_arena_theme(idx: int):
 
 
 func begin():
+	$LoadingScreen.animate_in()
+	$LoadTimer.start()
+
+func load_arena():
 	get_tree().change_scene_to_file("res://arena.tscn")
 
 func _input(event: InputEvent) -> void:

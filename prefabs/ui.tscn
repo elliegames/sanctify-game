@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://5iadts1xwhdp"]
+[gd_scene load_steps=43 format=3 uid="uid://5iadts1xwhdp"]
 
 [ext_resource type="Theme" uid="uid://cias33btpdsig" path="res://data/elementary_light.theme" id="1_1jwnf"]
 [ext_resource type="Script" path="res://src/ui.gd" id="2_0te0y"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://qdh1aexru1tc" path="res://data/icons/edit-flag.svg" id="8_klmjy"]
 [ext_resource type="Texture2D" uid="uid://d1pw1gwbl32go" path="res://data/images/pattern1.png" id="13_e2tku"]
 [ext_resource type="Texture2D" uid="uid://bwru6g17io61v" path="res://data/images/button_glow.png" id="14_oftpd"]
+[ext_resource type="PackedScene" uid="uid://dc212eswkcucm" path="res://prefabs/loading_screen.tscn" id="15_id2nb"]
 
 [sub_resource type="Gradient" id="Gradient_ev473"]
 offsets = PackedFloat32Array(0, 0.27476, 0.591054, 1)
@@ -847,6 +848,14 @@ custom_minimum_size = Vector2(0, 1)
 layout_mode = 2
 color = Color(0, 0, 0, 0.466667)
 
+[node name="LoadingScreen" parent="." instance=ExtResource("15_id2nb")]
+layout_mode = 1
+
+[node name="CurtainTimer" type="Timer" parent="LoadingScreen"]
+wait_time = 0.01
+one_shot = true
+autostart = true
+
 [connection signal="timeout" from="AnimationPlayer/Timer" to="AnimationPlayer" method="play" binds= ["splash"]]
 [connection signal="timeout" from="AnimationPlayer/EndTimer" to="AnimationPlayer" method="play" binds= ["end_game"]]
 [connection signal="timeout" from="PostGame/Pattern/AnimationPlayer/Timer" to="PostGame/Pattern/AnimationPlayer" method="play" binds= ["throb"]]
@@ -854,3 +863,4 @@ color = Color(0, 0, 0, 0.466667)
 [connection signal="pressed" from="VBoxContainer/UI/ButtonBox/Button" to="." method="start_over"]
 [connection signal="pressed" from="VBoxContainer/UI/ButtonBox/Button2" to="." method="give_up"]
 [connection signal="pressed" from="VBoxContainer/UI/ButtonBox/Button3" to="." method="switch_view"]
+[connection signal="timeout" from="LoadingScreen/CurtainTimer" to="LoadingScreen" method="animate_out"]

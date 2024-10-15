@@ -19,7 +19,6 @@ func _ready():
 	
 	if dark:
 		theme = dark_theme
-		
 	else:
 		theme = light_theme
 		

@@ -74,7 +74,7 @@ background_color = Color(0.136715, 0.374687, 0.569955, 1)
 sky = SubResource("Sky_urgai")
 sky_custom_fov = 64.0
 ambient_light_source = 2
-ambient_light_color = Color(0.481859, 0.640885, 0.728795, 1)
+ambient_light_color = Color(0.649318, 0.572683, 0.505549, 1)
 ambient_light_sky_contribution = 0.37
 ambient_light_energy = 0.5
 reflected_light_source = 2
@@ -210,13 +210,14 @@ follow_distance = 20.0
 spring_length = 20.0
 
 [node name="IsoCam" type="Node3D" parent="." node_paths=PackedStringArray("follow_target", "follow_targets")]
-transform = Transform3D(0.866025, -0.383022, 0.321394, 0, 0.642787, 0.766044, -0.5, -0.663413, 0.55667, 6.42788, 15.3209, 11.1334)
+transform = Transform3D(0.866025, -0.383022, 0.321394, 0, 0.642787, 0.766044, -0.5, -0.663413, 0.55667, 6.42788, 16.3209, 11.1334)
 script = ExtResource("3_qfict")
 follow_mode = 5
 follow_target = NodePath("../Cursor")
 follow_targets = [NodePath("../Cursor"), null]
 tween_resource = SubResource("Resource_b5xt7")
 camera_3d_resource = SubResource("Resource_d3bfq")
+follow_offset = Vector3(0, 1, 0)
 follow_damping = true
 follow_damping_value = Vector3(0.75, 0.9, 0.75)
 follow_distance = 20.0
@@ -244,10 +245,12 @@ light_volumetric_fog_energy = 0.0
 light_bake_mode = 0
 light_cull_mask = 4294967183
 shadow_enabled = true
-shadow_normal_bias = 0.75
+shadow_normal_bias = 2.8
 shadow_blur = 0.5
 directional_shadow_mode = 1
-directional_shadow_pancake_size = 0.2
+directional_shadow_split_1 = 0.01
+directional_shadow_blend_splits = true
+directional_shadow_pancake_size = 100.0
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.469472, 0.418595, 0.777415, 0, 0.880477, -0.474088, -0.882948, -0.222571, -0.413359, 0, 0, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://efyk5lcypy46"]
+[gd_scene load_steps=29 format=3 uid="uid://efyk5lcypy46"]
 
 [ext_resource type="Theme" uid="uid://cias33btpdsig" path="res://data/elementary_light.theme" id="1_ds6md"]
 [ext_resource type="Script" path="res://src/main_menu.gd" id="2_25c8g"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bwru6g17io61v" path="res://data/images/button_glow.png" id="7_hqjne"]
 [ext_resource type="FontFile" uid="uid://yv1jlquoy7e7" path="res://data/fonts/static/Inter_18pt-Regular.ttf" id="7_pl0ky"]
 [ext_resource type="FontFile" uid="uid://b47ipy6hmu1r8" path="res://data/fonts/static/Inter_18pt-Bold.ttf" id="8_76era"]
+[ext_resource type="PackedScene" uid="uid://dc212eswkcucm" path="res://prefabs/loading_screen.tscn" id="10_i3341"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ocs45"]
 blend_mode = 1
@@ -445,6 +446,14 @@ layout_mode = 2
 focus_neighbor_top = NodePath("../PlayButton")
 text = "Quit"
 
+[node name="LoadingScreen" parent="." instance=ExtResource("10_i3341")]
+z_index = 4096
+layout_mode = 1
+
+[node name="LoadTimer" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="timeout" from="Pattern/AnimationPlayer/Timer" to="Pattern/AnimationPlayer" method="play" binds= ["throb"]]
 [connection signal="item_selected" from="VBoxContainer/ArenaSizeSelect" to="." method="set_arena_size"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="begin"]
+[connection signal="timeout" from="LoadTimer" to="." method="load_arena"]

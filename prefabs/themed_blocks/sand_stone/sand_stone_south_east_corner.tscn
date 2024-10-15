@@ -1,35 +1,62 @@
-[gd_scene load_steps=7 format=3 uid="uid://ff18p311pn1h"]
+[gd_scene load_steps=9 format=3 uid="uid://ff18p311pn1h"]
 
-[ext_resource type="PackedScene" uid="uid://c06wixb1nkbto" path="res://prefabs/themed_blocks/sand_stone/sand_stone_wall.tscn" id="1_ap7al"]
-[ext_resource type="PackedScene" uid="uid://bx3ryxjqt1lcx" path="res://prefabs/themed_blocks/sand_stone/sand_stone_outer_wall.tscn" id="2_hs6ck"]
+[ext_resource type="PackedScene" uid="uid://4twvwsuhdtel" path="res://models/themed_blocks/sand_stone/sand_stone_south_east_corner.blend" id="1_ktg75"]
+[ext_resource type="Texture2D" uid="uid://b2nga5833vw5x" path="res://models/themed_blocks/sand_stone/textures/Base.png" id="2_dcwl6"]
+[ext_resource type="Texture2D" uid="uid://bbobiut684d5h" path="res://models/themed_blocks/sand_stone/textures/MainWall.png" id="3_3qjt1"]
+[ext_resource type="Texture2D" uid="uid://c3sm7ojugqg1u" path="res://models/themed_blocks/sand_stone/textures/EastOuterWall.png" id="4_yc2dv"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_jsyq1"]
-size = Vector3(1, 1.5, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aypxa"]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_color = Color(0.839216, 0.654902, 0.462745, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_f1o4h"]
-size = Vector3(0.1, 20, 22)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4350w"]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("2_dcwl6")
+roughness = 0.9
+roughness_texture = ExtResource("2_dcwl6")
 
-[sub_resource type="BoxMesh" id="BoxMesh_ftw2u"]
-size = Vector3(0.32, 20, 0.395)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pdqf7"]
+diffuse_mode = 2
+albedo_texture = ExtResource("3_3qjt1")
+roughness = 0.95
+roughness_texture = ExtResource("3_3qjt1")
+texture_filter = 1
 
-[sub_resource type="BoxMesh" id="BoxMesh_k5i6i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cf1uf"]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+albedo_texture = ExtResource("4_yc2dv")
 
-[node name="Wall" type="MeshInstance3D"]
-mesh = SubResource("BoxMesh_jsyq1")
+[node name="sand_stone_south_east_corner" instance=ExtResource("1_ktg75")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.301, -7.996, 10.5)
-mesh = SubResource("BoxMesh_f1o4h")
+[node name="MeshInstance3D" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_aypxa")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.44, -11.464, 0)
-mesh = SubResource("BoxMesh_ftw2u")
+[node name="Base" parent="sand_stone_wall" index="0"]
+material_override = SubResource("StandardMaterial3D_4350w")
 
-[node name="sand_stone_wall" parent="." instance=ExtResource("1_ap7al")]
+[node name="MainWall" parent="sand_stone_wall" index="1"]
+material_override = SubResource("StandardMaterial3D_pdqf7")
 
-[node name="SandStoneOuterWall" parent="." instance=ExtResource("2_hs6ck")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1)
+[node name="MassiveWall" parent="sand_stone_wall" index="2"]
+material_override = SubResource("StandardMaterial3D_aypxa")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
-mesh = SubResource("BoxMesh_k5i6i")
+[node name="SupportPillar" parent="sand_stone_wall" index="4"]
+material_override = SubResource("StandardMaterial3D_aypxa")
+
+[node name="Plane2" parent="SandStoneOuterWall" index="1"]
+material_override = SubResource("StandardMaterial3D_cf1uf")
+
+[node name="MeshInstance3D22" parent="." index="3"]
+material_override = SubResource("StandardMaterial3D_aypxa")
+
+[node name="Base_001" parent="sand_stone_wall_001" index="0"]
+material_override = SubResource("StandardMaterial3D_4350w")
+
+[node name="Plane_001" parent="." index="5"]
+material_override = SubResource("StandardMaterial3D_aypxa")
