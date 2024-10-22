@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_oyelt")
-opponent = "Hades"
+opponent = "Hecate"
 volumetric_color = Color(0.831373, 0.556863, 0.0823529, 1)
 ambient_sound_loop = ""
 dust_particles = ""

@@ -17,6 +17,7 @@ var board_pos: Vector2i
 @export var smoke: GPUParticles3D
 @export var fog_dark: bool
 @export var selection_box: Node3D
+@export var animator: AnimationPlayer
 var runes: Array[Decal]
 
 # Called when the node enters the scene tree for the first time.
@@ -121,6 +122,10 @@ func show_smoke(life_time = 14):
 
 func reveal_mine(destroy=true):
 	fog.visible = false
+	if destroy and is_mine:
+		animator.play("reveal_curse")
+	elif is_mine:
+		animator.play("cleanse")
 
 func show_highlight(show: bool):
 	selection_box.visible = show

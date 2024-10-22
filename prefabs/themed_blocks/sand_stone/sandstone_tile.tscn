@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cmgd3k7a8y3nk"]
+[gd_scene load_steps=32 format=3 uid="uid://cmgd3k7a8y3nk"]
 
 [ext_resource type="PackedScene" uid="uid://6kvwhcn5ebi8" path="res://models/themed_blocks/sand_stone/sand_stone_tile.blend" id="1_keqwa"]
 [ext_resource type="PackedScene" uid="uid://3k3sqnneywit" path="res://prefabs/tile.tscn" id="1_xkpno"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dceeu5a4t4h6" path="res://data/materials/tile/sand_stone/floor_tiles_02_nor_gl_1k.png" id="4_pnygx"]
 [ext_resource type="Texture2D" uid="uid://b2r2m5gneqkyl" path="res://data/images/puddle_orm.png" id="4_veu2f"]
 [ext_resource type="Texture2D" uid="uid://h0l2uixfsge5" path="res://data/images/smoke_mask.png" id="8_4hdy1"]
+[ext_resource type="PackedScene" uid="uid://d10glouumw4av" path="res://prefabs/themed_blocks/sand_stone/sand_stone_curse.tscn" id="9_l54hi"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2r36w"]
 diffuse_mode = 2
@@ -72,7 +73,7 @@ size = Vector2(0.5, 2)
 orientation = 0
 
 [sub_resource type="Gradient" id="Gradient_merok"]
-colors = PackedColorArray(0, 0, 0, 0, 1, 0.666667, 0, 0.25098)
+colors = PackedColorArray(0, 0, 0, 0, 0.976471, 0.768627, 0.25098, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tsrhl"]
 gradient = SubResource("Gradient_merok")
@@ -140,19 +141,156 @@ material = SubResource("StandardMaterial3D_4t1vt")
 size = Vector2(4, 4)
 orientation = 2
 
+[sub_resource type="Animation" id="Animation_bb711"]
+resource_name = "reveal_curse"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sand_stone_curse:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.353554, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.477812, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sand_stone_curse:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_d4yl3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sand_stone_curse:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sand_stone_curse:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SelectionHighlight:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SelectionHighlight:emission_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SelectionHighlight:texture_emission")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("GradientTexture2D_tsrhl")]
+}
+
+[sub_resource type="Animation" id="Animation_2vhnp"]
+resource_name = "cleanse"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SelectionHighlight:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SelectionHighlight:emission_energy")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 100.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SelectionHighlight:texture_emission")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [SubResource("GradientTexture2D_tsrhl"), SubResource("GradientTexture2D_tsrhl")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0iwo6"]
+_data = {
+"RESET": SubResource("Animation_d4yl3"),
+"cleanse": SubResource("Animation_2vhnp"),
+"reveal_curse": SubResource("Animation_bb711")
+}
+
 [node name="sand_stone_tile" instance=ExtResource("1_keqwa")]
 
 [node name="TileMesh" parent="." index="0"]
 layers = 2
 surface_material_override/0 = SubResource("StandardMaterial3D_2r36w")
 
-[node name="Tile" parent="." index="1" node_paths=PackedStringArray("tile_mesh", "flag_node", "fog", "imperfection", "smoke", "selection_box") instance=ExtResource("1_xkpno")]
+[node name="Tile" parent="." index="1" node_paths=PackedStringArray("tile_mesh", "flag_node", "fog", "imperfection", "smoke", "selection_box", "animator") instance=ExtResource("1_xkpno")]
 tile_mesh = NodePath("../TileMesh")
 flag_node = NodePath("../Flags")
 fog = NodePath("../Fog")
 imperfection = NodePath("../Imperfection")
 smoke = NodePath("../Smoke")
 selection_box = NodePath("../SelectionHighlight")
+animator = NodePath("../AnimationPlayer")
 
 [node name="Fog" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509, 0)
@@ -195,7 +333,7 @@ visible = false
 sorting_offset = 1.0
 size = Vector3(1.01, 1.01, 1.01)
 texture_emission = SubResource("GradientTexture2D_tsrhl")
-emission_energy = 16.0
+emission_energy = 8.0
 cull_mask = 2
 
 [node name="Smoke" type="GPUParticles3D" parent="." index="7"]
@@ -212,3 +350,11 @@ fract_delta = false
 collision_base_size = 0.1
 process_material = SubResource("ParticleProcessMaterial_wcuxv")
 draw_pass_1 = SubResource("PlaneMesh_bi68k")
+
+[node name="sand_stone_curse" parent="." index="8" instance=ExtResource("9_l54hi")]
+visible = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
+libraries = {
+"": SubResource("AnimationLibrary_0iwo6")
+}
