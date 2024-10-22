@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bhud25khik4yu"
-path.s3tc="res://.godot/imported/glow.png-e2c588d0f24be248ead0eb3769cbedec.s3tc.ctex"
+uid="uid://h0l2uixfsge5"
+path.s3tc="res://.godot/imported/smoke_mask.png-8ee8f331e948985c569524844043eaa0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://data/images/glow.png"
-dest_files=["res://.godot/imported/glow.png-e2c588d0f24be248ead0eb3769cbedec.s3tc.ctex"]
+source_file="res://data/images/smoke_mask.png"
+dest_files=["res://.godot/imported/smoke_mask.png-8ee8f331e948985c569524844043eaa0.s3tc.ctex"]
 
 [params]
 

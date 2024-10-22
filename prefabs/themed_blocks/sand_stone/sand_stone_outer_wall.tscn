@@ -17,6 +17,7 @@ orientation = 0
 
 [node name="Plane" parent="." index="0"]
 material_override = SubResource("StandardMaterial3D_cf1uf")
+cast_shadow = 2
 
 [node name="ShadowMesh" type="MeshInstance3D" parent="." index="1"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4, 8.25, 1.8)

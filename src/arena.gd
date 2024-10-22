@@ -34,7 +34,7 @@ var pulse_effect_center: Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	arena_theme = arena_themes[arena_theme_index]
-	
+
 	ui.set_volumetric_color(arena_theme.volumetric_color)
 
 	var arena_size_idx = ProjectSettings.get_setting("arena_size")
@@ -57,12 +57,12 @@ func _ready():
 	mines = floor(grid_length * grid_length * 0.1)
 	total_tiles = grid_length * grid_width
 	max_flag_count = mines
-	
+
 	$IsoCam.set_priority(500)
 
 	arrange_grid()
 	arrange_environment()
-	cursor.move(Vector2i(grid_length / 2, grid_width - 1))
+	cursor.move(Vector2i(grid_length / 2, grid_width - 1), board)
 
 
 func _physics_process(delta):
@@ -88,16 +88,16 @@ func _process(delta):
 
 	if Input.get_action_strength("cursor_joy_up") > 0.5:
 		if cursor.target_pos.y > 0:
-			cursor.move(Vector2(0, -1))
+			cursor.move(Vector2(0, -1), board)
 	elif Input.get_action_strength("cursor_joy_down") > 0.5:
 		if cursor.target_pos.y < grid_width - 1:
-			cursor.move(Vector2(0, 1))
+			cursor.move(Vector2(0, 1), board)
 	elif Input.get_action_strength("cursor_joy_left") > 0.5:
 		if cursor.target_pos.x > 0:
-			cursor.move(Vector2(-1, 0))
+			cursor.move(Vector2(-1, 0), board)
 	elif Input.get_action_strength("cursor_joy_right") > 0.5:
 		if cursor.target_pos.x < grid_length - 1:
-			cursor.move(Vector2(1, 0))
+			cursor.move(Vector2(1, 0), board)
 
 	ui.update_flag(max_flag_count - flag_count, max_flag_count)
 
@@ -109,16 +109,16 @@ func _input(event):
 
 	if e.is_action("cursor_up"):
 		if cursor.target_pos.y > 0:
-			cursor.move(Vector2(0, -1))
+			cursor.move(Vector2(0, -1), board)
 	elif e.is_action("cursor_down"):
 		if cursor.target_pos.y < grid_width - 1:
-			cursor.move(Vector2(0, 1))
+			cursor.move(Vector2(0, 1), board)
 	elif e.is_action("cursor_left"):
 		if cursor.target_pos.x > 0:
-			cursor.move(Vector2(-1, 0))
+			cursor.move(Vector2(-1, 0), board)
 	elif e.is_action("cursor_right"):
 		if cursor.target_pos.x < grid_length - 1:
-			cursor.move(Vector2(1, 0))
+			cursor.move(Vector2(1, 0), board)
 
 	if e.is_action_pressed("cursor_flag"):
 		(board[cursor.target_pos.x][cursor.target_pos.y] as Tile).flag()
@@ -129,6 +129,8 @@ func _input(event):
 
 	if e.is_action_pressed("switch_view"):
 		switch_view()
+	elif e.is_action_pressed("give_up"):
+		ui.give_up()
 
 
 func arrange_grid():
@@ -185,8 +187,17 @@ func set_cosmetics():
 		if (board[i][j] as Tile).show_imperfection():
 			p += 1
 
+	var max_smoke = grid_width * 0.3
+	p = 0
+	while p < max_smoke:
+		var j = randi_range(0, grid_width - 1)
+
+		if (board[2][j] as Tile).show_smoke(grid_length * 14 / 9):
+			p += 1
+
 
 func reveal_recursive(start_position: Vector2i):
+	cursor.reveal_safe()
 	const matrix = [[-1, 0], [1, 0], [0, -1], [0, 1]]
 	if not timer_started:
 			timer_started = true
@@ -202,6 +213,8 @@ func reveal_recursive(start_position: Vector2i):
 		start_ripple_effects((board[start_position.x][start_position.y] as Tile).board_pos)
 		ui.lose(arena_theme.opponent + "'curse has been triggered. The Pantheon has been destroyed", total_tiles - n_revealed)
 		return
+	else:
+		(board[start_position.x][start_position.y] as Tile).show_highlight(false)
 
 	# Add the first clicked cell to the queue
 	queue.append(start_position)
@@ -416,7 +429,7 @@ func arrange_environment():
 				north_outer_layer.position = Vector3(x, 0, -2)
 				north_outer_layer.rotate_y(-PI / 2)
 				add_child(north_outer_layer)
-	
+
 	# Make north inner wall
 	if north_wall_inner_res != null:
 		if north_door_res != null:
@@ -482,14 +495,14 @@ func arrange_environment():
 		south_west_corner.position = Vector3(grid_length, 0, grid_width)
 		south_west_corner.rotate_y(-PI / 2)
 		add_child(south_west_corner)
-		
+
 	# Make south-east corner
 	if south_east_corner_res != null:
 		var south_east_corner = south_east_corner_res.instantiate()
 		south_east_corner.position = Vector3(-1, 0, grid_width)
 		south_east_corner.rotate_y(-PI / 2)
 		add_child(south_east_corner)
-		
+
 	$ReflectionProbe.size = Vector3(grid_length + 3, 30, grid_width + 3)
 	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
 

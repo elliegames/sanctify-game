@@ -729,6 +729,7 @@ theme_override_constants/margin_left = 12
 [node name="Button" type="Button" parent="VBoxContainer/UI/ButtonBox"]
 custom_minimum_size = Vector2(100, 28)
 layout_mode = 2
+focus_mode = 0
 text = "Start Over"
 
 [node name="Gradient" type="TextureRect" parent="VBoxContainer/UI/ButtonBox/Button"]
@@ -748,6 +749,7 @@ expand_mode = 1
 [node name="Button2" type="Button" parent="VBoxContainer/UI/ButtonBox"]
 custom_minimum_size = Vector2(100, 28)
 layout_mode = 2
+focus_mode = 0
 text = "Give Up"
 
 [node name="Gradient" type="TextureRect" parent="VBoxContainer/UI/ButtonBox/Button2"]
@@ -767,6 +769,7 @@ expand_mode = 1
 [node name="Button3" type="Button" parent="VBoxContainer/UI/ButtonBox"]
 custom_minimum_size = Vector2(100, 28)
 layout_mode = 2
+focus_mode = 0
 
 [node name="Gradient" type="TextureRect" parent="VBoxContainer/UI/ButtonBox/Button3"]
 layout_mode = 1

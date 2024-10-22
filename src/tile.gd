@@ -14,7 +14,9 @@ var board_pos: Vector2i
 @export var flag_node: Node3D
 @export var fog: Node3D
 @export var imperfection: Node3D
+@export var smoke: GPUParticles3D
 @export var fog_dark: bool
+@export var selection_box: Node3D
 var runes: Array[Decal]
 
 # Called when the node enters the scene tree for the first time.
@@ -106,5 +108,19 @@ func show_imperfection():
 	imperfection.visible = true
 	return true
 
+func show_smoke(life_time = 14):
+	if smoke == null:
+		return true
+
+	if smoke.emitting:
+		return false
+
+	smoke.emitting = true
+	smoke.lifetime = life_time
+	return true
+
 func reveal_mine(destroy=true):
 	fog.visible = false
+
+func show_highlight(show: bool):
+	selection_box.visible = show

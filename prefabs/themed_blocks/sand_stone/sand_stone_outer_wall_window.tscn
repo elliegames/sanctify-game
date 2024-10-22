@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dwilajrholqo3"]
+[gd_scene load_steps=8 format=3 uid="uid://dwilajrholqo3"]
 
 [ext_resource type="PackedScene" uid="uid://jnukvrlbynmn" path="res://models/themed_blocks/sand_stone/sand_stone_outer_wall_window.blend" id="1_rj56v"]
 [ext_resource type="Texture2D" uid="uid://bm66ddn6e14m5" path="res://models/themed_blocks/sand_stone/textures/EastOuterWallWindow.png" id="2_xhryg"]
@@ -21,11 +21,6 @@ emission_enabled = true
 emission = Color(1, 0.752397, 0.20048, 1)
 emission_energy_multiplier = 16.0
 disable_receive_shadows = true
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_r68pt"]
-flip_faces = true
-size = Vector2(1.55, 8)
-orientation = 0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rl2xt"]
 render_priority = 0
@@ -52,11 +47,9 @@ orientation = 2
 
 [node name="Plane" parent="." index="0"]
 material_override = SubResource("StandardMaterial3D_2bams")
+cast_shadow = 2
 
-[node name="ShadowMesh" parent="." index="1"]
-cast_shadow = 3
-
-[node name="GlowMesh" parent="." index="2"]
+[node name="GlowMesh" parent="." index="1"]
 material_override = SubResource("StandardMaterial3D_pwji6")
 cast_shadow = 0
 
@@ -78,11 +71,7 @@ spot_range = 16.0
 spot_attenuation = 0.5
 spot_angle = 35.0
 
-[node name="ShadowMeshBorder" type="MeshInstance3D" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.146, 4, 1.05)
-mesh = SubResource("PlaneMesh_r68pt")
-
-[node name="GodRays" type="MeshInstance3D" parent="." index="4"]
+[node name="GodRays" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(0.870103, -0.0518504, 0.490136, -0.0530119, 0.978837, 0.197657, -0.490011, -0.197965, 0.84894, 2.3, 3.104, -0.88644)
 layers = 128
 material_override = SubResource("ShaderMaterial_rl2xt")

@@ -28,9 +28,11 @@ orientation = 0
 
 [node name="Plane" parent="." index="0"]
 material_override = SubResource("StandardMaterial3D_pvnwj")
+cast_shadow = 2
 
 [node name="Curtain" parent="." index="1"]
 material_override = SubResource("StandardMaterial3D_s78xq")
+cast_shadow = 2
 lod_bias = 0.2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
@@ -39,7 +41,7 @@ material_override = SubResource("StandardMaterial3D_ieic6")
 mesh = SubResource("PlaneMesh_r5an7")
 
 [node name="OmniLight3D" type="SpotLight3D" parent="MeshInstance3D" index="0"]
-transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, -0.456422, -1.01011, -1.33878e-07)
+transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, -0.2, 0.272, 0)
 light_color = Color(0.996331, 0.570338, 0, 1)
 light_energy = 6.0
 light_specular = 1.0
