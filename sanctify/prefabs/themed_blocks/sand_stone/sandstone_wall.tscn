@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://citq3302vucp0"]
+
+[ext_resource type="ArrayMesh" uid="uid://cpx7h2jqd8jdy" path="res://models/themed_blocks/sand_stone/sand_stone_wall.obj" id="1_hcvpo"]
+[ext_resource type="Material" uid="uid://dyt3c115t5uab" path="res://models/themed_blocks/sand_stone/sandstone_low_detail.material" id="2_b022f"]
+[ext_resource type="Material" uid="uid://bo0dnf4o3186g" path="res://models/themed_blocks/sand_stone/sandstone_wall_base.material" id="3_cvwe7"]
+[ext_resource type="Material" uid="uid://c51gqf18qh6o1" path="res://models/themed_blocks/sand_stone/sandstone_wall.material" id="4_4iwka"]
+
+[node name="SandstoneWall" type="Node3D"]
+
+[node name="SandStoneWall" type="MeshInstance3D" parent="."]
+cast_shadow = 2
+mesh = ExtResource("1_hcvpo")
+surface_material_override/0 = ExtResource("2_b022f")
+surface_material_override/1 = ExtResource("3_cvwe7")
+surface_material_override/2 = ExtResource("4_4iwka")
+surface_material_override/3 = ExtResource("2_b022f")

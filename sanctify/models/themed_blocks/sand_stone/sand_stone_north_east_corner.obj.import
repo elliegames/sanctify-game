@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://xnowe20ur0i1"
+path="res://.godot/imported/sand_stone_north_east_corner.obj-ad880bdf17a3f5329ff09e79bd87145c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sand_stone_north_east_corner.obj-ad880bdf17a3f5329ff09e79bd87145c.mesh"]
+
+source_file="res://models/themed_blocks/sand_stone/sand_stone_north_east_corner.obj"
+dest_files=["res://.godot/imported/sand_stone_north_east_corner.obj-ad880bdf17a3f5329ff09e79bd87145c.mesh", "res://.godot/imported/sand_stone_north_east_corner.obj-ad880bdf17a3f5329ff09e79bd87145c.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
