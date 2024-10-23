@@ -1,0 +1,106 @@
+app-id: com.github.elliegames.sanctify-game
+runtime: io.elementary.Platform
+runtime-version: '8'
+sdk: io.elementary.Sdk
+command: com.github.elliegames.sanctify-game
+finish-args:
+  - '--share=ipc'
+  - '--socket=fallback-x11'
+  - '--socket=wayland'
+  - '--socket=pulseaudio'
+  - '--device=dri'
+  - '--filesystem=home'
+  # Required for system wide dark style preference
+  - '--system-talk-name=org.freedesktop.Accounts'
+  - '--extension=org.freedesktop.Platform.Locale'
+  - '--extension=org.freedesktop.Platform.Fonts'
+
+build-options:
+  arch:
+    x86_64:
+      env:
+        # Only enable link-time optimization when targeting x86_64
+        # (causes issues on other architectures)
+        SCONS_FLAGS_EXTRA: use_lto=yes
+
+  env:
+    # SCons flags common to all builds
+    # Shouldn't be quoted when used as it's a single string, not an array
+    SCONS_FLAGS: >
+      platform=linuxbsd
+      CCFLAGS=-I/app/include
+      prefix=/app
+      unix_global_settings_path=/app
+      progress=no
+      builtin_freetype=no
+      builtin_libogg=no
+      builtin_libpng=no
+      builtin_libtheora=no
+      builtin_libvorbis=no
+      builtin_libwebp=no
+      builtin_openssl=no
+      builtin_libvpx=no
+      builtin_zlib=no
+      builtin_graphite=no
+      builtin_harfbuzz=no
+      udev=no
+
+modules:
+  - name: glu
+    buildsystem: meson
+    sources:
+      - type: archive
+        sha256: bd43fe12f374b1192eb15fe20e45ff456b9bc26ab57f0eee919f96ca0f8a330f
+        url: https://archive.mesa3d.org/glu/glu-9.0.3.tar.xz
+    cleanup:
+      - /include
+      - /lib/*.a
+      - /lib/*.la
+      - /lib/pkgconfig
+
+  - name: scons
+    buildsystem: simple
+    cleanup: ['*']
+    sources:
+      - type: archive
+        sha256: 6e928fc97984e719814270f6863f2183b3b72180b0162a5ed09db68c9994100c
+        url: https://downloads.sourceforge.net/project/scons/scons/4.8.0/SCons-4.8.0.tar.gz
+
+    build-commands:
+      - pip3 install --no-index --no-build-isolation --prefix=/app .
+
+  - name: godot
+    buildsystem: simple
+    sources:
+      - type: archive
+        sha256: 751e55bfad8e04b846f9cf7b6eb80e058986a2cb1b103fc0fe6a4d8526a20e56
+        url: https://downloads.tuxfamily.org/godotengine/4.3/godot-4.3-stable.tar.xz
+
+    build-commands:
+      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=no target=template_release -j "$FLATPAK_BUILDER_N_JOBS"
+      - install -Dm755 bin/godot.linuxbsd.template_release.* /app/bin/godot
+      - strip /app/bin/godot
+
+  - name: santify-game
+    buildsystem: simple
+    build-commands:
+      - mkdir export
+      - godot --headless --verbose --audio-driver Dummy --export-release Linux export/game sanctify/project.godot
+      - install -Dm755 export/game /app/bin/com.github.elliegames.sanctify-game
+      - install data/icons/16/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/16x16/apps/com.github.elliegames.sanctify-game.svg
+      - install data/icons/16/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/16x16@2/apps/com.github.elliegames.sanctify-game.svg
+      - install data/icons/24/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/24x24/apps/com.github.elliegames.sanctify-game.svg
+      - install data/icons/24/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/24x24@2/apps/com.github.elliegames.sanctify-game.svg
+      - install data/icons/32/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/32x32/apps/com.github.elliegames.sanctify-game.svg
+      - install data/icons/32/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/32x32@2/apps/com.github.elliegames.sanctify-game.svg
+      - install data/icons/48/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/48x48/apps/com.github.elliegames.sanctify-game.svg
+      - install data/icons/48/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/48x48@2/apps/com.github.elliegames.sanctify-game.svg
+      - install data/icons/64/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/64x64/apps/com.github.elliegames.sanctify-game.svg
+      - install data/icons/64/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/64x64@2/apps/com.github.elliegames.sanctify-game.svg
+      - install data/icons/128/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/128x128/apps/com.github.elliegames.sanctify-game.svg
+      - install data/icons/128/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/128x128@2/apps/com.github.elliegames.sanctify-game.svg
+      - install data/icons/symbolic/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/symbolic/apps/com.github.elliegames.sanctify-game.svg
+      - install data/com.github.elliegames.sanctify-game.desktop /app/share/applications/com.github.elliegames.sanctify-game.desktop
+    sources:
+      - type: dir
+        path: .
