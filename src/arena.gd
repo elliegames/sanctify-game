@@ -210,7 +210,7 @@ func reveal_recursive(start_position: Vector2i):
 		cursor.start_losing()
 		game_over = true
 		lost = true
-		start_ripple_effects((board[start_position.x][start_position.y] as Tile).board_pos)
+		start_ripple_effects((board[start_position.x][start_position.y] as Tile).board_pos, true)
 		ui.lose(arena_theme.opponent + "'curse has been triggered. The Pantheon has been destroyed", total_tiles - n_revealed)
 		return
 	else:
@@ -244,7 +244,7 @@ func reveal_recursive(start_position: Vector2i):
 			print("GAMEOVER: YOU WON")
 			game_over = true
 			cursor.start_cleansing()
-			start_ripple_effects(tile.board_pos)
+			start_ripple_effects(tile.board_pos, false)
 			ui.win("You have cleansed the divine pantheon. " + arena_theme.opponent + "'s curse has been lifted!", time)
 			$EndCam.set_priority(1000)
 
@@ -507,6 +507,9 @@ func arrange_environment():
 	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
 
 
-func start_ripple_effects(center: Vector2i):
+func start_ripple_effects(center: Vector2i, destroy: bool):
 	pulse_effect_center = Vector2(center.x, center.y)
-	$AnimationPlayer.play("destruct")
+	if destroy:
+		$AnimationPlayer.play("destruct")
+	else:
+		$AnimationPlayer.play("cleanse")
