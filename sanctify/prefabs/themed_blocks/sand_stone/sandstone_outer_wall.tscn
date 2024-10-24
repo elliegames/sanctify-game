@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbpfitu28vcia"]
+
+[ext_resource type="Material" uid="uid://0x0ykl2yodgc" path="res://models/themed_blocks/sand_stone/sandstone_outer_wall.material" id="1_o1e8b"]
+[ext_resource type="ArrayMesh" uid="uid://ccwkmdqgo3p25" path="res://models/themed_blocks/sand_stone/sand_stone_outer_wall.obj" id="2_ffrfp"]
+[ext_resource type="Material" uid="uid://cketyfy0x4h81" path="res://models/themed_blocks/sand_stone/shadow_mesh.material" id="3_vm78g"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_a2thj"]
+size = Vector2(2, 10)
+orientation = 0
+
+[node name="SandstoneOuterWall" type="Node3D"]
+
+[node name="SandStoneOuterWall" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_o1e8b")
+cast_shadow = 2
+mesh = ExtResource("2_ffrfp")
+
+[node name="ShadowMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4, 8.25, 1.8)
+material_override = ExtResource("3_vm78g")
+cast_shadow = 3
+mesh = SubResource("PlaneMesh_a2thj")

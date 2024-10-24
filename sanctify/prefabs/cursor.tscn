@@ -1,11 +1,13 @@
-[gd_scene load_steps=32 format=3 uid="uid://d2ho5gg1g3mc"]
+[gd_scene load_steps=34 format=3 uid="uid://d2ho5gg1g3mc"]
 
 [ext_resource type="Script" path="res://src/cursor.gd" id="1_g23o2"]
-[ext_resource type="PackedScene" uid="uid://boqyewvnknlqk" path="res://models/cursor/cursor_mesh.tscn" id="2_eayil"]
 [ext_resource type="Texture2D" uid="uid://btn3fn8xu0gc7" path="res://data/images/cleansing_circle.png" id="2_gqp8l"]
+[ext_resource type="ArrayMesh" uid="uid://byskx1gme2vu" path="res://models/cursor/cursor.obj" id="2_tknsn"]
 [ext_resource type="Texture2D" uid="uid://4b2po6fnjabx" path="res://data/images/losing_circle.png" id="3_6b7xi"]
 [ext_resource type="Texture2D" uid="uid://bhud25khik4yu" path="res://data/images/glow.png" id="3_bcqas"]
 [ext_resource type="Texture2D" uid="uid://bho5ebiexfrsi" path="res://data/images/cleansing_circle_bootup.png" id="3_pmkwr"]
+[ext_resource type="Material" uid="uid://cdhrqyl75bk16" path="res://models/cursor/cursor_orb.material" id="3_q7v7c"]
+[ext_resource type="Material" uid="uid://dakprjf2j5a03" path="res://models/cursor/cursor_glow.material" id="4_up1lb"]
 
 [sub_resource type="Curve" id="Curve_g13s2"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.228956, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -750,7 +752,11 @@ script = ExtResource("1_g23o2")
 [node name="CursorMesh" type="Node3D" parent="."]
 transform = Transform3D(1.3, 0, 0, 0, 1.3, 0, 0, 0, 1.3, 0, 0.3, 0)
 
-[node name="CursorMesh" parent="CursorMesh" instance=ExtResource("2_eayil")]
+[node name="Cursor" type="MeshInstance3D" parent="CursorMesh"]
+cast_shadow = 0
+mesh = ExtResource("2_tknsn")
+surface_material_override/0 = ExtResource("3_q7v7c")
+surface_material_override/1 = ExtResource("4_up1lb")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43755, 0)
@@ -758,7 +764,6 @@ light_color = Color(0.6308, 0.7277, 0.76, 1)
 light_energy = 0.0
 light_indirect_energy = 7.022
 light_volumetric_fog_energy = 16.0
-light_specular = 1.0
 shadow_enabled = true
 omni_range = 4.0
 

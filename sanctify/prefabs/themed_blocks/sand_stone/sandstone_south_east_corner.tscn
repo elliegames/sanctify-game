@@ -1,0 +1,23 @@
+[gd_scene load_steps=6 format=3 uid="uid://cfkx2nssk5wvk"]
+
+[ext_resource type="ArrayMesh" uid="uid://cjk3dkjowk5as" path="res://models/themed_blocks/sand_stone/sand_stone_south_east_corner.obj" id="1_ydkc1"]
+[ext_resource type="Material" uid="uid://dyt3c115t5uab" path="res://models/themed_blocks/sand_stone/sandstone_low_detail.material" id="2_2oytt"]
+[ext_resource type="Material" uid="uid://bo0dnf4o3186g" path="res://models/themed_blocks/sand_stone/sandstone_wall_base.material" id="3_i2jt6"]
+[ext_resource type="Material" uid="uid://c51gqf18qh6o1" path="res://models/themed_blocks/sand_stone/sandstone_wall.material" id="4_dmwky"]
+[ext_resource type="Material" uid="uid://cketyfy0x4h81" path="res://models/themed_blocks/sand_stone/shadow_mesh.material" id="5_g8tae"]
+
+[node name="SandstoneSouthEastCorner" type="Node3D"]
+
+[node name="SandStoneSouthEastCorner" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_ydkc1")
+surface_material_override/0 = ExtResource("2_2oytt")
+surface_material_override/1 = ExtResource("2_2oytt")
+surface_material_override/2 = ExtResource("3_i2jt6")
+surface_material_override/3 = ExtResource("4_dmwky")
+surface_material_override/4 = ExtResource("2_2oytt")
+surface_material_override/5 = ExtResource("5_g8tae")
+surface_material_override/6 = ExtResource("2_2oytt")
+surface_material_override/7 = ExtResource("5_g8tae")
+surface_material_override/8 = ExtResource("2_2oytt")
+surface_material_override/9 = ExtResource("3_i2jt6")
+surface_material_override/10 = ExtResource("2_2oytt")

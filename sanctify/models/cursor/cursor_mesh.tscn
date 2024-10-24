@@ -1,6 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://boqyewvnknlqk"]
-
-[ext_resource type="PackedScene" uid="uid://w0l3m2ktcixa" path="res://models/cursor/cursor.blend" id="1_2m7hb"]
+[gd_scene load_steps=5 format=3 uid="uid://boqyewvnknlqk"]
 
 [sub_resource type="Gradient" id="Gradient_vr0wa"]
 colors = PackedColorArray(0.999996, 0.63847, 0.648631, 1, 0.64378, 0.790959, 1, 1)
@@ -35,7 +33,7 @@ disable_receive_shadows = true
 billboard_mode = 1
 billboard_keep_scale = true
 
-[node name="cursor" instance=ExtResource("1_2m7hb")]
+[node name="cursor"]
 
 [node name="Sphere" parent="." index="0"]
 material_override = SubResource("StandardMaterial3D_wpcdu")

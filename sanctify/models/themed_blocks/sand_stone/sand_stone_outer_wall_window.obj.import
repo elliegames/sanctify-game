@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cmo8aas3hp86q"
+path="res://.godot/imported/sand_stone_outer_wall_window.obj-bcd9ad1298697ea60c54ac955f3e4edf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sand_stone_outer_wall_window.obj-bcd9ad1298697ea60c54ac955f3e4edf.mesh"]
+
+source_file="res://models/themed_blocks/sand_stone/sand_stone_outer_wall_window.obj"
+dest_files=["res://.godot/imported/sand_stone_outer_wall_window.obj-bcd9ad1298697ea60c54ac955f3e4edf.mesh", "res://.godot/imported/sand_stone_outer_wall_window.obj-bcd9ad1298697ea60c54ac955f3e4edf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
