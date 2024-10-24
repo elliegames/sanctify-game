@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bun371bg7k07b"
+path="res://.godot/imported/sand_stone_north_outer_wall_door.obj-ebcf664a8d7581d60786c15f2082054d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sand_stone_north_outer_wall_door.obj-ebcf664a8d7581d60786c15f2082054d.mesh"]
+
+source_file="res://models/themed_blocks/sand_stone/sand_stone_north_outer_wall_door.obj"
+dest_files=["res://.godot/imported/sand_stone_north_outer_wall_door.obj-ebcf664a8d7581d60786c15f2082054d.mesh", "res://.godot/imported/sand_stone_north_outer_wall_door.obj-ebcf664a8d7581d60786c15f2082054d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

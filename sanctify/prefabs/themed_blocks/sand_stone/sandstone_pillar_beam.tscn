@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dfbxqmrh1868r"]
+
+[ext_resource type="Material" uid="uid://cqmas801nncwr" path="res://models/themed_blocks/sand_stone/sandstone_pillar_beam.material" id="1_wa83c"]
+[ext_resource type="ArrayMesh" uid="uid://cfvq3y8gup1ct" path="res://models/themed_blocks/sand_stone/sand_stone_pillar_beam.obj" id="2_kb0la"]
+
+[node name="SandstonePillarBeam" type="Node3D"]
+
+[node name="SandStonePillarBeam" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_wa83c")
+mesh = ExtResource("2_kb0la")

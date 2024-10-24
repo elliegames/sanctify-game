@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://byb5nmde6sejc"]
+
+[ext_resource type="Material" uid="uid://ccqhgwxcy8njt" path="res://models/themed_blocks/sand_stone/sandstone_north_east_corner.material" id="1_tf3fd"]
+[ext_resource type="ArrayMesh" uid="uid://xnowe20ur0i1" path="res://models/themed_blocks/sand_stone/sand_stone_north_east_corner.obj" id="2_27hxc"]
+
+[node name="SandstoneNorthEastCorner" type="Node3D"]
+
+[node name="SandStoneNorthEastCorner" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_tf3fd")
+cast_shadow = 2
+mesh = ExtResource("2_27hxc")

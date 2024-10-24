@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://j8gdl87secsr"]
+
+[ext_resource type="ArrayMesh" uid="uid://bj5mfbi03bdx0" path="res://models/themed_blocks/sand_stone/sand_stone_pillar.obj" id="1_h07el"]
+[ext_resource type="Material" uid="uid://cbsdoj6ekf0eb" path="res://models/themed_blocks/sand_stone/sandstone_pillar_styllobate.material" id="2_d8ivm"]
+[ext_resource type="Material" uid="uid://l1yf38o17lqk" path="res://models/themed_blocks/sand_stone/sandstone_pillar_body.material" id="3_81lh1"]
+[ext_resource type="Material" uid="uid://c8scruljis22t" path="res://models/themed_blocks/sand_stone/sandstone_pillar_jonic_ordung.material" id="4_sg1n4"]
+[ext_resource type="Material" uid="uid://dt8ir5cgq87qi" path="res://models/themed_blocks/sand_stone/sandstone_pillar_entableture.material" id="5_cs5v5"]
+
+[node name="SandstonePillar" type="Node3D"]
+
+[node name="SandStonePillar" type="MeshInstance3D" parent="."]
+cast_shadow = 2
+mesh = ExtResource("1_h07el")
+surface_material_override/0 = ExtResource("2_d8ivm")
+surface_material_override/1 = ExtResource("3_81lh1")
+surface_material_override/2 = ExtResource("4_sg1n4")
+surface_material_override/3 = ExtResource("5_cs5v5")

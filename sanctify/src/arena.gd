@@ -244,6 +244,7 @@ func reveal_recursive(start_position: Vector2i):
 			print("GAMEOVER: YOU WON")
 			game_over = true
 			cursor.start_cleansing()
+			tile.show_cleansing_anim()
 			start_ripple_effects(tile.board_pos, false)
 			ui.win("You have cleansed the divine pantheon. " + arena_theme.opponent + "'s curse has been lifted!", time)
 			$EndCam.set_priority(1000)
@@ -505,7 +506,10 @@ func arrange_environment():
 
 	$ReflectionProbe.size = Vector3(grid_length + 3, 30, grid_width + 3)
 	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
-
+	
+	# Place the priestess
+	$Priestess.position = Vector3(grid_length / 2, 1, grid_width + 2)
+	$AnimationTimer.start()
 
 func start_ripple_effects(center: Vector2i, destroy: bool):
 	pulse_effect_center = Vector2(center.x, center.y)
@@ -513,3 +517,6 @@ func start_ripple_effects(center: Vector2i, destroy: bool):
 		$AnimationPlayer.play("destruct")
 	else:
 		$AnimationPlayer.play("cleanse")
+
+func play_intro_cutscene():
+	$Priestess/AnimationTree.set("parameters/conditions/start", true)

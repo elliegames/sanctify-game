@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cfvq3y8gup1ct"
+path="res://.godot/imported/sand_stone_pillar_beam.obj-b58643d849b284d2fe2f7f7868f2d291.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sand_stone_pillar_beam.obj-b58643d849b284d2fe2f7f7868f2d291.mesh"]
+
+source_file="res://models/themed_blocks/sand_stone/sand_stone_pillar_beam.obj"
+dest_files=["res://.godot/imported/sand_stone_pillar_beam.obj-b58643d849b284d2fe2f7f7868f2d291.mesh", "res://.godot/imported/sand_stone_pillar_beam.obj-b58643d849b284d2fe2f7f7868f2d291.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

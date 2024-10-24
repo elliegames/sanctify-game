@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dfahk3l5123am"
+path="res://.godot/imported/sand_stone_curse.obj-da92769782c9851eacefb02e5ecea5ff.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sand_stone_curse.obj-da92769782c9851eacefb02e5ecea5ff.mesh"]
+
+source_file="res://models/themed_blocks/sand_stone/sand_stone_curse.obj"
+dest_files=["res://.godot/imported/sand_stone_curse.obj-da92769782c9851eacefb02e5ecea5ff.mesh", "res://.godot/imported/sand_stone_curse.obj-da92769782c9851eacefb02e5ecea5ff.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

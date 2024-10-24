@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://brs023vlj5mob"]
+
+[ext_resource type="Material" uid="uid://clp8ien5vm2jx" path="res://models/themed_blocks/sand_stone/sandstone_curse.material" id="1_64xrm"]
+[ext_resource type="ArrayMesh" uid="uid://dfahk3l5123am" path="res://models/themed_blocks/sand_stone/sand_stone_curse.obj" id="2_s2xas"]
+
+[node name="SandstoneCurse" type="Node3D"]
+
+[node name="SandStoneCurse" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_64xrm")
+mesh = ExtResource("2_s2xas")
