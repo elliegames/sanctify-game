@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://cw8xg4mqxju53"]
+
+[ext_resource type="PackedScene" uid="uid://bvy1as8ywdhin" path="res://models/priestess/priestess.gltf" id="1_426jc"]
+[ext_resource type="Material" uid="uid://b708asxglctex" path="res://models/priestess/gold.material" id="2_7ca8c"]
+[ext_resource type="Material" uid="uid://bwab8qcn63gaw" path="res://models/priestess/staff.material" id="2_kklks"]
+[ext_resource type="Material" uid="uid://bdqswmnvacdb3" path="res://models/priestess/staff_glow.material" id="3_k6r4h"]
+[ext_resource type="Material" uid="uid://ba0c50q8ltwqi" path="res://models/priestess/skin.material" id="3_m8x1e"]
+[ext_resource type="Material" uid="uid://bibq3jm30cgro" path="res://models/priestess/torso_clothing.material" id="4_btowl"]
+[ext_resource type="Material" uid="uid://b14eq3r2o3yok" path="res://models/priestess/staff_glow_2.material" id="4_pwsla"]
+[ext_resource type="Material" uid="uid://bpbgu10x7ka4n" path="res://models/priestess/hair.material" id="5_kup3m"]
+[ext_resource type="Material" uid="uid://1l4heq8olqn" path="res://models/priestess/alt_clothing.material" id="7_n32u3"]
+[ext_resource type="Material" uid="uid://bajylx0j1w7kp" path="res://models/priestess/main_clothing.material" id="9_wvqs7"]
+
+[node name="priestess" instance=ExtResource("1_426jc")]
+
+[node name="StaffBody" parent="." index="0"]
+material_override = ExtResource("2_kklks")
+
+[node name="StaffLeaves" parent="StaffBody" index="0"]
+material_override = ExtResource("2_7ca8c")
+
+[node name="StaffLight" parent="StaffBody" index="1"]
+material_override = ExtResource("3_k6r4h")
+
+[node name="StaffLights" parent="StaffBody" index="2"]
+material_override = ExtResource("4_pwsla")
+
+[node name="Skeleton3D" parent="PriestessArmature" index="1"]
+bones/8/rotation = Quaternion(0.233869, 0.857471, 0.252692, -0.382356)
+bones/8/scale = Vector3(1, 20.2815, 1)
+bones/9/rotation = Quaternion(-0.233869, 0.857471, 0.252692, 0.382356)
+bones/9/scale = Vector3(1, 20.2815, 1)
+bones/10/rotation = Quaternion(0.733744, 0.245403, -0.590699, 0.229068)
+bones/10/scale = Vector3(1, 21.7916, 1)
+bones/11/rotation = Quaternion(0.733744, -0.245403, 0.590699, 0.229068)
+bones/11/scale = Vector3(1, 21.7916, 1)
+bones/29/rotation = Quaternion(-3.36735e-05, 0.961249, -0.275683, -0.000117267)
+bones/43/rotation = Quaternion(-3.36318e-05, 0.961249, -0.275683, -0.000117412)
+bones/60/rotation = Quaternion(-3.36887e-05, 0.961249, -0.275683, -0.000117295)
+bones/72/rotation = Quaternion(-3.35232e-05, 0.961249, -0.275683, -0.000117195)
+bones/79/rotation = Quaternion(-3.36116e-05, 0.961249, -0.275683, -0.000117419)
+bones/91/rotation = Quaternion(-3.37861e-05, 0.961249, -0.275683, -0.000117498)
+bones/131/rotation = Quaternion(0.42073, 0.701718, -0.57329, -0.04378)
+bones/135/rotation = Quaternion(0.397697, 0.674429, -0.620655, -0.0420774)
+bones/146/rotation = Quaternion(-0.0169521, 0.818148, -0.519156, -0.246625)
+bones/168/rotation = Quaternion(-0.0169519, 0.818148, -0.519156, -0.246626)
+bones/170/rotation = Quaternion(-0.016952, 0.818148, -0.519156, -0.246626)
+bones/177/rotation = Quaternion(-5.41421e-08, 0.696936, 0.717133, -5.26172e-08)
+bones/180/rotation = Quaternion(-5.41421e-08, 0.696936, 0.717133, -5.26172e-08)
+bones/185/rotation = Quaternion(0.299326, 0.657055, -0.652957, -0.228757)
+bones/193/rotation = Quaternion(0.369595, -3.30896e-08, 0.863048, -0.344308)
+bones/202/rotation = Quaternion(0.961249, 3.36526e-05, -0.00011734, -0.275682)
+bones/205/rotation = Quaternion(7.54942e-08, 1.00715e-26, 1, -2.2499e-15)
+bones/216/rotation = Quaternion(0.961249, 3.36526e-05, -0.00011734, -0.275682)
+
+[node name="Crown" parent="PriestessArmature/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_7ca8c")
+surface_material_override/1 = ExtResource("4_btowl")
+
+[node name="HairFlowing" parent="PriestessArmature/Skeleton3D" index="1"]
+material_override = ExtResource("5_kup3m")
+lod_bias = 10.0
+
+[node name="HandCloth" parent="PriestessArmature/Skeleton3D" index="2"]
+material_override = ExtResource("7_n32u3")
+
+[node name="PriestessBody" parent="PriestessArmature/Skeleton3D" index="3"]
+lod_bias = 10.0
+surface_material_override/0 = ExtResource("3_m8x1e")
+surface_material_override/1 = ExtResource("4_btowl")
+surface_material_override/2 = ExtResource("5_kup3m")
+
+[node name="ShoulderJewelery" parent="PriestessArmature/Skeleton3D" index="4"]
+surface_material_override/0 = ExtResource("9_wvqs7")
+surface_material_override/1 = ExtResource("2_7ca8c")
+
+[node name="ShoulderPads" parent="PriestessArmature/Skeleton3D" index="5"]
+material_override = ExtResource("9_wvqs7")
+
+[node name="Skirt" parent="PriestessArmature/Skeleton3D" index="6"]
+material_override = ExtResource("9_wvqs7")
+
+[node name="WaistGuard" parent="PriestessArmature/Skeleton3D" index="7"]
+material_override = ExtResource("2_7ca8c")

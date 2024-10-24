@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://gib3b7bmu7vq"]
+[gd_scene load_steps=27 format=3 uid="uid://gib3b7bmu7vq"]
 
 [ext_resource type="Script" path="res://src/arena.gd" id="1_2d1np"]
 [ext_resource type="Script" path="res://src/arena_theme.gd" id="2_od3yl"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_d8pjb"]
 [ext_resource type="PackedScene" uid="uid://d2ho5gg1g3mc" path="res://prefabs/cursor.tscn" id="7_xb0cn"]
 [ext_resource type="PackedScene" uid="uid://5iadts1xwhdp" path="res://prefabs/ui.tscn" id="8_3nbxp"]
+[ext_resource type="PackedScene" uid="uid://cw8xg4mqxju53" path="res://prefabs/priestess.tscn" id="11_r56rg"]
 
 [sub_resource type="Resource" id="Resource_xo2et"]
 script = ExtResource("4_f2fkr")
@@ -280,10 +281,10 @@ script = ExtResource("1_2d1np")
 arena_themes = Array[ExtResource("2_od3yl")]([ExtResource("3_ukhlb")])
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707107, -0.5, 0.5, 2.98023e-08, 0.707107, 0.707106, -0.707107, -0.5, 0.5, 10, 14.1421, 10)
+transform = Transform3D(0.707106, -0.499999, 0.5, 0, 0.707106, 0.707106, -0.707106, -0.499999, 0.5, 10, 14.1421, 10)
 cull_mask = 1048567
 projection = 1
-size = 5.86191
+size = 6.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("2_sa7a4")
@@ -392,5 +393,8 @@ layers = 64
 material_override = SubResource("StandardMaterial3D_ha2cu")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_iigim")
+
+[node name="Priestess" parent="." instance=ExtResource("11_r56rg")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
 [connection signal="on_switch_view" from="UI" to="." method="switch_view"]

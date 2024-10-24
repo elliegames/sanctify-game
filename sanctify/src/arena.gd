@@ -506,6 +506,9 @@ func arrange_environment():
 
 	$ReflectionProbe.size = Vector3(grid_length + 3, 30, grid_width + 3)
 	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
+	
+	# Place the priestess
+	$Priestess.position = Vector3(grid_length / 2, 1, grid_width + 1)
 
 
 func start_ripple_effects(center: Vector2i, destroy: bool):
