@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Sanctify"
 config/description="Get rid of curses placed behind floors of the pantheon"
-config/version="0.1"
+config/version="0.0.1"
 run/main_scene="res://main_menu.tscn"
 run/disable_stdout=true
 run/disable_stderr=true

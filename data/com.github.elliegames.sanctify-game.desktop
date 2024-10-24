@@ -2,11 +2,11 @@
 Name=Santify
 GenericName=Minesweeper
 Comment=Play and arrange music live as a one-person band
-Categories=Games
-MimeType=audio/midi
+Categories=Game;AdventureGame;
 Exec=com.github.elliegames.sanctify-game %U
 Icon=com.github.elliegames.sanctify-game
 Terminal=false
 Type=Application
 Keywords=sanctify,mythical,greek,fantasy,minesweeper
 X-GNOME-Gettext-Domain=com.github.elliegames.sanctify-game
+StartupNotify=true
