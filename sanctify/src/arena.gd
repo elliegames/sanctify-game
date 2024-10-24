@@ -508,8 +508,8 @@ func arrange_environment():
 	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
 	
 	# Place the priestess
-	$Priestess.position = Vector3(grid_length / 2, 1, grid_width + 1)
-
+	$Priestess.position = Vector3(grid_length / 2, 1, grid_width + 2)
+	$AnimationTimer.start()
 
 func start_ripple_effects(center: Vector2i, destroy: bool):
 	pulse_effect_center = Vector2(center.x, center.y)
@@ -517,3 +517,6 @@ func start_ripple_effects(center: Vector2i, destroy: bool):
 		$AnimationPlayer.play("destruct")
 	else:
 		$AnimationPlayer.play("cleanse")
+
+func play_intro_cutscene():
+	$Priestess/AnimationTree.set("parameters/conditions/start", true)

@@ -397,4 +397,9 @@ mesh = SubResource("PlaneMesh_iigim")
 [node name="Priestess" parent="." instance=ExtResource("11_r56rg")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [connection signal="on_switch_view" from="UI" to="." method="switch_view"]
+[connection signal="timeout" from="AnimationTimer" to="." method="play_intro_cutscene"]

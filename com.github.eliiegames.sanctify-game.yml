@@ -15,7 +15,7 @@ finish-args:
   - '--system-talk-name=org.freedesktop.Accounts'
 
 modules:
-  - name: santify-game
+  - name: sanctify-game
     buildsystem: simple
 
     build-commands:
