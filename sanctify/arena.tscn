@@ -329,10 +329,11 @@ script = ExtResource("1_2d1np")
 arena_themes = Array[ExtResource("2_od3yl")]([ExtResource("3_ukhlb")])
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707106, -0.499999, 0.5, 0, 0.707106, 0.707106, -0.707106, -0.499999, 0.5, 10, 14.1421, 10)
+transform = Transform3D(0.866025, -0.383022, 0.321394, 0, 0.642787, 0.766044, -0.5, -0.663413, 0.55667, 6.42788, 16.3209, 11.1334)
 cull_mask = 1048567
 projection = 1
-size = 6.0
+size = 8.0
+near = 0.001
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("2_sa7a4")

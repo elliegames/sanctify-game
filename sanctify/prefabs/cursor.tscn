@@ -303,6 +303,118 @@ tracks/13/keys = {
 "update": 1,
 "values": [28]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../OmniLight3D:light_color")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.6308, 0.7277, 0.76, 1)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../OmniLight3D:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.43755, 1.5)]
+}
+
+[sub_resource type="Animation" id="Animation_70uj0"]
+resource_name = "booting"
+length = 7.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.5, 6, 6.73333, 7.5),
+"transitions": PackedFloat32Array(1, 1, 3.24901, 0.241484, 1),
+"update": 0,
+"values": [Vector3(0, 0.3, 1.5), Vector3(0, 0.3, 1.5), Vector3(0, 0.3, 1.5), Vector3(0, 0.3, 1.33054), Vector3(0, 0.3, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(5.5, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.001, 0.001, 0.001), Vector3(1.3, 1.3, 1.3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../GPUParticles3D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.5, 7.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../BootFrames:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 4.5, 4.53333, 5.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [28, 28, 0, 28]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../OmniLight3D:light_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4.5, 4.93333, 5.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.6308, 0.7277, 0.76, 1), Color(0, 0.200145, 0.353202, 1), Color(1, 1, 1, 1), Color(0.6308, 0.7277, 0.76, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../OmniLight3D:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 4.53333, 4.56667, 4.7, 4.73333, 4.76667, 4.86667, 4.9, 4.93333, 5, 5.06667, 5.1, 5.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.5, 0.5, 0.0, 0.7, 0.7, 0.0, 1.2, 0.0, 0.0, 0.1, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../OmniLight3D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(6, 7.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0.43755, 1.5), Vector3(0, 0.43755, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_pcmcf"]
 resource_name = "cleansing"
@@ -697,58 +809,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_70uj0"]
-resource_name = "booting"
-length = 7.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 4, 5.5, 6.23333, 7),
-"transitions": PackedFloat32Array(1, 1, 3.24901, 0.241484, 1),
-"update": 0,
-"values": [Vector3(0, 0.3, 1.5), Vector3(0, 0.3, 1.5), Vector3(0, 0.3, 1.5), Vector3(0, 0.3, 1.33054), Vector3(0, 0.3, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(5, 5.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.001, 0.001, 0.001), Vector3(1.3, 1.3, 1.3)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../GPUParticles3D:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 4, 7),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [false, false, true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../BootFrames:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 4, 4.03333, 5.46667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [28, 28, 0, 28]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8k8ed"]
 _data = {
 "RESET": SubResource("Animation_j70dk"),
@@ -837,7 +897,7 @@ surface_material_override/0 = ExtResource("3_q7v7c")
 surface_material_override/1 = ExtResource("4_up1lb")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43755, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43755, 1.5)
 light_color = Color(0.6308, 0.7277, 0.76, 1)
 light_energy = 0.0
 light_indirect_energy = 7.022
@@ -911,12 +971,14 @@ cast_shadow = 0
 mesh = SubResource("CylinderMesh_7xum6")
 
 [node name="BootFrames" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 1.5)
-pixel_size = 0.002
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0.3, 1.5)
+cast_shadow = 0
+pixel_size = 0.001
 billboard = 1
 no_depth_test = true
 fixed_size = true
 texture_filter = 0
+render_priority = 127
 texture = ExtResource("9_1g6wc")
 hframes = 29
 frame = 28
