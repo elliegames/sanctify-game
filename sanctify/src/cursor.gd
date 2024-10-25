@@ -42,3 +42,6 @@ func start_losing():
 
 func start_vibration(weak: float, strong: float, time: float):
 	Input.start_joy_vibration(0, weak, strong, time)
+
+func start_booting():
+	$CleansingAnimation.play("booting")
