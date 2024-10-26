@@ -24,8 +24,8 @@
   <launchable type="desktop-id">com.github.elliegames.sanctify-game.desktop</launchable>
   <screenshots>
     <screenshot type="default">
-      <caption>Instant Playback</caption>
-      <image>https://raw.githubusercontent.com/elliegames/sanctify-game-app/master/screenshots/Screenshot.png</image>
+      <caption>Gameplay</caption>
+      <image>https://raw.githubusercontent.com/elliegames/sanctify-game-app/master/screenshots/screenshot.png</image>
     </screenshot>
   </screenshots>
   <content_rating type="oars-1.1">

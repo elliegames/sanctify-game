@@ -6,6 +6,8 @@ It's a reimagined minesweeper game designed for elementary OS.
 
 Author: [Subhadeep Jasu](https://github.com/SubhadeepJasu) \<subhadeep107@proton.me\>
 
+<img src="screenshots/screenshot.png" width="500">
+
 ## Installation
 ### For Users
 On elementary OS? Click the button to get Sanctify on AppCenter:
