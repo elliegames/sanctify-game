@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://gib3b7bmu7vq"]
+[gd_scene load_steps=28 format=3 uid="uid://gib3b7bmu7vq"]
 
 [ext_resource type="Script" path="res://src/arena.gd" id="1_2d1np"]
 [ext_resource type="Script" path="res://src/arena_theme.gd" id="2_od3yl"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://d2ho5gg1g3mc" path="res://prefabs/cursor.tscn" id="7_xb0cn"]
 [ext_resource type="PackedScene" uid="uid://5iadts1xwhdp" path="res://prefabs/ui.tscn" id="8_3nbxp"]
 [ext_resource type="PackedScene" uid="uid://cw8xg4mqxju53" path="res://prefabs/priestess.tscn" id="11_r56rg"]
+[ext_resource type="Texture2D" uid="uid://b37oob3do28f4" path="res://data/images/character_glow.png" id="12_1ispk"]
 
 [sub_resource type="Resource" id="Resource_xo2et"]
 script = ExtResource("4_f2fkr")
@@ -165,6 +166,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Priestess:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CharacterGlow:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_0kdmn"]
 resource_name = "begin"
@@ -192,6 +217,58 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Priestess:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(7, 7.06667, 7.13333, 7.2, 7.26667, 7.33333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterGlow:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(7.13333, 7.26667, 7.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CharacterGlow")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Priestess")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(7.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_occ6y"]
@@ -329,11 +406,10 @@ script = ExtResource("1_2d1np")
 arena_themes = Array[ExtResource("2_od3yl")]([ExtResource("3_ukhlb")])
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.866025, -0.383022, 0.321394, 0, 0.642787, 0.766044, -0.5, -0.663413, 0.55667, 6.42788, 16.3209, 11.1334)
+transform = Transform3D(0.707106, -0.499999, 0.5, 0, 0.707106, 0.707106, -0.707106, -0.499999, 0.5, 10, 14.1421, 10)
 cull_mask = 1048567
 projection = 1
-size = 8.0
-near = 0.001
+size = 6.0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera3D"]
 script = ExtResource("2_sa7a4")
@@ -452,6 +528,16 @@ one_shot = true
 [node name="Audio" type="Node" parent="."]
 
 [node name="BootUpSound1" type="AudioStreamPlayer" parent="Audio"]
+
+[node name="CharacterGlow" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2, 1)
+modulate = Color(1, 1, 1, 0)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+alpha_cut = 2
+render_priority = 126
+texture = ExtResource("12_1ispk")
 
 [connection signal="on_switch_view" from="UI" to="." method="switch_view"]
 [connection signal="timeout" from="AnimationTimer" to="." method="play_intro_cutscene"]

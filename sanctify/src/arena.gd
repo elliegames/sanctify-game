@@ -511,6 +511,7 @@ func arrange_environment():
 	
 	# Place the priestess
 	$Priestess.position = Vector3(grid_length / 2, 1, grid_width + 2)
+	$CharacterGlow.position = Vector3(grid_length / 2, 1, grid_width + 2)
 	$AnimationTimer.start()
 	$AnimationPlayer.play("begin")
 

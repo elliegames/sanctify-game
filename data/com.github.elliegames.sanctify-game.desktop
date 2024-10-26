@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Santify
 GenericName=Minesweeper
-Comment=Play and arrange music live as a one-person band
+Comment=Get rid of curses hidden inside the floors of the Temple
 Categories=Game;LogicGame;BoardGame;
 Exec=com.github.elliegames.sanctify-game %U
 Icon=com.github.elliegames.sanctify-game

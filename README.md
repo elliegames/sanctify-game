@@ -18,7 +18,7 @@ You'll need the following dependencies to build:
 - Godot 4.3.x
 - Flatpak Builder
 
-Build from Godot Editor:
+**Build from Godot Editor:**
 
 ```bash
 cd santify-game
@@ -32,7 +32,7 @@ sudo mv build/com.github.elliegames.sanctify /usr/bin/com.github.elliegames.sanc
 com.github.elliegames.sanctify
 ```
 
-Install as Flatpak
+**Install as Flatpak**
 
 ```bash
 cd sanctify-game
@@ -43,3 +43,10 @@ flatpak-builder build com.github.elliegames.sanctify-game.yml --user --install
 ```bash
 flatpak run com.github.elliegames.sanctify-game
 ```
+
+<br>
+<sup><b>License</b>: GNU GPLv3</sup>
+<br>
+<sup>Certain sounds are CC0</sup>
+<br>
+<sup>Sanctify Game © Copyright 2024-2025 Subhadeep Jasu</sup>

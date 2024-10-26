@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://d2ho5gg1g3mc"]
+[gd_scene load_steps=39 format=3 uid="uid://d2ho5gg1g3mc"]
 
 [ext_resource type="Script" path="res://src/cursor.gd" id="1_g23o2"]
 [ext_resource type="Texture2D" uid="uid://btn3fn8xu0gc7" path="res://data/images/cleansing_circle.png" id="2_gqp8l"]
@@ -9,6 +9,7 @@
 [ext_resource type="Material" uid="uid://cdhrqyl75bk16" path="res://models/cursor/cursor_orb.material" id="3_q7v7c"]
 [ext_resource type="Material" uid="uid://dakprjf2j5a03" path="res://models/cursor/cursor_glow.material" id="4_up1lb"]
 [ext_resource type="Texture2D" uid="uid://c224q82v2awa1" path="res://data/images/cursor_boot_frames.png" id="9_1g6wc"]
+[ext_resource type="Texture2D" uid="uid://ogpgbn8vm5c1" path="res://data/images/ripple.png" id="10_qvfhi"]
 
 [sub_resource type="Curve" id="Curve_g13s2"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.228956, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -327,6 +328,30 @@ tracks/15/keys = {
 "update": 0,
 "values": [Vector3(0, 0.43755, 1.5)]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../FloorPulse:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.001, 0.001, 0.001)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../FloorPulse:material_override:albedo_color")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_70uj0"]
 resource_name = "booting"
@@ -414,6 +439,44 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0.43755, 1.5), Vector3(0, 0.43755, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../FloorPulse:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4.5, 4.93333),
+"transitions": PackedFloat32Array(0.378929, 1),
+"update": 0,
+"values": [Vector3(0.001, 0.001, 0.001), Vector3(1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../FloorPulse:material_override:albedo_color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(4.5, 4.6, 4.93333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../FloorPulse")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(5.03333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_pcmcf"]
@@ -884,6 +947,18 @@ rings = 1
 cap_top = false
 cap_bottom = false
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7aay3"]
+transparency = 1
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+albedo_texture = ExtResource("10_qvfhi")
+metallic_specular = 0.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lwi6h"]
+size = Vector2(1, 1)
+
 [node name="Cursor" type="Node3D"]
 script = ExtResource("1_g23o2")
 
@@ -982,5 +1057,10 @@ render_priority = 127
 texture = ExtResource("9_1g6wc")
 hframes = 29
 frame = 28
+
+[node name="FloorPulse" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0.2, 2.5)
+material_override = SubResource("StandardMaterial3D_7aay3")
+mesh = SubResource("PlaneMesh_lwi6h")
 
 [connection signal="timeout" from="PulseAnimation/Timer" to="PulseAnimation" method="play" binds= ["pulse"]]
