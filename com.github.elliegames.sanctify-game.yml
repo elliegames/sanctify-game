@@ -1,0 +1,48 @@
+app-id: com.github.elliegames.sanctify-game
+runtime: io.elementary.Platform
+runtime-version: '8'
+sdk: io.elementary.Sdk
+command: com.github.elliegames.sanctify-game
+finish-args:
+  - '--share=ipc'
+  - '--socket=fallback-x11'
+  - '--socket=wayland'
+  - '--socket=pulseaudio'
+  # Required for GPU Access and Gamepad control
+  - '--device=all'
+  - '--filesystem=home'
+  # Required for system wide dark style preference
+  - '--system-talk-name=org.freedesktop.Accounts'
+
+modules:
+  - name: sanctify-game
+    buildsystem: simple
+
+    build-commands:
+      - strip sanctify.x86_64
+      - install -Dm755 sanctify.x86_64 /app/bin/com.github.elliegames.sanctify-game.x86_64
+      - install -Dm755 run.sh /app/bin/com.github.elliegames.sanctify-game
+      - install -D sanctify.pck /app/share/com.github.elliegames.sanctify-game/sanctify.pck
+      - install -D data/icons/16/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/16x16/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/icons/16/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/16x16@2/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/icons/24/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/24x24/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/icons/24/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/24x24@2/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/icons/32/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/32x32/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/icons/32/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/32x32@2/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/icons/48/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/48x48/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/icons/48/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/48x48@2/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/icons/64/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/64x64/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/icons/64/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/64x64@2/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/icons/128/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/128x128/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/icons/128/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/128x128@2/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/icons/symbolic/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/symbolic/apps/com.github.elliegames.sanctify-game.svg
+      - install -D data/com.github.elliegames.sanctify-game.desktop /app/share/applications/com.github.elliegames.sanctify-game.desktop
+      - install -D data/com.github.elliegames.sanctify-game.appdata.xml /app/share/appdata/com.github.elliegames.sanctify-game.appdata.xml
+
+    sources:
+      - type: archive
+        url: https://github.com/elliegames/sanctify-game/releases/download/0.0.1/linux.zip
+        sha256: b402d48c0298b57c0be291d215d7448813b1ad312bff10f7b2684ed42215e9c4
+
+      - type: dir
+        path: .

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://byskx1gme2vu"
+path="res://.godot/imported/cursor.obj-27d94db63b26cb418be03b3a0b842509.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cursor.obj-27d94db63b26cb418be03b3a0b842509.mesh"]
+
+source_file="res://models/cursor/cursor.obj"
+dest_files=["res://.godot/imported/cursor.obj-27d94db63b26cb418be03b3a0b842509.mesh", "res://.godot/imported/cursor.obj-27d94db63b26cb418be03b3a0b842509.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

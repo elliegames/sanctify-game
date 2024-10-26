@@ -24,6 +24,8 @@ var timer_started = false
 var time = 0
 var game_over = false;
 
+@export var input_enabled = false
+
 @export var pulse_effect_strength: float = 0
 @export var pulse_effect_radius: float = 0
 var pulse_effect_center: Vector2
@@ -83,7 +85,7 @@ func _physics_process(delta):
 
 
 func _process(delta):
-	if game_over:
+	if game_over or not input_enabled:
 		return
 
 	if Input.get_action_strength("cursor_joy_up") > 0.5:
@@ -102,7 +104,7 @@ func _process(delta):
 	ui.update_flag(max_flag_count - flag_count, max_flag_count)
 
 func _input(event):
-	if game_over:
+	if game_over or not input_enabled:
 		return
 
 	var e = event as InputEvent
@@ -244,6 +246,7 @@ func reveal_recursive(start_position: Vector2i):
 			print("GAMEOVER: YOU WON")
 			game_over = true
 			cursor.start_cleansing()
+			tile.show_cleansing_anim()
 			start_ripple_effects(tile.board_pos, false)
 			ui.win("You have cleansed the divine pantheon. " + arena_theme.opponent + "'s curse has been lifted!", time)
 			$EndCam.set_priority(1000)
@@ -505,7 +508,12 @@ func arrange_environment():
 
 	$ReflectionProbe.size = Vector3(grid_length + 3, 30, grid_width + 3)
 	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
-
+	
+	# Place the priestess
+	$Priestess.position = Vector3(grid_length / 2, 1, grid_width + 2)
+	$CharacterGlow.position = Vector3(grid_length / 2, 1, grid_width + 2)
+	$AnimationTimer.start()
+	$AnimationPlayer.play("begin")
 
 func start_ripple_effects(center: Vector2i, destroy: bool):
 	pulse_effect_center = Vector2(center.x, center.y)
@@ -513,3 +521,7 @@ func start_ripple_effects(center: Vector2i, destroy: bool):
 		$AnimationPlayer.play("destruct")
 	else:
 		$AnimationPlayer.play("cleanse")
+
+func play_intro_cutscene():
+	$Priestess/AnimationTree.set("parameters/conditions/start", true)
+	cursor.start_booting()

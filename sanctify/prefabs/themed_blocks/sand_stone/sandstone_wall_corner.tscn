@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmeubagn6okjc"]
+
+[ext_resource type="ArrayMesh" uid="uid://u4cdjfv5s28f" path="res://models/themed_blocks/sand_stone/sand_stone_wall_corner.obj" id="1_xg65u"]
+[ext_resource type="Material" uid="uid://c51gqf18qh6o1" path="res://models/themed_blocks/sand_stone/sandstone_wall.material" id="2_w5gof"]
+[ext_resource type="Material" uid="uid://dyt3c115t5uab" path="res://models/themed_blocks/sand_stone/sandstone_low_detail.material" id="3_6b0i3"]
+[ext_resource type="Material" uid="uid://dx4uxoygbqyr" path="res://models/themed_blocks/sand_stone/sandstone_wall_corner_base.material" id="4_nvdga"]
+[ext_resource type="Material" uid="uid://dkbw3db34st76" path="res://models/themed_blocks/sand_stone/sandstone_wall_corner_pillar.material" id="5_rjfco"]
+
+[node name="SandstoneWallCorner" type="Node3D"]
+
+[node name="SandStoneWallCorner" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_xg65u")
+surface_material_override/0 = ExtResource("2_w5gof")
+surface_material_override/1 = ExtResource("3_6b0i3")
+surface_material_override/2 = ExtResource("4_nvdga")
+surface_material_override/3 = ExtResource("5_rjfco")
