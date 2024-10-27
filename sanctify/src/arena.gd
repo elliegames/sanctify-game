@@ -212,6 +212,7 @@ func reveal_recursive(start_position: Vector2i):
 		cursor.start_losing()
 		game_over = true
 		lost = true
+		$Audio/GameLostDialog.play()
 		start_ripple_effects((board[start_position.x][start_position.y] as Tile).board_pos, true)
 		ui.lose(arena_theme.opponent + "'curse has been triggered. The Pantheon has been destroyed", total_tiles - n_revealed)
 		return
@@ -221,6 +222,9 @@ func reveal_recursive(start_position: Vector2i):
 	# Add the first clicked cell to the queue
 	queue.append(start_position)
 	revealing_multi = true
+	
+	if (board[start_position.x][start_position.y] as Tile).get_nearby_mines() == 0:
+		$Audio/RevealMany.play()
 
 	while queue.size() > 0:
 		var current_pos = queue.pop_front()

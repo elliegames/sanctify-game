@@ -25,11 +25,13 @@ func move(pos: Vector2i, board):
 		if not board[target_pos.x][target_pos.y].revealed:
 			board[target_pos.x][target_pos.y].show_highlight(true)
 			Input.start_joy_vibration(0, 0.2, 0, 0.1)
+			$CursorMove.play()
 		target_reach_timer = 1
 
 
 func reveal_safe():
 	$CleansingAnimation.play("reveal_safe")
+	$RevealSafe.play()
 
 
 func start_cleansing():

@@ -8,6 +8,7 @@ var light_theme: Theme
 var dark = DisplayServer.is_dark_mode()
 
 var gamepad_connected = false
+var loading = false
 
 func _ready():
 	DisplayServer.window_set_min_size(Vector2i(800, 600))
@@ -37,6 +38,9 @@ func _process(delta):
 			theme = dark_theme
 		else:
 			theme = light_theme
+			
+	if loading:
+		$MainMenuThemeMusic.volume_db -= 15 * delta
 
 func set_arena_size(idx: int):
 	ProjectSettings.set_setting("arena_size", idx)
@@ -49,6 +53,10 @@ func set_arena_theme(idx: int):
 func begin():
 	$LoadingScreen.animate_in()
 	$LoadTimer.start()
+	loading = true
+	preload("res://prefabs/ui.tscn")
+	preload("res://prefabs/cursor.tscn")
+	preload("res://prefabs/priestess.tscn")
 
 func load_arena():
 	get_tree().change_scene_to_file("res://arena.tscn")

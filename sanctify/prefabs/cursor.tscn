@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d2ho5gg1g3mc"]
+[gd_scene load_steps=41 format=3 uid="uid://d2ho5gg1g3mc"]
 
 [ext_resource type="Script" path="res://src/cursor.gd" id="1_g23o2"]
 [ext_resource type="Texture2D" uid="uid://btn3fn8xu0gc7" path="res://data/images/cleansing_circle.png" id="2_gqp8l"]
@@ -10,6 +10,8 @@
 [ext_resource type="Material" uid="uid://dakprjf2j5a03" path="res://models/cursor/cursor_glow.material" id="4_up1lb"]
 [ext_resource type="Texture2D" uid="uid://c224q82v2awa1" path="res://data/images/cursor_boot_frames.png" id="9_1g6wc"]
 [ext_resource type="Texture2D" uid="uid://ogpgbn8vm5c1" path="res://data/images/ripple.png" id="10_qvfhi"]
+[ext_resource type="AudioStream" uid="uid://d2knyy5ux3epo" path="res://data/audio/orb_move.ogg" id="11_j6umi"]
+[ext_resource type="AudioStream" uid="uid://dwi037l1uk3lv" path="res://data/audio/reveal_one.ogg" id="12_xb1fu"]
 
 [sub_resource type="Curve" id="Curve_g13s2"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.228956, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -399,7 +401,7 @@ tracks/3/path = NodePath("../BootFrames:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 4.5, 4.53333, 5.96667),
+"times": PackedFloat32Array(0, 4.5, 4.51, 5.96667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [28, 28, 0, 28]
@@ -1062,5 +1064,12 @@ frame = 28
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0.2, 2.5)
 material_override = SubResource("StandardMaterial3D_7aay3")
 mesh = SubResource("PlaneMesh_lwi6h")
+
+[node name="CursorMove" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_j6umi")
+bus = &"Effects"
+
+[node name="RevealSafe" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_xb1fu")
 
 [connection signal="timeout" from="PulseAnimation/Timer" to="PulseAnimation" method="play" binds= ["pulse"]]
