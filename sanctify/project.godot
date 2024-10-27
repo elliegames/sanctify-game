@@ -21,7 +21,6 @@ run/max_fps=30
 run/low_processor_mode=true
 boot_splash/bg_color=Color(0.666667, 0.498039, 0.313726, 1)
 boot_splash/image="res://data/images/boot_splash.png"
-boot_splash/fullsize=false
 config/icon="res://icon.png"
 boot_splash/minimum_display_time=500
 

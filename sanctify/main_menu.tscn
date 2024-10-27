@@ -456,7 +456,9 @@ wait_time = 2.0
 
 [node name="MainMenuThemeMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_w86i7")
+volume_db = -2.0
 autoplay = true
+bus = &"Music"
 parameters/looping = true
 
 [connection signal="timeout" from="Pattern/AnimationPlayer/Timer" to="Pattern/AnimationPlayer" method="play" binds= ["throb"]]
