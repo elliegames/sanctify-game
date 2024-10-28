@@ -258,6 +258,18 @@ tracks/12/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Audio/GameLostDialog:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_0kdmn"]
 resource_name = "begin"
@@ -502,6 +514,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio/GameLostDialog:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 4.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ny8qp"]
 _data = {
@@ -661,12 +685,12 @@ bus = &"Effects"
 
 [node name="StaffSpinning" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("13_0ixoh")
-volume_db = -10.0
+volume_db = -5.0
 bus = &"Effects"
 
 [node name="StaffMoving" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("14_sn5ia")
-volume_db = -10.0
+volume_db = -5.0
 bus = &"Effects"
 
 [node name="StaffHitGround" type="AudioStreamPlayer" parent="Audio"]

@@ -133,6 +133,9 @@ func reveal_mine(destroy=true):
 		
 func show_cleansing_anim():
 	animator.play("cleanse")
+	
+func show_reveal_animation():
+	animator.play("reveal")
 
 func show_highlight(show: bool):
 	selection_box.visible = show

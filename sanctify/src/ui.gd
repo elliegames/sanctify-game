@@ -126,3 +126,4 @@ func lose(final_word: String, tiles_left: int):
 	$PostGame/Pattern.self_modulate = Color("#ff0022b8")
 	$PostGame/Pattern/Light.color = Color("purple")
 	$PostGame/VBoxContainer/MarginContainer/BackButton.grab_focus()
+	$PostGame/VBoxContainer/MarginContainer/BackButton.grab_focus()

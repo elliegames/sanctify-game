@@ -199,32 +199,36 @@ func set_cosmetics():
 
 
 func reveal_recursive(start_position: Vector2i):
-	cursor.reveal_safe()
-	const matrix = [[-1, 0], [1, 0], [0, -1], [0, 1]]
+	const matrix = [[-1, 0], [1, 0], [0, -1], [0, 1], [-1, -1], [1, 1], [-1, 1], [1, -1]]
 	if not timer_started:
 			timer_started = true
 
 	var queue = []
+	
+	var current_tile = board[start_position.x][start_position.y] as Tile
 
-	if (board[start_position.x][start_position.y] as Tile).is_mine:
+	if current_tile.is_mine:
 		print("YOU LOST")
 		$EndCam.set_priority(1000)
 		cursor.start_losing()
 		game_over = true
 		lost = true
-		$Audio/GameLostDialog.play()
-		start_ripple_effects((board[start_position.x][start_position.y] as Tile).board_pos, true)
+		start_ripple_effects(current_tile.board_pos, true)
 		ui.lose(arena_theme.opponent + "'curse has been triggered. The Pantheon has been destroyed", total_tiles - n_revealed)
 		return
 	else:
-		(board[start_position.x][start_position.y] as Tile).show_highlight(false)
+		current_tile.show_highlight(false)
 
 	# Add the first clicked cell to the queue
 	queue.append(start_position)
 	revealing_multi = true
 	
-	if (board[start_position.x][start_position.y] as Tile).get_nearby_mines() == 0:
-		$Audio/RevealMany.play()
+	if current_tile.revealed:
+		cursor.reveal_not_available()
+	else:
+		if current_tile.get_nearby_mines() == 0:
+			$Audio/RevealMany.play()
+		cursor.reveal_safe()
 
 	while queue.size() > 0:
 		var current_pos = queue.pop_front()
@@ -244,6 +248,7 @@ func reveal_recursive(start_position: Vector2i):
 			continue
 
 		tile.reveal()
+		tile.show_reveal_animation()
 		n_revealed += 1
 
 		if n_revealed + mines == total_tiles:
