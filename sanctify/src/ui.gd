@@ -111,7 +111,7 @@ func win(final_word: String, seconds: float):
 	$PostGame/LosingTexture.visible = false
 	$AnimationPlayer/EndTimer.start()
 	$PostGame/Pattern.visible = true
-	$PostGame/VBoxContainer/MarginContainer/BackButton.grab_focus()
+	$PostGame/FocusTimer.start()
 	
 
 func lose(final_word: String, tiles_left: int):
