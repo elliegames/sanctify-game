@@ -22,6 +22,8 @@ func _ready():
 		theme = light_theme
 		
 	preload("res://arena.tscn")
+	preload("res://prefabs/ui.tscn")
+	preload("res://prefabs/priestess.tscn")
 	$VBoxContainer/PlayButton.grab_focus()
 	$LoadingScreen.visible = false
 	Audio.start_music()
@@ -57,9 +59,7 @@ func begin():
 	$LoadingScreen.animate_in()
 	$LoadTimer.start()
 	loading = true
-	preload("res://prefabs/ui.tscn")
 	preload("res://prefabs/cursor.tscn")
-	preload("res://prefabs/priestess.tscn")
 
 func load_arena():
 	get_tree().change_scene_to_file("res://arena.tscn")

@@ -3,8 +3,8 @@
 [ext_resource type="Theme" uid="uid://cias33btpdsig" path="res://data/elementary_light.theme" id="1_ds6md"]
 [ext_resource type="Script" path="res://src/main_menu.gd" id="2_25c8g"]
 [ext_resource type="Texture2D" uid="uid://d1pw1gwbl32go" path="res://data/images/pattern1.png" id="2_gewds"]
-[ext_resource type="FontFile" uid="uid://d3o3a2t4syqt" path="res://data/fonts/static/Inter_28pt-Bold.ttf" id="2_ohyb7"]
 [ext_resource type="FontFile" uid="uid://454rsovevigv" path="res://data/fonts/static/Inter_18pt-Light.ttf" id="3_4ocu8"]
+[ext_resource type="Texture2D" uid="uid://ts2oev1wvlgn" path="res://data/images/logo.png" id="5_06hnn"]
 [ext_resource type="FontFile" uid="uid://bd5bg8ilefl3k" path="res://data/fonts/static/Inter_18pt-Medium.ttf" id="5_i60c7"]
 [ext_resource type="Texture2D" uid="uid://bwru6g17io61v" path="res://data/images/button_glow.png" id="7_hqjne"]
 [ext_resource type="FontFile" uid="uid://yv1jlquoy7e7" path="res://data/fonts/static/Inter_18pt-Regular.ttf" id="7_pl0ky"]
@@ -312,13 +312,12 @@ offset_bottom = 81.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Logo" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 96)
 layout_mode = 2
-theme_type_variation = &"HeaderLarge"
-theme_override_fonts/font = ExtResource("2_ohyb7")
-theme_override_font_sizes/font_size = 32
-text = "Sanctify"
-horizontal_alignment = 1
+texture = ExtResource("5_06hnn")
+expand_mode = 1
+stretch_mode = 5
 
 [node name="Subtitle" type="Label" parent="VBoxContainer"]
 modulate = Color(1, 1, 1, 0.752941)
@@ -348,16 +347,18 @@ icon_alignment = 2
 expand_icon = true
 selected = 0
 fit_to_longest_item = false
-item_count = 5
-popup/item_0/text = "8 x 8 (Novice)"
-popup/item_1/text = "8 x 16 (Easy)"
+item_count = 6
+popup/item_0/text = "9 x 9"
+popup/item_1/text = "9 x 17"
 popup/item_1/id = 1
-popup/item_2/text = "16 x 16 (Normal)"
+popup/item_2/text = "17 x 17"
 popup/item_2/id = 2
-popup/item_3/text = "16 x 32 (Heroic)"
+popup/item_3/text = "17 x 35"
 popup/item_3/id = 3
-popup/item_4/text = "32 x 32 (Legendary)"
+popup/item_4/text = "35 x 35"
 popup/item_4/id = 4
+popup/item_5/text = "Custom"
+popup/item_5/id = 5
 
 [node name="Gradient" type="TextureRect" parent="VBoxContainer/ArenaSizeSelect"]
 layout_mode = 1
@@ -466,7 +467,7 @@ bus = &"Effects"
 [connection signal="item_selected" from="VBoxContainer/ArenaSizeSelect" to="." method="set_arena_size"]
 [connection signal="focus_entered" from="VBoxContainer/ArenaThemeSelect" to="Audio/UIFocusSound" method="play"]
 [connection signal="focus_entered" from="VBoxContainer/PlayButton" to="Audio/UIFocusSound" method="play"]
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="begin"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play_ui_accept_sound"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="begin"]
 [connection signal="focus_entered" from="VBoxContainer/QuitButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="timeout" from="LoadTimer" to="." method="load_arena"]

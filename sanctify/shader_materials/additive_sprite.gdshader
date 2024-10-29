@@ -2,9 +2,9 @@ shader_type spatial;
 
 render_mode blend_add, unshaded, specular_disabled, shadows_disabled, depth_test_disabled;
 
-uniform sampler2D sprite_texture;
+uniform sampler2D sprite_texture : filter_nearest_mipmap_anisotropic;
 uniform int frames = 14;
-uniform int frame = 1;
+uniform int frame = 0;
 uniform float pixel_size = 0.001;
 void vertex() {
     mat4 modified_model_view = VIEW_MATRIX * mat4(

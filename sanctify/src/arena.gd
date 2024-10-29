@@ -42,20 +42,20 @@ func _ready():
 
 	var arena_size_idx = ProjectSettings.get_setting("arena_size")
 	if arena_size_idx == 0:
-		grid_length = 8
-		grid_width = 8
+		grid_length = 9
+		grid_width = 9
 	elif arena_size_idx == 1:
-		grid_length = 16
-		grid_width = 8
+		grid_length = 17
+		grid_width = 9
 	elif arena_size_idx == 2:
-		grid_length = 16
-		grid_width = 16
+		grid_length = 17
+		grid_width = 17
 	elif arena_size_idx == 3:
-		grid_length = 32
-		grid_width = 16
+		grid_length = 35
+		grid_width = 17
 	elif arena_size_idx == 4:
-		grid_length = 32
-		grid_width = 32
+		grid_length = 35
+		grid_width = 35
 
 	mines = floor(grid_length * grid_length * 0.1)
 	total_tiles = grid_length * grid_width
@@ -228,7 +228,7 @@ func reveal_recursive(start_position: Vector2i):
 		game_over = true
 		lost = true
 		start_ripple_effects(current_tile.board_pos, true)
-		ui.lose(arena_theme.opponent + "'curse has been triggered. The Pantheon has been destroyed", total_tiles - n_revealed)
+		ui.lose(arena_theme.opponent + "'s curse has been triggered. The " + arena_theme.place_name + " has been destroyed", total_tiles - n_revealed)
 		return
 	else:
 		current_tile.show_highlight(false)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://d2ho5gg1g3mc"]
+[gd_scene load_steps=50 format=3 uid="uid://d2ho5gg1g3mc"]
 
 [ext_resource type="Script" path="res://src/cursor.gd" id="1_g23o2"]
 [ext_resource type="Texture2D" uid="uid://btn3fn8xu0gc7" path="res://data/images/cleansing_circle.png" id="2_gqp8l"]
@@ -363,19 +363,19 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("../RevealFrames:material_override:shader_parameter/frame")
+tracks/18/path = NodePath("../RevealFrames:visible")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("../RevealFrames:visible")
+tracks/19/path = NodePath("../Audio/CleansingCircle:playing")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
@@ -387,7 +387,7 @@ tracks/19/keys = {
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("../Audio/CleansingCircle:playing")
+tracks/20/path = NodePath("../Audio/StartCleansing:playing")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
@@ -399,31 +399,31 @@ tracks/20/keys = {
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("../Audio/StartCleansing:playing")
+tracks/21/path = NodePath("../Audio/StartCleansing:pitch_scale")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.5]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("../Audio/StartCleansing:pitch_scale")
+tracks/22/path = NodePath("../Audio/GameWin:playing")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.5]
+"update": 1,
+"values": [false]
 }
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("../Audio/GameWin:playing")
+tracks/23/path = NodePath("../Audio/StartLosing:playing")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
@@ -435,14 +435,14 @@ tracks/23/keys = {
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("../Audio/StartLosing:playing")
+tracks/24/path = NodePath("../RevealFrames:frame")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_70uj0"]
@@ -1127,26 +1127,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../RevealFrames:material_override:shader_parameter/frame")
+tracks/2/path = NodePath("../RevealFrames:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-1, 13]
+"update": 1,
+"values": [true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../RevealFrames:visible")
+tracks/3/path = NodePath("../RevealFrames:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"update": 0,
+"values": [0, 13]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8k8ed"]
@@ -1224,6 +1224,14 @@ radial_segments = 24
 rings = 1
 cap_top = false
 cap_bottom = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g40g4"]
+render_priority = 0
+shader = ExtResource("10_menfc")
+shader_parameter/frames = 29
+shader_parameter/frame = 0
+shader_parameter/pixel_size = 4.0
+shader_parameter/sprite_texture = ExtResource("9_1g6wc")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7xf10"]
 render_priority = 0
@@ -1333,6 +1341,7 @@ mesh = SubResource("CylinderMesh_7xum6")
 
 [node name="BootFrames" type="Sprite3D" parent="."]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0.3, 1.5)
+material_override = SubResource("ShaderMaterial_g40g4")
 cast_shadow = 0
 pixel_size = 0.001
 billboard = 1
