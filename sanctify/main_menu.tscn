@@ -10,7 +10,7 @@
 [ext_resource type="FontFile" uid="uid://yv1jlquoy7e7" path="res://data/fonts/static/Inter_18pt-Regular.ttf" id="7_pl0ky"]
 [ext_resource type="FontFile" uid="uid://b47ipy6hmu1r8" path="res://data/fonts/static/Inter_18pt-Bold.ttf" id="8_76era"]
 [ext_resource type="PackedScene" uid="uid://dc212eswkcucm" path="res://prefabs/loading_screen.tscn" id="10_i3341"]
-[ext_resource type="AudioStream" uid="uid://lhcr4174um2x" path="res://data/audio/santify_main_theme.ogg" id="11_w86i7"]
+[ext_resource type="AudioStream" uid="uid://dsdt7v0bp288e" path="res://data/audio/ui_focus.ogg" id="13_e28y3"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ocs45"]
 blend_mode = 1
@@ -454,14 +454,19 @@ layout_mode = 1
 [node name="LoadTimer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="MainMenuThemeMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_w86i7")
-volume_db = -2.0
-autoplay = true
-bus = &"Music"
-parameters/looping = true
+[node name="Audio" type="Node" parent="."]
+
+[node name="UIFocusSound" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_e28y3")
+volume_db = 2.0
+bus = &"Effects"
 
 [connection signal="timeout" from="Pattern/AnimationPlayer/Timer" to="Pattern/AnimationPlayer" method="play" binds= ["throb"]]
+[connection signal="focus_entered" from="VBoxContainer/ArenaSizeSelect" to="Audio/UIFocusSound" method="play"]
 [connection signal="item_selected" from="VBoxContainer/ArenaSizeSelect" to="." method="set_arena_size"]
+[connection signal="focus_entered" from="VBoxContainer/ArenaThemeSelect" to="Audio/UIFocusSound" method="play"]
+[connection signal="focus_entered" from="VBoxContainer/PlayButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="begin"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play_ui_accept_sound"]
+[connection signal="focus_entered" from="VBoxContainer/QuitButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="timeout" from="LoadTimer" to="." method="load_arena"]

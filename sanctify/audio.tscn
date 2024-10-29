@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dq2c7xj4yysi1"]
+
+[ext_resource type="Script" path="res://src/audio.gd" id="1_daa74"]
+[ext_resource type="AudioStream" uid="uid://lhcr4174um2x" path="res://data/audio/santify_main_theme.ogg" id="2_lklgh"]
+[ext_resource type="AudioStream" uid="uid://cjvuxksvp5sc8" path="res://data/audio/ui_accept.ogg" id="3_2602g"]
+
+[node name="Audio" type="Node"]
+script = ExtResource("1_daa74")
+
+[node name="MainMenuThemeMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lklgh")
+volume_db = -2.0
+bus = &"Music"
+parameters/looping = true
+
+[node name="UIAcceptSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2602g")
+bus = &"Effects"

@@ -22,7 +22,7 @@ func move(pos: Vector2i, board):
 	if target_reach_timer <= 0.01:
 		board[target_pos.x][target_pos.y].show_highlight(false)
 		target_pos += pos
-		$CursorMove.play()
+		$Audio/CursorMove.play()
 		Input.start_joy_vibration(0, 0.2, 0, 0.1)
 		if not board[target_pos.x][target_pos.y].revealed:
 			board[target_pos.x][target_pos.y].show_highlight(true)
@@ -31,7 +31,7 @@ func move(pos: Vector2i, board):
 
 func reveal_safe():
 	$CleansingAnimation.play("reveal_safe")
-	$RevealSafe.play()
+	$Audio/RevealSafe.play()
 
 
 func reveal_not_available():

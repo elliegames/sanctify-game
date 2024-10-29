@@ -32,6 +32,7 @@ driver/output_latency=30
 
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 DebugMenu="*res://addons/debug_menu/debug_menu.tscn"
+Audio="*res://audio.tscn"
 
 [display]
 

@@ -129,6 +129,7 @@ func reveal_mine(destroy=true):
 		animator.play("reveal_curse")
 	elif is_mine:
 		cleansing_light.visible = true
+		$Audio/Cleanse.play()
 		
 		
 func show_cleansing_anim():

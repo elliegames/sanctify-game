@@ -82,6 +82,7 @@ func give_up():
 
 
 func go_back():
+	Audio.play_ui_accept_sound()
 	get_tree().change_scene_to_file("res://main_menu.tscn")
 
 
@@ -111,7 +112,7 @@ func win(final_word: String, seconds: float):
 	$AnimationPlayer/EndTimer.start()
 	$PostGame/Pattern.visible = true
 	$PostGame/VBoxContainer/MarginContainer/BackButton.grab_focus()
-
+	
 
 func lose(final_word: String, tiles_left: int):
 	$PostGame/VBoxContainer/FinalLabel.text = "DefeateD"
@@ -125,5 +126,4 @@ func lose(final_word: String, tiles_left: int):
 	$PostGame/Pattern.visible = true
 	$PostGame/Pattern.self_modulate = Color("#ff0022b8")
 	$PostGame/Pattern/Light.color = Color("purple")
-	$PostGame/VBoxContainer/MarginContainer/BackButton.grab_focus()
-	$PostGame/VBoxContainer/MarginContainer/BackButton.grab_focus()
+	$PostGame/FocusTimer.start()

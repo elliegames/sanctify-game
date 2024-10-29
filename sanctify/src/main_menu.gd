@@ -24,6 +24,7 @@ func _ready():
 	preload("res://arena.tscn")
 	$VBoxContainer/PlayButton.grab_focus()
 	$LoadingScreen.visible = false
+	Audio.start_music()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -40,7 +41,7 @@ func _process(delta):
 			theme = light_theme
 			
 	if loading:
-		$MainMenuThemeMusic.volume_db -= 15 * delta
+		Audio.duck_music()
 
 func set_arena_size(idx: int):
 	ProjectSettings.set_setting("arena_size", idx)
@@ -49,6 +50,8 @@ func set_arena_size(idx: int):
 func set_arena_theme(idx: int):
 	ProjectSettings.set_setting("arena_theme", idx)
 
+func play_ui_accept_sound():
+	Audio.play_ui_accept_sound()
 
 func begin():
 	$LoadingScreen.animate_in()

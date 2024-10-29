@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://3k3sqnneywit"]
+[gd_scene load_steps=13 format=3 uid="uid://3k3sqnneywit"]
 
 [ext_resource type="Script" path="res://src/tile.gd" id="1_v6842"]
 [ext_resource type="Texture2D" uid="uid://n0mnqvgc7mha" path="res://data/materials/runes/rune_1_diff.png" id="2_6dm4a"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b3m1s3va18nof" path="res://data/materials/runes/rune_2_norm.png" id="5_7i75d"]
 [ext_resource type="Texture2D" uid="uid://4mp614i81xr5" path="res://data/materials/runes/rune_3_diff.png" id="6_x0vae"]
 [ext_resource type="Texture2D" uid="uid://ch4x2rxlb0ec0" path="res://data/materials/runes/rune_3_norm.png" id="7_q717j"]
+[ext_resource type="AudioStream" uid="uid://8jf2cpja15b5" path="res://data/audio/cleanse_tile.ogg" id="8_u743d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1l1c1"]
 
@@ -198,6 +199,14 @@ emission_energy = 3.86667
 wait_time = 0.1
 one_shot = true
 autostart = true
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Cleanse" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("8_u743d")
+volume_db = 4.0
+max_db = 4.0
+bus = &"Effects"
 
 [connection signal="input_event" from="." to="." method="mouse_input"]
 [connection signal="timeout" from="RuneDecals/Timer" to="RuneDecals/AnimationPlayer" method="play" binds= ["pulse"]]

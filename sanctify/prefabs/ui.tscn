@@ -723,6 +723,10 @@ theme = SubResource("Theme_rd2qt")
 texture = SubResource("GradientTexture2D_tht0n")
 expand_mode = 1
 
+[node name="FocusTimer" type="Timer" parent="PostGame"]
+wait_time = 0.2
+one_shot = true
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 10
@@ -887,6 +891,7 @@ autostart = true
 [connection signal="timeout" from="AnimationPlayer/EndTimer" to="AnimationPlayer" method="play" binds= ["end_game"]]
 [connection signal="timeout" from="PostGame/Pattern/AnimationPlayer/Timer" to="PostGame/Pattern/AnimationPlayer" method="play" binds= ["throb"]]
 [connection signal="pressed" from="PostGame/VBoxContainer/MarginContainer/BackButton" to="." method="go_back"]
+[connection signal="timeout" from="PostGame/FocusTimer" to="PostGame/VBoxContainer/MarginContainer/BackButton" method="grab_focus"]
 [connection signal="pressed" from="VBoxContainer/UI/ButtonBox/Button" to="." method="start_over"]
 [connection signal="pressed" from="VBoxContainer/UI/ButtonBox/Button2" to="." method="give_up"]
 [connection signal="pressed" from="VBoxContainer/UI/ButtonBox/Button3" to="." method="switch_view"]

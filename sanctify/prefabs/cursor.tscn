@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://d2ho5gg1g3mc"]
+[gd_scene load_steps=49 format=3 uid="uid://d2ho5gg1g3mc"]
 
 [ext_resource type="Script" path="res://src/cursor.gd" id="1_g23o2"]
 [ext_resource type="Texture2D" uid="uid://btn3fn8xu0gc7" path="res://data/images/cleansing_circle.png" id="2_gqp8l"]
@@ -14,6 +14,10 @@
 [ext_resource type="Texture2D" uid="uid://ogpgbn8vm5c1" path="res://data/images/ripple.png" id="10_qvfhi"]
 [ext_resource type="AudioStream" uid="uid://d2knyy5ux3epo" path="res://data/audio/orb_move.ogg" id="11_j6umi"]
 [ext_resource type="AudioStream" uid="uid://dwi037l1uk3lv" path="res://data/audio/reveal_one.ogg" id="12_xb1fu"]
+[ext_resource type="AudioStream" uid="uid://b8wx3xft33slr" path="res://data/audio/cleansing_circle.ogg" id="15_m5gqf"]
+[ext_resource type="AudioStream" uid="uid://b7cbxpm57ivqa" path="res://data/audio/start_cleansing.ogg" id="16_sgmda"]
+[ext_resource type="AudioStream" uid="uid://dbktn6ak815wa" path="res://data/audio/start_losing.ogg" id="17_c0hjt"]
+[ext_resource type="AudioStream" uid="uid://cstdtfv3qxip0" path="res://data/audio/game_win.ogg" id="17_s3s8r"]
 
 [sub_resource type="Curve" id="Curve_g13s2"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.228956, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -380,6 +384,66 @@ tracks/19/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("../Audio/CleansingCircle:playing")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("../Audio/StartCleansing:playing")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("../Audio/StartCleansing:pitch_scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("../Audio/GameWin:playing")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("../Audio/StartLosing:playing")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_70uj0"]
 resource_name = "booting"
@@ -707,6 +771,54 @@ tracks/11/keys = {
 "method": &"start_vibration"
 }]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Audio/CleansingCircle:playing")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 2.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Audio/StartCleansing:playing")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../Audio/StartCleansing:pitch_scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.966667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 1.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../Audio/GameWin:playing")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_2rnvm"]
 resource_name = "losing"
@@ -757,7 +869,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(2.06667, 2.3, 2.33333, 2.36667, 2.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 0, 0, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 0, 0, 1), Color(1, 1, 1, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -865,6 +977,30 @@ tracks/9/keys = {
 "args": [0.0, 0.1, 0.5],
 "method": &"start_vibration"
 }]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Audio/StartLosing:playing")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Audio/CleansingCircle:playing")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 2.53333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_dojjl"]
@@ -1112,7 +1248,7 @@ mesh = SubResource("PlaneMesh_8dhyo")
 skeleton = NodePath("../../CursorMesh")
 
 [node name="LosingCircle" type="MeshInstance3D" parent="CleansingPattern"]
-transform = Transform3D(-0.984009, 0, 0.178117, 0, 1, 0, -0.178117, 0, -0.984009, 0, 0.1, 0)
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.1, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_11k4a")
 cast_shadow = 0
@@ -1171,11 +1307,35 @@ transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0.2, 2.5)
 material_override = SubResource("StandardMaterial3D_7aay3")
 mesh = SubResource("PlaneMesh_lwi6h")
 
-[node name="CursorMove" type="AudioStreamPlayer" parent="."]
+[node name="Audio" type="Node" parent="."]
+
+[node name="CursorMove" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("11_j6umi")
 bus = &"Effects"
 
-[node name="RevealSafe" type="AudioStreamPlayer" parent="."]
+[node name="RevealSafe" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("12_xb1fu")
+bus = &"Effects"
+
+[node name="CleansingCircle" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("15_m5gqf")
+volume_db = -2.0
+bus = &"Effects"
+
+[node name="StartCleansing" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("16_sgmda")
+volume_db = -7.0
+pitch_scale = 0.5
+bus = &"Effects"
+
+[node name="StartLosing" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("17_c0hjt")
+volume_db = -7.0
+bus = &"Effects"
+
+[node name="GameWin" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("17_s3s8r")
+volume_db = -2.0
+bus = &"Music"
 
 [connection signal="timeout" from="PulseAnimation/Timer" to="PulseAnimation" method="play" binds= ["pulse"]]

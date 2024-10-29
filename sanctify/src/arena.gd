@@ -23,6 +23,7 @@ var top_view = false
 var timer_started = false
 var time = 0
 var game_over = false;
+var end_game = false;
 
 @export var input_enabled = false
 
@@ -85,8 +86,16 @@ func _physics_process(delta):
 
 
 func _process(delta):
+	if game_over:
+		$Audio/GameBegin.volume_db -= 8 * delta;
+		$Audio/EndGame.volume_db -= 8 * delta;
+		
 	if game_over or not input_enabled:
 		return
+		
+	if end_game:
+		if $Audio/EndGame.volume_db < -5:
+			$Audio/EndGame.volume_db += 5 * delta
 
 	if Input.get_action_strength("cursor_joy_up") > 0.5:
 		if cursor.target_pos.y > 0:
@@ -250,6 +259,10 @@ func reveal_recursive(start_position: Vector2i):
 		tile.reveal()
 		tile.show_reveal_animation()
 		n_revealed += 1
+		
+		if n_revealed > 0.82 * total_tiles and not end_game:
+			end_game = true
+			$Audio/EndGame.play(0.2)
 
 		if n_revealed + mines == total_tiles:
 			print("GAMEOVER: YOU WON")
