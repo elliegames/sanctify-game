@@ -112,6 +112,7 @@ func _process(delta):
 
 	ui.update_flag(max_flag_count - flag_count, max_flag_count)
 
+
 func _input(event):
 	if game_over or not input_enabled:
 		return
@@ -190,6 +191,7 @@ func arrange_mines(exc: Vector2i):
 	for i in range(grid_length):
 		for j in range(grid_width):
 			(board[i][j] as Tile).get_nearby_mines()
+
 
 func set_cosmetics():
 	var p = 0
@@ -540,12 +542,14 @@ func arrange_environment():
 	$AnimationTimer.start()
 	$AnimationPlayer.play("begin")
 
+
 func start_ripple_effects(center: Vector2i, destroy: bool):
 	pulse_effect_center = Vector2(center.x, center.y)
 	if destroy:
 		$AnimationPlayer.play("destruct")
 	else:
 		$AnimationPlayer.play("cleanse")
+
 
 func play_intro_cutscene():
 	$Priestess/AnimationTree.set("parameters/conditions/start", true)

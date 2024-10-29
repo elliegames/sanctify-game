@@ -2,12 +2,13 @@ extends Resource
 
 class_name ArenaTheme
 
+@export var place_name: String
 @export var opponent: String
 
 @export_group("Ambience")
 @export var volumetric_color: Color
 @export var sky: Sky
-@export_file var ambient_sound_loop: String
+@export var ambient_sound_loop: AudioStream
 @export_file var dust_particles: String
 
 @export_group("Blocks")
@@ -28,6 +29,3 @@ class_name ArenaTheme
 @export_file var south_east_corner: String
 @export_file var north_west_corner: String
 @export_file var south_west_corner: String
-
-@export_group("Animation")
-@export_file var starting_animation: String

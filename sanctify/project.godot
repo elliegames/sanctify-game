@@ -26,7 +26,7 @@ boot_splash/minimum_display_time=500
 
 [audio]
 
-driver/output_latency=30
+driver/output_latency=50
 
 [autoload]
 
