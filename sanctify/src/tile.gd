@@ -58,7 +58,6 @@ func reveal():
 		flag_node.visible = false
 		if fog != null:
 			fog.visible = false
-		nearby_mines = get_nearby_mines()
 		update_hint()
 
 func update_hint():
@@ -97,7 +96,7 @@ func get_nearby_mines():
 			if neighbor_x >= 0 and neighbor_x < arena.grid_length and neighbor_y >= 0 and neighbor_y < arena.grid_width:
 				if (arena.board[neighbor_x][neighbor_y] as Tile).is_mine:
 					count += 1
-
+	nearby_mines = count
 	return count
 
 func show_imperfection():
@@ -130,11 +129,11 @@ func reveal_mine(destroy=true):
 	elif is_mine:
 		cleansing_light.visible = true
 		$Audio/Cleanse.play()
-		
-		
+
+
 func show_cleansing_anim():
 	animator.play("cleanse")
-	
+
 func show_reveal_animation():
 	animator.play("reveal")
 

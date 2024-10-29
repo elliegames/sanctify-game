@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_d8pjb"]
 [ext_resource type="PackedScene" uid="uid://d2ho5gg1g3mc" path="res://prefabs/cursor.tscn" id="7_xb0cn"]
 [ext_resource type="PackedScene" uid="uid://5iadts1xwhdp" path="res://prefabs/ui.tscn" id="8_3nbxp"]
+[ext_resource type="Material" uid="uid://cwbb03loctp8l" path="res://shader_materials/backdrop.material" id="11_4pbu6"]
 [ext_resource type="PackedScene" uid="uid://cw8xg4mqxju53" path="res://prefabs/priestess.tscn" id="11_r56rg"]
 [ext_resource type="Texture2D" uid="uid://b37oob3do28f4" path="res://data/images/character_glow.png" id="12_1ispk"]
 [ext_resource type="AudioStream" uid="uid://cjs7ksqfyvtye" path="res://data/audio/cursor_boot.ogg" id="12_wuuim"]
@@ -733,22 +734,6 @@ _data = {
 "destruct": SubResource("Animation_56tit")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ha2cu"]
-transparency = 1
-shading_mode = 2
-diffuse_mode = 2
-specular_mode = 2
-disable_ambient_light = true
-disable_fog = true
-vertex_color_use_as_albedo = true
-albedo_color = Color(0, 0, 0, 1)
-metallic_specular = 0.0
-roughness = 0.0
-emission_enabled = true
-emission = Color(0, 0.3, 1, 1)
-emission_energy_multiplier = 2.0
-disable_receive_shadows = true
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_iigim"]
 
 [node name="Arena" type="Node3D"]
@@ -863,9 +848,8 @@ ambient_mode = 0
 
 [node name="Backdrop" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -2, 0)
-visible = false
 layers = 64
-material_override = SubResource("StandardMaterial3D_ha2cu")
+material_override = ExtResource("11_4pbu6")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_iigim")
 

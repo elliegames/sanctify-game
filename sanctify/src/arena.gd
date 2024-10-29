@@ -89,10 +89,10 @@ func _process(delta):
 	if game_over:
 		$Audio/GameBegin.volume_db -= 8 * delta;
 		$Audio/EndGame.volume_db -= 8 * delta;
-		
+
 	if game_over or not input_enabled:
 		return
-		
+
 	if end_game:
 		if $Audio/EndGame.volume_db < -5:
 			$Audio/EndGame.volume_db += 5 * delta
@@ -187,6 +187,9 @@ func arrange_mines(exc: Vector2i):
 			(board[i][j] as Tile).is_mine = true
 			m += 1
 
+	for i in range(grid_length):
+		for j in range(grid_width):
+			(board[i][j] as Tile).get_nearby_mines()
 
 func set_cosmetics():
 	var p = 0
@@ -213,7 +216,7 @@ func reveal_recursive(start_position: Vector2i):
 			timer_started = true
 
 	var queue = []
-	
+
 	var current_tile = board[start_position.x][start_position.y] as Tile
 
 	if current_tile.is_mine:
@@ -231,11 +234,11 @@ func reveal_recursive(start_position: Vector2i):
 	# Add the first clicked cell to the queue
 	queue.append(start_position)
 	revealing_multi = true
-	
+
 	if current_tile.revealed:
 		cursor.reveal_not_available()
 	else:
-		if current_tile.get_nearby_mines() == 0:
+		if current_tile.nearby_mines == 0:
 			$Audio/RevealMany.play()
 		cursor.reveal_safe()
 
@@ -259,7 +262,7 @@ func reveal_recursive(start_position: Vector2i):
 		tile.reveal()
 		tile.show_reveal_animation()
 		n_revealed += 1
-		
+
 		if n_revealed > 0.82 * total_tiles and not end_game:
 			end_game = true
 			$Audio/EndGame.play(0.2)
@@ -273,7 +276,7 @@ func reveal_recursive(start_position: Vector2i):
 			ui.win("You have cleansed the divine pantheon. " + arena_theme.opponent + "'s curse has been lifted!", time)
 			$EndCam.set_priority(1000)
 
-		if tile.get_nearby_mines() > 0:
+		if tile.nearby_mines > 0:
 			continue
 
 		# Otherwise, add all neighboring cells to the queue to reveal them
@@ -530,7 +533,7 @@ func arrange_environment():
 
 	$ReflectionProbe.size = Vector3(grid_length + 3, 30, grid_width + 3)
 	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
-	
+
 	# Place the priestess
 	$Priestess.position = Vector3(grid_length / 2, 1, grid_width + 2)
 	$CharacterGlow.position = Vector3(grid_length / 2, 1, grid_width + 2)

@@ -78,7 +78,7 @@ func give_up():
 	$AnimationPlayer.play("end_game")
 	end_game = true
 	$PostGame/Pattern.visible = true
-	$PostGame/VBoxContainer/MarginContainer/BackButton.grab_focus()
+	$PostGame/FocusTimer.start()
 
 
 func go_back():
