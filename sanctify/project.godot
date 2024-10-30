@@ -14,8 +14,6 @@ config/name="Sanctify"
 config/description="Get rid of curses placed behind floors of the pantheon"
 config/version="0.0.1"
 run/main_scene="res://main_menu.tscn"
-run/disable_stdout=true
-run/disable_stderr=true
 config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=30
 run/low_processor_mode=true
@@ -63,14 +61,6 @@ ui_select={
 "events": []
 }
 ui_cancel={
-"deadzone": 0.5,
-"events": []
-}
-ui_left={
-"deadzone": 0.5,
-"events": []
-}
-ui_right={
 "deadzone": 0.5,
 "events": []
 }

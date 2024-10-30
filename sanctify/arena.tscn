@@ -911,6 +911,7 @@ bus = &"Music"
 [node name="EndGame" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("24_63b02")
 volume_db = -25.0
+bus = &"Music"
 parameters/looping = true
 
 [node name="Ambience" type="AudioStreamPlayer" parent="Audio"]

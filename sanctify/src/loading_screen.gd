@@ -16,10 +16,7 @@ func _process(delta: float) -> void:
 			
 	if animation_wait > 0.04:
 		animation_wait = 0
-		if dark:
-			$Center/Panel/LoadingSpinner.rotation_degrees = $Center/Panel/LoadingSpinner.rotation_degrees + 15
-		else:
-			$Center/Panel/LoadingSpinner.rotation_degrees = $Center/Panel/LoadingSpinner.rotation_degrees - 15
+		$Center/Panel/LoadingSpinner.rotation_degrees = $Center/Panel/LoadingSpinner.rotation_degrees + 15
 	else:
 		animation_wait = animation_wait + delta
 

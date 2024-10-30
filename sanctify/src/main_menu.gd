@@ -47,6 +47,7 @@ func _process(delta):
 
 func set_arena_size(idx: int):
 	ProjectSettings.set_setting("arena_size", idx)
+	$VBoxContainer/CustomSizeBox.visible = idx == 5
 
 
 func set_arena_theme(idx: int):

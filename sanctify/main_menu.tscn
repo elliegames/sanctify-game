@@ -1,6 +1,6 @@
-[gd_scene load_steps=30 format=3 uid="uid://efyk5lcypy46"]
+[gd_scene load_steps=36 format=3 uid="uid://efyk5lcypy46"]
 
-[ext_resource type="Theme" uid="uid://cias33btpdsig" path="res://data/elementary_light.theme" id="1_ds6md"]
+[ext_resource type="Theme" uid="uid://cv1iypx64a8up" path="res://data/elementary_dark.theme" id="1_xp6o1"]
 [ext_resource type="Script" path="res://src/main_menu.gd" id="2_25c8g"]
 [ext_resource type="Texture2D" uid="uid://d1pw1gwbl32go" path="res://data/images/pattern1.png" id="2_gewds"]
 [ext_resource type="FontFile" uid="uid://454rsovevigv" path="res://data/fonts/static/Inter_18pt-Light.ttf" id="3_4ocu8"]
@@ -10,6 +10,9 @@
 [ext_resource type="FontFile" uid="uid://yv1jlquoy7e7" path="res://data/fonts/static/Inter_18pt-Regular.ttf" id="7_pl0ky"]
 [ext_resource type="FontFile" uid="uid://b47ipy6hmu1r8" path="res://data/fonts/static/Inter_18pt-Bold.ttf" id="8_76era"]
 [ext_resource type="PackedScene" uid="uid://dc212eswkcucm" path="res://prefabs/loading_screen.tscn" id="10_i3341"]
+[ext_resource type="PackedScene" uid="uid://c723x15ban0q6" path="res://prefabs/ui/radio_button.tscn" id="10_p52f1"]
+[ext_resource type="Texture2D" uid="uid://bwujeqsk2p077" path="res://data/icons/diff_normal.png" id="11_xx4sp"]
+[ext_resource type="Texture2D" uid="uid://vkwpm8prnu3h" path="res://data/icons/diff_hard.png" id="12_sr57i"]
 [ext_resource type="AudioStream" uid="uid://dsdt7v0bp288e" path="res://data/audio/ui_focus.ogg" id="13_e28y3"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ocs45"]
@@ -246,6 +249,12 @@ width = 24
 height = 24
 fill_to = Vector2(0, 1)
 
+[sub_resource type="ButtonGroup" id="ButtonGroup_v0wiw"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_awpw0"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_q4upp"]
+
 [sub_resource type="Gradient" id="Gradient_lpqq3"]
 colors = PackedColorArray(0.976471, 0.768627, 0.25098, 0.588235, 0.831373, 0.556863, 0.0823529, 0.67451)
 
@@ -261,7 +270,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_ds6md")
+theme = ExtResource("1_xp6o1")
 script = ExtResource("2_25c8g")
 metadata/_edit_use_anchors_ = true
 
@@ -292,7 +301,7 @@ one_shot = true
 autostart = true
 
 [node name="Light" type="PointLight2D" parent="Pattern"]
-position = Vector2(398, 380)
+position = Vector2(398, 180)
 scale = Vector2(1.98837, 1.98837)
 energy = 0.0
 shadow_item_cull_mask = 0
@@ -342,7 +351,6 @@ text = "Arena Size"
 clip_children = 2
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../ArenaThemeSelect")
 icon_alignment = 2
 expand_icon = true
 selected = 0
@@ -374,6 +382,69 @@ theme = SubResource("Theme_rd2qt")
 texture = SubResource("GradientTexture2D_mdura")
 expand_mode = 1
 
+[node name="CustomSizeBox" type="VBoxContainer" parent="VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="CustomSize" type="Label" parent="VBoxContainer/CustomSizeBox"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_76era")
+theme_override_font_sizes/font_size = 12
+text = "Custom Size"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CustomSizeBox"]
+layout_mode = 2
+
+[node name="GridLength" type="TextEdit" parent="VBoxContainer/CustomSizeBox/HBoxContainer"]
+custom_minimum_size = Vector2(100, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "9"
+placeholder_text = "Grid Length"
+
+[node name="Label" type="Label" parent="VBoxContainer/CustomSizeBox/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "×"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GridWidth" type="TextEdit" parent="VBoxContainer/CustomSizeBox/HBoxContainer"]
+custom_minimum_size = Vector2(100, 28)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "9"
+placeholder_text = "Grid Width"
+
+[node name="Difficulty" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_76era")
+theme_override_font_sizes/font_size = 12
+text = "Difficulty"
+
+[node name="DifficultyBox" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+
+[node name="EasyButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
+layout_mode = 2
+button_pressed = true
+button_group = SubResource("ButtonGroup_v0wiw")
+label = "Initiate"
+
+[node name="MediumButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_awpw0")
+label = "Acolyte"
+main_icon = ExtResource("11_xx4sp")
+
+[node name="HardButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
+layout_mode = 2
+button_group = SubResource("ButtonGroup_q4upp")
+main_icon = ExtResource("12_sr57i")
+
 [node name="Location" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -385,14 +456,13 @@ text = "Location"
 clip_children = 2
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
-focus_neighbor_top = NodePath("../ArenaSizeSelect")
-focus_neighbor_bottom = NodePath("../PlayButton")
 icon_alignment = 2
 expand_icon = true
 selected = 0
 fit_to_longest_item = false
-item_count = 1
-popup/item_0/text = "Hades' Mischief in Sand Castle"
+item_count = 2
+popup/item_0/text = "Hecate's Mischief in the Pantheon"
+popup/item_1/id = 1
 
 [node name="Gradient" type="TextureRect" parent="VBoxContainer/ArenaThemeSelect"]
 layout_mode = 1
@@ -412,8 +482,6 @@ expand_mode = 1
 clip_children = 2
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
-focus_neighbor_top = NodePath("../ArenaThemeSelect")
-focus_neighbor_bottom = NodePath("../QuitButton")
 
 [node name="Gradient" type="TextureRect" parent="VBoxContainer/PlayButton"]
 layout_mode = 1
@@ -435,6 +503,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.976471, 0.768627, 0.25098, 1)
 theme_override_fonts/font = ExtResource("5_i60c7")
 theme_override_font_sizes/font_size = 12
 text = "Begin"
@@ -445,7 +514,6 @@ vertical_alignment = 1
 clip_children = 2
 custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
-focus_neighbor_top = NodePath("../PlayButton")
 text = "Quit"
 
 [node name="LoadingScreen" parent="." instance=ExtResource("10_i3341")]
@@ -465,9 +533,15 @@ bus = &"Effects"
 [connection signal="timeout" from="Pattern/AnimationPlayer/Timer" to="Pattern/AnimationPlayer" method="play" binds= ["throb"]]
 [connection signal="focus_entered" from="VBoxContainer/ArenaSizeSelect" to="Audio/UIFocusSound" method="play"]
 [connection signal="item_selected" from="VBoxContainer/ArenaSizeSelect" to="." method="set_arena_size"]
+[connection signal="pressed" from="VBoxContainer/DifficultyBox/EasyButton" to="VBoxContainer/DifficultyBox/MediumButton" method="_uncheck"]
+[connection signal="pressed" from="VBoxContainer/DifficultyBox/EasyButton" to="VBoxContainer/DifficultyBox/HardButton" method="_uncheck"]
+[connection signal="pressed" from="VBoxContainer/DifficultyBox/MediumButton" to="VBoxContainer/DifficultyBox/EasyButton" method="_uncheck"]
+[connection signal="pressed" from="VBoxContainer/DifficultyBox/MediumButton" to="VBoxContainer/DifficultyBox/HardButton" method="_uncheck"]
+[connection signal="pressed" from="VBoxContainer/DifficultyBox/HardButton" to="VBoxContainer/DifficultyBox/EasyButton" method="_uncheck"]
+[connection signal="pressed" from="VBoxContainer/DifficultyBox/HardButton" to="VBoxContainer/DifficultyBox/MediumButton" method="_uncheck"]
 [connection signal="focus_entered" from="VBoxContainer/ArenaThemeSelect" to="Audio/UIFocusSound" method="play"]
 [connection signal="focus_entered" from="VBoxContainer/PlayButton" to="Audio/UIFocusSound" method="play"]
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play_ui_accept_sound"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="begin"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play_ui_accept_sound"]
 [connection signal="focus_entered" from="VBoxContainer/QuitButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="timeout" from="LoadTimer" to="." method="load_arena"]

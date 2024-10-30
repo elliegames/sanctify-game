@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=3 uid="uid://c723x15ban0q6"]
+
+[ext_resource type="Script" path="res://src/radio_button.gd" id="1_76llu"]
+[ext_resource type="Texture2D" uid="uid://jn3dplao4as1" path="res://data/icons/diff_easy.png" id="1_dhb67"]
+[ext_resource type="Texture2D" uid="uid://djsbki1cuy1ie" path="res://data/icons/radio_checked.png" id="3_pc5cq"]
+[ext_resource type="FontFile" uid="uid://yv1jlquoy7e7" path="res://data/fonts/static/Inter_18pt-Regular.ttf" id="3_wsp00"]
+[ext_resource type="Texture2D" uid="uid://dsobfvchykfl7" path="res://data/icons/radio_unchecked.png" id="4_fn5e6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fvjph"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 0.0392157)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.980392, 0.776471, 0.254902, 0.0784314)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_plj3y"]
+bg_color = Color(0.98, 0.774527, 0.2548, 0.156863)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.98, 0.774527, 0.2548, 0.501961)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l2huo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncd1m"]
+
+[node name="RadioButton" type="Button"]
+process_mode = 3
+custom_minimum_size = Vector2(128, 64)
+theme_override_styles/focus = SubResource("StyleBoxFlat_fvjph")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_plj3y")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l2huo")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_plj3y")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ncd1m")
+toggle_mode = true
+script = ExtResource("1_76llu")
+label = "High Priestess"
+main_icon = ExtResource("1_dhb67")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -25.0
+offset_right = 63.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer"]
+layout_mode = 2
+focus_mode = 0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false
+theme_override_icons/checked = ExtResource("3_pc5cq")
+theme_override_icons/unchecked = ExtResource("4_fn5e6")
+theme_override_icons/radio_checked = ExtResource("3_pc5cq")
+theme_override_icons/radio_unchecked = ExtResource("4_fn5e6")
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("1_dhb67")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 1
+theme_override_constants/shadow_outline_size = 0
+theme_override_fonts/font = ExtResource("3_wsp00")
+theme_override_font_sizes/font_size = 12
+text = "High Priestess"
+horizontal_alignment = 1
