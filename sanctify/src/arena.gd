@@ -40,25 +40,19 @@ func _ready():
 
 	ui.set_volumetric_color(arena_theme.volumetric_color)
 
-	var arena_size_idx = ProjectSettings.get_setting("arena_size")
-	if arena_size_idx == 0:
-		grid_length = 9
-		grid_width = 9
-	elif arena_size_idx == 1:
-		grid_length = 17
-		grid_width = 9
-	elif arena_size_idx == 2:
-		grid_length = 17
-		grid_width = 17
-	elif arena_size_idx == 3:
-		grid_length = 35
-		grid_width = 17
-	elif arena_size_idx == 4:
-		grid_length = 35
-		grid_width = 35
+	grid_length = ProjectSettings.get_setting("grid_length")
+	grid_width = ProjectSettings.get_setting("grid_width")
 
-	mines = floor(grid_length * grid_length * 0.1)
+	var difficulty = ProjectSettings.get_setting("difficulty")
+	
+	var density = 0.25
+	if difficulty == 0:
+		density = 0.05
+	elif difficulty == 1:
+		density == 0.15
+	
 	total_tiles = grid_length * grid_width
+	mines = floor(total_tiles * density)
 	max_flag_count = mines
 
 	$IsoCam.set_priority(500)
