@@ -44,13 +44,13 @@ func _ready():
 	grid_width = ProjectSettings.get_setting("grid_width")
 
 	var difficulty = ProjectSettings.get_setting("difficulty")
-	
+
 	var density = 0.25
 	if difficulty == 0:
 		density = 0.05
 	elif difficulty == 1:
 		density == 0.15
-	
+
 	total_tiles = grid_length * grid_width
 	mines = floor(total_tiles * density)
 	max_flag_count = mines
@@ -531,8 +531,8 @@ func arrange_environment():
 	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
 
 	# Place the priestess
-	$Priestess.position = Vector3(grid_length / 2, 1, grid_width + 2)
-	$CharacterGlow.position = Vector3(grid_length / 2, 1, grid_width + 2)
+	$Priestess.position = Vector3(int(grid_length / 2), 1, grid_width + 2)
+	$CharacterGlow.position = Vector3(int(grid_length / 2), 1, grid_width + 2)
 	$AnimationTimer.start()
 	$AnimationPlayer.play("begin")
 

@@ -25,8 +25,8 @@ You'll need the following dependencies to build:
 ```bash
 cd santify-game
 mkdir build
-/path/to/godot --headless --verbose --export-release "Linux" "build/com.github.elliegames.sanctify"
-sudo mv build/com.github.elliegames.sanctify /usr/bin/com.github.elliegames.sanctify
+/path/to/godot --headless --verbose --export-release "Linux" "build/com.github.elliegames.sanctify-game"
+sudo mv build/com.github.elliegames.sanctify-game /usr/bin/com.github.elliegames.sanctify-game
 ```
 
 …and run the game with:

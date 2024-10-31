@@ -249,11 +249,11 @@ width = 24
 height = 24
 fill_to = Vector2(0, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_3p45y"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_d8pos"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_70dqx"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_7drcv"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_m83u3"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_d7q47"]
 
 [sub_resource type="Gradient" id="Gradient_lpqq3"]
 colors = PackedColorArray(0.976471, 0.768627, 0.25098, 0.588235, 0.831373, 0.556863, 0.0823529, 0.67451)
@@ -432,26 +432,26 @@ layout_mode = 2
 [node name="EasyButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
 button_pressed = true
-button_group = SubResource("ButtonGroup_3p45y")
+button_group = SubResource("ButtonGroup_d8pos")
 label = "Initiate"
 
 [node name="MediumButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_70dqx")
+button_group = SubResource("ButtonGroup_7drcv")
 label = "Acolyte"
 main_icon = ExtResource("11_xx4sp")
 
 [node name="HardButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_m83u3")
+button_group = SubResource("ButtonGroup_d7q47")
 main_icon = ExtResource("12_sr57i")
 
-[node name="Location" type="Label" parent="VBoxContainer"]
+[node name="Scenario" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_76era")
 theme_override_font_sizes/font_size = 12
-text = "Location"
+text = "Scenario"
 
 [node name="ArenaThemeSelect" type="OptionButton" parent="VBoxContainer"]
 clip_children = 2
@@ -461,9 +461,13 @@ icon_alignment = 2
 expand_icon = true
 selected = 0
 fit_to_longest_item = false
-item_count = 2
-popup/item_0/text = "Hecate's Mischief in the Pantheon"
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "Hades's vengeance upon the Pantheon"
+popup/item_1/text = "Eris's mischief in Eden Glades"
 popup/item_1/id = 1
+popup/item_2/text = "Typhon's wrath in the Temple of Judgment"
+popup/item_2/id = 2
 
 [node name="Gradient" type="TextureRect" parent="VBoxContainer/ArenaThemeSelect"]
 layout_mode = 1
@@ -552,4 +556,5 @@ bus = &"Effects"
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="begin"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play_ui_accept_sound"]
 [connection signal="focus_entered" from="VBoxContainer/QuitButton" to="Audio/UIFocusSound" method="play"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit"]
 [connection signal="timeout" from="LoadTimer" to="." method="load_arena"]

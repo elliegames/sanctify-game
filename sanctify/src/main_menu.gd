@@ -18,8 +18,10 @@ func _ready():
 	
 	if dark:
 		theme = dark_theme
+		$Pattern/Light.color = Color.WHITE
 	else:
 		theme = light_theme
+		$Pattern/Light.color = Color("#fff4")
 		
 	preload("res://arena.tscn")
 	preload("res://prefabs/ui.tscn")
@@ -40,8 +42,10 @@ func _process(delta):
 		dark = DisplayServer.is_dark_mode()
 		if dark:
 			theme = dark_theme
+			$Pattern/Light.color = Color.WHITE
 		else:
 			theme = light_theme
+			$Pattern/Light.color = Color("#fff4")
 			
 	if loading:
 		Audio.duck_music()
@@ -63,8 +67,8 @@ func set_arena_size(idx: int):
 		grid_length = 9
 		grid_width = 9
 	elif idx == 2:
-		grid_length = 9
-		grid_width = 17
+		grid_length =17
+		grid_width = 9
 	elif idx == 3:
 		grid_length = 17
 		grid_width = 17
@@ -145,7 +149,7 @@ func load_arena():
 func _input(event: InputEvent) -> void:
 	if not Input.get_connected_joypads().is_empty():
 		gamepad_connected = true
-		light.position = get_viewport_rect().size / 2
+		light.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y / 3)
 
 func save_settings():
 	var settings_dict = {
@@ -154,6 +158,7 @@ func save_settings():
 		"difficulty": ProjectSettings.get_setting("difficulty"),
 		"arena_theme": ProjectSettings.get_setting("arena_theme")
 	}
+	print("Saving: ", settings_dict)
 	var settings_file = FileAccess.open("user://settings.json", FileAccess.WRITE)
 	settings_file.store_line(JSON.stringify(settings_dict))
 	
@@ -170,9 +175,8 @@ func load_settings():
 	else:
 		var settings_file = FileAccess.open("user://settings.json", FileAccess.READ)
 		var settings_buffer = settings_file.get_line()
-		print(settings_buffer)
 		var settings = JSON.parse_string(settings_buffer)
-		print(settings)
+		print("Loading: ", settings)
 		var _grid_length = settings["grid_length"]
 		var _grid_width = settings["grid_width"]
 		
@@ -180,7 +184,7 @@ func load_settings():
 			$VBoxContainer/ArenaSizeSelect.select(0)
 		elif _grid_length == 9 and _grid_width == 9:
 			$VBoxContainer/ArenaSizeSelect.select(1)
-		elif _grid_length == 9 and _grid_width == 17:
+		elif _grid_length == 17 and _grid_width == 9:
 			$VBoxContainer/ArenaSizeSelect.select(2)
 		elif _grid_length == 17 and _grid_width == 17:
 			$VBoxContainer/ArenaSizeSelect.select(3)
@@ -190,9 +194,11 @@ func load_settings():
 			$VBoxContainer/CustomSizeBox.visible = true
 			$VBoxContainer/ArenaSizeSelect.select(5)
 			$VBoxContainer/CustomSizeBox/HBoxContainer/GridLength.text = str(_grid_length)
-			ProjectSettings.set_setting("grid_length", _grid_length)
+			
 			$VBoxContainer/CustomSizeBox/HBoxContainer/GridWidth.text = str(_grid_width)
-			ProjectSettings.set_setting("grid_width", _grid_width)
+
+		ProjectSettings.set_setting("grid_length", _grid_length)
+		ProjectSettings.set_setting("grid_width", _grid_width)
 		
 		var _difficulty = int(settings["difficulty"])
 		if _difficulty == 0:
@@ -211,3 +217,7 @@ func load_settings():
 		$VBoxContainer/ArenaThemeSelect.select(settings["arena_theme"])
 		ProjectSettings.set_setting("arena_theme", settings["arena_theme"])
 		ProjectSettings.set_setting("first_time", false)
+
+func quit():
+		save_settings()
+		get_tree().quit()

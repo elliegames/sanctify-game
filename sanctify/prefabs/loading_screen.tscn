@@ -170,7 +170,6 @@ offset_bottom = 16.0
 pivot_offset = Vector2(16, 16)
 texture = ExtResource("1_y7oeo")
 stretch_mode = 5
-flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
