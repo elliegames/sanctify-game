@@ -5,9 +5,12 @@ class_name ArenaTheme
 @export var place_name: String
 @export var opponent: String
 
-@export_group("Ambience")
+@export_group("Scene")
 @export var volumetric_color: Color
 @export var backdrop_color: Color
+@export var volumetric_backdrop_texture: Texture2D
+@export var volumetric_backdrop_emission: Color
+@export var volumetric_backdrop_energy: float
 @export var volumetric_backdrop_height: float
 
 @export_group("Blocks")

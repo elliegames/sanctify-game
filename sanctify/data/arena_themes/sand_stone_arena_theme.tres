@@ -1,7 +1,20 @@
-[gd_resource type="Resource" script_class="ArenaTheme" load_steps=3 format=3 uid="uid://cnfu2cqie4ou2"]
+[gd_resource type="Resource" script_class="ArenaTheme" load_steps=6 format=3 uid="uid://cnfu2cqie4ou2"]
 
 [ext_resource type="Script" path="res://src/arena_theme.gd" id="1_oyelt"]
 [ext_resource type="AudioStream" uid="uid://c0nt27qasn0pp" path="res://data/audio/sand_stone_ambience.ogg" id="1_sl3qw"]
+
+[sub_resource type="Gradient" id="Gradient_54pes"]
+offsets = PackedFloat32Array(0.189873, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ywsc7"]
+frequency = 0.1155
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_avtqd"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_54pes")
+noise = SubResource("FastNoiseLite_ywsc7")
 
 [resource]
 script = ExtResource("1_oyelt")
@@ -9,6 +22,9 @@ place_name = "Pantheon"
 opponent = "Hades"
 volumetric_color = Color(0.831373, 0.556863, 0.0823529, 1)
 backdrop_color = Color(0.224311, 0.30958, 0.0121442, 1)
+volumetric_backdrop_texture = SubResource("NoiseTexture2D_avtqd")
+volumetric_backdrop_emission = Color(0, 0, 0, 1)
+volumetric_backdrop_energy = 0.0
 volumetric_backdrop_height = -2.0
 tile = "res://prefabs/themed_blocks/sand_stone/sandstone_tile.tscn"
 north_walls_inner_layer = "res://prefabs/themed_blocks/sand_stone/sandstone_pillar.tscn"
