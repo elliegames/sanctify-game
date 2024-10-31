@@ -1,25 +1,15 @@
-[gd_resource type="Resource" script_class="ArenaTheme" load_steps=5 format=3 uid="uid://cnfu2cqie4ou2"]
+[gd_resource type="Resource" script_class="ArenaTheme" load_steps=3 format=3 uid="uid://cnfu2cqie4ou2"]
 
 [ext_resource type="Script" path="res://src/arena_theme.gd" id="1_oyelt"]
 [ext_resource type="AudioStream" uid="uid://c0nt27qasn0pp" path="res://data/audio/sand_stone_ambience.ogg" id="1_sl3qw"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6rfnr"]
-sky_top_color = Color(0.472231, 0.738573, 0.851356, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-ground_bottom_color = Color(0.187548, 0.244628, 0.0319703, 1)
-ground_horizon_color = Color(0.535187, 0.671063, 0.806526, 1)
-
-[sub_resource type="Sky" id="Sky_ab8dn"]
-sky_material = SubResource("ProceduralSkyMaterial_6rfnr")
-
 [resource]
 script = ExtResource("1_oyelt")
 place_name = "Pantheon"
-opponent = "Hecate"
-volumetric_color = Color(0, 0, 0, 1)
-sky = SubResource("Sky_ab8dn")
-ambient_sound_loop = ExtResource("1_sl3qw")
-dust_particles = ""
+opponent = "Hades"
+volumetric_color = Color(0.831373, 0.556863, 0.0823529, 1)
+backdrop_color = Color(0.224311, 0.30958, 0.0121442, 1)
+volumetric_backdrop_height = -2.0
 tile = "res://prefabs/themed_blocks/sand_stone/sandstone_tile.tscn"
 north_walls_inner_layer = "res://prefabs/themed_blocks/sand_stone/sandstone_pillar.tscn"
 north_walls_inner_layer_alt = "res://prefabs/themed_blocks/sand_stone/sandstone_pillar_beam.tscn"
@@ -37,3 +27,4 @@ north_east_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_north_east
 south_east_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_south_east_corner.tscn"
 north_west_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_north_west_corner.tscn"
 south_west_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_wall_corner.tscn"
+ambient_sound_loop = ExtResource("1_sl3qw")

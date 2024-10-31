@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://gib3b7bmu7vq"]
+[gd_scene load_steps=40 format=3 uid="uid://gib3b7bmu7vq"]
 
 [ext_resource type="Script" path="res://src/arena.gd" id="1_2d1np"]
 [ext_resource type="Script" path="res://src/arena_theme.gd" id="2_od3yl"]
@@ -76,20 +76,10 @@ frustum_offset = Vector2(0, 0)
 near = 0.001
 far = 4000.0
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_18mpk"]
-sky_top_color = Color(0.472231, 0.738573, 0.851356, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-ground_bottom_color = Color(0.187548, 0.244628, 0.0319703, 1)
-ground_horizon_color = Color(0.535187, 0.671063, 0.806526, 1)
-
-[sub_resource type="Sky" id="Sky_urgai"]
-sky_material = SubResource("ProceduralSkyMaterial_18mpk")
-
 [sub_resource type="Environment" id="Environment_bjets"]
-background_mode = 2
-background_color = Color(0.136715, 0.374687, 0.569955, 1)
-sky = SubResource("Sky_urgai")
-sky_custom_fov = 64.0
+background_mode = 1
+background_color = Color(0.224311, 0.30958, 0.0121442, 1)
+background_canvas_max_layer = -1
 ambient_light_source = 2
 ambient_light_color = Color(0.649318, 0.572683, 0.505549, 1)
 ambient_light_sky_contribution = 0.37
@@ -846,7 +836,7 @@ reflection_mask = 111
 mesh_lod_threshold = 8.0
 ambient_mode = 0
 
-[node name="Backdrop" type="MeshInstance3D" parent="."]
+[node name="VolumetricBackdrop" type="MeshInstance3D" parent="."]
 transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, -2, 0)
 layers = 64
 material_override = ExtResource("11_4pbu6")

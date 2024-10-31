@@ -554,7 +554,7 @@ alignment = 1
 [node name="Difficulty" type="Label" parent="Splash/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Difficulty: Hard"
+text = "Difficulty: Unknown"
 horizontal_alignment = 1
 
 [node name="Tiles" type="Label" parent="Splash/VBoxContainer/HBoxContainer"]

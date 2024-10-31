@@ -43,7 +43,7 @@ void fragment() {
 	// Vertex Color Use as Albedo: Enabled
 	albedo_tex *= COLOR;
 
-	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	ALBEDO = albedo_tex.rgb;
 	
 	// Proximity Fade: Enabled
 	float depth_tex = textureLod(depth_texture, SCREEN_UV, 0.0).r;

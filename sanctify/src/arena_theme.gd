@@ -7,9 +7,8 @@ class_name ArenaTheme
 
 @export_group("Ambience")
 @export var volumetric_color: Color
-@export var sky: Sky
-@export var ambient_sound_loop: AudioStream
-@export_file var dust_particles: String
+@export var backdrop_color: Color
+@export var volumetric_backdrop_height: float
 
 @export_group("Blocks")
 @export_file var tile: String
@@ -29,3 +28,7 @@ class_name ArenaTheme
 @export_file var south_east_corner: String
 @export_file var north_west_corner: String
 @export_file var south_west_corner: String
+
+@export_group("Audio")
+@export var ambient_sound_loop: AudioStream
+@export var game_lose_dialog: AudioStream

@@ -44,12 +44,13 @@ func _ready():
 	grid_width = ProjectSettings.get_setting("grid_width")
 
 	var difficulty = ProjectSettings.get_setting("difficulty")
-
-	var density = 0.25
+	var density = 0
 	if difficulty == 0:
-		density = 0.05
+		density = 0.10
 	elif difficulty == 1:
-		density == 0.15
+		density = 0.15
+	elif difficulty == 2:
+		density = 0.25
 
 	total_tiles = grid_length * grid_width
 	mines = floor(total_tiles * density)
@@ -60,7 +61,7 @@ func _ready():
 	arrange_grid()
 	arrange_environment()
 	cursor.move(Vector2i(grid_length / 2, grid_width - 1), board)
-
+	ui.set_splash(arena_theme.place_name, difficulty, total_tiles, mines)
 
 func _physics_process(delta):
 	if timer_started and not game_over:

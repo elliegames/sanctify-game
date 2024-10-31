@@ -20,10 +20,10 @@ func _ready():
 	
 	if dark:
 		theme = dark_theme
-		$Pattern/Light.color = Color.WHITE
+		$PostGame/Pattern/Light.color = Color.WHITE
 	else:
 		theme = light_theme
-		$Pattern/Light.color = Color("#fff4")
+		$PostGame/Pattern/Light.color = Color("#fff4")
 		
 	$PostGame/Pattern.visible = false
 
@@ -75,6 +75,19 @@ func update_time(seconds: float):
 
 func update_flag(flag_count: int, max_flag_count: int):
 	$VBoxContainer/UI/StatusBox/FlagCount.text = str(flag_count) + " / " + str(max_flag_count)
+
+
+func set_splash(place: String, difficultyIdx: int, tileCount: int, nCurses: int):
+	$Splash/VBoxContainer/Subtitle.text = "Click on the tiles to reveal signs. Cleanse the " + place + " by clearing curses."
+	if difficultyIdx == 0:
+		$Splash/VBoxContainer/HBoxContainer/Difficulty.text = "Initiate  -"
+	elif difficultyIdx == 1:
+		$Splash/VBoxContainer/HBoxContainer/Difficulty.text = "Acolyte  -"
+	elif difficultyIdx == 2:
+		$Splash/VBoxContainer/HBoxContainer/Difficulty.text = "High Priestess  -"
+		
+	$Splash/VBoxContainer/HBoxContainer/Tiles.text = "Number of Tiles: " + str(tileCount)
+	$Splash/VBoxContainer/HBoxContainer/Curses.text = "Number of Curses: " + str(nCurses)
 
 
 func start_over():

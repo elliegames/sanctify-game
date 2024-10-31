@@ -58,6 +58,7 @@ func _notification(what):
 
 
 func set_arena_size(idx: int):
+	play_ui_accept_sound()
 	var grid_length = 7
 	var grid_width = 7
 	if idx == 0:
@@ -128,10 +129,13 @@ func check_grid_width():
 
 func set_difficulty(idx: int):
 	ProjectSettings.set_setting("difficulty", idx)
+	play_ui_accept_sound()
 
 
 func set_arena_theme(idx: int):
 	ProjectSettings.set_setting("arena_theme", idx)
+	play_ui_accept_sound()
+
 
 func play_ui_accept_sound():
 	Audio.play_ui_accept_sound()
