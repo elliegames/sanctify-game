@@ -249,11 +249,11 @@ width = 24
 height = 24
 fill_to = Vector2(0, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_ftnkq"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_w2gyg"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_6psn0"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_sah18"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_rlmd0"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_a3adf"]
 
 [sub_resource type="Gradient" id="Gradient_lpqq3"]
 colors = PackedColorArray(0.976471, 0.768627, 0.25098, 0.588235, 0.831373, 0.556863, 0.0823529, 0.67451)
@@ -430,18 +430,18 @@ layout_mode = 2
 [node name="EasyButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
 button_pressed = true
-button_group = SubResource("ButtonGroup_ftnkq")
+button_group = SubResource("ButtonGroup_w2gyg")
 label = "Initiate"
 
 [node name="MediumButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_6psn0")
+button_group = SubResource("ButtonGroup_sah18")
 label = "Acolyte"
 main_icon = ExtResource("11_xx4sp")
 
 [node name="HardButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_rlmd0")
+button_group = SubResource("ButtonGroup_a3adf")
 main_icon = ExtResource("12_sr57i")
 
 [node name="Scenario" type="Label" parent="VBoxContainer"]
@@ -559,8 +559,8 @@ bus = &"Effects"
 [connection signal="item_focused" from="VBoxContainer/ArenaThemeSelect" to="Audio/UIFocusSound" method="play"]
 [connection signal="item_selected" from="VBoxContainer/ArenaThemeSelect" to="." method="set_arena_theme"]
 [connection signal="focus_entered" from="VBoxContainer/PlayButton" to="Audio/UIFocusSound" method="play"]
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play_ui_accept_sound"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="begin"]
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play_ui_accept_sound"]
 [connection signal="focus_entered" from="VBoxContainer/QuitButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit"]
 [connection signal="timeout" from="LoadTimer" to="." method="load_arena"]

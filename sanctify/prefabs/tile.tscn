@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://3k3sqnneywit"]
+[gd_scene load_steps=15 format=3 uid="uid://3k3sqnneywit"]
 
 [ext_resource type="Script" path="res://src/tile.gd" id="1_v6842"]
-[ext_resource type="Texture2D" uid="uid://n0mnqvgc7mha" path="res://data/materials/runes/rune_1_diff.png" id="2_6dm4a"]
-[ext_resource type="Texture2D" uid="uid://m0ba3ebpohoc" path="res://data/materials/runes/rune_1_nor.png" id="3_duc34"]
-[ext_resource type="Texture2D" uid="uid://dwa0jxm0btd1n" path="res://data/materials/runes/rune_2_diff.png" id="4_2x48q"]
-[ext_resource type="Texture2D" uid="uid://b3m1s3va18nof" path="res://data/materials/runes/rune_2_norm.png" id="5_7i75d"]
-[ext_resource type="Texture2D" uid="uid://4mp614i81xr5" path="res://data/materials/runes/rune_3_diff.png" id="6_x0vae"]
-[ext_resource type="Texture2D" uid="uid://ch4x2rxlb0ec0" path="res://data/materials/runes/rune_3_norm.png" id="7_q717j"]
+[ext_resource type="Texture2D" uid="uid://c6moihlvd1fyq" path="res://data/images/runes/rune_1.png" id="2_gqly4"]
+[ext_resource type="Texture2D" uid="uid://cx0cxogj61vve" path="res://data/images/runes/rune_2.png" id="3_dqx6o"]
+[ext_resource type="Texture2D" uid="uid://bn0sbg4f83ye7" path="res://data/images/runes/rune_3.png" id="4_oysc7"]
+[ext_resource type="Texture2D" uid="uid://biss0l7ois6me" path="res://data/images/runes/rune_4.png" id="5_aj7ne"]
+[ext_resource type="Texture2D" uid="uid://fcyefckxjxds" path="res://data/images/runes/rune_5.png" id="6_dt4qw"]
+[ext_resource type="Texture2D" uid="uid://c4sdwf6ev24bn" path="res://data/images/runes/rune_6.png" id="7_komur"]
+[ext_resource type="Texture2D" uid="uid://dqjrms4b3tjlc" path="res://data/images/runes/rune_7.png" id="8_3p0cb"]
 [ext_resource type="AudioStream" uid="uid://8jf2cpja15b5" path="res://data/audio/cleanse_tile.ogg" id="8_u743d"]
+[ext_resource type="Texture2D" uid="uid://ba7nvq1hfj1h7" path="res://data/images/runes/rune_8.png" id="9_yi87f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1l1c1"]
 
@@ -114,6 +116,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [0.0, 4.0, 0.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Rune8:emission_energy")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.5, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 4.0, 0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s0qxt"]
 _data = {
@@ -140,9 +154,8 @@ libraries = {
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0571289, 0)
 visible = false
 sorting_offset = 10.0
-texture_albedo = ExtResource("2_6dm4a")
-texture_normal = ExtResource("3_duc34")
-texture_emission = ExtResource("2_6dm4a")
+texture_albedo = ExtResource("2_gqly4")
+texture_emission = ExtResource("2_gqly4")
 emission_energy = 0.0
 upper_fade = 0.00502394
 lower_fade = 0.00269226
@@ -151,63 +164,56 @@ cull_mask = 258
 [node name="Rune2" type="Decal" parent="RuneDecals"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0571289, 0)
 visible = false
-texture_albedo = ExtResource("4_2x48q")
-texture_normal = ExtResource("5_7i75d")
-texture_emission = ExtResource("4_2x48q")
-emission_energy = 3.86667
+texture_albedo = ExtResource("3_dqx6o")
+texture_emission = ExtResource("3_dqx6o")
+emission_energy = 0.0
 cull_mask = 258
 
 [node name="Rune3" type="Decal" parent="RuneDecals"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0571289, 0)
 visible = false
-texture_albedo = ExtResource("6_x0vae")
-texture_normal = ExtResource("7_q717j")
-texture_emission = ExtResource("6_x0vae")
-emission_energy = 3.86667
+texture_albedo = ExtResource("4_oysc7")
+texture_emission = ExtResource("4_oysc7")
+emission_energy = 0.0
 cull_mask = 258
 
 [node name="Rune4" type="Decal" parent="RuneDecals"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0571289, 0)
 visible = false
-texture_albedo = ExtResource("2_6dm4a")
-texture_normal = ExtResource("3_duc34")
-texture_emission = ExtResource("2_6dm4a")
-emission_energy = 3.86667
+texture_albedo = ExtResource("5_aj7ne")
+texture_emission = ExtResource("5_aj7ne")
+emission_energy = 0.0
 cull_mask = 258
 
 [node name="Rune5" type="Decal" parent="RuneDecals"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0571289, 0)
 visible = false
-texture_albedo = ExtResource("2_6dm4a")
-texture_normal = ExtResource("3_duc34")
-texture_emission = ExtResource("2_6dm4a")
-emission_energy = 3.86667
+texture_albedo = ExtResource("6_dt4qw")
+texture_emission = ExtResource("6_dt4qw")
+emission_energy = 0.0
 cull_mask = 258
 
 [node name="Rune6" type="Decal" parent="RuneDecals"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0571289, 0)
 visible = false
-texture_albedo = ExtResource("2_6dm4a")
-texture_normal = ExtResource("3_duc34")
-texture_emission = ExtResource("2_6dm4a")
-emission_energy = 3.86667
+texture_albedo = ExtResource("7_komur")
+texture_emission = ExtResource("7_komur")
+emission_energy = 0.0
 cull_mask = 258
 
 [node name="Rune7" type="Decal" parent="RuneDecals"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0571289, 0)
 visible = false
-texture_albedo = ExtResource("2_6dm4a")
-texture_normal = ExtResource("3_duc34")
-texture_emission = ExtResource("2_6dm4a")
-emission_energy = 3.86667
+texture_albedo = ExtResource("8_3p0cb")
+texture_emission = ExtResource("8_3p0cb")
+emission_energy = 0.0
 cull_mask = 258
 
 [node name="Rune8" type="Decal" parent="RuneDecals"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0571289, 0)
 visible = false
-texture_albedo = ExtResource("2_6dm4a")
-texture_normal = ExtResource("3_duc34")
-texture_emission = ExtResource("2_6dm4a")
+texture_albedo = ExtResource("9_yi87f")
+texture_emission = ExtResource("9_yi87f")
 emission_energy = 3.86667
 cull_mask = 258
 

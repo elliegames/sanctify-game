@@ -270,7 +270,7 @@ func reveal_recursive(start_position: Vector2i):
 			cursor.start_cleansing()
 			tile.show_cleansing_anim()
 			start_ripple_effects(tile.board_pos, false)
-			ui.win("You have cleansed the divine pantheon. " + arena_theme.opponent + "'s curse has been lifted!", time)
+			ui.win("You have cleansed the " + arena_theme.place_name + ". " + arena_theme.opponent + "'s curse has been lifted!", time)
 			$EndCam.set_priority(1000)
 
 		if tile.nearby_mines > 0:

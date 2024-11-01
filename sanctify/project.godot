@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Sanctify"
-config/description="Get rid of curses placed behind floors of the pantheon"
+config/description="Get rid of curses placed behind floors of the Temple"
 config/version="0.0.1"
 run/main_scene="res://main_menu.tscn"
 config/use_custom_user_dir=true
