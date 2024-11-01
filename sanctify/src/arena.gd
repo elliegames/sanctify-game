@@ -36,9 +36,11 @@ var pulse_effect_center: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	arena_theme_index = ProjectSettings.get_setting("arena_theme")
 	arena_theme = arena_themes[arena_theme_index]
 
 	ui.set_volumetric_color(arena_theme.volumetric_color)
+	$Audio/GameLostDialog.stream = arena_theme.game_lose_dialog
 
 	grid_length = ProjectSettings.get_setting("grid_length")
 	grid_width = ProjectSettings.get_setting("grid_width")
@@ -62,6 +64,7 @@ func _ready():
 	arrange_environment()
 	cursor.move(Vector2i(grid_length / 2, grid_width - 1), board)
 	ui.set_splash(arena_theme.place_name, difficulty, total_tiles, mines)
+
 
 func _physics_process(delta):
 	if timer_started and not game_over:
@@ -106,6 +109,13 @@ func _process(delta):
 			cursor.move(Vector2(1, 0), board)
 
 	ui.update_flag(max_flag_count - flag_count, max_flag_count)
+
+	# Make the priestess look at the orb
+	var ppos = $Priestess.global_transform.origin
+	var cpos = cursor.global_transform.origin
+	var dir = Vector2(ppos.x - cpos.x, ppos.z - cpos.z)
+	var look = clamp(remap(atan2(dir.y, dir.x), 0.64, 2.5, 0, 1), 0, 1)
+	$Priestess/AnimationTree.set("parameters/Look/Angle/blend_amount", look)
 
 
 func _input(event):
@@ -549,3 +559,7 @@ func start_ripple_effects(center: Vector2i, destroy: bool):
 func play_intro_cutscene():
 	$Priestess/AnimationTree.set("parameters/conditions/start", true)
 	cursor.start_booting()
+
+func priestess_look_start():
+	$Priestess/AnimationTree.set("parameters/conditions/start", false)
+	$Priestess/AnimationTree.set("parameters/conditions/look", true)

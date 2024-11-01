@@ -113,7 +113,7 @@ func check_grid_length():
 	var text_field = $VBoxContainer/CustomSizeBox/HBoxContainer/GridLength as TextEdit
 	var value = int(text_field.text)
 	if value < 7 or value > 32: 
-		text_field.text = ProjectSettings.get_setting("grid_length")
+		text_field.text = str(ProjectSettings.get_setting("grid_length"))
 	else:
 		ProjectSettings.set_setting("grid_length", value)
 
@@ -122,7 +122,7 @@ func check_grid_width():
 	var text_field = $VBoxContainer/CustomSizeBox/HBoxContainer/GridWidth as TextEdit
 	var value = int(text_field.text)
 	if value < 7 or value > 32: 
-		text_field.text = ProjectSettings.get_setting("grid_width")
+		text_field.text = str(ProjectSettings.get_setting("grid_width"))
 	else:
 		ProjectSettings.set_setting("grid_width", value)
 
