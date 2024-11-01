@@ -73,9 +73,14 @@ func flag():
 
 	if flag_node.visible:
 		flag_node.visible = !fog_dark
+		(flag_node.get_node("FlagAnimation") as AnimationPlayer).stop()
+		(flag_node.get_node("FlagRemoveFx") as AudioStreamPlayer3D).play()
+		(flag_node.get_node("FlagSpawnFx") as AudioStreamPlayer3D).stop()
 		arena.flag_count -= 1
 	elif arena.flag_count < arena.max_flag_count and not revealed:
 		flag_node.visible = fog_dark
+		(flag_node.get_node("FlagAnimation") as AnimationPlayer).play("pulse")
+		(flag_node.get_node("FlagSpawnFx") as AudioStreamPlayer3D).play()
 		arena.flag_count += 1
 
 

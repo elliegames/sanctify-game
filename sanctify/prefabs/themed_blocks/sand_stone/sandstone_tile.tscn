@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dp1f6c8k6fjku"]
+[gd_scene load_steps=42 format=3 uid="uid://dp1f6c8k6fjku"]
 
 [ext_resource type="PackedScene" uid="uid://3k3sqnneywit" path="res://prefabs/tile.tscn" id="1_jnsfw"]
 [ext_resource type="Material" uid="uid://devcgal7v5hf4" path="res://models/themed_blocks/sand_stone/sandstone_tile.material" id="2_6q0ec"]
@@ -7,7 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://b2r2m5gneqkyl" path="res://data/images/puddle_orm.png" id="4_jr4a0"]
 [ext_resource type="Texture2D" uid="uid://h0l2uixfsge5" path="res://data/images/smoke_mask.png" id="5_obh2k"]
 [ext_resource type="ArrayMesh" uid="uid://djld2ko3butx" path="res://models/themed_blocks/sand_stone/sand_stone_tile.obj" id="7_3ddlm"]
+[ext_resource type="Shader" path="res://shader_materials/additive_sprite.gdshader" id="7_huyh1"]
+[ext_resource type="Texture2D" uid="uid://b0cgm640r8xpg" path="res://data/images/flag_frames.png" id="8_gammq"]
 [ext_resource type="PackedScene" uid="uid://brs023vlj5mob" path="res://prefabs/themed_blocks/sand_stone/sandstone_curse.tscn" id="9_a2t8g"]
+[ext_resource type="AudioStream" uid="uid://87od7wagei55" path="res://data/audio/flag_on.ogg" id="9_behsq"]
+[ext_resource type="AudioStream" uid="uid://0bxbrv38yt6e" path="res://data/audio/flag_off.ogg" id="10_snot4"]
 
 [sub_resource type="Gradient" id="Gradient_og5k5"]
 colors = PackedColorArray(0, 0, 0, 0, 0.976471, 0.768627, 0.25098, 1)
@@ -66,9 +70,51 @@ bump_strength = 32.0
 color_ramp = SubResource("Gradient_a0g4r")
 noise = SubResource("FastNoiseLite_ie2hn")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_0x5rt"]
-size = Vector2(0.5, 2)
-orientation = 0
+[sub_resource type="Animation" id="Animation_inl7d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ok2nw"]
+resource_name = "pulse"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 9, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8trxv"]
+_data = {
+"RESET": SubResource("Animation_inl7d"),
+"pulse": SubResource("Animation_ok2nw")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofj5k"]
+render_priority = 10
+shader = ExtResource("7_huyh1")
+shader_parameter/frames = 10
+shader_parameter/frame = 0
+shader_parameter/pixel_size = 0.3
+shader_parameter/sprite_texture = ExtResource("8_gammq")
 
 [sub_resource type="Curve" id="Curve_xnfem"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.370968, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -342,17 +388,29 @@ cull_mask = 1048450
 [node name="Flags" type="Node3D" parent="."]
 visible = false
 
-[node name="FlagNormal" type="MeshInstance3D" parent="Flags"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-layers = 4
-mesh = SubResource("PlaneMesh_0x5rt")
-skeleton = NodePath("../..")
+[node name="FlagAnimation" type="AnimationPlayer" parent="Flags"]
+root_node = NodePath("../FlagNormal")
+libraries = {
+"": SubResource("AnimationLibrary_8trxv")
+}
 
-[node name="FlagTopView" type="MeshInstance3D" parent="Flags"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-layers = 8
-mesh = SubResource("PlaneMesh_0x5rt")
-skeleton = NodePath("../..")
+[node name="FlagNormal" type="Sprite3D" parent="Flags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+layers = 12
+material_override = SubResource("ShaderMaterial_ofj5k")
+cast_shadow = 0
+texture = ExtResource("8_gammq")
+hframes = 10
+
+[node name="FlagSpawnFx" type="AudioStreamPlayer3D" parent="Flags"]
+stream = ExtResource("9_behsq")
+volume_db = 5.0
+bus = &"Effects"
+
+[node name="FlagRemoveFx" type="AudioStreamPlayer3D" parent="Flags"]
+stream = ExtResource("10_snot4")
+volume_db = 3.0
+bus = &"Effects"
 
 [node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
 size = Vector3(1, 1, 1)

@@ -26,6 +26,7 @@ boot_splash/minimum_display_time=500
 
 [audio]
 
+general/3d_panning_strength=1.0
 driver/output_latency=50
 
 [autoload]

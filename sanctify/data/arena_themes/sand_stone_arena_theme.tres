@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/arena_theme.gd" id="1_oyelt"]
 [ext_resource type="AudioStream" uid="uid://c0nt27qasn0pp" path="res://data/audio/sand_stone_ambience.ogg" id="1_sl3qw"]
-[ext_resource type="AudioStream" uid="uid://b8uw8g8i55qvh" path="res://data/audio/eris_game_lost.ogg" id="2_ygfep"]
+[ext_resource type="AudioStream" uid="uid://cm4i5453v3ke2" path="res://data/audio/hades_game_lost.ogg" id="2_v6yus"]
 
 [sub_resource type="Gradient" id="Gradient_54pes"]
 offsets = PackedFloat32Array(0.189873, 1)
@@ -45,4 +45,4 @@ south_east_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_south_east
 north_west_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_north_west_corner.tscn"
 south_west_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_wall_corner.tscn"
 ambient_sound_loop = ExtResource("1_sl3qw")
-game_lose_dialog = ExtResource("2_ygfep")
+game_lose_dialog = ExtResource("2_v6yus")
