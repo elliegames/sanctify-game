@@ -343,7 +343,7 @@ tracks/19/keys = {
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("DirectionalLight3D:light_energy")
+tracks/20/path = NodePath("DirectionalLightLeft:light_energy")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
@@ -565,7 +565,7 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("DirectionalLight3D:light_energy")
+tracks/14/path = NodePath("DirectionalLightLeft:light_energy")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
@@ -805,7 +805,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("DirectionalLight3D:light_energy")
+tracks/13/path = NodePath("DirectionalLightLeft:light_energy")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -911,9 +911,9 @@ spring_length = 20.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bjets")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLightLeft" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.323274, 0.742638, -0.5865, 3.24558e-08, 0.619779, 0.784777, 0.946305, -0.253698, 0.200358, 0, 0, 0)
-light_color = Color(0.998282, 0.940077, 0.845721, 1)
+light_color = Color(0.867746, 0.820727, 0.806933, 1)
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 0
@@ -926,7 +926,7 @@ directional_shadow_split_1 = 0.01
 directional_shadow_blend_splits = true
 directional_shadow_pancake_size = 100.0
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLightRight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.469472, 0.418595, 0.777415, 0, 0.880477, -0.474088, -0.882948, -0.222571, -0.413359, 0, 0, 0)
 light_color = Color(0.16404, 0.524132, 0.739693, 1)
 light_energy = 2.0

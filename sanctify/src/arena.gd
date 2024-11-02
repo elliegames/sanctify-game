@@ -39,9 +39,6 @@ func _ready():
 	arena_theme_index = ProjectSettings.get_setting("arena_theme")
 	arena_theme = arena_themes[arena_theme_index]
 
-	ui.set_volumetric_color(arena_theme.volumetric_color)
-	$Audio/GameLostDialog.stream = arena_theme.game_lose_dialog
-
 	grid_length = ProjectSettings.get_setting("grid_length")
 	grid_width = ProjectSettings.get_setting("grid_width")
 
@@ -215,6 +212,20 @@ func set_cosmetics():
 
 		if (board[2][j] as Tile).show_smoke(grid_length * 14 / 9):
 			p += 1
+			
+	ui.set_volumetric_color(arena_theme.volumetric_color)
+	$Audio/GameLostDialog.stream = arena_theme.game_lose_dialog
+	$WorldEnvironment.environment.ambient_light_color = arena_theme.ambient_color
+	$WorldEnvironment.environment.background_color = arena_theme.backdrop_color
+	$DirectionalLightLeft.light_color = arena_theme.directional_light_left_color
+	$DirectionalLightRight.light_color = arena_theme.directional_light_right_color
+	$VolumetricBackdrop.material_override.set("shader_parameter/texture_albedo", arena_theme.volumetric_backdrop_texture)
+	$VolumetricBackdrop.material_override.set("shader_parameter/texture_emission", arena_theme.volumetric_backdrop_texture)
+	$VolumetricBackdrop.material_override.set("shader_parameter/emission_energy", arena_theme.volumetric_backdrop_energy)
+	$VolumetricBackdrop.material_override.set("shader_parameter/emission", arena_theme.volumetric_backdrop_emission)
+	
+	$ReflectionProbe.size = Vector3(grid_length + 3, 30, grid_width + 3)
+	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
 
 
 func reveal_recursive(start_position: Vector2i):
@@ -537,9 +548,6 @@ func arrange_environment():
 		south_east_corner.position = Vector3(-1, 0, grid_width)
 		south_east_corner.rotate_y(-PI / 2)
 		add_child(south_east_corner)
-
-	$ReflectionProbe.size = Vector3(grid_length + 3, 30, grid_width + 3)
-	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
 
 	# Place the priestess
 	$Priestess.position = Vector3(int(grid_length / 2), 1, grid_width + 2)
