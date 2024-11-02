@@ -212,7 +212,7 @@ func set_cosmetics():
 
 		if (board[2][j] as Tile).show_smoke(grid_length * 14 / 9):
 			p += 1
-			
+
 	ui.set_volumetric_color(arena_theme.volumetric_color)
 	$Audio/GameLostDialog.stream = arena_theme.game_lose_dialog
 	$WorldEnvironment.environment.ambient_light_color = arena_theme.ambient_color

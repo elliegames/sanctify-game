@@ -8,6 +8,8 @@ Author: [Subhadeep Jasu](https://github.com/SubhadeepJasu) \<subhadeep107@proton
 
 <img src="screenshots/screenshot.png" width="500">
 
+<a href="https://elementary.io"><img alt="Static Badge" src="data/badges/made_for_elementary_os_badge.svg"></a>
+
 ## Installation
 ### For Users
 On elementary OS? Click the button to get Sanctify on AppCenter:

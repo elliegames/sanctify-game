@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="ArenaTheme" load_steps=3 format=3 uid="uid://rd0ui0t6q6v6"]
+
+[ext_resource type="Script" path="res://src/arena_theme.gd" id="1_kw450"]
+[ext_resource type="AudioStream" uid="uid://6d7qomigiypb" path="res://data/audio/typhon_game_lost.ogg" id="1_tgmaw"]
+
+[resource]
+script = ExtResource("1_kw450")
+place_name = "Temple of Judgement"
+opponent = "Typhon"
+volumetric_color = Color(0, 0, 0, 1)
+ambient_color = Color(0, 0, 0, 1)
+backdrop_color = Color(0, 0, 0, 1)
+volumetric_backdrop_emission = Color(0, 0, 0, 1)
+volumetric_backdrop_energy = 0.0
+volumetric_backdrop_height = 0.0
+directional_light_left_color = Color(0, 0, 0, 1)
+directional_light_right_color = Color(0, 0, 0, 1)
+tile = ""
+north_walls_inner_layer = ""
+north_walls_inner_layer_alt = ""
+north_walls_outer_layer = ""
+north_walls_outer_layer_alt = ""
+south_walls = ""
+east_walls_inner_layer = ""
+east_walls_inner_layer_alt = ""
+east_walls_outer_layer = ""
+east_walls_outer_layer_alt = ""
+west_walls = ""
+north_door = ""
+south_door = ""
+north_east_corner = ""
+south_east_corner = ""
+north_west_corner = ""
+south_west_corner = ""
+game_lose_dialog = ExtResource("1_tgmaw")
