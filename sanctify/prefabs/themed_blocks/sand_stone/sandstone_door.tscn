@@ -1,0 +1,19 @@
+[gd_scene load_steps=7 format=3 uid="uid://digymca502dfw"]
+
+[ext_resource type="ArrayMesh" uid="uid://b6v25uqmgd1dg" path="res://models/themed_blocks/sand_stone/sand_stone_door.obj" id="1_q8kpn"]
+[ext_resource type="Material" uid="uid://c2kfgnferhnsh" path="res://models/themed_blocks/sand_stone/sandstone_door_pyramid.material" id="2_ed0do"]
+[ext_resource type="Material" uid="uid://c2lop0p3ma42p" path="res://models/themed_blocks/sand_stone/sandstone_door_base.material" id="3_wwieu"]
+[ext_resource type="Material" uid="uid://dyt3c115t5uab" path="res://models/themed_blocks/sand_stone/sandstone_low_detail.material" id="4_ugvfp"]
+[ext_resource type="Material" uid="uid://dn31pje7nps5y" path="res://models/themed_blocks/sand_stone/sandstone_door_bridge.material" id="5_tn64l"]
+[ext_resource type="Material" uid="uid://c8kdharam5av" path="res://models/themed_blocks/sand_stone/sandstone_door_pillars_side.material" id="6_qijet"]
+
+[node name="SandstoneDoor" type="Node3D"]
+
+[node name="SandStoneDoor" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_q8kpn")
+surface_material_override/0 = ExtResource("2_ed0do")
+surface_material_override/1 = ExtResource("3_wwieu")
+surface_material_override/2 = ExtResource("4_ugvfp")
+surface_material_override/3 = ExtResource("4_ugvfp")
+surface_material_override/4 = ExtResource("5_tn64l")
+surface_material_override/5 = ExtResource("6_qijet")

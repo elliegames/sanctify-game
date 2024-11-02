@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b6v25uqmgd1dg"
+path="res://.godot/imported/sand_stone_door.obj-9119c0a63c78ff0dfa3da17dad1944f3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/sand_stone_door.obj-9119c0a63c78ff0dfa3da17dad1944f3.mesh"]
+
+source_file="res://models/themed_blocks/sand_stone/sand_stone_door.obj"
+dest_files=["res://.godot/imported/sand_stone_door.obj-9119c0a63c78ff0dfa3da17dad1944f3.mesh", "res://.godot/imported/sand_stone_door.obj-9119c0a63c78ff0dfa3da17dad1944f3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

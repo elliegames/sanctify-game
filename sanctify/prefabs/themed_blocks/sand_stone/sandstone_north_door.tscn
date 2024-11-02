@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://h6nac8wl06vg"]
+
+[ext_resource type="ArrayMesh" uid="uid://cmgvng17gukli" path="res://models/themed_blocks/sand_stone/sand_stone_north_door.obj" id="1_80h2t"]
+[ext_resource type="Material" uid="uid://dq38p2nr3fl27" path="res://models/themed_blocks/sand_stone/sandstone_north_door.material" id="2_egmp1"]
+[ext_resource type="Texture2D" uid="uid://b7ayi1w3ag6da" path="res://models/themed_blocks/sand_stone/textures/hades_painting_diff.png" id="3_rnbwf"]
+[ext_resource type="Texture2D" uid="uid://bo54lcgvbenw4" path="res://data/images/hades_gate.png" id="3_x4kfy"]
+[ext_resource type="Texture2D" uid="uid://qhqxmkt36mh5" path="res://models/themed_blocks/sand_stone/textures/hades_painting_orm.png" id="4_cappk"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_fpoji"]
+diffuse_mode = 2
+albedo_texture = ExtResource("3_rnbwf")
+orm_texture = ExtResource("4_cappk")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vrn3w"]
+shading_mode = 2
+diffuse_mode = 2
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_texture = ExtResource("3_x4kfy")
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_texture = ExtResource("3_x4kfy")
+texture_filter = 2
+disable_receive_shadows = true
+
+[node name="SandstoneNorthDoor" type="Node3D"]
+
+[node name="SandStoneNorthDoor" type="MeshInstance3D" parent="."]
+cast_shadow = 2
+mesh = ExtResource("1_80h2t")
+surface_material_override/0 = ExtResource("2_egmp1")
+surface_material_override/1 = SubResource("ORMMaterial3D_fpoji")
+surface_material_override/2 = SubResource("StandardMaterial3D_vrn3w")
+
+[node name="OmniLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, -0.404357, 2.06498, -1.33878e-07)
+light_energy = 2.0
+light_bake_mode = 1
+light_cull_mask = 4294967247
+shadow_enabled = true
+shadow_blur = 4.0
+distance_fade_enabled = true
+distance_fade_begin = 20.0
+distance_fade_shadow = 20.0
+spot_range = 7.798
+spot_attenuation = 0.2
+spot_angle = 53.52
