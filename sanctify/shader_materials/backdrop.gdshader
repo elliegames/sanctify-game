@@ -6,6 +6,7 @@ render_mode blend_add, depth_draw_opaque, cull_back, diffuse_lambert_wrap, specu
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
 uniform float point_size : hint_range(0.1, 128.0, 0.1);
+uniform float scroll_speed = 0.001;
 
 uniform float roughness : hint_range(0.0, 1.0);
 uniform sampler2D texture_metallic : hint_default_white, filter_linear_mipmap, repeat_enable;
@@ -36,7 +37,7 @@ void vertex() {
 
 void fragment() {
 	vec2 base_uv = UV;
-	base_uv.x -= TIME * 0.001;
+	base_uv.x -= TIME * scroll_speed;
 
 	vec4 albedo_tex = texture(texture_albedo, base_uv);
 

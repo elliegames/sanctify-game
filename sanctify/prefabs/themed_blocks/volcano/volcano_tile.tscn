@@ -1,74 +1,74 @@
-[gd_scene load_steps=42 format=3 uid="uid://dp1f6c8k6fjku"]
+[gd_scene load_steps=42 format=3 uid="uid://bukwtt5e6fgfj"]
 
-[ext_resource type="PackedScene" uid="uid://3k3sqnneywit" path="res://prefabs/tile.tscn" id="1_jnsfw"]
-[ext_resource type="Material" uid="uid://devcgal7v5hf4" path="res://models/themed_blocks/sand_stone/sandstone_tile.material" id="2_6q0ec"]
-[ext_resource type="Texture2D" uid="uid://3eih52ybnui7" path="res://data/images/fog.png" id="2_e7vtv"]
-[ext_resource type="Texture2D" uid="uid://djr73062q5fe1" path="res://data/images/puddle.png" id="3_wtevw"]
-[ext_resource type="Texture2D" uid="uid://b2r2m5gneqkyl" path="res://data/images/puddle_orm.png" id="4_jr4a0"]
-[ext_resource type="Texture2D" uid="uid://h0l2uixfsge5" path="res://data/images/smoke_mask.png" id="5_obh2k"]
-[ext_resource type="ArrayMesh" uid="uid://djld2ko3butx" path="res://models/themed_blocks/sand_stone/sand_stone_tile.obj" id="7_3ddlm"]
-[ext_resource type="Shader" path="res://shader_materials/additive_sprite.gdshader" id="7_huyh1"]
-[ext_resource type="Texture2D" uid="uid://b0cgm640r8xpg" path="res://data/images/flag_frames.png" id="8_gammq"]
-[ext_resource type="PackedScene" uid="uid://brs023vlj5mob" path="res://prefabs/themed_blocks/sand_stone/sandstone_curse.tscn" id="9_a2t8g"]
-[ext_resource type="AudioStream" uid="uid://87od7wagei55" path="res://data/audio/flag_on.ogg" id="9_behsq"]
-[ext_resource type="AudioStream" uid="uid://0bxbrv38yt6e" path="res://data/audio/flag_off.ogg" id="10_snot4"]
+[ext_resource type="Material" uid="uid://de4oh806ug2tn" path="res://models/themed_blocks/volcano/volcano_tile.material" id="2_kcpvl"]
+[ext_resource type="PackedScene" uid="uid://3k3sqnneywit" path="res://prefabs/tile.tscn" id="3_uwk5o"]
+[ext_resource type="Texture2D" uid="uid://3eih52ybnui7" path="res://data/images/fog.png" id="4_cktu0"]
+[ext_resource type="Texture2D" uid="uid://djr73062q5fe1" path="res://data/images/puddle.png" id="5_62da7"]
+[ext_resource type="Texture2D" uid="uid://b2r2m5gneqkyl" path="res://data/images/puddle_orm.png" id="6_cga4j"]
+[ext_resource type="Shader" path="res://shader_materials/additive_sprite.gdshader" id="7_w1l68"]
+[ext_resource type="Texture2D" uid="uid://b0cgm640r8xpg" path="res://data/images/flag_frames.png" id="8_rlskg"]
+[ext_resource type="AudioStream" uid="uid://87od7wagei55" path="res://data/audio/flag_on.ogg" id="9_1vofv"]
+[ext_resource type="AudioStream" uid="uid://0bxbrv38yt6e" path="res://data/audio/flag_off.ogg" id="10_ecab0"]
+[ext_resource type="ArrayMesh" uid="uid://j7krgpfjoul0" path="res://models/themed_blocks/volcano/volcano_tile.obj" id="11_dwwmf"]
+[ext_resource type="Texture2D" uid="uid://h0l2uixfsge5" path="res://data/images/smoke_mask.png" id="11_dyo57"]
+[ext_resource type="PackedScene" uid="uid://brs023vlj5mob" path="res://prefabs/themed_blocks/sand_stone/sandstone_curse.tscn" id="12_d0s8k"]
 
-[sub_resource type="Gradient" id="Gradient_cgfep"]
+[sub_resource type="Gradient" id="Gradient_og5k5"]
 colors = PackedColorArray(0, 0, 0, 0, 0.976471, 0.768627, 0.25098, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tsrhl"]
-gradient = SubResource("Gradient_cgfep")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jot5x"]
+gradient = SubResource("Gradient_og5k5")
 fill_from = Vector2(1, 1)
 fill_to = Vector2(0, 0)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wxtnj"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g1sp3"]
 noise_type = 0
 frequency = 0.0122
 domain_warp_enabled = true
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_24i21"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wgw1i"]
 invert = true
 seamless = true
 seamless_blend_skirt = 0.2
-noise = SubResource("FastNoiseLite_wxtnj")
+noise = SubResource("FastNoiseLite_g1sp3")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqbp8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rus4t"]
 render_priority = 10
 transparency = 1
 depth_draw_mode = 2
 no_depth_test = true
 shading_mode = 0
-diffuse_mode = 2
+diffuse_mode = 1
 specular_mode = 2
 disable_ambient_light = true
 disable_fog = true
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("2_e7vtv")
+albedo_texture = ExtResource("4_cktu0")
 heightmap_enabled = true
 heightmap_scale = -16.0
-heightmap_texture = SubResource("NoiseTexture2D_24i21")
+heightmap_texture = SubResource("NoiseTexture2D_wgw1i")
 uv2_scale = Vector3(0.085, 0.085, 0.085)
 uv2_triplanar = true
 uv2_world_triplanar = true
 texture_filter = 2
 disable_receive_shadows = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_h6fje"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_wouey"]
 size = Vector2(1.95, 1.95)
 
-[sub_resource type="Gradient" id="Gradient_4tbqs"]
+[sub_resource type="Gradient" id="Gradient_a0g4r"]
 offsets = PackedFloat32Array(0.740864, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_iqcu8"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ie2hn"]
 noise_type = 5
 frequency = 0.0387
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_udmoe"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3h3pa"]
 seamless = true
 as_normal_map = true
 bump_strength = 32.0
-color_ramp = SubResource("Gradient_4tbqs")
-noise = SubResource("FastNoiseLite_iqcu8")
+color_ramp = SubResource("Gradient_a0g4r")
+noise = SubResource("FastNoiseLite_ie2hn")
 
 [sub_resource type="Animation" id="Animation_inl7d"]
 length = 0.001
@@ -108,30 +108,30 @@ _data = {
 "pulse": SubResource("Animation_ok2nw")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ofj5k"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tm604"]
 render_priority = 10
-shader = ExtResource("7_huyh1")
+shader = ExtResource("7_w1l68")
 shader_parameter/frames = 10
 shader_parameter/frame = 0
 shader_parameter/pixel_size = 0.3
-shader_parameter/sprite_texture = ExtResource("8_gammq")
+shader_parameter/sprite_texture = ExtResource("8_rlskg")
 
-[sub_resource type="Curve" id="Curve_xnfem"]
+[sub_resource type="Curve" id="Curve_xnrlp"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.370968, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_s6ksm"]
-curve = SubResource("Curve_xnfem")
+[sub_resource type="CurveTexture" id="CurveTexture_lhubk"]
+curve = SubResource("Curve_xnrlp")
 
-[sub_resource type="Curve" id="Curve_mryqn"]
+[sub_resource type="Curve" id="Curve_bonyv"]
 max_value = 3.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.325806, 2.81887), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_30axt"]
-curve = SubResource("Curve_mryqn")
+[sub_resource type="CurveTexture" id="CurveTexture_700v6"]
+curve = SubResource("Curve_bonyv")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3rxxn"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uhyvo"]
 lifetime_randomness = 0.1
 emission_shape = 6
 emission_ring_axis = Vector3(0, 1, 0)
@@ -147,11 +147,11 @@ attractor_interaction_enabled = false
 scale_max = 2.0
 scale_over_velocity_min = 0.1
 scale_over_velocity_max = 1.0
-scale_over_velocity_curve = SubResource("CurveTexture_30axt")
-alpha_curve = SubResource("CurveTexture_s6ksm")
+scale_over_velocity_curve = SubResource("CurveTexture_700v6")
+alpha_curve = SubResource("CurveTexture_lhubk")
 collision_mode = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3cps"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4t1vt"]
 blend_mode = 1
 depth_draw_mode = 2
 shading_mode = 0
@@ -160,10 +160,10 @@ specular_mode = 2
 disable_ambient_light = true
 disable_fog = true
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.850353, 0.716037, 0.563416, 1)
-albedo_texture = ExtResource("5_obh2k")
+albedo_color = Color(1, 0.352822, 0.295186, 1)
+albedo_texture = ExtResource("11_dyo57")
 heightmap_scale = 16.0
-heightmap_texture = ExtResource("5_obh2k")
+heightmap_texture = ExtResource("11_dyo57")
 texture_filter = 2
 billboard_mode = 3
 particles_anim_h_frames = 1
@@ -172,8 +172,8 @@ particles_anim_loop = false
 proximity_fade_enabled = true
 proximity_fade_distance = 0.5
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_6lq1t"]
-material = SubResource("StandardMaterial3D_g3cps")
+[sub_resource type="PlaneMesh" id="PlaneMesh_txe0g"]
+material = SubResource("StandardMaterial3D_4t1vt")
 size = Vector2(4, 4)
 orientation = 2
 
@@ -306,15 +306,15 @@ _data = {
 "reveal_curse": SubResource("Animation_bb711")
 }
 
-[sub_resource type="Gradient" id="Gradient_fowik"]
+[sub_resource type="Gradient" id="Gradient_tt2gf"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_1u6oa"]
-gradient = SubResource("Gradient_fowik")
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fcs5x"]
+gradient = SubResource("Gradient_tt2gf")
 fill_from = Vector2(0, 0.156695)
 fill_to = Vector2(0, 0.555556)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nyxch"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqp03"]
 transparency = 1
 blend_mode = 1
 cull_mode = 2
@@ -324,7 +324,7 @@ specular_mode = 2
 disable_ambient_light = true
 disable_fog = true
 albedo_color = Color(1, 1, 1, 0)
-albedo_texture = SubResource("GradientTexture2D_1u6oa")
+albedo_texture = SubResource("GradientTexture2D_fcs5x")
 metallic_specular = 0.0
 emission_enabled = true
 emission = Color(0.755941, 0.825849, 0.937693, 1)
@@ -332,21 +332,23 @@ emission_energy_multiplier = 0.25
 texture_filter = 0
 disable_receive_shadows = true
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_byue3"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_it5b6"]
 top_radius = 0.75
 bottom_radius = 0.71
 height = 0.5
 radial_segments = 4
 cap_top = false
 
-[node name="SandstoneTile" type="Node3D"]
+[node name="VolcanoTile" type="Node3D"]
 
 [node name="TileMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 layers = 2
-mesh = ExtResource("7_3ddlm")
-surface_material_override/0 = ExtResource("2_6q0ec")
+cast_shadow = 0
+mesh = ExtResource("11_dwwmf")
+surface_material_override/0 = ExtResource("2_kcpvl")
 
-[node name="Tile" parent="." node_paths=PackedStringArray("tile_mesh", "flag_node", "fog", "imperfection", "smoke", "selection_box", "animator", "cleansing_light") instance=ExtResource("1_jnsfw")]
+[node name="Tile" parent="." node_paths=PackedStringArray("tile_mesh", "flag_node", "fog", "imperfection", "smoke", "selection_box", "animator", "cleansing_light") instance=ExtResource("3_uwk5o")]
 tile_mesh = NodePath("../TileMesh")
 flag_node = NodePath("../Flags")
 fog = NodePath("../Fog")
@@ -362,7 +364,7 @@ visible = false
 layers = 2
 sorting_offset = 10.0
 size = Vector3(1.01, 1.0758, 1.01)
-texture_emission = SubResource("GradientTexture2D_tsrhl")
+texture_emission = SubResource("GradientTexture2D_jot5x")
 emission_energy = 8.0
 upper_fade = 1e-05
 lower_fade = 0.000857863
@@ -372,17 +374,17 @@ cull_mask = 2
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509, 0)
 visible = false
 layers = 32
-material_override = SubResource("StandardMaterial3D_nqbp8")
+material_override = SubResource("StandardMaterial3D_rus4t")
 cast_shadow = 0
-mesh = SubResource("PlaneMesh_h6fje")
+mesh = SubResource("PlaneMesh_wouey")
 skeleton = NodePath("../Tile")
 
 [node name="Imperfection" type="Decal" parent="."]
 visible = false
 size = Vector3(6, 2, 6)
-texture_albedo = ExtResource("3_wtevw")
-texture_normal = SubResource("NoiseTexture2D_udmoe")
-texture_orm = ExtResource("4_jr4a0")
+texture_albedo = ExtResource("5_62da7")
+texture_normal = SubResource("NoiseTexture2D_3h3pa")
+texture_orm = ExtResource("6_cga4j")
 cull_mask = 1048450
 
 [node name="Flags" type="Node3D" parent="."]
@@ -397,18 +399,18 @@ libraries = {
 [node name="FlagNormal" type="Sprite3D" parent="Flags"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
 layers = 12
-material_override = SubResource("ShaderMaterial_ofj5k")
+material_override = SubResource("ShaderMaterial_tm604")
 cast_shadow = 0
-texture = ExtResource("8_gammq")
+texture = ExtResource("8_rlskg")
 hframes = 10
 
 [node name="FlagSpawnFx" type="AudioStreamPlayer3D" parent="Flags"]
-stream = ExtResource("9_behsq")
+stream = ExtResource("9_1vofv")
 volume_db = 5.0
 bus = &"Effects"
 
 [node name="FlagRemoveFx" type="AudioStreamPlayer3D" parent="Flags"]
-stream = ExtResource("10_snot4")
+stream = ExtResource("10_ecab0")
 volume_db = 3.0
 bus = &"Effects"
 
@@ -427,10 +429,10 @@ randomness = 0.05
 fixed_fps = 15
 fract_delta = false
 collision_base_size = 0.1
-process_material = SubResource("ParticleProcessMaterial_3rxxn")
-draw_pass_1 = SubResource("PlaneMesh_6lq1t")
+process_material = SubResource("ParticleProcessMaterial_uhyvo")
+draw_pass_1 = SubResource("PlaneMesh_txe0g")
 
-[node name="SandstoneCurse" parent="." instance=ExtResource("9_a2t8g")]
+[node name="SandstoneCurse" parent="." instance=ExtResource("12_d0s8k")]
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -441,6 +443,6 @@ libraries = {
 [node name="CleansingLight" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.767113, 0)
 visible = false
-material_override = SubResource("StandardMaterial3D_nyxch")
+material_override = SubResource("StandardMaterial3D_gqp03")
 cast_shadow = 0
-mesh = SubResource("CylinderMesh_byue3")
+mesh = SubResource("CylinderMesh_it5b6")

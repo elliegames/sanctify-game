@@ -1,21 +1,26 @@
-[gd_resource type="Resource" script_class="ArenaTheme" load_steps=3 format=3 uid="uid://rd0ui0t6q6v6"]
+[gd_resource type="Resource" script_class="ArenaTheme" load_steps=4 format=3 uid="uid://rd0ui0t6q6v6"]
 
 [ext_resource type="Script" path="res://src/arena_theme.gd" id="1_kw450"]
 [ext_resource type="AudioStream" uid="uid://6d7qomigiypb" path="res://data/audio/typhon_game_lost.ogg" id="1_tgmaw"]
+[ext_resource type="Texture2D" uid="uid://b7huqe7vi121r" path="res://models/themed_blocks/volcano/textures/volcano_backdrop.png" id="3_mc8el"]
 
 [resource]
 script = ExtResource("1_kw450")
 place_name = "Temple of Judgement"
 opponent = "Typhon"
-volumetric_color = Color(0, 0, 0, 1)
-ambient_color = Color(0, 0, 0, 1)
+volumetric_color = Color(0.677002, 0.148387, 0.184754, 1)
+ambient_color = Color(0.503252, 0.53959, 0.713502, 1)
+directional_light_left_color = Color(0.907714, 0.863322, 0.892323, 1)
+directional_light_right_color = Color(0.361097, 0, 0.116235, 1)
+cove_light_color = Color(0.332756, 0.462821, 0.675669, 1)
 backdrop_color = Color(0, 0, 0, 1)
+volumetric_backdrop_texture = ExtResource("3_mc8el")
+volumetric_backdrop_uv_scale = 100.0
+volumetric_backdrop_scroll_speed = 0.02
 volumetric_backdrop_emission = Color(0, 0, 0, 1)
-volumetric_backdrop_energy = 0.0
+volumetric_backdrop_energy = 1.0
 volumetric_backdrop_height = 0.0
-directional_light_left_color = Color(0, 0, 0, 1)
-directional_light_right_color = Color(0, 0, 0, 1)
-tile = ""
+tile = "res://prefabs/themed_blocks/volcano/volcano_tile.tscn"
 north_walls_inner_layer = ""
 north_walls_inner_layer_alt = ""
 north_walls_outer_layer = ""

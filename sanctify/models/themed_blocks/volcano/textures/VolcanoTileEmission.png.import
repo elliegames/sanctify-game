@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo54lcgvbenw4"
-path.s3tc="res://.godot/imported/hades_gate.png-767a6847f82dbed55b2a596ec1b254c6.s3tc.ctex"
+uid="uid://qmjfseg3i2pn"
+path.s3tc="res://.godot/imported/VolcanoTileEmission.png-ca1e4b8e9b501422a55e9a5809247502.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://data/images/hades_gate.png"
-dest_files=["res://.godot/imported/hades_gate.png-767a6847f82dbed55b2a596ec1b254c6.s3tc.ctex"]
+source_file="res://models/themed_blocks/volcano/textures/VolcanoTileEmission.png"
+dest_files=["res://.godot/imported/VolcanoTileEmission.png-ca1e4b8e9b501422a55e9a5809247502.s3tc.ctex"]
 
 [params]
 

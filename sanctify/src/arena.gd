@@ -218,11 +218,16 @@ func set_cosmetics():
 	$WorldEnvironment.environment.ambient_light_color = arena_theme.ambient_color
 	$WorldEnvironment.environment.background_color = arena_theme.backdrop_color
 	$DirectionalLightLeft.light_color = arena_theme.directional_light_left_color
+	$DirectionalLightLeft.light_energy = 2
+	$DirectionalLightRight.light_energy = 2
 	$DirectionalLightRight.light_color = arena_theme.directional_light_right_color
+	$CornerLight.light_color = arena_theme.cove_light_color
 	$VolumetricBackdrop.material_override.set("shader_parameter/texture_albedo", arena_theme.volumetric_backdrop_texture)
 	$VolumetricBackdrop.material_override.set("shader_parameter/texture_emission", arena_theme.volumetric_backdrop_texture)
 	$VolumetricBackdrop.material_override.set("shader_parameter/emission_energy", arena_theme.volumetric_backdrop_energy)
 	$VolumetricBackdrop.material_override.set("shader_parameter/emission", arena_theme.volumetric_backdrop_emission)
+	$VolumetricBackdrop.material_override.set("shader_parameter/uv1_scale", Vector3.ONE * arena_theme.volumetric_backdrop_uv_scale)
+	$VolumetricBackdrop.material_override.set("shader_parameter/scroll_speed", arena_theme.volumetric_backdrop_scroll_speed)
 	
 	$ReflectionProbe.size = Vector3(grid_length + 3, 30, grid_width + 3)
 	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)

@@ -8,13 +8,19 @@ class_name ArenaTheme
 @export_group("Scene")
 @export var volumetric_color: Color
 @export var ambient_color: Color
+@export var directional_light_left_color: Color
+@export var directional_light_right_color: Color
+@export var cove_light_color: Color
+
+@export_group("Volumetric Backdrop")
 @export var backdrop_color: Color
 @export var volumetric_backdrop_texture: Texture2D
+@export var volumetric_backdrop_uv_scale: float = 1
+@export var volumetric_backdrop_scroll_speed: float = 0.001
 @export var volumetric_backdrop_emission: Color
 @export_range(0, 16) var volumetric_backdrop_energy: float
 @export var volumetric_backdrop_height: float
-@export var directional_light_left_color: Color
-@export var directional_light_right_color: Color
+
 
 @export_group("Blocks")
 @export_file var tile: String

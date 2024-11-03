@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://gib3b7bmu7vq"]
+[gd_scene load_steps=43 format=3 uid="uid://gib3b7bmu7vq"]
 
 [ext_resource type="Script" path="res://src/arena.gd" id="1_2d1np"]
 [ext_resource type="Script" path="res://src/arena_theme.gd" id="2_od3yl"]
@@ -6,6 +6,8 @@
 [ext_resource type="Material" uid="uid://c825ll8mvnmwq" path="res://data/materials/post_processing/dof.material" id="3_57mfx"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_qfict"]
 [ext_resource type="Resource" uid="uid://cnfu2cqie4ou2" path="res://data/arena_themes/sand_stone_arena_theme.tres" id="3_ukhlb"]
+[ext_resource type="Resource" uid="uid://76ni4d5a5xkx" path="res://data/arena_themes/eden_arena_theme.tres" id="4_4h448"]
+[ext_resource type="Resource" uid="uid://rd0ui0t6q6v6" path="res://data/arena_themes/volcano_arena_theme.tres" id="4_88n67"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_f2fkr"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="5_d8pjb"]
 [ext_resource type="PackedScene" uid="uid://d2ho5gg1g3mc" path="res://prefabs/cursor.tscn" id="7_xb0cn"]
@@ -851,7 +853,7 @@ _data = {
 
 [node name="Arena" type="Node3D"]
 script = ExtResource("1_2d1np")
-arena_themes = Array[ExtResource("2_od3yl")]([ExtResource("3_ukhlb")])
+arena_themes = Array[ExtResource("2_od3yl")]([ExtResource("3_ukhlb"), ExtResource("4_4h448"), ExtResource("4_88n67")])
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.707106, -0.499999, 0.5, 0, 0.707106, 0.707106, -0.707106, -0.499999, 0.5, 10, 14.1421, 10)
@@ -1047,6 +1049,13 @@ fixed_size = true
 alpha_cut = 2
 render_priority = 126
 texture = ExtResource("12_1ispk")
+
+[node name="CornerLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.18752, 0)
+light_color = Color(0.332756, 0.462821, 0.675669, 1)
+light_energy = 2.0
+light_specular = 2.0
+omni_range = 28.0
 
 [connection signal="on_switch_view" from="UI" to="." method="switch_view"]
 [connection signal="timeout" from="AnimationTimer" to="." method="play_intro_cutscene"]

@@ -3,7 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cmgvng17gukli" path="res://models/themed_blocks/sand_stone/sand_stone_north_door.obj" id="1_80h2t"]
 [ext_resource type="Material" uid="uid://dq38p2nr3fl27" path="res://models/themed_blocks/sand_stone/sandstone_north_door.material" id="2_egmp1"]
 [ext_resource type="Texture2D" uid="uid://b7ayi1w3ag6da" path="res://models/themed_blocks/sand_stone/textures/hades_painting_diff.png" id="3_rnbwf"]
-[ext_resource type="Texture2D" uid="uid://bo54lcgvbenw4" path="res://data/images/hades_gate.png" id="3_x4kfy"]
+[ext_resource type="Texture2D" uid="uid://bo54lcgvbenw4" path="res://models/themed_blocks/sand_stone/textures/hades_gate.png" id="3_x4kfy"]
 [ext_resource type="Texture2D" uid="uid://qhqxmkt36mh5" path="res://models/themed_blocks/sand_stone/textures/hades_painting_orm.png" id="4_cappk"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_fpoji"]
