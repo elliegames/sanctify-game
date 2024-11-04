@@ -1051,10 +1051,10 @@ render_priority = 126
 texture = ExtResource("12_1ispk")
 
 [node name="CornerLight" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16, 16.1875, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 8, -8)
 light_color = Color(0.332756, 0.462821, 0.675669, 1)
-light_energy = 2.0
-light_specular = 2.0
+light_energy = 5.0
+light_specular = 6.0
 omni_range = 43.0
 
 [connection signal="on_switch_view" from="UI" to="." method="switch_view"]
