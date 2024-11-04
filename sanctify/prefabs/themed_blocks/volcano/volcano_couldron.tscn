@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ygk1ydla56xo"]
+
+[ext_resource type="Texture2D" uid="uid://1dmu5fomhfma" path="res://models/themed_blocks/volcano/textures/VolcanoCouldronDiff.png" id="1_pgowx"]
+[ext_resource type="Texture2D" uid="uid://b8l5p38vruag8" path="res://models/themed_blocks/volcano/textures/VolcanoCouldronEmission.png" id="2_8tamg"]
+[ext_resource type="ArrayMesh" uid="uid://c46wtrmnu3cb4" path="res://models/themed_blocks/volcano/volcano_couldron.obj" id="3_28b4k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tbg36"]
+diffuse_mode = 2
+albedo_texture = ExtResource("1_pgowx")
+roughness = 0.6
+emission_enabled = true
+emission_texture = ExtResource("2_8tamg")
+
+[node name="VolcanoCouldron" type="Node3D"]
+
+[node name="VolcanoCouldron" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_tbg36")
+cast_shadow = 2
+mesh = ExtResource("3_28b4k")

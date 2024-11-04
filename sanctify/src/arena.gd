@@ -197,7 +197,7 @@ func arrange_mines(exc: Vector2i):
 
 func set_cosmetics():
 	var p = 0
-	var max_puddles = grid_length * grid_width * 0.01
+	var max_puddles = grid_length * grid_width * arena_theme.imperfection_ratio
 	while p < max_puddles:
 		var i = randi_range(0, grid_length - 1)
 		var j = randi_range(0, grid_width - 1)

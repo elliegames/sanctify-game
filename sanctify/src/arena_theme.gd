@@ -24,6 +24,7 @@ class_name ArenaTheme
 
 @export_group("Blocks")
 @export_file var tile: String
+@export var imperfection_ratio: float = 0.01
 @export_file var north_walls_inner_layer: String
 @export_file var north_walls_inner_layer_alt: String
 @export_file var north_walls_outer_layer: String

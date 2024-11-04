@@ -19,6 +19,8 @@ var board_pos: Vector2i
 @export var selection_box: Node3D
 @export var animator: AnimationPlayer
 @export var cleansing_light: Node3D
+
+@export var alternate_material: Material
 var runes: Array[Decal]
 
 # Called when the node enters the scene tree for the first time.
@@ -112,6 +114,8 @@ func show_imperfection():
 		return false
 
 	imperfection.visible = true
+	if alternate_material != null:
+		tile_mesh.set_surface_override_material(0, alternate_material)
 	return true
 
 func show_smoke(life_time = 14):

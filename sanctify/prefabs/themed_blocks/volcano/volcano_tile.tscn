@@ -1,10 +1,10 @@
-[gd_scene load_steps=42 format=3 uid="uid://bukwtt5e6fgfj"]
+[gd_scene load_steps=39 format=3 uid="uid://bukwtt5e6fgfj"]
 
 [ext_resource type="Material" uid="uid://de4oh806ug2tn" path="res://models/themed_blocks/volcano/volcano_tile.material" id="2_kcpvl"]
+[ext_resource type="Material" uid="uid://dl31rgw804ryt" path="res://models/themed_blocks/volcano/volcano_tile_alt.material" id="2_v7pan"]
 [ext_resource type="PackedScene" uid="uid://3k3sqnneywit" path="res://prefabs/tile.tscn" id="3_uwk5o"]
 [ext_resource type="Texture2D" uid="uid://3eih52ybnui7" path="res://data/images/fog.png" id="4_cktu0"]
 [ext_resource type="Texture2D" uid="uid://djr73062q5fe1" path="res://data/images/puddle.png" id="5_62da7"]
-[ext_resource type="Texture2D" uid="uid://b2r2m5gneqkyl" path="res://data/images/puddle_orm.png" id="6_cga4j"]
 [ext_resource type="Shader" path="res://shader_materials/additive_sprite.gdshader" id="7_w1l68"]
 [ext_resource type="Texture2D" uid="uid://b0cgm640r8xpg" path="res://data/images/flag_frames.png" id="8_rlskg"]
 [ext_resource type="AudioStream" uid="uid://87od7wagei55" path="res://data/audio/flag_on.ogg" id="9_1vofv"]
@@ -55,20 +55,6 @@ disable_receive_shadows = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wouey"]
 size = Vector2(1.95, 1.95)
-
-[sub_resource type="Gradient" id="Gradient_a0g4r"]
-offsets = PackedFloat32Array(0.740864, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ie2hn"]
-noise_type = 5
-frequency = 0.0387
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3h3pa"]
-seamless = true
-as_normal_map = true
-bump_strength = 32.0
-color_ramp = SubResource("Gradient_a0g4r")
-noise = SubResource("FastNoiseLite_ie2hn")
 
 [sub_resource type="Animation" id="Animation_inl7d"]
 length = 0.001
@@ -346,7 +332,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 layers = 2
 cast_shadow = 0
 mesh = ExtResource("11_dwwmf")
-surface_material_override/0 = ExtResource("2_kcpvl")
+surface_material_override/0 = ExtResource("2_v7pan")
 
 [node name="Tile" parent="." node_paths=PackedStringArray("tile_mesh", "flag_node", "fog", "imperfection", "smoke", "selection_box", "animator", "cleansing_light") instance=ExtResource("3_uwk5o")]
 tile_mesh = NodePath("../TileMesh")
@@ -357,6 +343,7 @@ smoke = NodePath("../Smoke")
 selection_box = NodePath("../SelectionHighlight")
 animator = NodePath("../AnimationPlayer")
 cleansing_light = NodePath("../CleansingLight")
+alternate_material = ExtResource("2_kcpvl")
 
 [node name="SelectionHighlight" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00152588, 0.0627111, 0.00454148)
@@ -381,10 +368,7 @@ skeleton = NodePath("../Tile")
 
 [node name="Imperfection" type="Decal" parent="."]
 visible = false
-size = Vector3(6, 2, 6)
 texture_albedo = ExtResource("5_62da7")
-texture_normal = SubResource("NoiseTexture2D_3h3pa")
-texture_orm = ExtResource("6_cga4j")
 cull_mask = 1048450
 
 [node name="Flags" type="Node3D" parent="."]
