@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://ygk1ydla56xo"]
+[gd_scene load_steps=25 format=3 uid="uid://ygk1ydla56xo"]
 
 [ext_resource type="Texture2D" uid="uid://1dmu5fomhfma" path="res://models/themed_blocks/volcano/textures/VolcanoCouldronDiff.png" id="1_pgowx"]
 [ext_resource type="Texture2D" uid="uid://b8l5p38vruag8" path="res://models/themed_blocks/volcano/textures/VolcanoCouldronEmission.png" id="2_8tamg"]
@@ -13,7 +13,7 @@ emission_enabled = true
 emission_texture = ExtResource("2_8tamg")
 
 [sub_resource type="Curve" id="Curve_j4i4g"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.244939, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.240891, 0.320755), 0.497107, 0.497107, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_0c0ae"]
@@ -26,8 +26,8 @@ curve = SubResource("Curve_j4i4g")
 gradient = SubResource("Gradient_mqyab")
 
 [sub_resource type="Gradient" id="Gradient_i0ja0"]
-offsets = PackedFloat32Array(0.0789474, 0.223684, 0.513158)
-colors = PackedColorArray(0.812785, 0, 0, 1, 1, 0.265774, 0.0134937, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.951754)
+colors = PackedColorArray(0.811765, 0.101961, 0, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_whln3"]
 gradient = SubResource("Gradient_i0ja0")
@@ -59,6 +59,7 @@ turbulence_initial_displacement_max = 0.100001
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r4soc"]
 transparency = 1
+shading_mode = 0
 diffuse_mode = 2
 disable_fog = true
 vertex_color_use_as_albedo = true
@@ -76,7 +77,7 @@ material = SubResource("StandardMaterial3D_r4soc")
 orientation = 2
 
 [sub_resource type="Curve" id="Curve_bglyf"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.301619, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.313765, 1), 0.0, 0.0, 0, 0, Vector2(0.572875, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_2u8fl"]
@@ -84,24 +85,24 @@ width = 32
 texture_mode = 1
 curve = SubResource("Curve_bglyf")
 
-[sub_resource type="Curve" id="Curve_pud81"]
-min_value = -360.0
-max_value = 360.0
-_data = [Vector2(0, -360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
-point_count = 2
+[sub_resource type="Gradient" id="Gradient_tbgj4"]
+offsets = PackedFloat32Array(0, 0.162281, 1)
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.854902, 0.737255, 1, 0.792157, 0, 0, 1)
 
-[sub_resource type="CurveTexture" id="CurveTexture_n7iqk"]
-width = 32
-curve = SubResource("Curve_pud81")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_g2lp7"]
+gradient = SubResource("Gradient_tbgj4")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e33os"]
-lifetime_randomness = 0.24
+lifetime_randomness = 0.3
+particle_flag_align_y = true
 emission_shape = 1
 emission_sphere_radius = 0.4
 angle_min = 1.07288e-05
-angle_max = 90.0
-angle_curve = SubResource("CurveTexture_n7iqk")
-gravity = Vector3(0, 0.5, 0)
+angle_max = 1.07288e-05
+gravity = Vector3(0, 1, 0)
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+color_ramp = SubResource("GradientTexture1D_g2lp7")
 alpha_curve = SubResource("CurveTexture_2u8fl")
 emission_curve = SubResource("CurveTexture_2u8fl")
 turbulence_enabled = true
@@ -109,6 +110,10 @@ turbulence_noise_strength = 0.5
 turbulence_noise_scale = 7.0
 turbulence_initial_displacement_min = 1.49012e-06
 turbulence_initial_displacement_max = 0.200001
+
+[sub_resource type="Curve" id="Curve_pe7sg"]
+_data = [Vector2(0, 0), 0.0, 4.29585, 0, 0, Vector2(0.50738, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.38217, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rro2a"]
 shading_mode = 2
@@ -119,7 +124,6 @@ vertex_color_use_as_albedo = true
 metallic_specular = 0.0
 emission_enabled = true
 emission = Color(1, 0.25098, 0.0666667, 1)
-emission_energy_multiplier = 10.0
 texture_filter = 0
 disable_receive_shadows = true
 billboard_mode = 3
@@ -129,10 +133,12 @@ particles_anim_v_frames = 1
 particles_anim_loop = false
 proximity_fade_enabled = true
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_1ekxb"]
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_opder"]
 material = SubResource("StandardMaterial3D_rro2a")
-size = Vector2(0.04, 0.04)
-orientation = 2
+size = 0.05
+sections = 2
+section_length = 0.025
+curve = SubResource("Curve_pe7sg")
 
 [node name="VolcanoCouldron" type="Node3D"]
 
@@ -151,8 +157,17 @@ process_material = SubResource("ParticleProcessMaterial_k25uf")
 draw_pass_1 = SubResource("PlaneMesh_r02pd")
 
 [node name="Debris" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69559, 0)
+transform = Transform3D(-0.277885, 0, 0.960614, 0, 1, 0, -0.960614, 0, -0.277885, 0, 1.69559, 0)
+amount = 16
 lifetime = 5.0
 randomness = 0.35
 process_material = SubResource("ParticleProcessMaterial_e33os")
-draw_pass_1 = SubResource("PlaneMesh_1ekxb")
+draw_pass_1 = SubResource("RibbonTrailMesh_opder")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.999112, 0.0421372, -1.84188e-09, 0, -4.37114e-08, -1, -0.0421372, 0.999112, -4.36726e-08, -0.957822, 1.88875, 0)
+light_color = Color(0.868013, 0.401042, 0, 1)
+light_energy = 0.2
+light_specular = 10.0
+spot_range = 6.0
+spot_angle = 60.0

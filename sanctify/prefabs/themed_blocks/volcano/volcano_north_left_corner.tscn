@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://daxini7tofrbn"]
+
+[ext_resource type="Material" uid="uid://ddv2sty5wvt1m" path="res://models/themed_blocks/volcano/volcano_wall_low.material" id="1_p2q6b"]
+[ext_resource type="ArrayMesh" uid="uid://c14gmruqsqf64" path="res://models/themed_blocks/volcano/volcano_north_left_corner.obj" id="1_wxhvd"]
+[ext_resource type="AudioStream" uid="uid://d3e31jki6nhsk" path="res://data/audio/thunder_1.ogg" id="3_8r8k5"]
+[ext_resource type="Script" path="res://src/thunder_and_lighting.gd" id="3_lithw"]
+[ext_resource type="AudioStream" uid="uid://b3uy21mhjilvd" path="res://data/audio/thunder_2.ogg" id="4_fsoar"]
+
+[node name="VolcanoNorthLeftCorner" type="Node3D"]
+
+[node name="VolcanoNorthLeftCorner" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_p2q6b")
+mesh = ExtResource("1_wxhvd")
+
+[node name="ThunderAmbience" type="Node" parent="."]
+script = ExtResource("3_lithw")
+
+[node name="Thunder1" type="AudioStreamPlayer" parent="ThunderAmbience"]
+stream = ExtResource("3_8r8k5")
+bus = &"Effects"
+
+[node name="Thunder2" type="AudioStreamPlayer" parent="ThunderAmbience"]
+stream = ExtResource("4_fsoar")
+volume_db = -7.0
+bus = &"Effects"
+
+[node name="Lightning" type="DirectionalLight3D" parent="ThunderAmbience"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+light_color = Color(0.732693, 0.787796, 0.852368, 1)
+sky_mode = 1
+
+[node name="LightingOffTimer" type="Timer" parent="ThunderAmbience/Lightning"]
+process_callback = 0
+wait_time = 0.05
+one_shot = true
+
+[node name="ThunderTimer" type="Timer" parent="ThunderAmbience"]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="LightingTimer" type="Timer" parent="ThunderAmbience"]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="ThunderAmbience/Lightning/LightingOffTimer" to="ThunderAmbience" method="lighting_off"]
+[connection signal="timeout" from="ThunderAmbience/ThunderTimer" to="ThunderAmbience" method="random_thunder"]
+[connection signal="timeout" from="ThunderAmbience/LightingTimer" to="ThunderAmbience" method="random_lighting"]

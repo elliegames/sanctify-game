@@ -304,6 +304,7 @@ fill_to = Vector2(0, 0.555556)
 transparency = 1
 blend_mode = 1
 cull_mode = 2
+no_depth_test = true
 shading_mode = 2
 diffuse_mode = 3
 specular_mode = 2

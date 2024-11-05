@@ -215,6 +215,7 @@ func set_cosmetics():
 
 	ui.set_volumetric_color(arena_theme.volumetric_color)
 	$Audio/GameLostDialog.stream = arena_theme.game_lose_dialog
+	$Audio/Ambience.stream = arena_theme.ambient_sound_loop
 	$WorldEnvironment.environment.ambient_light_color = arena_theme.ambient_color
 	$WorldEnvironment.environment.background_color = arena_theme.backdrop_color
 	$DirectionalLightLeft.light_color = arena_theme.directional_light_left_color

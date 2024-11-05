@@ -1,11 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://byeq1w62w51w4"]
+[gd_scene load_steps=4 format=3 uid="uid://byeq1w62w51w4"]
 
 [ext_resource type="ArrayMesh" uid="uid://cqb08lsy6bhed" path="res://models/themed_blocks/volcano/volcano_side_wall_only.obj" id="1_jal5o"]
-[ext_resource type="Material" uid="uid://ddv2sty5wvt1m" path="res://models/themed_blocks/volcano/volcano_wall_low.material" id="1_mmqsd"]
+[ext_resource type="Texture2D" uid="uid://cmapisarby3y" path="res://models/themed_blocks/volcano/textures/VolcanoPillar.png" id="1_xhifp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8pfee"]
+shading_mode = 2
+diffuse_mode = 2
+albedo_texture = ExtResource("1_xhifp")
+roughness = 0.5
 
 [node name="VolcanoWall" type="Node3D"]
 
 [node name="VolcanoSideWallOnly" type="MeshInstance3D" parent="."]
-material_override = ExtResource("1_mmqsd")
+material_override = SubResource("StandardMaterial3D_8pfee")
 cast_shadow = 0
 mesh = ExtResource("1_jal5o")

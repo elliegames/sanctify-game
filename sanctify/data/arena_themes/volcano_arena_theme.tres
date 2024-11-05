@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ArenaTheme" load_steps=4 format=3 uid="uid://rd0ui0t6q6v6"]
+[gd_resource type="Resource" script_class="ArenaTheme" load_steps=5 format=3 uid="uid://rd0ui0t6q6v6"]
 
+[ext_resource type="AudioStream" uid="uid://8nrnxgynophq" path="res://data/audio/volcano_ambience.ogg" id="1_3cx3p"]
 [ext_resource type="Script" path="res://src/arena_theme.gd" id="1_kw450"]
 [ext_resource type="AudioStream" uid="uid://6d7qomigiypb" path="res://data/audio/typhon_game_lost.ogg" id="1_tgmaw"]
 [ext_resource type="Texture2D" uid="uid://d3sv2asagix35" path="res://models/themed_blocks/volcano/textures/lava_backdrop.png" id="3_ruext"]
@@ -34,8 +35,9 @@ east_walls_outer_layer_alt = "res://prefabs/themed_blocks/volcano/volcano_wall.t
 west_walls = ""
 north_door = ""
 south_door = ""
-north_east_corner = ""
+north_east_corner = "res://prefabs/themed_blocks/volcano/volcano_north_left_corner.tscn"
 south_east_corner = ""
 north_west_corner = ""
 south_west_corner = ""
+ambient_sound_loop = ExtResource("1_3cx3p")
 game_lose_dialog = ExtResource("1_tgmaw")
