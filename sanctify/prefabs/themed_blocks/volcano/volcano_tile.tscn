@@ -328,7 +328,6 @@ cap_top = false
 [node name="VolcanoTile" type="Node3D"]
 
 [node name="TileMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 layers = 2
 cast_shadow = 0
 mesh = ExtResource("11_dwwmf")
@@ -350,7 +349,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00152588, 0.0627111, 0.0045
 visible = false
 layers = 2
 sorting_offset = 10.0
-size = Vector3(1.01, 1.0758, 1.01)
+size = Vector3(1.01, 1.1, 1.01)
 texture_emission = SubResource("GradientTexture2D_jot5x")
 emission_energy = 8.0
 upper_fade = 1e-05

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://byeq1w62w51w4"]
+
+[ext_resource type="ArrayMesh" uid="uid://cqb08lsy6bhed" path="res://models/themed_blocks/volcano/volcano_side_wall_only.obj" id="1_jal5o"]
+[ext_resource type="Material" uid="uid://ddv2sty5wvt1m" path="res://models/themed_blocks/volcano/volcano_wall_low.material" id="1_mmqsd"]
+
+[node name="VolcanoWall" type="Node3D"]
+
+[node name="VolcanoSideWallOnly" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_mmqsd")
+cast_shadow = 0
+mesh = ExtResource("1_jal5o")

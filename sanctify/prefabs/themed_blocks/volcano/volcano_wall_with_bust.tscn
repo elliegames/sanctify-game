@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://capn53fyqgs43"]
+
+[ext_resource type="ArrayMesh" uid="uid://capterfi3ivgj" path="res://models/themed_blocks/volcano/volcano_side_wall_with_bust.obj" id="1_2qa7g"]
+[ext_resource type="Material" uid="uid://c86int4wudg3t" path="res://models/themed_blocks/volcano/volcano_wall_with_bust.material" id="2_163bv"]
+[ext_resource type="Material" uid="uid://benh6n5vy1tjh" path="res://models/themed_blocks/volcano/volcano_bust.material" id="3_2aeqr"]
+[ext_resource type="Material" uid="uid://bdqswmnvacdb3" path="res://models/priestess/staff_glow.material" id="4_vwulx"]
+
+[node name="VolcanoWallWithBust" type="Node3D"]
+
+[node name="VolcanoSideWallWithBust" type="MeshInstance3D" parent="."]
+cast_shadow = 0
+mesh = ExtResource("1_2qa7g")
+surface_material_override/0 = ExtResource("2_163bv")
+surface_material_override/1 = ExtResource("3_2aeqr")
+surface_material_override/2 = ExtResource("4_vwulx")

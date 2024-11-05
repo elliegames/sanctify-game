@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/arena_theme.gd" id="1_kw450"]
 [ext_resource type="AudioStream" uid="uid://6d7qomigiypb" path="res://data/audio/typhon_game_lost.ogg" id="1_tgmaw"]
-[ext_resource type="Texture2D" uid="uid://b7huqe7vi121r" path="res://models/themed_blocks/volcano/textures/volcano_backdrop.png" id="3_mc8el"]
+[ext_resource type="Texture2D" uid="uid://d3sv2asagix35" path="res://models/themed_blocks/volcano/textures/lava_backdrop.png" id="3_ruext"]
 
 [resource]
 script = ExtResource("1_kw450")
@@ -11,10 +11,10 @@ opponent = "Typhon"
 volumetric_color = Color(0.631373, 0.027451, 0.0196078, 1)
 ambient_color = Color(0.503252, 0.53959, 0.713502, 1)
 directional_light_left_color = Color(0.907714, 0.863322, 0.892323, 1)
-directional_light_right_color = Color(0.361097, 0, 0.116235, 1)
+directional_light_right_color = Color(0.182898, 0.167621, 0.25828, 1)
 cove_light_color = Color(0.332756, 0.462821, 0.675669, 1)
 backdrop_color = Color(0, 0, 0, 1)
-volumetric_backdrop_texture = ExtResource("3_mc8el")
+volumetric_backdrop_texture = ExtResource("3_ruext")
 volumetric_backdrop_uv_scale = 100.0
 volumetric_backdrop_scroll_speed = 0.02
 volumetric_backdrop_emission = Color(0, 0, 0, 1)
@@ -29,8 +29,8 @@ north_walls_outer_layer_alt = ""
 south_walls = ""
 east_walls_inner_layer = "res://prefabs/themed_blocks/volcano/volcano_couldron.tscn"
 east_walls_inner_layer_alt = "res://prefabs/themed_blocks/volcano/volcano_molten_rock.tscn"
-east_walls_outer_layer = ""
-east_walls_outer_layer_alt = ""
+east_walls_outer_layer = "res://prefabs/themed_blocks/volcano/volcano_wall_with_bust.tscn"
+east_walls_outer_layer_alt = "res://prefabs/themed_blocks/volcano/volcano_wall.tscn"
 west_walls = ""
 north_door = ""
 south_door = ""
