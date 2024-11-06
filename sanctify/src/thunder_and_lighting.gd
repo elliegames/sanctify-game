@@ -4,7 +4,7 @@ extends Node
 func random_thunder():
 	$ThunderTimer.wait_time = randf_range(8, 15)
 	var thunder = thunders.pick_random() as AudioStreamPlayer
-	thunder.pitch_scale = randf_range(0.8, 1.2)
+	thunder.pitch_scale = randf_range(0.5, 1.5)
 	thunder.play()
 	$ThunderTimer.start()
 

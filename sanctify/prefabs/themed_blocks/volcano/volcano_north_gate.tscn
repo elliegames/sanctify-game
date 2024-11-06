@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5ifjs4fb8wop"]
+
+[ext_resource type="ArrayMesh" uid="uid://cx58i0be8fs07" path="res://models/themed_blocks/volcano/volcano_north_gate.obj" id="1_y84nn"]
+[ext_resource type="Material" uid="uid://ddv2sty5wvt1m" path="res://models/themed_blocks/volcano/volcano_wall_low.material" id="2_dx5ma"]
+[ext_resource type="ArrayMesh" uid="uid://bcb37tp2ugc35" path="res://models/themed_blocks/volcano/volcano_north_gate_pyramid.obj" id="2_ibhgs"]
+[ext_resource type="Material" uid="uid://dt5soovqk07ph" path="res://models/themed_blocks/volcano/volcano_typhon_rune.material" id="4_incps"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wmdr6"]
+size = Vector2(1.1, 2)
+orientation = 0
+
+[node name="VolcanoNorthGate" type="Node3D"]
+
+[node name="VolcanoNorthGate" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_y84nn")
+surface_material_override/0 = ExtResource("2_dx5ma")
+surface_material_override/1 = ExtResource("2_dx5ma")
+
+[node name="VolcanoNorthGatePyramid" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+material_override = ExtResource("2_dx5ma")
+mesh = ExtResource("2_ibhgs")
+
+[node name="Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.033
+autostart = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.198, 1.9, 0)
+material_override = ExtResource("4_incps")
+mesh = SubResource("PlaneMesh_wmdr6")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.32395e-08, 0.146532, -0.989206, 6.40511e-09, 0.989206, 0.146532, 1, -1.77636e-15, -4.37114e-08, -0.64153, 2, 0)
+light_energy = 2.0
+light_specular = 2.0
+shadow_enabled = true
+spot_angle = 59.05
+
+[connection signal="timeout" from="Timer" to="VolcanoNorthGatePyramid" method="rotate_y" binds= [0.02]]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw1cpfxr28b6b"]
+
+[ext_resource type="Material" uid="uid://ddv2sty5wvt1m" path="res://models/themed_blocks/volcano/volcano_wall_low.material" id="1_0sj77"]
+[ext_resource type="ArrayMesh" uid="uid://8ib7hnwiexko" path="res://models/themed_blocks/volcano/volcano_stairs.obj" id="1_25u8p"]
+
+[node name="VolcanoStairs" type="Node3D"]
+
+[node name="VolcanoStairs" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_0sj77")
+mesh = ExtResource("1_25u8p")

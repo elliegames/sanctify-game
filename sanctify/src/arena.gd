@@ -230,7 +230,7 @@ func set_cosmetics():
 	$VolumetricBackdrop.material_override.set("shader_parameter/uv1_scale", Vector3.ONE * arena_theme.volumetric_backdrop_uv_scale)
 	$VolumetricBackdrop.material_override.set("shader_parameter/scroll_speed", arena_theme.volumetric_backdrop_scroll_speed)
 	
-	$ReflectionProbe.size = Vector3(grid_length + 3, 30, grid_width + 3)
+	$ReflectionProbe.size = Vector3(grid_length + 5, 30, grid_width + 5)
 	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
 
 
@@ -508,26 +508,26 @@ func arrange_environment():
 					north_wall.rotate_y(-PI / 2)
 					add_child(north_wall)
 		else:
-			if north_wall_outer_alt_res != null:
+			if north_wall_inner_alt_res != null:
 				var alt = true
 				for x in range(grid_length):
 					alt = !alt
 					if not alt:
-						var north_outer_layer = north_wall_outer_res.instantiate()
-						north_outer_layer.position = Vector3(x, 0, -2)
-						north_outer_layer.rotate_y(-PI / 2)
-						add_child(north_outer_layer)
+						var north_inner_layer = north_wall_inner_res.instantiate()
+						north_inner_layer.position = Vector3(x, 0, -1)
+						north_inner_layer.rotate_y(-PI / 2)
+						add_child(north_inner_layer)
 					else:
-						var north_outer_layer_alt = north_wall_outer_alt_res.instantiate()
-						north_outer_layer_alt.position = Vector3(x, 0, -2)
-						north_outer_layer_alt.rotate_y(-PI / 2)
-						add_child(north_outer_layer_alt)
+						var north_inner_layer_alt = north_wall_inner_alt_res.instantiate()
+						north_inner_layer_alt.position = Vector3(x, 0, -1)
+						north_inner_layer_alt.rotate_y(-PI / 2)
+						add_child(north_inner_layer_alt)
 			else:
 				for x in range(grid_length):
-					var north_outer_layer = north_wall_outer_res.instantiate()
-					north_outer_layer.position = Vector3(x, 0, -2)
-					north_outer_layer.rotate_y(-PI / 2)
-					add_child(north_outer_layer)
+					var north_inner_layer = north_wall_inner_res.instantiate()
+					north_inner_layer.position = Vector3(x, 0, -1)
+					north_inner_layer.rotate_y(-PI / 2)
+					add_child(north_inner_layer)
 
 	# Make north-east corner
 	if north_east_corner_res != null:

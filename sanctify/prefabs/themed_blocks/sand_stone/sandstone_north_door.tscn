@@ -27,14 +27,13 @@ disable_receive_shadows = true
 [node name="SandstoneNorthDoor" type="Node3D"]
 
 [node name="SandStoneNorthDoor" type="MeshInstance3D" parent="."]
-cast_shadow = 2
 mesh = ExtResource("1_80h2t")
 surface_material_override/0 = ExtResource("2_egmp1")
 surface_material_override/1 = SubResource("ORMMaterial3D_fpoji")
 surface_material_override/2 = SubResource("StandardMaterial3D_vrn3w")
 
 [node name="OmniLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, -0.404357, 2.06498, -1.33878e-07)
+transform = Transform3D(-4.37114e-08, 0.258819, -0.965926, 0, 0.965926, 0.258819, 1, 1.13133e-08, -4.2222e-08, -0.112542, 1.98679, -1.21122e-07)
 light_energy = 2.0
 light_bake_mode = 1
 light_cull_mask = 4294967247
