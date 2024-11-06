@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5ifjs4fb8wop"]
+[gd_scene load_steps=7 format=3 uid="uid://c5ifjs4fb8wop"]
 
 [ext_resource type="ArrayMesh" uid="uid://cx58i0be8fs07" path="res://models/themed_blocks/volcano/volcano_north_gate.obj" id="1_y84nn"]
 [ext_resource type="Material" uid="uid://ddv2sty5wvt1m" path="res://models/themed_blocks/volcano/volcano_wall_low.material" id="2_dx5ma"]
 [ext_resource type="ArrayMesh" uid="uid://bcb37tp2ugc35" path="res://models/themed_blocks/volcano/volcano_north_gate_pyramid.obj" id="2_ibhgs"]
+[ext_resource type="Material" uid="uid://c3mcfergiq861" path="res://models/themed_blocks/volcano/volcano_pyramid.material" id="3_k2dq1"]
 [ext_resource type="Material" uid="uid://dt5soovqk07ph" path="res://models/themed_blocks/volcano/volcano_typhon_rune.material" id="4_incps"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_wmdr6"]
@@ -18,7 +19,7 @@ surface_material_override/1 = ExtResource("2_dx5ma")
 
 [node name="VolcanoNorthGatePyramid" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
-material_override = ExtResource("2_dx5ma")
+material_override = ExtResource("3_k2dq1")
 mesh = ExtResource("2_ibhgs")
 
 [node name="Timer" type="Timer" parent="."]
