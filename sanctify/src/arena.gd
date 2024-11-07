@@ -230,7 +230,7 @@ func set_cosmetics():
 	$VolumetricBackdrop.material_override.set("shader_parameter/uv1_scale", Vector3.ONE * arena_theme.volumetric_backdrop_uv_scale)
 	$VolumetricBackdrop.material_override.set("shader_parameter/scroll_speed", arena_theme.volumetric_backdrop_scroll_speed)
 	
-	$ReflectionProbe.size = Vector3(grid_length + 5, 30, grid_width + 5)
+	$ReflectionProbe.size = Vector3(grid_length + 4, 30, grid_width + 4)
 	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
 
 
@@ -556,7 +556,7 @@ func arrange_environment():
 		add_child(south_east_corner)
 
 	# Place the priestess
-	$Priestess.position = Vector3(int(grid_length / 2), 1, grid_width + 2)
+	$Priestess.position = Vector3(int(grid_length / 2), 0.75, grid_width + 2)
 	$CharacterGlow.position = Vector3(int(grid_length / 2), 1, grid_width + 2)
 	$AnimationTimer.start()
 	$AnimationPlayer.play("begin")
