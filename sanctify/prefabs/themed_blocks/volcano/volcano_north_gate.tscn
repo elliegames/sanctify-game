@@ -42,4 +42,10 @@ spot_angle = 59.05
 [node name="mantel_clock_01_1k" parent="." instance=ExtResource("6_rv81t")]
 transform = Transform3D(-1.72901e-07, 0, 3.95552, 0, 3.95552, 0, -3.95552, 0, -1.72901e-07, 0.242951, 2.79786, -0.000534263)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.19377, 0, 9.01906)
+light_energy = 0.1
+light_specular = 1.5
+omni_range = 13.3981
+
 [connection signal="timeout" from="Timer" to="VolcanoNorthGatePyramid" method="rotate_y" binds= [0.02]]

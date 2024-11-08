@@ -223,6 +223,7 @@ func set_cosmetics():
 	$DirectionalLightRight.light_energy = 2
 	$DirectionalLightRight.light_color = arena_theme.directional_light_right_color
 	$CornerLight.light_color = arena_theme.cove_light_color
+	$VolumetricBackdrop.position = Vector3(0, arena_theme.volumetric_backdrop_height, 0)
 	$VolumetricBackdrop.material_override.set("shader_parameter/texture_albedo", arena_theme.volumetric_backdrop_texture)
 	$VolumetricBackdrop.material_override.set("shader_parameter/texture_emission", arena_theme.volumetric_backdrop_texture)
 	$VolumetricBackdrop.material_override.set("shader_parameter/emission_energy", arena_theme.volumetric_backdrop_energy)
