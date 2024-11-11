@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://byeq1w62w51w4"]
+[gd_scene load_steps=6 format=3 uid="uid://byeq1w62w51w4"]
 
 [ext_resource type="ArrayMesh" uid="uid://cqb08lsy6bhed" path="res://models/themed_blocks/volcano/volcano_side_wall_only.obj" id="1_jal5o"]
 [ext_resource type="Texture2D" uid="uid://cmapisarby3y" path="res://models/themed_blocks/volcano/textures/VolcanoPillar.png" id="1_xhifp"]
@@ -9,9 +9,28 @@ diffuse_mode = 2
 albedo_texture = ExtResource("1_xhifp")
 roughness = 0.5
 
+[sub_resource type="Gradient" id="Gradient_nxtd3"]
+offsets = PackedFloat32Array(0, 0.0268199, 0.877395, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xx7hi"]
+gradient = SubResource("Gradient_nxtd3")
+width = 16
+height = 16
+fill_from = Vector2(0, 0.002849)
+
 [node name="VolcanoWall" type="Node3D"]
 
 [node name="VolcanoSideWallOnly" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_8pfee")
 cast_shadow = 0
 mesh = ExtResource("1_jal5o")
+
+[node name="SpriteSheet" type="Sprite3D" parent="."]
+transform = Transform3D(4.035, 3.29876e-23, -4.6223e-30, 0, -1.36358e-08, -1, -4.26685e-22, 0.311952, -4.37114e-08, -6.4, 15.5, 0.00470283)
+pixel_size = 0.2
+no_depth_test = true
+alpha_antialiasing_mode = 1
+texture_filter = 1
+render_priority = 2
+texture = SubResource("GradientTexture2D_xx7hi")

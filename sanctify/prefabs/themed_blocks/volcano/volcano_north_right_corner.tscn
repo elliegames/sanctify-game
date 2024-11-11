@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1p7d5nbwv2q8"]
+[gd_scene load_steps=6 format=3 uid="uid://c1p7d5nbwv2q8"]
 
 [ext_resource type="Texture2D" uid="uid://doym22co6hx6o" path="res://models/themed_blocks/volcano/textures/VolcanoNorthRightCorner.png" id="1_8st2b"]
 [ext_resource type="ArrayMesh" uid="uid://ifd0b6n766m2" path="res://models/themed_blocks/volcano/volcano_north_right_corner.obj" id="1_tfdhs"]
 [ext_resource type="Texture2D" uid="uid://cye8wkyed6jni" path="res://models/themed_blocks/volcano/textures/VolcanoNorthRightCornerEm.png" id="2_vufws"]
+[ext_resource type="PackedScene" uid="uid://dukr3rtbbc4y" path="res://prefabs/themed_blocks/volcano/volcano_right_side.tscn" id="4_eblb4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_13te0"]
 diffuse_mode = 2
@@ -17,3 +18,23 @@ emission_texture = ExtResource("2_vufws")
 [node name="VolcanoNorthRightCorner" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_13te0")
 mesh = ExtResource("1_tfdhs")
+
+[node name="VolcanoRightSide1" parent="." instance=ExtResource("4_eblb4")]
+
+[node name="VolcanoRightSide2" parent="." instance=ExtResource("4_eblb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+
+[node name="VolcanoRightSide3" parent="." instance=ExtResource("4_eblb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="VolcanoRightSide4" parent="." instance=ExtResource("4_eblb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3)
+
+[node name="VolcanoRightSide5" parent="." instance=ExtResource("4_eblb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="VolcanoRightSide6" parent="." instance=ExtResource("4_eblb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+
+[node name="VolcanoRightSide7" parent="." instance=ExtResource("4_eblb4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6)

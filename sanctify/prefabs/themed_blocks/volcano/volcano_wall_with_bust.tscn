@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://capn53fyqgs43"]
+[gd_scene load_steps=7 format=3 uid="uid://capn53fyqgs43"]
 
 [ext_resource type="ArrayMesh" uid="uid://capterfi3ivgj" path="res://models/themed_blocks/volcano/volcano_side_wall_with_bust.obj" id="1_2qa7g"]
 [ext_resource type="Material" uid="uid://c86int4wudg3t" path="res://models/themed_blocks/volcano/volcano_wall_with_bust.material" id="2_163bv"]
@@ -15,6 +15,16 @@ emission = Color(1, 1, 1, 1)
 emission_energy_multiplier = 100.0
 disable_receive_shadows = true
 
+[sub_resource type="Gradient" id="Gradient_xc205"]
+offsets = PackedFloat32Array(0, 0.0268199, 0.877395, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a0kfg"]
+gradient = SubResource("Gradient_xc205")
+width = 16
+height = 16
+fill_from = Vector2(0, 0.002849)
+
 [node name="VolcanoWallWithBust" type="Node3D"]
 
 [node name="VolcanoSideWallWithBust" type="MeshInstance3D" parent="."]
@@ -23,3 +33,11 @@ mesh = ExtResource("1_2qa7g")
 surface_material_override/0 = ExtResource("2_163bv")
 surface_material_override/1 = ExtResource("3_2aeqr")
 surface_material_override/2 = SubResource("StandardMaterial3D_wcm3p")
+
+[node name="SpriteSheet" type="Sprite3D" parent="."]
+transform = Transform3D(4.035, 3.32042e-23, -4.6223e-30, 0, -1.37254e-08, -1, -4.26685e-22, 0.314, -4.37114e-08, -6.4, 15.5, 0.00470283)
+pixel_size = 0.2
+no_depth_test = true
+alpha_antialiasing_mode = 1
+render_priority = 2
+texture = SubResource("GradientTexture2D_a0kfg")

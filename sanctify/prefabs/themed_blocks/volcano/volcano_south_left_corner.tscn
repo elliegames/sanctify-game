@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw74as8oudqki"]
+[gd_scene load_steps=7 format=3 uid="uid://dw74as8oudqki"]
 
 [ext_resource type="Texture2D" uid="uid://c16ms4c0caa6c" path="res://models/themed_blocks/volcano/textures/VolcanoSouthLeftCorner.png" id="1_l5qf3"]
 [ext_resource type="ArrayMesh" uid="uid://dncxjr66k68im" path="res://models/themed_blocks/volcano/volcano_south_left_corner.obj" id="1_lu22i"]
@@ -12,8 +12,32 @@ emission_enabled = true
 emission_energy_multiplier = 2.0
 emission_texture = ExtResource("2_tcg7g")
 
+[sub_resource type="Gradient" id="Gradient_l67lj"]
+offsets = PackedFloat32Array(0, 0.0268199, 0.877395, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qxkjf"]
+gradient = SubResource("Gradient_l67lj")
+width = 16
+height = 16
+fill_from = Vector2(0, 0.002849)
+
 [node name="VolcanoSouthLeftCorner" type="Node3D"]
 
 [node name="VolcanoSouthLeftCorner" type="MeshInstance3D" parent="."]
 material_override = SubResource("StandardMaterial3D_qf40x")
+cast_shadow = 0
 mesh = ExtResource("1_lu22i")
+
+[node name="SpriteSheet1" type="Sprite3D" parent="."]
+transform = Transform3D(-1.74846e-07, 0, 1, 0, 5, 0, -4, 0, -4.37114e-08, 0.5, 7.5, 7.4)
+pixel_size = 0.2
+no_depth_test = true
+render_priority = 1
+texture = SubResource("GradientTexture2D_qxkjf")
+
+[node name="SpriteSheet2" type="Sprite3D" parent="."]
+transform = Transform3D(-1.76375e-07, 0.32, -4.37114e-08, 0, -1.39876e-08, -1, -4.035, -1.39876e-08, 1.91069e-15, -0.008, 15.5, 7.385)
+pixel_size = 0.2
+no_depth_test = true
+texture = SubResource("GradientTexture2D_qxkjf")
