@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c1fq7imy8hm03"
+path="res://.godot/imported/volcano_south_beam.obj-67a9397e9f429938e986b08be1952fbc.mesh"
+
+[deps]
+
+files=["res://.godot/imported/volcano_south_beam.obj-67a9397e9f429938e986b08be1952fbc.mesh"]
+
+source_file="res://models/themed_blocks/volcano/volcano_south_beam.obj"
+dest_files=["res://.godot/imported/volcano_south_beam.obj-67a9397e9f429938e986b08be1952fbc.mesh", "res://.godot/imported/volcano_south_beam.obj-67a9397e9f429938e986b08be1952fbc.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

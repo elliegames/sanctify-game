@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw74as8oudqki"]
+
+[ext_resource type="Texture2D" uid="uid://c16ms4c0caa6c" path="res://models/themed_blocks/volcano/textures/VolcanoSouthLeftCorner.png" id="1_l5qf3"]
+[ext_resource type="ArrayMesh" uid="uid://dncxjr66k68im" path="res://models/themed_blocks/volcano/volcano_south_left_corner.obj" id="1_lu22i"]
+[ext_resource type="Texture2D" uid="uid://drmch6cap0jnb" path="res://models/themed_blocks/volcano/textures/VolcanoSouthLeftCornerEm.png" id="2_tcg7g"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qf40x"]
+diffuse_mode = 2
+albedo_texture = ExtResource("1_l5qf3")
+roughness = 0.5
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_texture = ExtResource("2_tcg7g")
+
+[node name="VolcanoSouthLeftCorner" type="Node3D"]
+
+[node name="VolcanoSouthLeftCorner" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_qf40x")
+mesh = ExtResource("1_lu22i")

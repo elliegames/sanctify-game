@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0axebcsprrld"]
+
+[ext_resource type="Texture2D" uid="uid://c4ddrjqsf758s" path="res://models/themed_blocks/volcano/textures/VolcanoSouthBeam.png" id="1_mmhib"]
+[ext_resource type="ArrayMesh" uid="uid://c1fq7imy8hm03" path="res://models/themed_blocks/volcano/volcano_south_beam.obj" id="1_pw0eq"]
+[ext_resource type="Texture2D" uid="uid://bv1xoyd57l6qt" path="res://models/themed_blocks/volcano/textures/VolcanoSouthBeamEm.png" id="2_byggo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5qw6"]
+diffuse_mode = 2
+albedo_texture = ExtResource("1_mmhib")
+roughness = 0.5
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_texture = ExtResource("2_byggo")
+
+[node name="VolcanoSouthBeam" type="Node3D"]
+
+[node name="VolcanoSouthBeam" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_q5qw6")
+mesh = ExtResource("1_pw0eq")
