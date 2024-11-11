@@ -10,7 +10,6 @@ diffuse_mode = 2
 albedo_texture = ExtResource("1_8st2b")
 roughness = 0.5
 emission_enabled = true
-emission_energy_multiplier = 2.0
 emission_texture = ExtResource("2_vufws")
 
 [node name="VolcanoNorthRightCorner" type="Node3D"]

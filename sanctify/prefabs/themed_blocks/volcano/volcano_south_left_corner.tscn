@@ -9,7 +9,6 @@ diffuse_mode = 2
 albedo_texture = ExtResource("1_l5qf3")
 roughness = 0.5
 emission_enabled = true
-emission_energy_multiplier = 2.0
 emission_texture = ExtResource("2_tcg7g")
 
 [sub_resource type="Gradient" id="Gradient_l67lj"]
