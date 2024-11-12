@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://csljkiashaj70"
+path="res://.godot/imported/cursor_destroyed.obj-d403cde29f9e39c66e15da43b64e90e3.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cursor_destroyed.obj-d403cde29f9e39c66e15da43b64e90e3.mesh"]
+
+source_file="res://models/cursor/cursor_destroyed.obj"
+dest_files=["res://.godot/imported/cursor_destroyed.obj-d403cde29f9e39c66e15da43b64e90e3.mesh", "res://.godot/imported/cursor_destroyed.obj-d403cde29f9e39c66e15da43b64e90e3.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
