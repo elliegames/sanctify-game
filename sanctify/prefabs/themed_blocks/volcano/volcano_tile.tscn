@@ -13,11 +13,11 @@
 [ext_resource type="Texture2D" uid="uid://h0l2uixfsge5" path="res://data/images/smoke_mask.png" id="11_dyo57"]
 [ext_resource type="Texture2D" uid="uid://b0bdw7doq7xw6" path="res://models/themed_blocks/volcano/textures/VolcanoCurse.png" id="12_a00mo"]
 
-[sub_resource type="Gradient" id="Gradient_og5k5"]
+[sub_resource type="Gradient" id="Gradient_wsadc"]
 colors = PackedColorArray(0, 0, 0, 0, 0.976471, 0.768627, 0.25098, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_jot5x"]
-gradient = SubResource("Gradient_og5k5")
+gradient = SubResource("Gradient_wsadc")
 fill_from = Vector2(1, 1)
 fill_to = Vector2(0, 0)
 
@@ -26,7 +26,7 @@ noise_type = 0
 frequency = 0.0122
 domain_warp_enabled = true
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_wgw1i"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hwj4e"]
 invert = true
 seamless = true
 seamless_blend_skirt = 0.2
@@ -46,7 +46,7 @@ vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("4_cktu0")
 heightmap_enabled = true
 heightmap_scale = -16.0
-heightmap_texture = SubResource("NoiseTexture2D_wgw1i")
+heightmap_texture = SubResource("NoiseTexture2D_hwj4e")
 uv2_scale = Vector3(0.085, 0.085, 0.085)
 uv2_triplanar = true
 uv2_world_triplanar = true
@@ -106,7 +106,7 @@ shader_parameter/sprite_texture = ExtResource("8_rlskg")
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.370968, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_lhubk"]
+[sub_resource type="CurveTexture" id="CurveTexture_4n1h3"]
 curve = SubResource("Curve_xnrlp")
 
 [sub_resource type="Curve" id="Curve_bonyv"]
@@ -114,7 +114,7 @@ max_value = 3.0
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.325806, 2.81887), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_700v6"]
+[sub_resource type="CurveTexture" id="CurveTexture_xkscj"]
 curve = SubResource("Curve_bonyv")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uhyvo"]
@@ -133,11 +133,11 @@ attractor_interaction_enabled = false
 scale_max = 2.0
 scale_over_velocity_min = 0.1
 scale_over_velocity_max = 1.0
-scale_over_velocity_curve = SubResource("CurveTexture_700v6")
-alpha_curve = SubResource("CurveTexture_lhubk")
+scale_over_velocity_curve = SubResource("CurveTexture_xkscj")
+alpha_curve = SubResource("CurveTexture_4n1h3")
 collision_mode = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4t1vt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwiao"]
 blend_mode = 1
 depth_draw_mode = 2
 shading_mode = 0
@@ -159,7 +159,7 @@ proximity_fade_enabled = true
 proximity_fade_distance = 0.5
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_txe0g"]
-material = SubResource("StandardMaterial3D_4t1vt")
+material = SubResource("StandardMaterial3D_uwiao")
 size = Vector2(4, 4)
 orientation = 2
 
@@ -343,7 +343,7 @@ _data = {
 [sub_resource type="Gradient" id="Gradient_tt2gf"]
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fcs5x"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qxqop"]
 gradient = SubResource("Gradient_tt2gf")
 fill_from = Vector2(0, 0.156695)
 fill_to = Vector2(0, 0.555556)
@@ -359,7 +359,7 @@ specular_mode = 2
 disable_ambient_light = true
 disable_fog = true
 albedo_color = Color(1, 1, 1, 0)
-albedo_texture = SubResource("GradientTexture2D_fcs5x")
+albedo_texture = SubResource("GradientTexture2D_qxqop")
 metallic_specular = 0.0
 emission_enabled = true
 emission = Color(0.755941, 0.825849, 0.937693, 1)
