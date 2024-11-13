@@ -1,9 +1,10 @@
-[gd_scene load_steps=46 format=3 uid="uid://c63plnd6gmemd"]
+[gd_scene load_steps=44 format=3 uid="uid://c63plnd6gmemd"]
 
 [ext_resource type="ArrayMesh" uid="uid://b0ewx5lx8goo2" path="res://models/themed_blocks/eden/grass_blade.obj" id="1_463hj"]
 [ext_resource type="Material" uid="uid://da0s6rbvrj4w4" path="res://shader_materials/grass.material" id="2_hbhic"]
 [ext_resource type="PackedScene" uid="uid://3k3sqnneywit" path="res://prefabs/tile.tscn" id="3_gaosc"]
 [ext_resource type="Script" path="res://src/grass_reaction.gd" id="3_snyjr"]
+[ext_resource type="Material" uid="uid://b8s3ob35t8qul" path="res://shader_materials/grassy_ground.material" id="4_713s4"]
 [ext_resource type="Material" uid="uid://de4oh806ug2tn" path="res://models/themed_blocks/volcano/volcano_tile.material" id="4_iapwd"]
 [ext_resource type="Texture2D" uid="uid://3eih52ybnui7" path="res://data/images/fog.png" id="5_hvmrj"]
 [ext_resource type="Texture2D" uid="uid://djr73062q5fe1" path="res://data/images/puddle.png" id="6_t0y56"]
@@ -13,20 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://0bxbrv38yt6e" path="res://data/audio/flag_off.ogg" id="10_q7ca6"]
 [ext_resource type="Texture2D" uid="uid://b0bdw7doq7xw6" path="res://models/themed_blocks/volcano/textures/VolcanoCurse.png" id="11_lujqe"]
 [ext_resource type="Texture2D" uid="uid://h0l2uixfsge5" path="res://data/images/smoke_mask.png" id="12_3p555"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_rt0ue"]
-
-[sub_resource type="Gradient" id="Gradient_04bjn"]
-colors = PackedColorArray(0.47451, 0.588235, 0, 1, 0.47512, 0.587456, 3.85046e-07, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_u2ont"]
-gradient = SubResource("Gradient_04bjn")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gt3j"]
-shading_mode = 0
-diffuse_mode = 2
-specular_mode = 2
-albedo_texture = SubResource("GradientTexture2D_u2ont")
+[ext_resource type="ArrayMesh" uid="uid://coca8s0lb4vq0" path="res://models/themed_blocks/eden/eden_tile.obj" id="14_amidq"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_gvfv2"]
 orientation = 1
@@ -170,6 +158,7 @@ specular_mode = 2
 disable_ambient_light = true
 disable_fog = true
 vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.611765)
 albedo_texture = ExtResource("12_3p555")
 heightmap_scale = 16.0
 heightmap_texture = ExtResource("12_3p555")
@@ -263,7 +252,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("TileMesh/MultiMeshInstance3D:material_override:shader_parameter/character_radius")
+tracks/6/path = NodePath("TileMesh/Grass:material_override:shader_parameter/character_radius")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -275,7 +264,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("TileMesh/MultiMeshInstance3D:material_override:shader_parameter/character_push_strength")
+tracks/7/path = NodePath("TileMesh/Grass:material_override:shader_parameter/character_push_strength")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -330,26 +319,26 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("TileMesh/MultiMeshInstance3D:material_override:shader_parameter/character_radius")
+tracks/2/path = NodePath("TileMesh/Grass:material_override:shader_parameter/character_radius")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.0666667, 0.933333, 1),
 "transitions": PackedFloat32Array(1, 0.31864, 1, 1),
 "update": 0,
-"values": [0.5, 0.2, 1.5, 0.5]
+"values": [0.5, 0.2, 2.0, 0.5]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("TileMesh/MultiMeshInstance3D:material_override:shader_parameter/character_push_strength")
+tracks/3/path = NodePath("TileMesh/Grass:material_override:shader_parameter/character_push_strength")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.0666667, 0.933333, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [1.0, 3.0, 0.0, 1.0]
+"values": [1.0, 5.0, 0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_bb711"]
@@ -447,29 +436,30 @@ cap_top = false
 
 [node name="EdenTile" type="Node3D"]
 
+[node name="GrassBlade" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
+mesh = ExtResource("1_463hj")
+surface_material_override/0 = ExtResource("2_hbhic")
+
 [node name="TileMesh" type="MeshInstance3D" parent="."]
 layers = 2
-mesh = SubResource("BoxMesh_rt0ue")
-surface_material_override/0 = SubResource("StandardMaterial3D_1gt3j")
+mesh = ExtResource("14_amidq")
+surface_material_override/0 = ExtResource("4_713s4")
 
 [node name="Base" type="MeshInstance3D" parent="TileMesh"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
 mesh = SubResource("QuadMesh_gvfv2")
+skeleton = NodePath("")
 
-[node name="MultiMeshInstance3D" type="MultiMeshInstance3D" parent="TileMesh"]
+[node name="Grass" type="MultiMeshInstance3D" parent="TileMesh"]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0.5, 0)
 layers = 2
 material_override = ExtResource("2_hbhic")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_vq7hk")
 script = ExtResource("3_snyjr")
-
-[node name="GrassBlade" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-visible = false
-mesh = ExtResource("1_463hj")
-surface_material_override/0 = ExtResource("2_hbhic")
 
 [node name="Tile" parent="." node_paths=PackedStringArray("tile_mesh", "flag_node", "fog", "imperfection", "smoke", "selection_box", "animator", "cleansing_light") instance=ExtResource("3_gaosc")]
 tile_mesh = NodePath("../TileMesh")
