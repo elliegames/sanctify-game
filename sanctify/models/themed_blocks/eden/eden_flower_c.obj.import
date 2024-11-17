@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d1xe5d6xgmnow"
+path="res://.godot/imported/eden_flower_c.obj-376e543ef03a16b9eef3e2ae167b695d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/eden_flower_c.obj-376e543ef03a16b9eef3e2ae167b695d.mesh"]
+
+source_file="res://models/themed_blocks/eden/eden_flower_c.obj"
+dest_files=["res://.godot/imported/eden_flower_c.obj-376e543ef03a16b9eef3e2ae167b695d.mesh", "res://.godot/imported/eden_flower_c.obj-376e543ef03a16b9eef3e2ae167b695d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

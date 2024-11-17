@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://brjsc4mb4nos"]
+
+[ext_resource type="ArrayMesh" uid="uid://d3slnib1ad83g" path="res://models/themed_blocks/eden/eden_pillar_floor.obj" id="1_akvv4"]
+
+[node name="EdenPillarFloor" type="Node3D"]
+
+[node name="EdenPillarFloor" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_akvv4")

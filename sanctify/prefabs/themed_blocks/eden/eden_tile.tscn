@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://3k3sqnneywit" path="res://prefabs/tile.tscn" id="3_gaosc"]
 [ext_resource type="Script" path="res://src/grass_reaction.gd" id="3_snyjr"]
 [ext_resource type="Material" uid="uid://b8s3ob35t8qul" path="res://shader_materials/grassy_ground.material" id="4_713s4"]
-[ext_resource type="Material" uid="uid://de4oh806ug2tn" path="res://models/themed_blocks/volcano/volcano_tile.material" id="4_iapwd"]
+[ext_resource type="Material" uid="uid://bj0kvnnt4pao4" path="res://shader_materials/grassy_ground_alt.material" id="4_ikr7h"]
 [ext_resource type="Texture2D" uid="uid://3eih52ybnui7" path="res://data/images/fog.png" id="5_hvmrj"]
 [ext_resource type="Texture2D" uid="uid://djr73062q5fe1" path="res://data/images/puddle.png" id="6_t0y56"]
 [ext_resource type="Shader" path="res://shader_materials/additive_sprite.gdshader" id="7_7akv4"]
@@ -435,6 +435,7 @@ radial_segments = 4
 cap_top = false
 
 [node name="EdenTile" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0901874, 0, 0)
 
 [node name="GrassBlade" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -454,7 +455,7 @@ mesh = SubResource("QuadMesh_gvfv2")
 skeleton = NodePath("")
 
 [node name="Grass" type="MultiMeshInstance3D" parent="TileMesh"]
-transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0.5, 0)
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 0.556844, 0)
 layers = 2
 material_override = ExtResource("2_hbhic")
 cast_shadow = 0
@@ -470,7 +471,7 @@ smoke = NodePath("../Smoke")
 selection_box = NodePath("../SelectionHighlight")
 animator = NodePath("../AnimationPlayer")
 cleansing_light = NodePath("../CleansingLight")
-alternate_material = ExtResource("4_iapwd")
+alternate_material = ExtResource("4_ikr7h")
 
 [node name="SelectionHighlight" type="Decal" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00152588, 0.0627111, 0.00454148)

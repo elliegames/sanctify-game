@@ -1,8 +1,10 @@
 shader_type spatial;
 render_mode cull_disabled, diffuse_lambert_wrap;
 
+uniform sampler2D distribution_noise;
+uniform float distribution_scale = 0.5;
+
 uniform float sway = 1.14;
-uniform float sway_ = 0.34;
 uniform float sway_pow = 1.3;
 uniform float grass_roughness = 0.3;
 uniform float sway_noise_sampeling_scale = 0.12;
@@ -37,16 +39,21 @@ void fragment()
 
 void vertex()
 {
+	vec3 world_vertex = (MODEL_MATRIX * vec4(VERTEX,1.0)).xyz;
+	vec2 distribution_uv = world_vertex.xz * distribution_scale;
+
+	float dist = 1.0 - texture(distribution_noise, distribution_uv).r;
+
 	VERTEX *= grass_scale;
+	VERTEX.y *= dist;
 	vert = VERTEX;
 	NORMAL = vec3(0.0,1.0,0.0);
 	vec4 sway_dir_local = vec4(sway_dir,0.0) * MODEL_MATRIX;
-	vec3 world_vertex = (MODEL_MATRIX * vec4(VERTEX,1.0)).xyz;
+
 	current_wind = texture(sway_noise,normalize(sway_dir.xz) * (-TIME*sway_time_scale) + world_vertex.xz*vec2(sway_noise_sampeling_scale)).x;
 	current_wind = 0.25 + 0.75 * current_wind;
 	VERTEX += normalize(sway_dir_local.xyz) * sway * (VERTEX.y) * current_wind;
-	VERTEX.y -= sway_*abs(pow(VERTEX.x,sway_pow));
-	
+
 	vec3 dir_to_character = cursor_position - MODEL_MATRIX[3].xyz;
 	// uncomment the following line to have a horizontal only character push
 //	dir_to_character.y = 0.0;

@@ -219,8 +219,6 @@ func set_cosmetics():
 	$WorldEnvironment.environment.ambient_light_color = arena_theme.ambient_color
 	$WorldEnvironment.environment.background_color = arena_theme.backdrop_color
 	$DirectionalLightLeft.light_color = arena_theme.directional_light_left_color
-	$DirectionalLightLeft.light_energy = 2
-	$DirectionalLightRight.light_energy = 2
 	$DirectionalLightRight.light_color = arena_theme.directional_light_right_color
 	$CornerLight.light_color = arena_theme.cove_light_color
 	$VolumetricBackdrop.position = Vector3(0, arena_theme.volumetric_backdrop_height, 0)

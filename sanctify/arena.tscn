@@ -90,8 +90,9 @@ ambient_light_energy = 0.5
 reflected_light_source = 2
 glow_enabled = true
 glow_intensity = 0.25
-glow_strength = 1.43
+glow_strength = 1.2
 glow_blend_mode = 1
+glow_hdr_threshold = 1.1
 fog_light_color = Color(0.548217, 0.716057, 0.763206, 1)
 fog_density = 0.001
 fog_sky_affect = 0.0
@@ -352,7 +353,7 @@ tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [2.0]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
@@ -574,7 +575,7 @@ tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [2.0]
 }
 
 [sub_resource type="Animation" id="Animation_occ6y"]
@@ -814,7 +815,7 @@ tracks/13/keys = {
 "times": PackedFloat32Array(2.36667, 3.76667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.0, 0.0]
+"values": [2.0, 0.0]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -856,7 +857,7 @@ script = ExtResource("1_2d1np")
 arena_themes = Array[ExtResource("2_od3yl")]([ExtResource("3_ukhlb"), ExtResource("4_4h448"), ExtResource("4_88n67")])
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.707106, -0.499999, 0.5, 0, 0.707106, 0.707106, -0.707106, -0.499999, 0.5, 10, 14.1421, 10)
+transform = Transform3D(0.707107, -0.5, 0.5, 1.49012e-08, 0.707107, 0.707106, -0.707107, -0.5, 0.5, 10, 14.1421, 10)
 cull_mask = 1048567
 projection = 1
 size = 6.0
@@ -916,6 +917,7 @@ environment = SubResource("Environment_bjets")
 [node name="DirectionalLightLeft" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.323274, 0.742638, -0.5865, 3.24558e-08, 0.619779, 0.784777, 0.946305, -0.253698, 0.200358, 0, 0, 0)
 light_color = Color(0.867746, 0.820727, 0.806933, 1)
+light_energy = 2.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 0
