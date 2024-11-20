@@ -11,7 +11,7 @@
 [sub_resource type="Gradient" id="Gradient_oh4r5"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_mvcv6"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bd44h"]
 gradient = SubResource("Gradient_oh4r5")
 
 [sub_resource type="Gradient" id="Gradient_qqffa"]
@@ -21,7 +21,7 @@ noise_type = 0
 frequency = 0.0093
 fractal_type = 0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lxlw5"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ajecx"]
 height = 256
 seamless = true
 seamless_blend_skirt = 0.375
@@ -45,8 +45,8 @@ shader_parameter/bot_color = Color(0.22476, 0.36, 0.00719999, 1)
 shader_parameter/grass_scale = Vector3(1, 0.64, 1)
 shader_parameter/character_radius = 0.2
 shader_parameter/character_push_strength = 1.0
-shader_parameter/distribution_noise = SubResource("GradientTexture1D_mvcv6")
-shader_parameter/sway_noise = SubResource("NoiseTexture2D_lxlw5")
+shader_parameter/distribution_noise = SubResource("GradientTexture1D_bd44h")
+shader_parameter/sway_noise = SubResource("NoiseTexture2D_ajecx")
 shader_parameter/character_distance_falloff_curve = ExtResource("2_w0afl")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_hwme4"]
@@ -59,7 +59,7 @@ noise_type = 0
 frequency = 0.0093
 fractal_type = 0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w0lpn"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3eskl"]
 height = 256
 seamless = true
 seamless_blend_skirt = 0.375
@@ -84,7 +84,7 @@ shader_parameter/grass_scale = Vector3(0.2, 0.5, 0.2)
 shader_parameter/character_radius = 1.5
 shader_parameter/character_push_strength = 0.0
 shader_parameter/distribution_noise = ExtResource("5_knoq5")
-shader_parameter/sway_noise = SubResource("NoiseTexture2D_w0lpn")
+shader_parameter/sway_noise = SubResource("NoiseTexture2D_3eskl")
 shader_parameter/character_distance_falloff_curve = ExtResource("2_w0afl")
 
 [sub_resource type="MultiMesh" id="MultiMesh_hawbo"]

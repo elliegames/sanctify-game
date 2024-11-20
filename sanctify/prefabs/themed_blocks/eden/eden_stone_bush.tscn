@@ -30,7 +30,7 @@ noise_type = 0
 frequency = 0.0093
 fractal_type = 0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_edhgf"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cnl6y"]
 height = 256
 seamless = true
 seamless_blend_skirt = 0.375
@@ -55,7 +55,7 @@ shader_parameter/grass_scale = Vector3(2, 4, 2)
 shader_parameter/character_radius = 0.2
 shader_parameter/character_push_strength = 0.0
 shader_parameter/distribution_noise = ExtResource("7_4xr0t")
-shader_parameter/sway_noise = SubResource("NoiseTexture2D_edhgf")
+shader_parameter/sway_noise = SubResource("NoiseTexture2D_cnl6y")
 shader_parameter/character_distance_falloff_curve = ExtResource("6_7bkia")
 
 [sub_resource type="QuadMesh" id="QuadMesh_umat4"]

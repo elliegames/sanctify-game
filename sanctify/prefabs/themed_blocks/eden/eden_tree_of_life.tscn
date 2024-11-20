@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://nfnoiq76tf5l"]
+[gd_scene load_steps=45 format=3 uid="uid://nfnoiq76tf5l"]
 
 [ext_resource type="Material" uid="uid://dyywigo3axpwl" path="res://models/themed_blocks/eden/eden_tree_of_life.material" id="1_ee8tm"]
 [ext_resource type="ArrayMesh" uid="uid://bbu2r2weppv7x" path="res://models/themed_blocks/eden/eden_tree_of_life.obj" id="2_0k7a5"]
@@ -15,11 +15,22 @@
 [ext_resource type="Material" uid="uid://b8s3ob35t8qul" path="res://shader_materials/grassy_ground.material" id="12_jmdif"]
 [ext_resource type="ArrayMesh" uid="uid://b0ewx5lx8goo2" path="res://models/themed_blocks/eden/grass_blade.obj" id="13_v3403"]
 [ext_resource type="Material" uid="uid://da0s6rbvrj4w4" path="res://shader_materials/grass.material" id="14_1mdxd"]
+[ext_resource type="Material" uid="uid://caij68t703hxk" path="res://models/themed_blocks/eden/eden_white_low.material" id="15_vufuf"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7er13"]
 noise_type = 3
 seed = 2
 frequency = 0.0563
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3cjao"]
+shading_mode = 0
+albedo_color = Color(0.257001, 0.131788, 0.0686719, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cl3lm"]
+top_radius = 0.02
+bottom_radius = 0.02
+radial_segments = 4
+rings = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsdg4"]
 shading_mode = 2
@@ -32,12 +43,6 @@ emission_enabled = true
 emission = Color(0, 0.8, 1, 1)
 emission_energy_multiplier = 16.0
 disable_receive_shadows = true
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_cl3lm"]
-top_radius = 0.02
-bottom_radius = 0.02
-radial_segments = 4
-rings = 1
 
 [sub_resource type="SphereMesh" id="SphereMesh_bdtt6"]
 radius = 0.1
@@ -317,7 +322,7 @@ texture_filter = 4
 texture = ExtResource("3_b62ac")
 
 [node name="Leaves3" type="Sprite3D" parent="EdenTreeOfLife"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.17623, 3.03029, 1.91903)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12898, 3.03029, 1.49637)
 billboard = 1
 alpha_cut = 1
 alpha_scissor_threshold = 0.86
@@ -340,7 +345,7 @@ transform = Transform3D(0.433013, 0.25, 0, -0.25, 0.433013, 0, 0, 0, 0.5, 0.4536
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="EdenTreeOfLife/Apple1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03104, 0)
-material_override = SubResource("StandardMaterial3D_lsdg4")
+material_override = SubResource("StandardMaterial3D_3cjao")
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_cl3lm")
 skeleton = NodePath("../..")
@@ -368,7 +373,7 @@ transform = Transform3D(0.433013, 0.25, 0, -0.25, 0.433013, 0, 0, 0, 0.5, 1.3988
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="EdenTreeOfLife/Apple2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03104, 0)
-material_override = SubResource("StandardMaterial3D_lsdg4")
+material_override = SubResource("StandardMaterial3D_3cjao")
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_cl3lm")
 skeleton = NodePath("../..")
@@ -396,7 +401,7 @@ transform = Transform3D(0.433013, 0.25, 0, -0.25, 0.433013, 0, 0, 0, 0.5, -1.416
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="EdenTreeOfLife/Apple3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.03104, 0)
-material_override = SubResource("StandardMaterial3D_lsdg4")
+material_override = SubResource("StandardMaterial3D_3cjao")
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_cl3lm")
 skeleton = NodePath("../..")
@@ -512,4 +517,5 @@ surface_material_override/0 = ExtResource("14_1mdxd")
 
 [node name="EdenArch" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.848545, 0, 0, 0, 0.848545, 0, 0, 0, 0.848545, 0, 0.496, -0.005)
+material_override = ExtResource("15_vufuf")
 mesh = ExtResource("11_iw08q")
