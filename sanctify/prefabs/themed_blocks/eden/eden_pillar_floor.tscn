@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://brjsc4mb4nos"]
+[gd_scene load_steps=3 format=3 uid="uid://brjsc4mb4nos"]
 
 [ext_resource type="ArrayMesh" uid="uid://d3slnib1ad83g" path="res://models/themed_blocks/eden/eden_pillar_floor.obj" id="1_akvv4"]
+[ext_resource type="ArrayMesh" uid="uid://b5xmql1ue7r58" path="res://models/themed_blocks/eden/eden_railing.obj" id="2_ughxy"]
 
 [node name="EdenPillarFloor" type="Node3D"]
 
 [node name="EdenPillarFloor" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_akvv4")
+
+[node name="EdenRailing" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.36, 0.575, 0)
+mesh = ExtResource("2_ughxy")

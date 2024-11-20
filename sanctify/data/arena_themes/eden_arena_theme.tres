@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="ArenaTheme" load_steps=3 format=3 uid="uid://76ni4d5a5xkx"]
+[gd_resource type="Resource" script_class="ArenaTheme" load_steps=4 format=3 uid="uid://76ni4d5a5xkx"]
 
 [ext_resource type="Script" path="res://src/arena_theme.gd" id="1_0sjci"]
 [ext_resource type="AudioStream" uid="uid://b8uw8g8i55qvh" path="res://data/audio/eris_game_lost.ogg" id="1_aipry"]
+[ext_resource type="AudioStream" uid="uid://dgdyqov0svtaj" path="res://data/audio/eden_ambience.ogg" id="1_ge8gl"]
 
 [resource]
 script = ExtResource("1_0sjci")
@@ -17,14 +18,14 @@ volumetric_backdrop_uv_scale = 1.0
 volumetric_backdrop_scroll_speed = 0.001
 volumetric_backdrop_emission = Color(0, 0, 0, 1)
 volumetric_backdrop_energy = 0.0
-volumetric_backdrop_height = 0.0
+volumetric_backdrop_height = -10.0
 tile = "res://prefabs/themed_blocks/eden/eden_tile.tscn"
 imperfection_ratio = 0.01
 north_walls_inner_layer = "res://prefabs/themed_blocks/eden/eden_stone.tscn"
 north_walls_inner_layer_alt = "res://prefabs/themed_blocks/eden/eden_stone_bush.tscn"
 north_walls_outer_layer = "res://prefabs/themed_blocks/eden/eden_north_outer_field.tscn"
 north_walls_outer_layer_alt = ""
-south_walls = ""
+south_walls = "res://prefabs/themed_blocks/eden/eden_big_bush.tscn"
 east_walls_inner_layer = "res://prefabs/themed_blocks/eden/eden_stone.tscn"
 east_walls_inner_layer_alt = "res://prefabs/themed_blocks/eden/eden_stone_bush.tscn"
 east_walls_outer_layer = "res://prefabs/themed_blocks/eden/eden_pillar.tscn"
@@ -32,8 +33,9 @@ east_walls_outer_layer_alt = "res://prefabs/themed_blocks/eden/eden_pillar_floor
 west_walls = ""
 north_door = "res://prefabs/themed_blocks/eden/eden_tree_of_life.tscn"
 south_door = ""
-north_east_corner = ""
+north_east_corner = "res://prefabs/themed_blocks/eden/eden_north_left_corner.tscn"
 south_east_corner = ""
 north_west_corner = ""
 south_west_corner = ""
+ambient_sound_loop = ExtResource("1_ge8gl")
 game_lose_dialog = ExtResource("1_aipry")
