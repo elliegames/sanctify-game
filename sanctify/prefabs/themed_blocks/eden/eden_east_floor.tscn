@@ -9,27 +9,27 @@
 [ext_resource type="ArrayMesh" uid="uid://b0ewx5lx8goo2" path="res://models/themed_blocks/eden/grass_blade.obj" id="7_u85nd"]
 [ext_resource type="Material" uid="uid://da0s6rbvrj4w4" path="res://shader_materials/grass.material" id="8_mnof4"]
 
-[sub_resource type="Gradient" id="Gradient_hni68"]
+[sub_resource type="Gradient" id="Gradient_8irsu"]
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_q2npe"]
-gradient = SubResource("Gradient_hni68")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1744t"]
+gradient = SubResource("Gradient_8irsu")
 
-[sub_resource type="Gradient" id="Gradient_gt50m"]
+[sub_resource type="Gradient" id="Gradient_qf2ji"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_2gcfj"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1xwcj"]
 noise_type = 0
 frequency = 0.0093
 fractal_type = 0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bxtk0"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yixum"]
 height = 256
 seamless = true
 seamless_blend_skirt = 0.375
-color_ramp = SubResource("Gradient_gt50m")
-noise = SubResource("FastNoiseLite_2gcfj")
+color_ramp = SubResource("Gradient_qf2ji")
+noise = SubResource("FastNoiseLite_1xwcj")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_yp3ny"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vgbtg"]
 render_priority = 0
 shader = ExtResource("2_akn3t")
 shader_parameter/distribution_scale = 0.5
@@ -39,15 +39,15 @@ shader_parameter/grass_roughness = 0.3
 shader_parameter/sway_noise_sampeling_scale = 0.12
 shader_parameter/sway_time_scale = 0.2
 shader_parameter/sway_dir = Vector3(1, 0, -0.5)
-shader_parameter/color_scale = 0.3
-shader_parameter/color_grad_height = -0.5
-shader_parameter/top_color = Color(0.434, 0.62, 0, 1)
-shader_parameter/bot_color = Color(0.22476, 0.36, 0.00719999, 1)
+shader_parameter/color_scale = 1.44
+shader_parameter/color_grad_height = 0.0
+shader_parameter/top_color = Color(0.357697, 0.514674, 0, 1)
+shader_parameter/bot_color = Color(4.81308e-08, 0.383742, 0.0962123, 1)
 shader_parameter/grass_scale = Vector3(1, 0.64, 1)
 shader_parameter/character_radius = 0.2
 shader_parameter/character_push_strength = 1.0
-shader_parameter/distribution_noise = SubResource("GradientTexture1D_q2npe")
-shader_parameter/sway_noise = SubResource("NoiseTexture2D_bxtk0")
+shader_parameter/distribution_noise = SubResource("GradientTexture1D_1744t")
+shader_parameter/sway_noise = SubResource("NoiseTexture2D_yixum")
 shader_parameter/character_distance_falloff_curve = ExtResource("3_kibxw")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_rfx7x"]
@@ -101,7 +101,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 
 [node name="EdenBigBush" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0.001)
-material_override = SubResource("ShaderMaterial_yp3ny")
+material_override = SubResource("ShaderMaterial_vgbtg")
 mesh = ExtResource("4_7miki")
 
 [node name="Floor" type="MeshInstance3D" parent="."]
