@@ -30,17 +30,17 @@ class_name ArenaTheme
 @export_file var north_walls_outer_layer: String
 @export_file var north_walls_outer_layer_alt: String
 @export_file var south_walls: String
-@export_file var east_walls_inner_layer: String
-@export_file var east_walls_inner_layer_alt: String
-@export_file var east_walls_outer_layer: String
-@export_file var east_walls_outer_layer_alt: String
-@export_file var west_walls: String
+@export_file var west_walls_inner_layer: String
+@export_file var west_walls_inner_layer_alt: String
+@export_file var west_walls_outer_layer: String
+@export_file var west_walls_outer_layer_alt: String
+@export_file var east_walls: String
 @export_file var north_door: String
 @export_file var south_door: String
-@export_file var north_east_corner: String
-@export_file var south_east_corner: String
 @export_file var north_west_corner: String
 @export_file var south_west_corner: String
+@export_file var north_east_corner: String
+@export_file var south_east_corner: String
 
 @export_group("Audio")
 @export var ambient_sound_loop: AudioStream

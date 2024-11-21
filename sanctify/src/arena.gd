@@ -228,7 +228,7 @@ func set_cosmetics():
 	$VolumetricBackdrop.material_override.set("shader_parameter/emission", arena_theme.volumetric_backdrop_emission)
 	$VolumetricBackdrop.material_override.set("shader_parameter/uv1_scale", Vector3.ONE * arena_theme.volumetric_backdrop_uv_scale)
 	$VolumetricBackdrop.material_override.set("shader_parameter/scroll_speed", arena_theme.volumetric_backdrop_scroll_speed)
-	
+
 	$ReflectionProbe.size = Vector3(grid_length + 4, 30, grid_width + 4)
 	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
 
@@ -354,20 +354,20 @@ func arrange_environment():
 	if ResourceLoader.exists(arena_theme.north_walls_outer_layer_alt):
 		north_wall_outer_alt_res = load(arena_theme.north_walls_outer_layer_alt)
 
-	if ResourceLoader.exists(arena_theme.east_walls_inner_layer):
-		east_wall_inner_res = load(arena_theme.east_walls_inner_layer)
+	if ResourceLoader.exists(arena_theme.west_walls_inner_layer):
+		east_wall_inner_res = load(arena_theme.west_walls_inner_layer)
 
-	if ResourceLoader.exists(arena_theme.east_walls_inner_layer_alt):
-		east_wall_inner_alt_res = load(arena_theme.east_walls_inner_layer_alt)
+	if ResourceLoader.exists(arena_theme.west_walls_inner_layer_alt):
+		east_wall_inner_alt_res = load(arena_theme.west_walls_inner_layer_alt)
 
-	if ResourceLoader.exists(arena_theme.east_walls_outer_layer):
-		east_wall_outer_res = load(arena_theme.east_walls_outer_layer)
+	if ResourceLoader.exists(arena_theme.west_walls_outer_layer):
+		east_wall_outer_res = load(arena_theme.west_walls_outer_layer)
 
-	if ResourceLoader.exists(arena_theme.east_walls_outer_layer_alt):
-		east_wall_outer_alt_res = load(arena_theme.east_walls_outer_layer_alt)
+	if ResourceLoader.exists(arena_theme.west_walls_outer_layer_alt):
+		east_wall_outer_alt_res = load(arena_theme.west_walls_outer_layer_alt)
 
-	if ResourceLoader.exists(arena_theme.west_walls):
-		west_wall_res = load(arena_theme.west_walls)
+	if ResourceLoader.exists(arena_theme.east_walls):
+		west_wall_res = load(arena_theme.east_walls)
 
 	if ResourceLoader.exists(arena_theme.south_walls):
 		south_wall_res = load(arena_theme.south_walls)
@@ -378,17 +378,17 @@ func arrange_environment():
 	if ResourceLoader.exists(arena_theme.south_door):
 		south_door_res = load(arena_theme.south_door)
 
-	if ResourceLoader.exists(arena_theme.north_east_corner):
-		north_east_corner_res = load(arena_theme.north_east_corner)
-
 	if ResourceLoader.exists(arena_theme.north_west_corner):
-		north_west_corner_res = load(arena_theme.north_west_corner)
+		north_east_corner_res = load(arena_theme.north_west_corner)
 
-	if ResourceLoader.exists(arena_theme.south_east_corner):
-		south_east_corner_res = load(arena_theme.south_east_corner)
+	if ResourceLoader.exists(arena_theme.north_east_corner):
+		north_west_corner_res = load(arena_theme.north_east_corner)
 
 	if ResourceLoader.exists(arena_theme.south_west_corner):
-		south_west_corner_res = load(arena_theme.south_west_corner)
+		south_east_corner_res = load(arena_theme.south_west_corner)
+
+	if ResourceLoader.exists(arena_theme.south_east_corner):
+		south_west_corner_res = load(arena_theme.south_east_corner)
 
 	# Make east inner wall
 	if east_wall_inner_res != null:
@@ -530,29 +530,29 @@ func arrange_environment():
 
 	# Make north-east corner
 	if north_east_corner_res != null:
-		var north_east_corner = north_east_corner_res.instantiate()
-		north_east_corner.position = Vector3(-1, 0, -1)
-		add_child(north_east_corner)
+		var north_west_corner = north_east_corner_res.instantiate()
+		north_west_corner.position = Vector3(-1, 0, -1)
+		add_child(north_west_corner)
 
 	# Make north-west corner
 	if north_west_corner_res != null:
-		var north_west_corner = north_west_corner_res.instantiate()
-		north_west_corner.position = Vector3(grid_length, 0, -1)
-		add_child(north_west_corner)
+		var north_east_corner = north_west_corner_res.instantiate()
+		north_east_corner.position = Vector3(grid_length, 0, -1)
+		add_child(north_east_corner)
 
 	# Make south-west corner
 	if south_west_corner_res != null:
-		var south_west_corner = south_west_corner_res.instantiate()
-		south_west_corner.position = Vector3(grid_length, 0, grid_width)
-		south_west_corner.rotate_y(-PI / 2)
-		add_child(south_west_corner)
+		var south_east_corner = south_west_corner_res.instantiate()
+		south_east_corner.position = Vector3(grid_length, 0, grid_width)
+		south_east_corner.rotate_y(-PI / 2)
+		add_child(south_east_corner)
 
 	# Make south-east corner
 	if south_east_corner_res != null:
-		var south_east_corner = south_east_corner_res.instantiate()
-		south_east_corner.position = Vector3(-1, 0, grid_width)
-		south_east_corner.rotate_y(-PI / 2)
-		add_child(south_east_corner)
+		var south_west_corner = south_east_corner_res.instantiate()
+		south_west_corner.position = Vector3(-1, 0, grid_width)
+		south_west_corner.rotate_y(-PI / 2)
+		add_child(south_west_corner)
 
 	# Place the priestess
 	$Priestess.position = Vector3(int(grid_length / 2), 0.75, grid_width + 2)

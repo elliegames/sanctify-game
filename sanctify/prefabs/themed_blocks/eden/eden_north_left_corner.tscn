@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://clopc500wd5yt"]
+[gd_scene load_steps=16 format=3 uid="uid://clopc500wd5yt"]
 
 [ext_resource type="PackedScene" uid="uid://brjsc4mb4nos" path="res://prefabs/themed_blocks/eden/eden_pillar_floor.tscn" id="1_r0nnb"]
 [ext_resource type="PackedScene" uid="uid://bo1kimksylmrg" path="res://prefabs/themed_blocks/eden/eden_stone_bush.tscn" id="2_2llsq"]
@@ -7,6 +7,68 @@
 [ext_resource type="ArrayMesh" uid="uid://c6w4ido034mb6" path="res://models/themed_blocks/eden/eden_railing_round.obj" id="5_bcdhw"]
 [ext_resource type="Material" uid="uid://caij68t703hxk" path="res://models/themed_blocks/eden/eden_white_low.material" id="6_05tlt"]
 [ext_resource type="ArrayMesh" uid="uid://d3slnib1ad83g" path="res://models/themed_blocks/eden/eden_pillar_floor.obj" id="6_47mx0"]
+
+[sub_resource type="Curve" id="Curve_ag7tv"]
+min_value = -10.0
+max_value = 10.0
+_data = [Vector2(0, -10), 0.0, 0.0, 0, 0, Vector2(1, 10), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jn3f2"]
+width = 64
+texture_mode = 1
+curve = SubResource("Curve_ag7tv")
+
+[sub_resource type="Curve" id="Curve_i5n4t"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, -360), 0.0, 0.0, 0, 0, Vector2(1, 360), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_76gms"]
+width = 64
+texture_mode = 1
+curve = SubResource("Curve_i5n4t")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vp0da"]
+emission_shape_scale = Vector3(2, 2, 2)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -10.9
+angle_max = 75.8
+angle_curve = SubResource("CurveTexture_jn3f2")
+initial_velocity_min = 1.0
+initial_velocity_max = 2.0
+angular_velocity_min = -1.00002
+angular_velocity_max = 0.999984
+angular_velocity_curve = SubResource("CurveTexture_76gms")
+gravity = Vector3(0, -2, 0)
+turbulence_enabled = true
+turbulence_noise_strength = 0.1
+
+[sub_resource type="Curve" id="Curve_eyxll"]
+_data = [Vector2(0, 0), 0.0, 6.68221, 0, 0, Vector2(0.320724, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c58ck"]
+shading_mode = 0
+diffuse_mode = 3
+specular_mode = 2
+albedo_color = Color(1, 0.307851, 0.64695, 1)
+texture_filter = 0
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_enabled = true
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_ntvk1"]
+material = SubResource("StandardMaterial3D_c58ck")
+shape = 0
+size = 0.05
+sections = 2
+section_length = 0.05
+curve = SubResource("Curve_eyxll")
 
 [node name="EdenNorthLeftCorner" type="Node3D"]
 
@@ -64,3 +126,14 @@ mesh = ExtResource("6_47mx0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
 material_override = ExtResource("6_05tlt")
 mesh = ExtResource("6_47mx0")
+
+[node name="FlowerPetals" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.70824, 4.93964, -2.77897)
+cast_shadow = 0
+amount = 16
+lifetime = 12.0
+explosiveness = 0.06
+randomness = 0.2
+fixed_fps = 15
+process_material = SubResource("ParticleProcessMaterial_vp0da")
+draw_pass_1 = SubResource("RibbonTrailMesh_ntvk1")
