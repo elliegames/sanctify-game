@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://efyk5lcypy46"]
+[gd_scene load_steps=38 format=3 uid="uid://efyk5lcypy46"]
 
 [ext_resource type="Theme" uid="uid://cv1iypx64a8up" path="res://data/elementary_dark.theme" id="1_xp6o1"]
 [ext_resource type="Script" path="res://src/main_menu.gd" id="2_25c8g"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bwru6g17io61v" path="res://data/images/button_glow.png" id="7_hqjne"]
 [ext_resource type="FontFile" uid="uid://yv1jlquoy7e7" path="res://data/fonts/static/Inter_18pt-Regular.ttf" id="7_pl0ky"]
 [ext_resource type="FontFile" uid="uid://b47ipy6hmu1r8" path="res://data/fonts/static/Inter_18pt-Bold.ttf" id="8_76era"]
+[ext_resource type="PackedScene" uid="uid://denh6gklpmatv" path="res://prefabs/ui/spin_button.tscn" id="10_b15wa"]
 [ext_resource type="PackedScene" uid="uid://dc212eswkcucm" path="res://prefabs/loading_screen.tscn" id="10_i3341"]
 [ext_resource type="PackedScene" uid="uid://c723x15ban0q6" path="res://prefabs/ui/radio_button.tscn" id="10_p52f1"]
 [ext_resource type="Texture2D" uid="uid://bwujeqsk2p077" path="res://data/icons/diff_normal.png" id="11_xx4sp"]
@@ -249,11 +250,14 @@ width = 24
 height = 24
 fill_to = Vector2(0, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_w2gyg"]
+[sub_resource type="LabelSettings" id="LabelSettings_pdifx"]
+font_size = 12
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_sah18"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_k80vv"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_a3adf"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_f227r"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_6pgou"]
 
 [sub_resource type="Gradient" id="Gradient_lpqq3"]
 colors = PackedColorArray(0.976471, 0.768627, 0.25098, 0.588235, 0.831373, 0.556863, 0.0823529, 0.67451)
@@ -383,38 +387,42 @@ theme = SubResource("Theme_rd2qt")
 texture = SubResource("GradientTexture2D_mdura")
 expand_mode = 1
 
-[node name="CustomSizeBox" type="VBoxContainer" parent="VBoxContainer"]
+[node name="CustomSizeBox" type="GridContainer" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
+columns = 3
 
-[node name="CustomSize" type="Label" parent="VBoxContainer/CustomSizeBox"]
-custom_minimum_size = Vector2(100, 0)
+[node name="GridLengthLabel" type="Label" parent="VBoxContainer/CustomSizeBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76era")
-theme_override_font_sizes/font_size = 12
-text = "Custom Size"
+text = "Grid Length"
+label_settings = SubResource("LabelSettings_pdifx")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CustomSizeBox"]
+[node name="EmptyLabel" type="Label" parent="VBoxContainer/CustomSizeBox"]
 layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_pdifx")
 
-[node name="GridLength" type="TextEdit" parent="VBoxContainer/CustomSizeBox/HBoxContainer"]
-custom_minimum_size = Vector2(100, 28)
+[node name="GridWidthLabel" type="Label" parent="VBoxContainer/CustomSizeBox"]
+layout_mode = 2
+text = "Grid Width
+"
+label_settings = SubResource("LabelSettings_pdifx")
+
+[node name="GridLength" parent="VBoxContainer/CustomSizeBox" instance=ExtResource("10_b15wa")]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Grid Length"
 
-[node name="Label" type="Label" parent="VBoxContainer/CustomSizeBox/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/CustomSizeBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "×"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridWidth" type="TextEdit" parent="VBoxContainer/CustomSizeBox/HBoxContainer"]
-custom_minimum_size = Vector2(100, 28)
+[node name="GridWidth" parent="VBoxContainer/CustomSizeBox" instance=ExtResource("10_b15wa")]
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Grid Width"
 
 [node name="Difficulty" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
@@ -430,18 +438,18 @@ layout_mode = 2
 [node name="EasyButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
 button_pressed = true
-button_group = SubResource("ButtonGroup_w2gyg")
+button_group = SubResource("ButtonGroup_k80vv")
 label = "Initiate"
 
 [node name="MediumButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_sah18")
+button_group = SubResource("ButtonGroup_f227r")
 label = "Acolyte"
 main_icon = ExtResource("11_xx4sp")
 
 [node name="HardButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_a3adf")
+button_group = SubResource("ButtonGroup_6pgou")
 main_icon = ExtResource("12_sr57i")
 
 [node name="Scenario" type="Label" parent="VBoxContainer"]
@@ -513,6 +521,20 @@ text = "Begin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Scenario2" type="Label" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_76era")
+theme_override_font_sizes/font_size = 12
+text = "Graphics Quality"
+
+[node name="GraphicsSlider" type="HSlider" parent="VBoxContainer"]
+layout_mode = 2
+max_value = 3.0
+rounded = true
+tick_count = 4
+ticks_on_borders = true
+
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 clip_children = 2
 custom_minimum_size = Vector2(0, 28)
@@ -537,12 +559,8 @@ bus = &"Effects"
 [connection signal="focus_entered" from="VBoxContainer/ArenaSizeSelect" to="Audio/UIFocusSound" method="play"]
 [connection signal="item_focused" from="VBoxContainer/ArenaSizeSelect" to="Audio/UIFocusSound" method="play"]
 [connection signal="item_selected" from="VBoxContainer/ArenaSizeSelect" to="." method="set_arena_size"]
-[connection signal="focus_entered" from="VBoxContainer/CustomSizeBox/HBoxContainer/GridLength" to="Audio/UIFocusSound" method="play"]
-[connection signal="focus_exited" from="VBoxContainer/CustomSizeBox/HBoxContainer/GridLength" to="." method="check_grid_length"]
-[connection signal="text_changed" from="VBoxContainer/CustomSizeBox/HBoxContainer/GridLength" to="." method="set_grid_length"]
-[connection signal="focus_entered" from="VBoxContainer/CustomSizeBox/HBoxContainer/GridWidth" to="Audio/UIFocusSound" method="play"]
-[connection signal="focus_exited" from="VBoxContainer/CustomSizeBox/HBoxContainer/GridWidth" to="." method="check_grid_width"]
-[connection signal="text_changed" from="VBoxContainer/CustomSizeBox/HBoxContainer/GridWidth" to="." method="set_grid_width"]
+[connection signal="changed" from="VBoxContainer/CustomSizeBox/GridLength" to="." method="on_change_grid_length"]
+[connection signal="changed" from="VBoxContainer/CustomSizeBox/GridWidth" to="." method="on_change_grid_width"]
 [connection signal="focus_entered" from="VBoxContainer/DifficultyBox/EasyButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/EasyButton" to="VBoxContainer/DifficultyBox/MediumButton" method="_uncheck"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/EasyButton" to="VBoxContainer/DifficultyBox/HardButton" method="_uncheck"]

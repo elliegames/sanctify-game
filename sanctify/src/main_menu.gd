@@ -10,6 +10,7 @@ var dark = DisplayServer.is_dark_mode()
 var gamepad_connected = false
 var loading = false
 
+
 func _ready():
 	DisplayServer.window_set_min_size(Vector2i(800, 600))
 	
@@ -88,45 +89,6 @@ func validate_number(value: String) -> int:
 	return -1
 
 
-func set_grid_length():
-	var text_field = $VBoxContainer/CustomSizeBox/HBoxContainer/GridLength as TextEdit
-	var value = text_field.text
-	if value.length() == 0:
-		return
-	
-	var val = validate_number(value)
-	
-	if val < 0:
-		text_field.text = value.erase(value.length() - 1)
-		
-func set_grid_width():
-	var text_field = $VBoxContainer/CustomSizeBox/HBoxContainer/GridWidth as TextEdit
-	var value = text_field.text
-	if value.length() == 0:
-		return
-	
-	var val = validate_number(value)
-	if val < 0:
-		text_field.text = value.erase(value.length() - 1)
-
-func check_grid_length():
-	var text_field = $VBoxContainer/CustomSizeBox/HBoxContainer/GridLength as TextEdit
-	var value = int(text_field.text)
-	if value < 7 or value > 32: 
-		text_field.text = str(ProjectSettings.get_setting("grid_length"))
-	else:
-		ProjectSettings.set_setting("grid_length", value)
-
-
-func check_grid_width():
-	var text_field = $VBoxContainer/CustomSizeBox/HBoxContainer/GridWidth as TextEdit
-	var value = int(text_field.text)
-	if value < 7 or value > 32: 
-		text_field.text = str(ProjectSettings.get_setting("grid_width"))
-	else:
-		ProjectSettings.set_setting("grid_width", value)
-
-
 func set_difficulty(idx: int):
 	ProjectSettings.set_setting("difficulty", idx)
 	play_ui_accept_sound()
@@ -146,14 +108,25 @@ func begin():
 	loading = true
 	preload("res://prefabs/cursor.tscn")
 
+
 func load_arena():
 	save_settings()
 	get_tree().change_scene_to_file("res://arena.tscn")
+
 
 func _input(event: InputEvent) -> void:
 	if not Input.get_connected_joypads().is_empty():
 		gamepad_connected = true
 		light.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y / 3)
+
+
+func on_change_grid_length(val: int):
+	ProjectSettings.set_setting("grid_length", $VBoxContainer/CustomSizeBox/GridLength.value)
+
+
+func on_change_grid_width(val: int):
+	ProjectSettings.set_setting("grid_width", $VBoxContainer/CustomSizeBox/GridWidth.value)
+
 
 func save_settings():
 	var settings_dict = {
@@ -165,12 +138,11 @@ func save_settings():
 	print("Saving: ", settings_dict)
 	var settings_file = FileAccess.open("user://settings.json", FileAccess.WRITE)
 	settings_file.store_line(JSON.stringify(settings_dict))
-	
+
+
 func load_settings():
 	if not FileAccess.file_exists("user://settings.json"):
-		$VBoxContainer/CustomSizeBox/HBoxContainer/GridLength.text = "7"
 		ProjectSettings.set_setting("grid_length", 7)
-		$VBoxContainer/CustomSizeBox/HBoxContainer/GridWidth.text = "7"
 		ProjectSettings.set_setting("grid_width", 7)
 		$VBoxContainer/ArenaSizeSelect.select(0)
 		ProjectSettings.set_setting("difficulty", 0)
@@ -197,9 +169,8 @@ func load_settings():
 		else:
 			$VBoxContainer/CustomSizeBox.visible = true
 			$VBoxContainer/ArenaSizeSelect.select(5)
-			$VBoxContainer/CustomSizeBox/HBoxContainer/GridLength.text = str(_grid_length)
-			
-			$VBoxContainer/CustomSizeBox/HBoxContainer/GridWidth.text = str(_grid_width)
+			$VBoxContainer/CustomSizeBox/GridLength.value = _grid_length
+			$VBoxContainer/CustomSizeBox/GridWidth.value = _grid_width
 
 		ProjectSettings.set_setting("grid_length", _grid_length)
 		ProjectSettings.set_setting("grid_width", _grid_width)
@@ -221,6 +192,7 @@ func load_settings():
 		$VBoxContainer/ArenaThemeSelect.select(settings["arena_theme"])
 		ProjectSettings.set_setting("arena_theme", settings["arena_theme"])
 		ProjectSettings.set_setting("first_time", false)
+
 
 func quit():
 		save_settings()
