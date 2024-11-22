@@ -424,7 +424,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.681768, 2.47139, 1.31147)
 billboard = 1
 alpha_cut = 1
 alpha_scissor_threshold = 0.7
-alpha_antialiasing_mode = 1
 texture_filter = 4
 texture = ExtResource("3_b62ac")
 
@@ -435,7 +434,6 @@ billboard = 1
 no_depth_test = true
 alpha_cut = 1
 alpha_scissor_threshold = 0.87
-alpha_antialiasing_mode = 1
 texture_filter = 4
 texture = ExtResource("4_622p6")
 
@@ -445,7 +443,6 @@ pixel_size = 0.02
 billboard = 1
 alpha_cut = 1
 alpha_scissor_threshold = 0.774
-alpha_antialiasing_mode = 1
 texture_filter = 4
 texture = ExtResource("4_onoox")
 
@@ -455,7 +452,6 @@ pixel_size = 0.012
 billboard = 1
 alpha_cut = 1
 alpha_scissor_threshold = 0.885
-alpha_antialiasing_mode = 1
 texture_filter = 4
 texture = ExtResource("3_b62ac")
 
@@ -464,7 +460,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12898, 3.03029, 1.49637)
 billboard = 1
 alpha_cut = 1
 alpha_scissor_threshold = 0.86
-alpha_antialiasing_mode = 1
 texture_filter = 4
 texture = ExtResource("4_622p6")
 
@@ -474,7 +469,6 @@ pixel_size = 0.02
 billboard = 1
 alpha_cut = 1
 alpha_scissor_threshold = 0.86
-alpha_antialiasing_mode = 1
 texture_filter = 4
 texture = ExtResource("4_622p6")
 

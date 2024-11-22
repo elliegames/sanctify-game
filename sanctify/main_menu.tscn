@@ -253,11 +253,11 @@ fill_to = Vector2(0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_pdifx"]
 font_size = 12
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_5htxl"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_y0hd1"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_swu4x"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_1sobq"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_l88vs"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_werhe"]
 
 [sub_resource type="Gradient" id="Gradient_lpqq3"]
 colors = PackedColorArray(0.976471, 0.768627, 0.25098, 0.588235, 0.831373, 0.556863, 0.0823529, 0.67451)
@@ -438,18 +438,18 @@ layout_mode = 2
 [node name="EasyButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
 button_pressed = true
-button_group = SubResource("ButtonGroup_5htxl")
+button_group = SubResource("ButtonGroup_y0hd1")
 label = "Initiate"
 
 [node name="MediumButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_swu4x")
+button_group = SubResource("ButtonGroup_1sobq")
 label = "Acolyte"
 main_icon = ExtResource("11_xx4sp")
 
 [node name="HardButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_l88vs")
+button_group = SubResource("ButtonGroup_werhe")
 main_icon = ExtResource("12_sr57i")
 
 [node name="Scenario" type="Label" parent="VBoxContainer"]
