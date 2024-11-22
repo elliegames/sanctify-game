@@ -194,6 +194,10 @@ func load_settings():
 		ProjectSettings.set_setting("first_time", false)
 
 
+func settings():
+	$SettingsPopup.visible = true
+
+
 func quit():
 		save_settings()
 		get_tree().quit()

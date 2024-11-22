@@ -253,11 +253,11 @@ fill_to = Vector2(0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_pdifx"]
 font_size = 12
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_k80vv"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_5htxl"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_f227r"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_swu4x"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_6pgou"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_l88vs"]
 
 [sub_resource type="Gradient" id="Gradient_lpqq3"]
 colors = PackedColorArray(0.976471, 0.768627, 0.25098, 0.588235, 0.831373, 0.556863, 0.0823529, 0.67451)
@@ -438,18 +438,18 @@ layout_mode = 2
 [node name="EasyButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
 button_pressed = true
-button_group = SubResource("ButtonGroup_k80vv")
+button_group = SubResource("ButtonGroup_5htxl")
 label = "Initiate"
 
 [node name="MediumButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_f227r")
+button_group = SubResource("ButtonGroup_swu4x")
 label = "Acolyte"
 main_icon = ExtResource("11_xx4sp")
 
 [node name="HardButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_6pgou")
+button_group = SubResource("ButtonGroup_l88vs")
 main_icon = ExtResource("12_sr57i")
 
 [node name="Scenario" type="Label" parent="VBoxContainer"]
@@ -521,19 +521,11 @@ text = "Begin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Scenario2" type="Label" parent="VBoxContainer"]
-custom_minimum_size = Vector2(100, 0)
+[node name="Settings" type="Button" parent="VBoxContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(0, 28)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76era")
-theme_override_font_sizes/font_size = 12
-text = "Graphics Quality"
-
-[node name="GraphicsSlider" type="HSlider" parent="VBoxContainer"]
-layout_mode = 2
-max_value = 3.0
-rounded = true
-tick_count = 4
-ticks_on_borders = true
+text = "Settings"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 clip_children = 2
@@ -554,6 +546,132 @@ wait_time = 2.0
 stream = ExtResource("13_e28y3")
 volume_db = 2.0
 bus = &"Effects"
+
+[node name="SettingsPopup" type="Popup" parent="."]
+msaa_2d = 1
+title = "Settings"
+initial_position = 2
+size = Vector2i(420, 250)
+wrap_controls = false
+borderless = false
+always_on_top = true
+force_native = true
+
+[node name="Panel" type="Panel" parent="SettingsPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPopup/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPopup/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="GraphicsQuality" type="Label" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_76era")
+theme_override_font_sizes/font_size = 12
+text = "Graphics Quality"
+
+[node name="GfxSlider" type="HSlider" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+max_value = 3.0
+rounded = true
+tick_count = 4
+ticks_on_borders = true
+
+[node name="HSeparator" type="HSeparator" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="MasterVolume" type="Label" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_76era")
+theme_override_font_sizes/font_size = 12
+text = "Master Volume"
+
+[node name="MaVolumeSlider" type="HSlider" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+min_value = -72.0
+max_value = 0.0
+step = 2.0
+rounded = true
+
+[node name="MusicVolume" type="Label" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_76era")
+theme_override_font_sizes/font_size = 12
+text = "Music Volume"
+
+[node name="MuVolumeSlider" type="HSlider" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+min_value = -72.0
+max_value = 0.0
+step = 2.0
+rounded = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="SettingsPopup/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="SaveBtn" type="Button" parent="SettingsPopup/Panel/MarginContainer2"]
+custom_minimum_size = Vector2(48, 28)
+layout_mode = 2
+
+[node name="Gradient" type="TextureRect" parent="SettingsPopup/Panel/MarginContainer2/SaveBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_unl5y")
+
+[node name="Label" type="Label" parent="SettingsPopup/Panel/MarginContainer2/SaveBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.976471, 0.768627, 0.25098, 1)
+theme_override_fonts/font = ExtResource("5_i60c7")
+theme_override_font_sizes/font_size = 12
+text = "Save"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="timeout" from="Pattern/AnimationPlayer/Timer" to="Pattern/AnimationPlayer" method="play" binds= ["throb"]]
 [connection signal="focus_entered" from="VBoxContainer/ArenaSizeSelect" to="Audio/UIFocusSound" method="play"]
@@ -579,6 +697,8 @@ bus = &"Effects"
 [connection signal="focus_entered" from="VBoxContainer/PlayButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="begin"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play_ui_accept_sound"]
+[connection signal="focus_entered" from="VBoxContainer/Settings" to="Audio/UIFocusSound" method="play"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="settings"]
 [connection signal="focus_entered" from="VBoxContainer/QuitButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit"]
 [connection signal="timeout" from="LoadTimer" to="." method="load_arena"]
