@@ -1,7 +1,7 @@
 // NOTE: Shader automatically converted from Godot Engine 4.3.stable.mono's StandardMaterial3D.
 
 shader_type spatial;
-render_mode blend_add, depth_draw_opaque, cull_back, diffuse_lambert_wrap, specular_disabled, vertex_lighting, fog_disabled;
+render_mode blend_add, depth_draw_opaque, cull_back, diffuse_lambert_wrap, specular_disabled, fog_disabled;
 
 uniform vec4 albedo : source_color;
 uniform sampler2D texture_albedo : source_color, filter_linear_mipmap, repeat_enable;
@@ -47,10 +47,10 @@ void fragment() {
 	ALBEDO = albedo_tex.rgb;
 	
 	// Proximity Fade: Enabled
-	float depth_tex = textureLod(depth_texture, SCREEN_UV, 0.0).r;
-	vec4 world_pos = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, depth_tex, 1.0);
-	world_pos.xyz /= world_pos.w;
-	ALPHA *= clamp(1.0 - smoothstep(world_pos.z + 1.0, world_pos.z, VERTEX.z), 0.0, 1.0);
+	//float depth_tex = textureLod(depth_texture, SCREEN_UV, 0.0).r;
+	//vec4 world_pos = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, depth_tex, 1.0);
+	//world_pos.xyz /= world_pos.w;
+	//ALPHA *= clamp(1.0 - smoothstep(world_pos.z + 1.0, world_pos.z, VERTEX.z), 0.0, 1.0);
 
 	float metallic_tex = dot(texture(texture_metallic, base_uv), metallic_texture_channel);
 	METALLIC = metallic_tex * metallic;

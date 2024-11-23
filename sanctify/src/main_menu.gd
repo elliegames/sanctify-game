@@ -150,6 +150,7 @@ func cancel_settings():
 	AudioServer.set_bus_volume_db(0, ProjectSettings.get_setting("master_volume"))
 	AudioServer.set_bus_volume_db(1, ProjectSettings.get_setting("music_volume"))
 	$SettingsPopup.hide()
+	play_ui_accept_sound()
 
 
 func confirm_settings():
@@ -157,6 +158,7 @@ func confirm_settings():
 	ProjectSettings.set_setting("master_volume", temp_master_volume)
 	ProjectSettings.set_setting("music_volume", temp_music_volume)
 	$SettingsPopup.hide()
+	play_ui_accept_sound()
 	
 	
 func save_settings():
@@ -264,6 +266,8 @@ func open_settings():
 	$SettingsPopup/Panel/MarginContainer/VBoxContainer/MaVolumeSlider.set_value_no_signal(ProjectSettings.get_setting("master_volume"))
 	$SettingsPopup/Panel/MarginContainer/VBoxContainer/MuVolumeSlider.set_value_no_signal(ProjectSettings.get_setting("music_volume"))
 	$SettingsPopup.grab_focus()
+	$SettingsPopup/FocusTimer.start()
+	play_ui_accept_sound()
 
 
 func quit():
