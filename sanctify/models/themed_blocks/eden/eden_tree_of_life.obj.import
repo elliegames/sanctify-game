@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bbu2r2weppv7x"
+path="res://.godot/imported/eden_tree_of_life.obj-941aaa307fb9192fbbed5475b6f0087e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/eden_tree_of_life.obj-941aaa307fb9192fbbed5475b6f0087e.mesh"]
+
+source_file="res://models/themed_blocks/eden/eden_tree_of_life.obj"
+dest_files=["res://.godot/imported/eden_tree_of_life.obj-941aaa307fb9192fbbed5475b6f0087e.mesh", "res://.godot/imported/eden_tree_of_life.obj-941aaa307fb9192fbbed5475b6f0087e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

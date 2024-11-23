@@ -36,21 +36,53 @@ var pulse_effect_center: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	arena_theme = arena_themes[arena_theme_index]
+	var gfx_idx = ProjectSettings.get_setting("gfx_fidelity")
+	print(gfx_idx)
+	ProjectSettings.set_setting("rendering/quality/directional_shadow/size", 512 if gfx_idx < 2 else 4096)
+	if gfx_idx == 0:
+		ProjectSettings.set_setting("rendering/scaling_3d/scale", 0.6)
+		get_viewport().scaling_3d_scale = 0.6
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_2d", 0)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/screen_space_aa", 0)
+		ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", 1024)
+		ProjectSettings.set_setting("rendering/environment/glow/upscale_mode", 0)
+	elif gfx_idx == 1:
+		ProjectSettings.set_setting("rendering/scaling_3d/scale", 0.75)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_2d", 1)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/screen_space_aa", 0)
+		ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", 2048)
+		ProjectSettings.set_setting("rendering/environment/glow/upscale_mode", 0)
+		get_viewport().scaling_3d_scale = 0.75
+	elif gfx_idx == 2:
+		ProjectSettings.set_setting("rendering/scaling_3d/scale", 0.86)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_2d", 1)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/screen_space_aa", 0)
+		ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", 4096)
+		ProjectSettings.set_setting("rendering/environment/glow/upscale_mode", 1)
+		get_viewport().scaling_3d_scale = 0.86
+	elif gfx_idx == 3:
+		ProjectSettings.set_setting("rendering/scaling_3d/scale", 1.0)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_2d", 1)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/screen_space_aa", 1)
+		ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", 4096)
+		ProjectSettings.set_setting("rendering/environment/glow/upscale_mode", 1)
+		get_viewport().scaling_3d_scale = 1.0
 
-	ui.set_volumetric_color(arena_theme.volumetric_color)
+	arena_theme_index = ProjectSettings.get_setting("arena_theme")
+	arena_theme = arena_themes[arena_theme_index]
 
 	grid_length = ProjectSettings.get_setting("grid_length")
 	grid_width = ProjectSettings.get_setting("grid_width")
 
 	var difficulty = ProjectSettings.get_setting("difficulty")
-	
-	var density = 0.25
+	var density = 0
 	if difficulty == 0:
-		density = 0.05
+		density = 0.10
 	elif difficulty == 1:
-		density == 0.15
-	
+		density = 0.15
+	elif difficulty == 2:
+		density = 0.25
+
 	total_tiles = grid_length * grid_width
 	mines = floor(total_tiles * density)
 	max_flag_count = mines
@@ -60,6 +92,7 @@ func _ready():
 	arrange_grid()
 	arrange_environment()
 	cursor.move(Vector2i(grid_length / 2, grid_width - 1), board)
+	ui.set_splash(arena_theme.place_name, difficulty, total_tiles, mines)
 
 
 func _physics_process(delta):
@@ -105,6 +138,13 @@ func _process(delta):
 			cursor.move(Vector2(1, 0), board)
 
 	ui.update_flag(max_flag_count - flag_count, max_flag_count)
+
+	# Make the priestess look at the orb
+	var ppos = $Priestess.global_transform.origin
+	var cpos = cursor.global_transform.origin
+	var dir = Vector2(ppos.x - cpos.x, ppos.z - cpos.z)
+	var look = clamp(remap(atan2(dir.y, dir.x), 0.64, 2.5, 0, 1), 0, 1)
+	$Priestess/AnimationTree.set("parameters/Look/Angle/blend_amount", look)
 
 
 func _input(event):
@@ -189,7 +229,7 @@ func arrange_mines(exc: Vector2i):
 
 func set_cosmetics():
 	var p = 0
-	var max_puddles = grid_length * grid_width * 0.01
+	var max_puddles = grid_length * grid_width * arena_theme.imperfection_ratio
 	while p < max_puddles:
 		var i = randi_range(0, grid_length - 1)
 		var j = randi_range(0, grid_width - 1)
@@ -204,6 +244,25 @@ func set_cosmetics():
 
 		if (board[2][j] as Tile).show_smoke(grid_length * 14 / 9):
 			p += 1
+
+	ui.set_volumetric_color(arena_theme.volumetric_color)
+	$Audio/GameLostDialog.stream = arena_theme.game_lose_dialog
+	$Audio/Ambience.stream = arena_theme.ambient_sound_loop
+	$WorldEnvironment.environment.ambient_light_color = arena_theme.ambient_color
+	$WorldEnvironment.environment.background_color = arena_theme.backdrop_color
+	$DirectionalLightLeft.light_color = arena_theme.directional_light_left_color
+	$DirectionalLightRight.light_color = arena_theme.directional_light_right_color
+	$CornerLight.light_color = arena_theme.cove_light_color
+	$VolumetricBackdrop.position = Vector3(0, arena_theme.volumetric_backdrop_height, 0)
+	$VolumetricBackdrop.material_override.set("shader_parameter/texture_albedo", arena_theme.volumetric_backdrop_texture)
+	$VolumetricBackdrop.material_override.set("shader_parameter/texture_emission", arena_theme.volumetric_backdrop_texture)
+	$VolumetricBackdrop.material_override.set("shader_parameter/emission_energy", arena_theme.volumetric_backdrop_energy)
+	$VolumetricBackdrop.material_override.set("shader_parameter/emission", arena_theme.volumetric_backdrop_emission)
+	$VolumetricBackdrop.material_override.set("shader_parameter/uv1_scale", Vector3.ONE * arena_theme.volumetric_backdrop_uv_scale)
+	$VolumetricBackdrop.material_override.set("shader_parameter/scroll_speed", arena_theme.volumetric_backdrop_scroll_speed)
+
+	$ReflectionProbe.size = Vector3(grid_length + 4, 30, grid_width + 4)
+	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
 
 
 func reveal_recursive(start_position: Vector2i):
@@ -269,7 +328,7 @@ func reveal_recursive(start_position: Vector2i):
 			cursor.start_cleansing()
 			tile.show_cleansing_anim()
 			start_ripple_effects(tile.board_pos, false)
-			ui.win("You have cleansed the divine pantheon. " + arena_theme.opponent + "'s curse has been lifted!", time)
+			ui.win("You have cleansed the " + arena_theme.place_name + ". " + arena_theme.opponent + "'s curse has been lifted!", time)
 			$EndCam.set_priority(1000)
 
 		if tile.nearby_mines > 0:
@@ -327,20 +386,20 @@ func arrange_environment():
 	if ResourceLoader.exists(arena_theme.north_walls_outer_layer_alt):
 		north_wall_outer_alt_res = load(arena_theme.north_walls_outer_layer_alt)
 
-	if ResourceLoader.exists(arena_theme.east_walls_inner_layer):
-		east_wall_inner_res = load(arena_theme.east_walls_inner_layer)
+	if ResourceLoader.exists(arena_theme.west_walls_inner_layer):
+		east_wall_inner_res = load(arena_theme.west_walls_inner_layer)
 
-	if ResourceLoader.exists(arena_theme.east_walls_inner_layer_alt):
-		east_wall_inner_alt_res = load(arena_theme.east_walls_inner_layer_alt)
+	if ResourceLoader.exists(arena_theme.west_walls_inner_layer_alt):
+		east_wall_inner_alt_res = load(arena_theme.west_walls_inner_layer_alt)
 
-	if ResourceLoader.exists(arena_theme.east_walls_outer_layer):
-		east_wall_outer_res = load(arena_theme.east_walls_outer_layer)
+	if ResourceLoader.exists(arena_theme.west_walls_outer_layer):
+		east_wall_outer_res = load(arena_theme.west_walls_outer_layer)
 
-	if ResourceLoader.exists(arena_theme.east_walls_outer_layer_alt):
-		east_wall_outer_alt_res = load(arena_theme.east_walls_outer_layer_alt)
+	if ResourceLoader.exists(arena_theme.west_walls_outer_layer_alt):
+		east_wall_outer_alt_res = load(arena_theme.west_walls_outer_layer_alt)
 
-	if ResourceLoader.exists(arena_theme.west_walls):
-		west_wall_res = load(arena_theme.west_walls)
+	if ResourceLoader.exists(arena_theme.east_walls):
+		west_wall_res = load(arena_theme.east_walls)
 
 	if ResourceLoader.exists(arena_theme.south_walls):
 		south_wall_res = load(arena_theme.south_walls)
@@ -351,17 +410,17 @@ func arrange_environment():
 	if ResourceLoader.exists(arena_theme.south_door):
 		south_door_res = load(arena_theme.south_door)
 
-	if ResourceLoader.exists(arena_theme.north_east_corner):
-		north_east_corner_res = load(arena_theme.north_east_corner)
-
 	if ResourceLoader.exists(arena_theme.north_west_corner):
-		north_west_corner_res = load(arena_theme.north_west_corner)
+		north_east_corner_res = load(arena_theme.north_west_corner)
 
-	if ResourceLoader.exists(arena_theme.south_east_corner):
-		south_east_corner_res = load(arena_theme.south_east_corner)
+	if ResourceLoader.exists(arena_theme.north_east_corner):
+		north_west_corner_res = load(arena_theme.north_east_corner)
 
 	if ResourceLoader.exists(arena_theme.south_west_corner):
-		south_west_corner_res = load(arena_theme.south_west_corner)
+		south_east_corner_res = load(arena_theme.south_west_corner)
+
+	if ResourceLoader.exists(arena_theme.south_east_corner):
+		south_west_corner_res = load(arena_theme.south_east_corner)
 
 	# Make east inner wall
 	if east_wall_inner_res != null:
@@ -480,59 +539,56 @@ func arrange_environment():
 					north_wall.rotate_y(-PI / 2)
 					add_child(north_wall)
 		else:
-			if north_wall_outer_alt_res != null:
+			if north_wall_inner_alt_res != null:
 				var alt = true
 				for x in range(grid_length):
 					alt = !alt
 					if not alt:
-						var north_outer_layer = north_wall_outer_res.instantiate()
-						north_outer_layer.position = Vector3(x, 0, -2)
-						north_outer_layer.rotate_y(-PI / 2)
-						add_child(north_outer_layer)
+						var north_inner_layer = north_wall_inner_res.instantiate()
+						north_inner_layer.position = Vector3(x, 0, -1)
+						north_inner_layer.rotate_y(-PI / 2)
+						add_child(north_inner_layer)
 					else:
-						var north_outer_layer_alt = north_wall_outer_alt_res.instantiate()
-						north_outer_layer_alt.position = Vector3(x, 0, -2)
-						north_outer_layer_alt.rotate_y(-PI / 2)
-						add_child(north_outer_layer_alt)
+						var north_inner_layer_alt = north_wall_inner_alt_res.instantiate()
+						north_inner_layer_alt.position = Vector3(x, 0, -1)
+						north_inner_layer_alt.rotate_y(-PI / 2)
+						add_child(north_inner_layer_alt)
 			else:
 				for x in range(grid_length):
-					var north_outer_layer = north_wall_outer_res.instantiate()
-					north_outer_layer.position = Vector3(x, 0, -2)
-					north_outer_layer.rotate_y(-PI / 2)
-					add_child(north_outer_layer)
+					var north_inner_layer = north_wall_inner_res.instantiate()
+					north_inner_layer.position = Vector3(x, 0, -1)
+					north_inner_layer.rotate_y(-PI / 2)
+					add_child(north_inner_layer)
 
 	# Make north-east corner
 	if north_east_corner_res != null:
-		var north_east_corner = north_east_corner_res.instantiate()
-		north_east_corner.position = Vector3(-1, 0, -1)
-		add_child(north_east_corner)
+		var north_west_corner = north_east_corner_res.instantiate()
+		north_west_corner.position = Vector3(-1, 0, -1)
+		add_child(north_west_corner)
 
 	# Make north-west corner
 	if north_west_corner_res != null:
-		var north_west_corner = north_west_corner_res.instantiate()
-		north_west_corner.position = Vector3(grid_length, 0, -1)
-		add_child(north_west_corner)
+		var north_east_corner = north_west_corner_res.instantiate()
+		north_east_corner.position = Vector3(grid_length, 0, -1)
+		add_child(north_east_corner)
 
 	# Make south-west corner
 	if south_west_corner_res != null:
-		var south_west_corner = south_west_corner_res.instantiate()
-		south_west_corner.position = Vector3(grid_length, 0, grid_width)
-		south_west_corner.rotate_y(-PI / 2)
-		add_child(south_west_corner)
-
-	# Make south-east corner
-	if south_east_corner_res != null:
-		var south_east_corner = south_east_corner_res.instantiate()
-		south_east_corner.position = Vector3(-1, 0, grid_width)
+		var south_east_corner = south_west_corner_res.instantiate()
+		south_east_corner.position = Vector3(grid_length, 0, grid_width)
 		south_east_corner.rotate_y(-PI / 2)
 		add_child(south_east_corner)
 
-	$ReflectionProbe.size = Vector3(grid_length + 3, 30, grid_width + 3)
-	$ReflectionProbe.position = Vector3((grid_length + 2) / 2, 0, (grid_width + 2) / 2)
+	# Make south-east corner
+	if south_east_corner_res != null:
+		var south_west_corner = south_east_corner_res.instantiate()
+		south_west_corner.position = Vector3(-1, 0, grid_width)
+		south_west_corner.rotate_y(-PI / 2)
+		add_child(south_west_corner)
 
 	# Place the priestess
-	$Priestess.position = Vector3(grid_length / 2, 1, grid_width + 2)
-	$CharacterGlow.position = Vector3(grid_length / 2, 1, grid_width + 2)
+	$Priestess.position = Vector3(int(grid_length / 2), 0.75, grid_width + 2)
+	$CharacterGlow.position = Vector3(int(grid_length / 2), 1, grid_width + 2)
 	$AnimationTimer.start()
 	$AnimationPlayer.play("begin")
 
@@ -548,3 +604,7 @@ func start_ripple_effects(center: Vector2i, destroy: bool):
 func play_intro_cutscene():
 	$Priestess/AnimationTree.set("parameters/conditions/start", true)
 	cursor.start_booting()
+
+func priestess_look_start():
+	$Priestess/AnimationTree.set("parameters/conditions/start", false)
+	$Priestess/AnimationTree.set("parameters/conditions/look", true)

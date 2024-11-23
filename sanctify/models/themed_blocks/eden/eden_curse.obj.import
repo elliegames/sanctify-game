@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://brtgu8hmuu5hk"
+path="res://.godot/imported/eden_curse.obj-e3c753ca55758550d3f221e94edc45e6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/eden_curse.obj-e3c753ca55758550d3f221e94edc45e6.mesh"]
+
+source_file="res://models/themed_blocks/eden/eden_curse.obj"
+dest_files=["res://.godot/imported/eden_curse.obj-e3c753ca55758550d3f221e94edc45e6.mesh", "res://.godot/imported/eden_curse.obj-e3c753ca55758550d3f221e94edc45e6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://d2ho5gg1g3mc"]
+[gd_scene load_steps=58 format=3 uid="uid://d2ho5gg1g3mc"]
 
 [ext_resource type="Script" path="res://src/cursor.gd" id="1_g23o2"]
 [ext_resource type="Texture2D" uid="uid://btn3fn8xu0gc7" path="res://data/images/cleansing_circle.png" id="2_gqp8l"]
@@ -8,16 +8,22 @@
 [ext_resource type="Texture2D" uid="uid://bho5ebiexfrsi" path="res://data/images/cleansing_circle_bootup.png" id="3_pmkwr"]
 [ext_resource type="Material" uid="uid://cdhrqyl75bk16" path="res://models/cursor/cursor_orb.material" id="3_q7v7c"]
 [ext_resource type="Material" uid="uid://dakprjf2j5a03" path="res://models/cursor/cursor_glow.material" id="4_up1lb"]
+[ext_resource type="Material" uid="uid://8vcrlk6gdbmr" path="res://models/cursor/cursor_destroy.material" id="5_8mt2q"]
+[ext_resource type="ArrayMesh" uid="uid://csljkiashaj70" path="res://models/cursor/cursor_destroyed.obj" id="5_srra1"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="7_8illr"]
 [ext_resource type="Texture2D" uid="uid://c224q82v2awa1" path="res://data/images/cursor_boot_frames.png" id="9_1g6wc"]
 [ext_resource type="Texture2D" uid="uid://bt4pmhfoanjqg" path="res://data/images/reveal_frames.png" id="10_1grua"]
 [ext_resource type="Shader" path="res://shader_materials/additive_sprite.gdshader" id="10_menfc"]
 [ext_resource type="Texture2D" uid="uid://ogpgbn8vm5c1" path="res://data/images/ripple.png" id="10_qvfhi"]
 [ext_resource type="AudioStream" uid="uid://d2knyy5ux3epo" path="res://data/audio/orb_move.ogg" id="11_j6umi"]
 [ext_resource type="AudioStream" uid="uid://dwi037l1uk3lv" path="res://data/audio/reveal_one.ogg" id="12_xb1fu"]
+[ext_resource type="Texture2D" uid="uid://ccsarrebpwsnu" path="res://data/images/reveal_frames_top.png" id="14_sccok"]
+[ext_resource type="Texture2D" uid="uid://tt5est2eyot4" path="res://data/images/cursor_death_frames.png" id="15_b5cxl"]
 [ext_resource type="AudioStream" uid="uid://b8wx3xft33slr" path="res://data/audio/cleansing_circle.ogg" id="15_m5gqf"]
 [ext_resource type="AudioStream" uid="uid://b7cbxpm57ivqa" path="res://data/audio/start_cleansing.ogg" id="16_sgmda"]
 [ext_resource type="AudioStream" uid="uid://dbktn6ak815wa" path="res://data/audio/start_losing.ogg" id="17_c0hjt"]
 [ext_resource type="AudioStream" uid="uid://cstdtfv3qxip0" path="res://data/audio/game_win.ogg" id="17_s3s8r"]
+[ext_resource type="AudioStream" uid="uid://clxvmkdjvnem4" path="res://data/audio/cursor_shatter.ogg" id="23_pswoj"]
 
 [sub_resource type="Curve" id="Curve_g13s2"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.228956, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -444,6 +450,126 @@ tracks/24/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Cursor:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("CursorDestroyed:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("CursorDestroyed:material_override:grow_amount")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("CursorDestroyed:material_override:albedo_color")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("../RevealFramesTop:visible")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("../RevealFramesTop:frame")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("../DeathFrames:visible")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("../DeathFrames:frame")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("../DeathFrames:pixel_size")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.003]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("../Audio/CursorShatter:playing")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_70uj0"]
 resource_name = "booting"
@@ -625,6 +751,18 @@ tracks/10/keys = {
 "args": [0.1, 0.4, 0.2],
 "method": &"start_vibration"
 }]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Cursor:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 6.8, 6.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_pcmcf"]
@@ -1058,6 +1196,102 @@ tracks/11/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CursorDestroyed:visible")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 4.73333, 4.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("CursorDestroyed:material_override:grow_amount")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(4.86667, 6.56667),
+"transitions": PackedFloat32Array(0.217638, 0.0693483),
+"update": 0,
+"values": [0.0, 16.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("CursorDestroyed:material_override:albedo_color")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(4.86667, 6.56667),
+"transitions": PackedFloat32Array(0.450625, 0.0693483),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Cursor:visible")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(-0.0666667, 4.73333, 4.86667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../DeathFrames:visible")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(-0.0666667, 4.73333, 4.76667, 5.96667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, false, true, false]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../DeathFrames:frame")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(4.76667, 5.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 17]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../DeathFrames:pixel_size")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(4.83333, 5.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.003, 0.005]
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("../Audio/CursorShatter:playing")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 4.76105),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="Animation" id="Animation_dojjl"]
 resource_name = "reveal"
@@ -1143,6 +1377,30 @@ tracks/3/path = NodePath("../RevealFrames:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 13]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../RevealFramesTop:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../RevealFramesTop:frame")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -1241,6 +1499,22 @@ shader_parameter/frame = 0
 shader_parameter/pixel_size = 3.0
 shader_parameter/sprite_texture = ExtResource("10_1grua")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hlruv"]
+render_priority = 0
+shader = ExtResource("10_menfc")
+shader_parameter/frames = 14
+shader_parameter/frame = 0
+shader_parameter/pixel_size = 3.0
+shader_parameter/sprite_texture = ExtResource("14_sccok")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iyrmo"]
+render_priority = 0
+shader = ExtResource("10_menfc")
+shader_parameter/frames = 18
+shader_parameter/frame = 0
+shader_parameter/pixel_size = 3.0
+shader_parameter/sprite_texture = ExtResource("15_b5cxl")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7aay3"]
 transparency = 1
 shading_mode = 2
@@ -1265,6 +1539,13 @@ mesh = ExtResource("2_tknsn")
 surface_material_override/0 = ExtResource("3_q7v7c")
 surface_material_override/1 = ExtResource("4_up1lb")
 
+[node name="CursorDestroyed" type="MeshInstance3D" parent="CursorMesh"]
+transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, 0, 0, 0)
+visible = false
+material_override = ExtResource("5_8mt2q")
+mesh = ExtResource("5_srra1")
+skeleton = NodePath("../..")
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43755, 1.5)
 light_color = Color(0.6308, 0.7277, 0.76, 1)
@@ -1272,7 +1553,12 @@ light_energy = 0.0
 light_indirect_energy = 7.022
 light_volumetric_fog_energy = 16.0
 shadow_enabled = true
+shadow_bias = 0.001
+shadow_blur = 0.0
 omni_range = 4.0
+
+[node name="HideOnFidelity" parent="OmniLight3D" instance=ExtResource("7_8illr")]
+fidelity_threshold = 1
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.303956, 0)
@@ -1312,7 +1598,7 @@ mesh = SubResource("PlaneMesh_8dhyo")
 skeleton = NodePath("../../CursorMesh")
 
 [node name="LosingCircle" type="MeshInstance3D" parent="CleansingPattern"]
-transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.1, 0)
+transform = Transform3D(0.645153, 0, -0.764053, 0, 1, 0, 0.764053, 0, 0.645153, 0, 0.1, 0)
 visible = false
 material_override = SubResource("StandardMaterial3D_11k4a")
 cast_shadow = 0
@@ -1356,6 +1642,7 @@ frame = 28
 [node name="RevealFrames" type="Sprite3D" parent="."]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
 visible = false
+layers = 4
 material_override = SubResource("ShaderMaterial_7xf10")
 cast_shadow = 0
 pixel_size = 0.002
@@ -1366,6 +1653,36 @@ texture_filter = 0
 render_priority = 127
 texture = ExtResource("10_1grua")
 hframes = 14
+
+[node name="RevealFramesTop" type="Sprite3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+visible = false
+layers = 8
+material_override = SubResource("ShaderMaterial_hlruv")
+cast_shadow = 0
+pixel_size = 0.002
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture_filter = 0
+render_priority = 127
+texture = ExtResource("10_1grua")
+hframes = 14
+
+[node name="DeathFrames" type="Sprite3D" parent="."]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+visible = false
+layers = 16
+material_override = SubResource("ShaderMaterial_iyrmo")
+cast_shadow = 0
+pixel_size = 0.003
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture_filter = 0
+render_priority = 127
+texture = ExtResource("15_b5cxl")
+hframes = 18
 
 [node name="FloorPulse" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.001, 0, 0, 0, 0.001, 0, 0, 0, 0.001, 0, 0.2, 2.5)
@@ -1402,5 +1719,9 @@ bus = &"Effects"
 stream = ExtResource("17_s3s8r")
 volume_db = -2.0
 bus = &"Music"
+
+[node name="CursorShatter" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("23_pswoj")
+bus = &"Effects"
 
 [connection signal="timeout" from="PulseAnimation/Timer" to="PulseAnimation" method="play" binds= ["pulse"]]

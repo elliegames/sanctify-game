@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Sanctify"
-config/description="Get rid of curses placed behind floors of the pantheon"
+config/description="Get rid of curses placed behind floors of the Temple"
 config/version="0.0.1"
 run/main_scene="res://main_menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="sanctify"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-run/max_fps=30
+run/max_fps=60
 run/low_processor_mode=true
 boot_splash/bg_color=Color(0.666667, 0.498039, 0.313726, 1)
 boot_splash/image="res://data/images/boot_splash.png"
@@ -26,6 +26,7 @@ boot_splash/minimum_display_time=500
 
 [audio]
 
+general/3d_panning_strength=1.0
 driver/output_latency=50
 
 [autoload]
@@ -91,7 +92,7 @@ flag={
 ]
 }
 cursor_reveal={
-"deadzone": 0.5,
+"deadzone": 0.99,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":8,"pressure":0.0,"pressed":true,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":true,"script":null)
@@ -100,7 +101,7 @@ cursor_reveal={
 ]
 }
 cursor_flag={
-"deadzone": 0.5,
+"deadzone": 0.99,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":7,"pressure":0.0,"pressed":true,"script":null)
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":4,"axis_value":1.0,"script":null)
@@ -176,8 +177,8 @@ give_up={
 
 3d_render/layer_1="Geo"
 3d_render/layer_2="Tile"
-3d_render/layer_3="FlagNormal"
-3d_render/layer_4="FlagTopView"
+3d_render/layer_3="IsoMetricOnly"
+3d_render/layer_4="TopViewOnly"
 3d_render/layer_5="Cursor"
 3d_render/layer_6="Fog"
 3d_render/layer_7="Backdrop"
@@ -186,12 +187,12 @@ give_up={
 [rendering]
 
 renderer/rendering_method="mobile"
+lights_and_shadows/directional_shadow/soft_shadow_filter_quality=0
+reflections/reflection_atlas/reflection_size=128
 shading/overrides/force_lambert_over_burley=true
 textures/decals/filter=0
 environment/glow/upscale_mode=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 anti_aliasing/quality/msaa_2d=1
-anti_aliasing/quality/screen_space_aa=1
-anti_aliasing/quality/use_debanding=true
-viewport/size/borderless=false
-viewport/size/transparent=false
+mesh_lod/lod_change/threshold_pixels=2.0
+lights_and_shadows/positional_shadow/atlas_size=2048

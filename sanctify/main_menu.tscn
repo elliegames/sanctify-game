@@ -1,6 +1,6 @@
-[gd_scene load_steps=36 format=3 uid="uid://efyk5lcypy46"]
+[gd_scene load_steps=38 format=3 uid="uid://efyk5lcypy46"]
 
-[ext_resource type="Theme" uid="uid://cv1iypx64a8up" path="res://data/elementary_dark.theme" id="1_xp6o1"]
+[ext_resource type="Theme" uid="uid://cv1iypx64a8up" path="res://data/elementary_dark.theme" id="1_snq55"]
 [ext_resource type="Script" path="res://src/main_menu.gd" id="2_25c8g"]
 [ext_resource type="Texture2D" uid="uid://d1pw1gwbl32go" path="res://data/images/pattern1.png" id="2_gewds"]
 [ext_resource type="FontFile" uid="uid://454rsovevigv" path="res://data/fonts/static/Inter_18pt-Light.ttf" id="3_4ocu8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bwru6g17io61v" path="res://data/images/button_glow.png" id="7_hqjne"]
 [ext_resource type="FontFile" uid="uid://yv1jlquoy7e7" path="res://data/fonts/static/Inter_18pt-Regular.ttf" id="7_pl0ky"]
 [ext_resource type="FontFile" uid="uid://b47ipy6hmu1r8" path="res://data/fonts/static/Inter_18pt-Bold.ttf" id="8_76era"]
+[ext_resource type="PackedScene" uid="uid://denh6gklpmatv" path="res://prefabs/ui/spin_button.tscn" id="10_b15wa"]
 [ext_resource type="PackedScene" uid="uid://dc212eswkcucm" path="res://prefabs/loading_screen.tscn" id="10_i3341"]
 [ext_resource type="PackedScene" uid="uid://c723x15ban0q6" path="res://prefabs/ui/radio_button.tscn" id="10_p52f1"]
 [ext_resource type="Texture2D" uid="uid://bwujeqsk2p077" path="res://data/icons/diff_normal.png" id="11_xx4sp"]
@@ -249,11 +250,14 @@ width = 24
 height = 24
 fill_to = Vector2(0, 1)
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_3p45y"]
+[sub_resource type="LabelSettings" id="LabelSettings_pdifx"]
+font_size = 12
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_70dqx"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_7kv76"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_m83u3"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_hgi02"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_b0i7v"]
 
 [sub_resource type="Gradient" id="Gradient_lpqq3"]
 colors = PackedColorArray(0.976471, 0.768627, 0.25098, 0.588235, 0.831373, 0.556863, 0.0823529, 0.67451)
@@ -270,7 +274,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_xp6o1")
+theme = ExtResource("1_snq55")
 script = ExtResource("2_25c8g")
 metadata/_edit_use_anchors_ = true
 
@@ -383,40 +387,42 @@ theme = SubResource("Theme_rd2qt")
 texture = SubResource("GradientTexture2D_mdura")
 expand_mode = 1
 
-[node name="CustomSizeBox" type="VBoxContainer" parent="VBoxContainer"]
+[node name="CustomSizeBox" type="GridContainer" parent="VBoxContainer"]
 visible = false
 layout_mode = 2
+columns = 3
 
-[node name="CustomSize" type="Label" parent="VBoxContainer/CustomSizeBox"]
-custom_minimum_size = Vector2(100, 0)
+[node name="GridLengthLabel" type="Label" parent="VBoxContainer/CustomSizeBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("8_76era")
-theme_override_font_sizes/font_size = 12
-text = "Custom Size"
+text = "Grid Length"
+label_settings = SubResource("LabelSettings_pdifx")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CustomSizeBox"]
+[node name="EmptyLabel" type="Label" parent="VBoxContainer/CustomSizeBox"]
 layout_mode = 2
+text = "
+"
+label_settings = SubResource("LabelSettings_pdifx")
 
-[node name="GridLength" type="TextEdit" parent="VBoxContainer/CustomSizeBox/HBoxContainer"]
-custom_minimum_size = Vector2(100, 28)
+[node name="GridWidthLabel" type="Label" parent="VBoxContainer/CustomSizeBox"]
+layout_mode = 2
+text = "Grid Width
+"
+label_settings = SubResource("LabelSettings_pdifx")
+
+[node name="GridLength" parent="VBoxContainer/CustomSizeBox" instance=ExtResource("10_b15wa")]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "9"
-placeholder_text = "Grid Length"
 
-[node name="Label" type="Label" parent="VBoxContainer/CustomSizeBox/HBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/CustomSizeBox"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 12
 text = "×"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="GridWidth" type="TextEdit" parent="VBoxContainer/CustomSizeBox/HBoxContainer"]
-custom_minimum_size = Vector2(100, 28)
+[node name="GridWidth" parent="VBoxContainer/CustomSizeBox" instance=ExtResource("10_b15wa")]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "9"
-placeholder_text = "Grid Width"
 
 [node name="Difficulty" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
@@ -432,26 +438,26 @@ layout_mode = 2
 [node name="EasyButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
 button_pressed = true
-button_group = SubResource("ButtonGroup_3p45y")
+button_group = SubResource("ButtonGroup_7kv76")
 label = "Initiate"
 
 [node name="MediumButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_70dqx")
+button_group = SubResource("ButtonGroup_hgi02")
 label = "Acolyte"
 main_icon = ExtResource("11_xx4sp")
 
 [node name="HardButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_m83u3")
+button_group = SubResource("ButtonGroup_b0i7v")
 main_icon = ExtResource("12_sr57i")
 
-[node name="Location" type="Label" parent="VBoxContainer"]
+[node name="Scenario" type="Label" parent="VBoxContainer"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("8_76era")
 theme_override_font_sizes/font_size = 12
-text = "Location"
+text = "Scenario"
 
 [node name="ArenaThemeSelect" type="OptionButton" parent="VBoxContainer"]
 clip_children = 2
@@ -461,9 +467,13 @@ icon_alignment = 2
 expand_icon = true
 selected = 0
 fit_to_longest_item = false
-item_count = 2
-popup/item_0/text = "Hecate's Mischief in the Pantheon"
+allow_reselect = true
+item_count = 3
+popup/item_0/text = "Hades's vengeance upon the Pantheon"
+popup/item_1/text = "Eris's mischief in Eden Glades"
 popup/item_1/id = 1
+popup/item_2/text = "Typhon's wrath in the Temple of Judgment"
+popup/item_2/id = 2
 
 [node name="Gradient" type="TextureRect" parent="VBoxContainer/ArenaThemeSelect"]
 layout_mode = 1
@@ -511,6 +521,12 @@ text = "Begin"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Settings" type="Button" parent="VBoxContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+text = "Settings"
+
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
 clip_children = 2
 custom_minimum_size = Vector2(0, 28)
@@ -531,25 +547,184 @@ stream = ExtResource("13_e28y3")
 volume_db = 2.0
 bus = &"Effects"
 
+[node name="SettingsPopup" type="Popup" parent="."]
+msaa_2d = 1
+title = "Settings"
+initial_position = 2
+size = Vector2i(420, 250)
+wrap_controls = false
+transient_to_focused = true
+borderless = false
+force_native = true
+
+[node name="Panel" type="Panel" parent="SettingsPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsPopup/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsPopup/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="GraphicsQuality" type="Label" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_76era")
+theme_override_font_sizes/font_size = 12
+text = "Graphics Quality"
+
+[node name="GfxSlider" type="HSlider" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+max_value = 3.0
+value = 1.0
+rounded = true
+tick_count = 4
+ticks_on_borders = true
+
+[node name="HSeparator" type="HSeparator" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="MasterVolume" type="Label" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_76era")
+theme_override_font_sizes/font_size = 12
+text = "Master Volume"
+
+[node name="MaVolumeSlider" type="HSlider" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+min_value = -72.0
+max_value = 0.0
+step = 2.0
+value = -34.0
+rounded = true
+
+[node name="MusicVolume" type="Label" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_76era")
+theme_override_font_sizes/font_size = 12
+text = "Music Volume"
+
+[node name="MuVolumeSlider" type="HSlider" parent="SettingsPopup/Panel/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+min_value = -72.0
+max_value = 0.0
+step = 2.0
+value = -46.0
+rounded = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="SettingsPopup/Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsPopup/Panel/MarginContainer2"]
+layout_mode = 2
+
+[node name="CancelBtn" type="Button" parent="SettingsPopup/Panel/MarginContainer2/HBoxContainer"]
+clip_children = 2
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+text = "Cancel"
+
+[node name="SaveBtn" type="Button" parent="SettingsPopup/Panel/MarginContainer2/HBoxContainer"]
+custom_minimum_size = Vector2(72, 28)
+layout_mode = 2
+
+[node name="Gradient" type="TextureRect" parent="SettingsPopup/Panel/MarginContainer2/HBoxContainer/SaveBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_unl5y")
+
+[node name="Label" type="Label" parent="SettingsPopup/Panel/MarginContainer2/HBoxContainer/SaveBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0.976471, 0.768627, 0.25098, 1)
+theme_override_fonts/font = ExtResource("5_i60c7")
+theme_override_font_sizes/font_size = 12
+text = "Save"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FocusTimer" type="Timer" parent="SettingsPopup"]
+wait_time = 0.05
+one_shot = true
+
 [connection signal="timeout" from="Pattern/AnimationPlayer/Timer" to="Pattern/AnimationPlayer" method="play" binds= ["throb"]]
 [connection signal="focus_entered" from="VBoxContainer/ArenaSizeSelect" to="Audio/UIFocusSound" method="play"]
+[connection signal="item_focused" from="VBoxContainer/ArenaSizeSelect" to="Audio/UIFocusSound" method="play"]
 [connection signal="item_selected" from="VBoxContainer/ArenaSizeSelect" to="." method="set_arena_size"]
-[connection signal="focus_exited" from="VBoxContainer/CustomSizeBox/HBoxContainer/GridLength" to="." method="check_grid_length"]
-[connection signal="text_changed" from="VBoxContainer/CustomSizeBox/HBoxContainer/GridLength" to="." method="set_grid_length"]
-[connection signal="focus_exited" from="VBoxContainer/CustomSizeBox/HBoxContainer/GridWidth" to="." method="check_grid_width"]
-[connection signal="text_changed" from="VBoxContainer/CustomSizeBox/HBoxContainer/GridWidth" to="." method="set_grid_width"]
+[connection signal="changed" from="VBoxContainer/CustomSizeBox/GridLength" to="." method="on_change_grid_length"]
+[connection signal="changed" from="VBoxContainer/CustomSizeBox/GridWidth" to="." method="on_change_grid_width"]
+[connection signal="focus_entered" from="VBoxContainer/DifficultyBox/EasyButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/EasyButton" to="VBoxContainer/DifficultyBox/MediumButton" method="_uncheck"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/EasyButton" to="VBoxContainer/DifficultyBox/HardButton" method="_uncheck"]
-[connection signal="pressed" from="VBoxContainer/DifficultyBox/EasyButton" to="." method="set_difficulty" binds= [0]]
+[connection signal="focus_entered" from="VBoxContainer/DifficultyBox/MediumButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/MediumButton" to="VBoxContainer/DifficultyBox/EasyButton" method="_uncheck"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/MediumButton" to="VBoxContainer/DifficultyBox/HardButton" method="_uncheck"]
-[connection signal="pressed" from="VBoxContainer/DifficultyBox/MediumButton" to="." method="set_difficulty" binds= [1]]
+[connection signal="focus_entered" from="VBoxContainer/DifficultyBox/HardButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/HardButton" to="VBoxContainer/DifficultyBox/EasyButton" method="_uncheck"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/HardButton" to="VBoxContainer/DifficultyBox/MediumButton" method="_uncheck"]
-[connection signal="pressed" from="VBoxContainer/DifficultyBox/HardButton" to="." method="set_difficulty" binds= [2]]
 [connection signal="focus_entered" from="VBoxContainer/ArenaThemeSelect" to="Audio/UIFocusSound" method="play"]
+[connection signal="item_focused" from="VBoxContainer/ArenaThemeSelect" to="Audio/UIFocusSound" method="play"]
+[connection signal="item_selected" from="VBoxContainer/ArenaThemeSelect" to="." method="set_arena_theme"]
 [connection signal="focus_entered" from="VBoxContainer/PlayButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="begin"]
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="play_ui_accept_sound"]
+[connection signal="focus_entered" from="VBoxContainer/Settings" to="Audio/UIFocusSound" method="play"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="." method="open_settings"]
 [connection signal="focus_entered" from="VBoxContainer/QuitButton" to="Audio/UIFocusSound" method="play"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="quit"]
 [connection signal="timeout" from="LoadTimer" to="." method="load_arena"]
+[connection signal="focus_entered" from="SettingsPopup/Panel/MarginContainer/VBoxContainer/GfxSlider" to="Audio/UIFocusSound" method="play"]
+[connection signal="value_changed" from="SettingsPopup/Panel/MarginContainer/VBoxContainer/GfxSlider" to="." method="on_change_gfx_fidelity"]
+[connection signal="value_changed" from="SettingsPopup/Panel/MarginContainer/VBoxContainer/GfxSlider" to="Audio/UIFocusSound" method="play"]
+[connection signal="focus_entered" from="SettingsPopup/Panel/MarginContainer/VBoxContainer/MaVolumeSlider" to="Audio/UIFocusSound" method="play"]
+[connection signal="value_changed" from="SettingsPopup/Panel/MarginContainer/VBoxContainer/MaVolumeSlider" to="." method="on_change_master_volume"]
+[connection signal="value_changed" from="SettingsPopup/Panel/MarginContainer/VBoxContainer/MaVolumeSlider" to="Audio/UIFocusSound" method="play"]
+[connection signal="focus_entered" from="SettingsPopup/Panel/MarginContainer/VBoxContainer/MuVolumeSlider" to="Audio/UIFocusSound" method="play"]
+[connection signal="value_changed" from="SettingsPopup/Panel/MarginContainer/VBoxContainer/MuVolumeSlider" to="." method="on_change_music_volume"]
+[connection signal="value_changed" from="SettingsPopup/Panel/MarginContainer/VBoxContainer/MuVolumeSlider" to="Audio/UIFocusSound" method="play"]
+[connection signal="focus_entered" from="SettingsPopup/Panel/MarginContainer2/HBoxContainer/CancelBtn" to="Audio/UIFocusSound" method="play"]
+[connection signal="pressed" from="SettingsPopup/Panel/MarginContainer2/HBoxContainer/CancelBtn" to="." method="cancel_settings"]
+[connection signal="pressed" from="SettingsPopup/Panel/MarginContainer2/HBoxContainer/SaveBtn" to="." method="confirm_settings"]
+[connection signal="timeout" from="SettingsPopup/FocusTimer" to="SettingsPopup/Panel/MarginContainer/VBoxContainer/GfxSlider" method="grab_focus"]

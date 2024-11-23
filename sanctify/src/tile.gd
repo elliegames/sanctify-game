@@ -19,6 +19,8 @@ var board_pos: Vector2i
 @export var selection_box: Node3D
 @export var animator: AnimationPlayer
 @export var cleansing_light: Node3D
+
+@export var alternate_material: Material
 var runes: Array[Decal]
 
 # Called when the node enters the scene tree for the first time.
@@ -40,11 +42,12 @@ func _process(delta):
 
 
 func mouse_input(camera, event, event_position, normal, shape_idx):
-	if (event as InputEvent).is_action_released("reveal"):
-		if not arena.revealing_multi:
-			arena.reveal_recursive(board_pos)
-	if (event as InputEvent).is_action_released("flag"):
-		flag()
+	if arena.input_enabled:
+		if (event as InputEvent).is_action_released("reveal"):
+			if not arena.revealing_multi:
+				arena.reveal_recursive(board_pos)
+		if (event as InputEvent).is_action_released("flag"):
+			flag()
 
 
 func reveal():
@@ -73,9 +76,14 @@ func flag():
 
 	if flag_node.visible:
 		flag_node.visible = !fog_dark
+		(flag_node.get_node("FlagAnimation") as AnimationPlayer).stop()
+		(flag_node.get_node("FlagRemoveFx") as AudioStreamPlayer3D).play()
+		(flag_node.get_node("FlagSpawnFx") as AudioStreamPlayer3D).stop()
 		arena.flag_count -= 1
 	elif arena.flag_count < arena.max_flag_count and not revealed:
 		flag_node.visible = fog_dark
+		(flag_node.get_node("FlagAnimation") as AnimationPlayer).play("pulse")
+		(flag_node.get_node("FlagSpawnFx") as AudioStreamPlayer3D).play()
 		arena.flag_count += 1
 
 
@@ -107,6 +115,8 @@ func show_imperfection():
 		return false
 
 	imperfection.visible = true
+	if alternate_material != null:
+		tile_mesh.set_surface_override_material(0, alternate_material)
 	return true
 
 func show_smoke(life_time = 14):

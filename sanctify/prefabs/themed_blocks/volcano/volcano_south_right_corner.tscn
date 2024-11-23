@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckvfknvwg7u8s"]
+
+[ext_resource type="Material" uid="uid://cr11puoqh7i4b" path="res://models/themed_blocks/volcano/volcano_main_gate_rocks.material" id="1_7weh0"]
+[ext_resource type="ArrayMesh" uid="uid://dk33c6yx6g223" path="res://models/themed_blocks/volcano/volcano_south_right_corner.obj" id="1_aq1fm"]
+
+[node name="VolcanoSouthRightCorner" type="Node3D"]
+
+[node name="VolcanoSouthRightCorner" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_7weh0")
+mesh = ExtResource("1_aq1fm")

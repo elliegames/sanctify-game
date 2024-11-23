@@ -7,6 +7,7 @@ class_name UI
 var dark_theme: Theme
 var light_theme: Theme
 
+var gamepad_connected = false
 var dark = DisplayServer.is_dark_mode()
 var end_game = false
 
@@ -19,24 +20,35 @@ func _ready():
 	
 	if dark:
 		theme = dark_theme
+		$PostGame/Pattern/Light.color = Color.WHITE
 	else:
 		theme = light_theme
+		$PostGame/Pattern/Light.color = Color("#fff4")
 		
 	$PostGame/Pattern.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var pos = get_viewport().get_mouse_position()
-	light.position = pos
+	if not gamepad_connected:
+		var pos = get_viewport().get_mouse_position()
+		light.position = pos
 	
 	if DisplayServer.is_dark_mode() != dark:
 		dark = DisplayServer.is_dark_mode()
 		if dark:
 			theme = dark_theme
+			$Pattern/Light.color = Color.WHITE
 		else:
 			theme = light_theme
+			$Pattern/Light.color = Color("#fff4")
 
 
+func _input(event):
+	if not Input.get_connected_joypads().is_empty():
+		gamepad_connected = true
+		light.position = Vector2(get_viewport_rect().size.x / 2, get_viewport_rect().size.y / 3)
+		
+		
 func set_volumetric_color(color: Color):
 	$Splash.get_theme_stylebox("panel").bg_color = color.blend(Color("#6666"))
 	($Shadow.texture as GradientTexture2D).gradient.colors[0] = Color(color.r, color.g, color.b, color.a * 0.333)
@@ -63,6 +75,19 @@ func update_time(seconds: float):
 
 func update_flag(flag_count: int, max_flag_count: int):
 	$VBoxContainer/UI/StatusBox/FlagCount.text = str(flag_count) + " / " + str(max_flag_count)
+
+
+func set_splash(place: String, difficultyIdx: int, tileCount: int, nCurses: int):
+	$Splash/VBoxContainer/Subtitle.text = "Click on the tiles to reveal signs. Cleanse the " + place + " by clearing curses."
+	if difficultyIdx == 0:
+		$Splash/VBoxContainer/HBoxContainer/Difficulty.text = "Initiate  -"
+	elif difficultyIdx == 1:
+		$Splash/VBoxContainer/HBoxContainer/Difficulty.text = "Acolyte  -"
+	elif difficultyIdx == 2:
+		$Splash/VBoxContainer/HBoxContainer/Difficulty.text = "High Priestess  -"
+		
+	$Splash/VBoxContainer/HBoxContainer/Tiles.text = "Number of Tiles: " + str(tileCount)
+	$Splash/VBoxContainer/HBoxContainer/Curses.text = "Number of Curses: " + str(nCurses)
 
 
 func start_over():

@@ -8,6 +8,8 @@ Author: [Subhadeep Jasu](https://github.com/SubhadeepJasu) \<subhadeep107@proton
 
 <img src="screenshots/screenshot.png" width="500">
 
+<a href="https://elementary.io"><img alt="Static Badge" src="data/badges/made_for_elementary_os_badge.svg"></a>
+
 ## Installation
 ### For Users
 On elementary OS? Click the button to get Sanctify on AppCenter:
@@ -19,14 +21,15 @@ You'll need the following dependencies to build:
 
 - Godot 4.3.x
 - Flatpak Builder
+- io.elementary.Sdk 8
 
 **Build from Godot Editor:**
 
 ```bash
 cd santify-game
 mkdir build
-/path/to/godot --headless --verbose --export-release "Linux" "build/com.github.elliegames.sanctify"
-sudo mv build/com.github.elliegames.sanctify /usr/bin/com.github.elliegames.sanctify
+/path/to/godot --headless --verbose --export-release "Linux" "build/com.github.elliegames.sanctify-game"
+sudo mv build/com.github.elliegames.sanctify-game /usr/bin/com.github.elliegames.sanctify-game
 ```
 
 …and run the game with:

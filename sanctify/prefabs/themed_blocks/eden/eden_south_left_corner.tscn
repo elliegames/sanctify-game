@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://ex8lg1ok8dyk"]
+
+[ext_resource type="PackedScene" uid="uid://brjsc4mb4nos" path="res://prefabs/themed_blocks/eden/eden_pillar_floor.tscn" id="1_hn54s"]
+[ext_resource type="PackedScene" uid="uid://gi2u4uonw44j" path="res://prefabs/themed_blocks/eden/eden_pillar.tscn" id="2_60vlg"]
+[ext_resource type="PackedScene" uid="uid://kjshagg4kvtk" path="res://prefabs/themed_blocks/eden/eden_stone.tscn" id="3_x2hcq"]
+[ext_resource type="PackedScene" uid="uid://bo1kimksylmrg" path="res://prefabs/themed_blocks/eden/eden_stone_bush.tscn" id="4_hhkbj"]
+
+[node name="EdenSouthLeftCorner" type="Node3D"]
+
+[node name="EdenPillarFloor9" parent="." instance=ExtResource("1_hn54s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 1)
+
+[node name="EdenPillar4" parent="." instance=ExtResource("2_60vlg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 1)
+
+[node name="EdenStone6" parent="." instance=ExtResource("3_x2hcq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="EdenStone7" parent="." instance=ExtResource("4_hhkbj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1, 0, 2.98023e-08)
+
+[node name="EdenPillarFloor10" parent="." instance=ExtResource("1_hn54s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0, 1)
+
+[node name="EdenPillar5" parent="." instance=ExtResource("2_60vlg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 1)
+
+[node name="EdenStone8" parent="." instance=ExtResource("3_x2hcq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 0, 0)
+
+[node name="EdenStone9" parent="." instance=ExtResource("4_hhkbj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0, 2.98023e-08)
+
+[node name="EdenPillarFloor11" parent="." instance=ExtResource("1_hn54s")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 1)
+
+[node name="EdenPillar6" parent="." instance=ExtResource("2_60vlg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 1)
+
+[node name="EdenStone10" parent="." instance=ExtResource("3_x2hcq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 0)
+
+[node name="EdenPillar7" parent="." instance=ExtResource("2_60vlg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0, 1)
+
+[node name="EdenStone12" parent="." instance=ExtResource("3_x2hcq")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 6, 0, 0)
+
+[node name="EdenStone11" parent="." instance=ExtResource("4_hhkbj")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5, 0, 2.98023e-08)

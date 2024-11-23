@@ -6,6 +6,13 @@ class_name LoadingScreen
 
 var animation_wait = 0
 
+func _ready():
+	dark = DisplayServer.is_dark_mode()
+	if dark:
+		$Center/Panel/LoadingSpinner.flip_h = false
+	else:
+		$Center/Panel/LoadingSpinner.flip_h = true
+
 func _process(delta: float) -> void:
 	if DisplayServer.is_dark_mode() != dark:
 		dark = DisplayServer.is_dark_mode()

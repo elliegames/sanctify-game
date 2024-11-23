@@ -15,7 +15,7 @@ dest_files=["res://.godot/imported/puddle_orm.png-9b652aef095c6fd125b7c0a59de786
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

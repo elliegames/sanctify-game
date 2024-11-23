@@ -1,0 +1,491 @@
+[gd_scene load_steps=40 format=3 uid="uid://bukwtt5e6fgfj"]
+
+[ext_resource type="Material" uid="uid://de4oh806ug2tn" path="res://models/themed_blocks/volcano/volcano_tile.material" id="2_kcpvl"]
+[ext_resource type="Material" uid="uid://dl31rgw804ryt" path="res://models/themed_blocks/volcano/volcano_tile_alt.material" id="2_v7pan"]
+[ext_resource type="PackedScene" uid="uid://3k3sqnneywit" path="res://prefabs/tile.tscn" id="3_uwk5o"]
+[ext_resource type="Texture2D" uid="uid://3eih52ybnui7" path="res://data/images/fog.png" id="4_cktu0"]
+[ext_resource type="Texture2D" uid="uid://djr73062q5fe1" path="res://data/images/puddle.png" id="5_62da7"]
+[ext_resource type="Shader" path="res://shader_materials/additive_sprite.gdshader" id="7_w1l68"]
+[ext_resource type="Texture2D" uid="uid://b0cgm640r8xpg" path="res://data/images/flag_frames.png" id="8_rlskg"]
+[ext_resource type="AudioStream" uid="uid://87od7wagei55" path="res://data/audio/flag_on.ogg" id="9_1vofv"]
+[ext_resource type="AudioStream" uid="uid://0bxbrv38yt6e" path="res://data/audio/flag_off.ogg" id="10_ecab0"]
+[ext_resource type="ArrayMesh" uid="uid://j7krgpfjoul0" path="res://models/themed_blocks/volcano/volcano_tile.obj" id="11_dwwmf"]
+[ext_resource type="Texture2D" uid="uid://h0l2uixfsge5" path="res://data/images/smoke_mask.png" id="11_dyo57"]
+[ext_resource type="Texture2D" uid="uid://b0bdw7doq7xw6" path="res://models/themed_blocks/volcano/textures/VolcanoCurse.png" id="12_a00mo"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="13_7knqe"]
+
+[sub_resource type="Gradient" id="Gradient_wsadc"]
+colors = PackedColorArray(0, 0, 0, 0, 0.976471, 0.768627, 0.25098, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jot5x"]
+gradient = SubResource("Gradient_wsadc")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g1sp3"]
+noise_type = 0
+frequency = 0.0122
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hwj4e"]
+invert = true
+seamless = true
+seamless_blend_skirt = 0.2
+noise = SubResource("FastNoiseLite_g1sp3")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rus4t"]
+render_priority = 10
+transparency = 1
+depth_draw_mode = 2
+no_depth_test = true
+shading_mode = 0
+diffuse_mode = 1
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_cktu0")
+heightmap_enabled = true
+heightmap_scale = -16.0
+heightmap_texture = SubResource("NoiseTexture2D_hwj4e")
+uv2_scale = Vector3(0.085, 0.085, 0.085)
+uv2_triplanar = true
+uv2_world_triplanar = true
+texture_filter = 2
+disable_receive_shadows = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wouey"]
+size = Vector2(1.95, 1.95)
+
+[sub_resource type="Animation" id="Animation_inl7d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ok2nw"]
+resource_name = "pulse"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.666667, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 9, 9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8trxv"]
+_data = {
+"RESET": SubResource("Animation_inl7d"),
+"pulse": SubResource("Animation_ok2nw")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tm604"]
+render_priority = 10
+shader = ExtResource("7_w1l68")
+shader_parameter/frames = 10
+shader_parameter/frame = 0
+shader_parameter/pixel_size = 0.3
+shader_parameter/sprite_texture = ExtResource("8_rlskg")
+
+[sub_resource type="Curve" id="Curve_xnrlp"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.370968, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_4n1h3"]
+curve = SubResource("Curve_xnrlp")
+
+[sub_resource type="Curve" id="Curve_bonyv"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.325806, 2.81887), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_xkscj"]
+curve = SubResource("Curve_bonyv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uhyvo"]
+lifetime_randomness = 0.1
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 1.0
+emission_ring_radius = 3.0
+emission_ring_inner_radius = 1.0
+spread = 0.0
+flatness = 0.631
+initial_velocity_min = 0.1
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_max = 2.0
+scale_over_velocity_min = 0.1
+scale_over_velocity_max = 1.0
+scale_over_velocity_curve = SubResource("CurveTexture_xkscj")
+alpha_curve = SubResource("CurveTexture_4n1h3")
+collision_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uwiao"]
+blend_mode = 1
+depth_draw_mode = 2
+shading_mode = 0
+diffuse_mode = 2
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.352822, 0.295186, 1)
+albedo_texture = ExtResource("11_dyo57")
+heightmap_scale = 16.0
+heightmap_texture = ExtResource("11_dyo57")
+texture_filter = 2
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+proximity_fade_enabled = true
+proximity_fade_distance = 0.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_txe0g"]
+material = SubResource("StandardMaterial3D_uwiao")
+size = Vector2(4, 4)
+orientation = 2
+
+[sub_resource type="Animation" id="Animation_d4yl3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VolcanoCurse:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VolcanoCurse:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CleansingLight:material_override:albedo_color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CleansingLight:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("VolcanoCurse:alpha_hash_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("VolcanoCurse:alpha_antialiasing_edge")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_2vhnp"]
+resource_name = "cleanse"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CleansingLight:material_override:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4.2, 4.46667, 5.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_4d4kh"]
+resource_name = "reveal"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CleansingLight:material_override:albedo_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26667, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 0.472594, 0.81726, 0.309804), Color(0, 1, 0.716667, 0.141176), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CleansingLight:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_bb711"]
+resource_name = "reveal_curse"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VolcanoCurse:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VolcanoCurse:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.353554, 1),
+"update": 0,
+"values": [Vector3(0, 0.4, 0), Vector3(0, 0.8, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("VolcanoCurse:alpha_hash_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [2.0, 0.01]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("VolcanoCurse:alpha_antialiasing_edge")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0iwo6"]
+_data = {
+"RESET": SubResource("Animation_d4yl3"),
+"cleanse": SubResource("Animation_2vhnp"),
+"reveal": SubResource("Animation_4d4kh"),
+"reveal_curse": SubResource("Animation_bb711")
+}
+
+[sub_resource type="Gradient" id="Gradient_tt2gf"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qxqop"]
+gradient = SubResource("Gradient_tt2gf")
+fill_from = Vector2(0, 0.156695)
+fill_to = Vector2(0, 0.555556)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqp03"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+no_depth_test = true
+shading_mode = 2
+diffuse_mode = 3
+specular_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 1, 1, 0)
+albedo_texture = SubResource("GradientTexture2D_qxqop")
+metallic_specular = 0.0
+emission_enabled = true
+emission = Color(0.755941, 0.825849, 0.937693, 1)
+emission_energy_multiplier = 0.25
+texture_filter = 0
+disable_receive_shadows = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_it5b6"]
+top_radius = 0.75
+bottom_radius = 0.71
+height = 0.5
+radial_segments = 4
+cap_top = false
+
+[node name="VolcanoTile" type="Node3D"]
+
+[node name="TileMesh" type="MeshInstance3D" parent="."]
+layers = 2
+cast_shadow = 0
+mesh = ExtResource("11_dwwmf")
+surface_material_override/0 = ExtResource("2_v7pan")
+
+[node name="Tile" parent="." node_paths=PackedStringArray("tile_mesh", "flag_node", "fog", "imperfection", "smoke", "selection_box", "animator", "cleansing_light") instance=ExtResource("3_uwk5o")]
+tile_mesh = NodePath("../TileMesh")
+flag_node = NodePath("../Flags")
+fog = NodePath("../Fog")
+imperfection = NodePath("../Imperfection")
+smoke = NodePath("../Smoke")
+selection_box = NodePath("../SelectionHighlight")
+animator = NodePath("../AnimationPlayer")
+cleansing_light = NodePath("../CleansingLight")
+alternate_material = ExtResource("2_kcpvl")
+
+[node name="SelectionHighlight" type="Decal" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00152588, 0.0627111, 0.00454148)
+visible = false
+layers = 2
+sorting_offset = 10.0
+size = Vector3(1.01, 1.1, 1.01)
+texture_emission = SubResource("GradientTexture2D_jot5x")
+emission_energy = 8.0
+upper_fade = 1e-05
+lower_fade = 0.000857863
+cull_mask = 2
+
+[node name="Fog" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.509, 0)
+visible = false
+layers = 32
+material_override = SubResource("StandardMaterial3D_rus4t")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_wouey")
+skeleton = NodePath("../Tile")
+
+[node name="Imperfection" type="Decal" parent="."]
+visible = false
+texture_albedo = ExtResource("5_62da7")
+cull_mask = 1048450
+
+[node name="Flags" type="Node3D" parent="."]
+visible = false
+
+[node name="FlagAnimation" type="AnimationPlayer" parent="Flags"]
+root_node = NodePath("../FlagNormal")
+libraries = {
+"": SubResource("AnimationLibrary_8trxv")
+}
+
+[node name="FlagNormal" type="Sprite3D" parent="Flags"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+layers = 12
+material_override = SubResource("ShaderMaterial_tm604")
+cast_shadow = 0
+texture = ExtResource("8_rlskg")
+hframes = 10
+
+[node name="FlagSpawnFx" type="AudioStreamPlayer3D" parent="Flags"]
+stream = ExtResource("9_1vofv")
+volume_db = 5.0
+bus = &"Effects"
+
+[node name="FlagRemoveFx" type="AudioStreamPlayer3D" parent="Flags"]
+stream = ExtResource("10_ecab0")
+volume_db = 3.0
+bus = &"Effects"
+
+[node name="VolcanoCurse" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+pixel_size = 0.002
+alpha_cut = 3
+alpha_hash_scale = 2.0
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 1.0
+texture = ExtResource("12_a00mo")
+
+[node name="GPUParticlesCollisionBox3D" type="GPUParticlesCollisionBox3D" parent="."]
+size = Vector3(1, 1, 1)
+
+[node name="Smoke" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+cast_shadow = 0
+emitting = false
+amount = 2
+amount_ratio = 0.75
+lifetime = 14.0
+preprocess = 0.1
+randomness = 0.05
+fixed_fps = 15
+fract_delta = false
+collision_base_size = 0.1
+process_material = SubResource("ParticleProcessMaterial_uhyvo")
+draw_pass_1 = SubResource("PlaneMesh_txe0g")
+
+[node name="HideOnFidelity" parent="Smoke" instance=ExtResource("13_7knqe")]
+fidelity_threshold = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0iwo6")
+}
+
+[node name="CleansingLight" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0.767113, 0)
+visible = false
+material_override = SubResource("StandardMaterial3D_gqp03")
+cast_shadow = 0
+mesh = SubResource("CylinderMesh_it5b6")

@@ -1,0 +1,271 @@
+[gd_scene load_steps=30 format=3 uid="uid://cst7vv2vu1fu6"]
+
+[ext_resource type="Shader" path="res://shader_materials/grass.gdshader" id="1_f48ss"]
+[ext_resource type="Texture2D" uid="uid://bhud25khik4yu" path="res://data/images/glow.png" id="2_rutom"]
+[ext_resource type="ArrayMesh" uid="uid://bnl7y32gia03" path="res://models/themed_blocks/eden/eden_big_bush.obj" id="3_ee4rj"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="4_umovx"]
+[ext_resource type="Material" uid="uid://b8s3ob35t8qul" path="res://shader_materials/grassy_ground.material" id="4_xcnei"]
+[ext_resource type="Material" uid="uid://caij68t703hxk" path="res://models/themed_blocks/eden/eden_white_low.material" id="6_k8igr"]
+[ext_resource type="ArrayMesh" uid="uid://b0ewx5lx8goo2" path="res://models/themed_blocks/eden/grass_blade.obj" id="6_wfvbf"]
+[ext_resource type="Material" uid="uid://da0s6rbvrj4w4" path="res://shader_materials/grass.material" id="7_j68rc"]
+[ext_resource type="ArrayMesh" uid="uid://3fpqjc8fqvei" path="res://models/themed_blocks/eden/eden_south_gate.obj" id="8_6hmj6"]
+[ext_resource type="Material" uid="uid://cy4bgq2grxr0c" path="res://models/themed_blocks/eden/eden_stone.material" id="9_mbrgb"]
+[ext_resource type="Material" uid="uid://b708asxglctex" path="res://models/priestess/gold.material" id="9_tqlbo"]
+[ext_resource type="ArrayMesh" uid="uid://d1xe5d6xgmnow" path="res://models/themed_blocks/eden/eden_flower_c.obj" id="10_cply0"]
+[ext_resource type="ArrayMesh" uid="uid://c3mr3btyupyma" path="res://models/themed_blocks/eden/eden_south_gate_flower_base.obj" id="11_mb3yq"]
+
+[sub_resource type="Gradient" id="Gradient_8irsu"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1744t"]
+gradient = SubResource("Gradient_8irsu")
+
+[sub_resource type="Gradient" id="Gradient_qf2ji"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1xwcj"]
+noise_type = 0
+frequency = 0.0093
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yixum"]
+height = 256
+seamless = true
+seamless_blend_skirt = 0.375
+color_ramp = SubResource("Gradient_qf2ji")
+noise = SubResource("FastNoiseLite_1xwcj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vgbtg"]
+render_priority = 0
+shader = ExtResource("1_f48ss")
+shader_parameter/distribution_scale = 0.5
+shader_parameter/sway = 0.2
+shader_parameter/sway_pow = 0.5
+shader_parameter/grass_roughness = 0.3
+shader_parameter/sway_noise_sampeling_scale = 0.12
+shader_parameter/sway_time_scale = 0.2
+shader_parameter/sway_dir = Vector3(1, 0, -0.5)
+shader_parameter/color_scale = 1.44
+shader_parameter/color_grad_height = 0.0
+shader_parameter/top_color = Color(0.357697, 0.514674, 0, 1)
+shader_parameter/bot_color = Color(4.81308e-08, 0.383742, 0.0962123, 1)
+shader_parameter/grass_scale = Vector3(1, 0.64, 1)
+shader_parameter/character_radius = 0.2
+shader_parameter/character_push_strength = 1.0
+shader_parameter/distribution_noise = SubResource("GradientTexture1D_1744t")
+shader_parameter/sway_noise = SubResource("NoiseTexture2D_yixum")
+shader_parameter/character_distance_falloff_curve = ExtResource("2_rutom")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7k8f0"]
+size = Vector2(1, 7)
+
+[sub_resource type="Gradient" id="Gradient_8tm8e"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mvcv6"]
+gradient = SubResource("Gradient_8tm8e")
+
+[sub_resource type="Gradient" id="Gradient_fa823"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jm0yd"]
+noise_type = 0
+frequency = 0.0093
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_edhgf"]
+height = 256
+seamless = true
+seamless_blend_skirt = 0.375
+color_ramp = SubResource("Gradient_fa823")
+noise = SubResource("FastNoiseLite_jm0yd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cfuxa"]
+render_priority = 0
+shader = ExtResource("1_f48ss")
+shader_parameter/distribution_scale = 0.5
+shader_parameter/sway = 1.14
+shader_parameter/sway_pow = 1.3
+shader_parameter/grass_roughness = 0.3
+shader_parameter/sway_noise_sampeling_scale = 0.075
+shader_parameter/sway_time_scale = 0.2
+shader_parameter/sway_dir = Vector3(1, 0, -0.5)
+shader_parameter/color_scale = 5.0
+shader_parameter/color_grad_height = -0.095
+shader_parameter/top_color = Color(0.984554, 2.88785e-07, 0.537386, 1)
+shader_parameter/bot_color = Color(0.600896, 0.0043231, 0.998036, 1)
+shader_parameter/grass_scale = Vector3(1, 1, 1)
+shader_parameter/character_radius = 0.2
+shader_parameter/character_push_strength = 0.0
+shader_parameter/distribution_noise = SubResource("GradientTexture1D_mvcv6")
+shader_parameter/sway_noise = SubResource("NoiseTexture2D_edhgf")
+shader_parameter/character_distance_falloff_curve = ExtResource("2_rutom")
+
+[sub_resource type="MultiMesh" id="MultiMesh_jsetj"]
+transform_format = 1
+instance_count = 32
+mesh = ExtResource("10_cply0")
+buffer = PackedFloat32Array(-0.0199903, -0.85595, -0.518605, -0.576294, 0.339992, 0.482051, -0.808723, 1.31435, 0.941279, -0.192296, 0.281099, -0.00521922, 0.340886, 0.222779, -0.914422, 0.150674, 0.112433, 0.955949, 0.27481, 1.63048, 0.934428, -0.196294, 0.300522, -0.00900761, 0.661278, 0.0760302, -0.747617, 0.246896, 0.728605, 0.178936, 0.662659, 1.56535, 0.183974, -0.981938, 0.0628678, -0.0463166, -0.104011, -0.154828, -0.983469, -0.1068, 0.54842, 0.816362, -0.186521, 1.62813, 0.830914, -0.558196, 0, -0.0316686, -0.383955, 0.0762566, -0.921284, 0.258367, -0.903634, 0.179469, 0.391455, 1.55545, 0.194998, 0.981823, 0, 0.0472275, 0.00271921, -0.981661, -0.195795, 0.55381, -1.001, -0.00277277, 0, 0.117923, -0.000542353, 0.195795, -0.981665, 0.000742326, 0.270537, 0.921765, -0.281355, 0.593402, -0.193721, 0.338277, 0.921977, 1.2759, 0.944078, -0.19473, 0.269812, -0.0107826, 0.693016, -0.0844183, -0.717359, -0.286772, -0.698334, 0.1757, -0.695313, 1.54753, 0.184552, 0.981837, 0.0627477, 0.0463343, -0.19429, -0.981963, 0.000867399, -0.647622, 0.000168359, 0.000850903, 1.001, 0.580301, -0.981964, 0.19429, 0, 0.00341481, 0.604206, 0.745851, -0.283974, 0.566566, -0.0191693, 0.369637, 0.930055, 1.31773, 0.797852, -0.555945, 0.237397, -0.0248636, 0.557679, 0.831261, 0.000774323, -0.558119, -0.000431393, -0.000643021, 1.001, 0.477738, 0.831261, -0.55768, 0, -0.024049, -0.591896, 0.395969, -0.703469, 0.466751, -0.584695, 0.391152, 0.712133, 1.43104, 0.556589, 0.831991, 0, 0.0409448, 1.001, 0, 0, -0.605411, 0, -1.001, 0, 0, 0, 0, -1.001, -0.0141711, 0.92749, 0.270612, 0.261787, 0.611279, 0.271855, 0.00020881, -0.963377, 0.597705, -0.260496, 0.963727, -0.0733004, 0.0472709, -0.900496, -0.437159, 0.000870382, 0.579758, -0.000782993, -0.000380115, -1.001, 0.838974, 0.437159, -0.900496, 0, -0.0442835, -0.263223, -0.701238, -0.664063, 0.467147, -0.564045, -0.447078, 0.695683, 1.32562, -0.783944, 0.557124, -0.277571, 0.0255793, 0.0957114, 0.733539, -0.67436, -0.427111, 0.381168, -0.65289, -0.656085, 1.36731, -0.920625, -0.194056, -0.341749, -0.00869277, -0.19429, -0.981963, 0.000867399, -0.647538, 0.000168359, 0.000850903, 1.001, 0.536837, -0.981964, 0.19429, 0, 0.00402492, -0.512077, 0.764501, -0.394101, -0.517275, 0.219322, -0.327435, -0.920155, 1.2366, -0.83167, -0.557069, 0, -0.0292059, 0.218093, -0.326834, -0.92066, 0.249355, 0.511021, -0.765816, 0.392919, 1.50799, -0.832643, -0.555614, 0, -0.027355, 0.00271921, -0.981661, -0.195795, 0.556909, -1.001, -0.00277277, 0, 0.0337378, -0.000542353, 0.195795, -0.981665, 0.0150877, -0.383424, 0, 0.924655, 0.622553, 0, -1.001, 0, 0, 0.924655, 0, 0.383424, -0.0272914, 0.416231, -0.0201646, -0.910135, -0.06081, -0.891532, 0.193442, -0.412009, 1.61123, 0.184182, 0.981924, 0.0624768, 0.0459431, 0.980898, 0.194275, 0.0457973, 0.602382, -0.0440491, -0.0133162, 0.999942, 0.883732, 0.194679, -0.981876, -0.00449974, -0.0467518, 0.00271921, -0.981661, -0.195795, 0.558091, -1.001, -0.00277277, 0, 0.262541, -0.000542353, 0.195795, -0.981665, 0.024257, -0.194278, 0.981962, -0.00280643, -0.551718, -0.0182972, -0.00075969, 1.00083, 0.341341, 0.981795, 0.194297, 0.0180967, 0.00395496, 0.0820277, -0.171677, -0.982751, 0.208658, -0.849807, -0.528556, 0.0214023, 1.5432, -0.522591, 0.83256, -0.189059, 0.0431421, 0.19425, 0.981962, 0.00435525, -0.552564, -0.0185995, -0.000759616, 1.00083, 0.647485, 0.981795, -0.194297, 0.0180983, -0.00942438, 0.529077, 0.355601, -0.771769, 0.416473, 0.640535, 0.430514, 0.637475, 1.48761, 0.558385, -0.830787, 0, -0.0362444, -0.981963, -0.194292, 0.000868533, -0.614657, 0.000852015, 0.00016858, 1.001, 0.496339, -0.194292, 0.981963, 0, 0.0458147, -0.83126, 0.557681, 0.000773308, -0.580482, 0.000642178, -0.000430829, 1.001, 0.381032, 0.557681, 0.83126, 0, 0.0447486, -0.705191, -0.710427, -0.000774144, 0.569138, -0.000545374, -0.000549423, 1.001, 0.901933, -0.710427, 0.705191, 0, 0.0376133)
+
+[sub_resource type="MultiMesh" id="MultiMesh_o0j7l"]
+transform_format = 1
+instance_count = 64
+mesh = ExtResource("10_cply0")
+buffer = PackedFloat32Array(0.424325, -0.741488, 1.23416, -0.571265, -1.37392, 0.176128, 0.578197, 0.721588, -0.430444, -1.29313, -0.628922, -0.138742, 0.153072, -1.09784, -1.01209, 0.569238, -0.609497, 0.882836, -1.04982, 0.809361, 1.36312, 0.51803, -0.355757, -0.13762, -0.107502, 1.47215, 0.272445, -0.0845228, -0.838708, 0.167045, -1.23356, 1.56392, -1.24017, -0.240582, 0.810623, -0.137379, 1.3384, 0.11161, -0.670246, -0.646286, 0.294119, 1.23955, 0.79373, 0.521419, 0.612519, -0.839081, 1.0834, -0.0895791, 1.02896, 0.288161, -1.05414, 0.645857, 1.0789, -0.03749, 1.04287, 0.351638, 0.173881, -1.4726, -0.232826, -0.0943544, 1.28864, -0.43312, 0.636249, 0.584462, -0.728855, -0.287961, 1.28018, 0.0537958, -0.247338, -1.40801, -0.457535, -0.0559582, -1.33967, -0.672923, -0.0739823, -0.00355306, -0.438307, 0.737154, 1.23187, 1.64797, -0.515932, 1.12106, -0.854421, -0.101665, 0.0234672, 1.49065, -0.174425, 0.561142, 1.32194, 0.062063, 0.708248, 0.0605784, 0.710575, -0.164691, -1.31185, -0.123323, -1.01375, 1.06461, -0.303176, -0.579232, -0.476689, -0.790898, -1.18332, 1.29521, -0.999039, -0.702913, 0.87226, -0.123265, 1.22131, 0.85496, 0.17452, -0.591517, -0.103976, 0.440652, -1.43109, 1.28248, -0.866372, 1.15233, 0.417766, -0.102371, 0.286789, 0.370088, -1.42611, 0.546347, 1.06031, -1.06061, -0.0620109, 1.19065, -1.02298, -0.995559, -0.464077, -0.139761, 0.545541, 1.08999, -0.875962, 0.314266, 0.630107, 0.647779, 1.19848, 1.48493, 1.24834, -0.80331, -0.222132, -0.137422, 0.670195, 0.248015, -1.31997, 0.551396, 0.298713, 1.41071, 0.416731, 0.909906, 1.30943, -0.448757, 0.580524, -0.104965, -0.257632, -0.0465435, -1.47799, -0.551776, 1.43608, -0.36556, -0.238815, 0.201417, -0.352551, -1.45506, 0.107275, -0.1037, 0.489821, 1.36405, -0.390459, -0.580118, -0.766596, -0.0931563, -1.28711, 0.939945, -1.1939, 0.619439, 0.66625, -0.0552059, -1.25033, -0.771376, -0.307672, 0.633635, -0.533942, 0.320761, 1.36566, 1.07666, -0.636074, 1.24703, -0.54159, -0.0696423, 0.717026, -0.0260875, 1.31841, 0.211463, -0.287553, 1.4615, 0.185307, 1.58239, -1.28693, -0.341093, 0.693158, -0.145515, 1.11848, 0.059739, 0.999214, -0.642585, -0.61255, -1.14419, 0.754072, 0.263987, 0.791695, -0.969677, -0.82822, -0.0778916, -1.14408, -0.28844, -0.927842, -0.553094, -0.943285, -0.0140354, 1.16748, 0.00955795, -0.233025, 1.47296, -0.170568, -0.0903883, -0.861447, -0.221581, -1.20905, 0.614217, 1.19373, 0.201288, -0.887415, 0.836515, 0.29314, -1.47085, 0.0606979, -0.0536058, 1.36056, -0.620353, 0.130535, -0.563621, 0.0319064, -0.241672, -1.48107, 0.115058, 0.633134, 1.34527, -0.205873, -0.068168, -0.0755207, -1.48034, 0.23644, 0.61376, 1.18457, 0.0861616, 0.917812, 0.191879, -0.918749, 0.232773, 1.16392, -0.0542335, -1.26622, 0.749515, 0.296511, 0.625636, -0.139549, -0.747675, 1.29403, 1.0824, 0.793863, 1.06405, 0.700409, -0.0626702, -1.33189, 0.487062, -0.49178, -0.553091, -0.454857, 0.187937, 1.41802, 0.674872, 0.521711, 1.40729, -0.0191658, -0.112197, 1.42571, -0.388863, 0.262934, 0.580239, -0.206995, 0.233795, 1.46816, 0.927527, -0.421309, -1.43078, 0.168442, -0.0558524, -0.233941, 0.746311, -1.28113, -0.563917, -1.32522, 0.476355, 0.51949, 1.33717, 0.664872, 1.21207, 0.58467, -0.103067, -0.985753, 0.61649, 0.949333, -0.492574, -0.949198, 0.235642, -1.13864, 1.43769, -0.616696, -1.34812, 0.235101, -0.0997364, 0.175365, 0.791143, 1.26346, -0.461881, 1.36963, -0.587746, 0.177927, 1.3528, 0.588515, 1.1321, -0.79057, -0.138158, 0.609875, 1.31549, 0.387999, 0.509102, 0.0420554, -0.442367, 1.43372, 1.32879, 1.37087, -0.571666, -0.216597, -0.148136, -0.676555, 0.972367, -0.921834, -0.554365, -1.32307, -0.647881, 0.287635, 0.0976541, -0.211561, 0.942207, 1.14913, -0.083623, -0.711038, 0.882176, -0.984475, -0.0521981, 1.18462, 0.921296, -0.0300276, 1.62953, 0.586611, -0.791189, -1.13266, -0.0636434, 1.26353, 0.517579, 0.623374, -0.563596, 0.517681, 0.372668, -1.35872, 1.14778, -0.62329, 1.35876, 0.135202, -0.144013, 0.0518147, 1.48074, -0.240245, -0.601804, -0.972653, -0.149847, -1.13336, 0.799796, -1.14204, 0.194803, 0.954354, -0.0516818, 0.874745, -0.275324, -1.18828, -0.623135, 0.776238, 1.2536, 0.280963, 0.539923, 0.940892, -0.778256, 0.87295, -0.14181, -0.574329, -1.31406, 0.443154, -0.62401, -0.0490365, -0.460111, -1.4279, 0.903125, 1.38591, -0.560836, 0.133123, -0.0589624, -0.713788, -1.31535, 0.1156, -0.517623, 0.499778, -0.147499, 1.40765, 1.20726, -1.22218, 0.707885, 0.508105, -0.10103, 0.51449, -1.38799, 0.248574, -0.562473, 0.392187, -0.113307, -1.44442, 0.453775, 1.35443, 0.560045, 0.323822, -0.069489, -0.956067, -1.00801, -0.568196, -0.594757, 1.03431, -0.41402, -1.00588, 1.23064, 0.518783, -1.03223, 0.958315, -0.0638414, -1.32016, -0.398259, 0.592922, 0.220733, 0.713814, -0.779672, 1.06564, 1.60237, 0.0252401, 1.21922, 0.875135, -0.0713504, 0.312631, 0.587725, 1.3453, -0.0256388, 1.32612, 0.477031, -0.516574, 1.56678, -0.629817, 1.29616, -0.419893, -0.063969, -0.12989, -1.48648, -0.162822, -0.571967, 0.00335656, -0.163724, 1.49204, 0, -1.49537, 0.128751, 0.0174919, -0.0752264, 0.442307, -0.209086, 1.41903, -0.231805, 1.4313, -0.0325569, -0.450927, 1.50995, 0.0935921, 1.48601, 0.189783, -0.0806426, 1.33357, -0.375252, 0.577746, 0.553294, 0.682674, 0.88887, -0.998433, 0.351401, -0.0925231, 1.14983, 0.960387, -0.113047, -1.24786, 0.741382, 0.382363, -0.578101, 0.755512, 1.29613, -0.0474769, 0.992668, -0.353624, 0.152988, -1.45071, -0.0565319, -1.41322, -0.419346, -0.282793, 0.504932, -0.499516, 1.28892, 0.584947, 1.40694, 0.0794161, 0.644847, -1.3531, -0.128825, -0.791844, -1.26612, 0.151393, -0.613401, 0.654804, -0.25083, 1.32715, 1.02371, -1.09417, 0.766173, 0.684663, -0.054023, -1.30921, 0.623745, 0.387197, 0.450405, 0.733647, 1.08218, 0.737329, 1.37106, 0.0272416, 0.832367, -1.24877, -0.0602791, 1.15778, 0.892133, -0.341531, 0.571907, 0.194871, 0.304786, 1.45675, 0.671227, 0.935185, -1.16799, 0.11927, -0.140188, 0.834087, 0.51733, -1.13564, 0.581403, 0.142114, 1.31768, 0.704639, 1.10131, 1.2398, -0.49908, 0.68324, -0.146659, -0.545888, 0.729775, 1.19266, 0.619916, -0.994405, 0.697434, -0.881898, 0, -0.982937, -1.11086, 0.229827, -0.113628, 0.446895, -0.666134, 1.26868, -0.580682, -0.589773, 1.12566, 0.798787, 0.717734, -1.30593, -0.736314, 0.0734066, -0.0549425, 0.239929, 1.47493, -0.141489, -0.60105, -0.981808, 0.0509067, -1.13422, 0.106668, -1.10972, 0.27385, 0.972892, -0.0514253, -0.345809, 1.42483, -0.321362, 0.625455, -1.37481, -0.205987, 0.566105, 0.570832, 0.493277, 0.424767, 1.3525, -0.0606421, 0.761297, 0.0152779, 1.29352, 0.117114, 1.1872, 0.587883, -0.705664, 1.63146, -0.513804, 1.381, 0.286087, -0.123916, 0.723491, -0.904167, 0.95501, -0.6208, -0.89498, -1.13716, -0.398604, 1.08131, 0.963625, -0.377301, -1.08723, -0.0596964, 0.735627, -0.926903, -0.92342, 0.64082, -1.20527, -0.892275, -0.0645204, 0, -0.509088, 0.773109, -1.18158, -0.116792, 0.797612, -0.996973, 0.789216, -0.638465, -0.926638, -1.09371, -0.445129, 0.865924, 0.870723, -0.250684, -1.19666, -0.0724696, 0.126332, 1.1172, -0.994434, -0.084992, 0.902431, 0.738918, 0.944786, 1.63761, 1.19275, -0.677392, -0.609493, -0.0784333, 0.23244, 1.47467, 0.155957, -0.564312, -0.952682, 0.269476, -1.12818, 1.33648, -1.13638, 0.0757196, 0.977701, -0.103041, -0.241372, -1.13297, 0.954527, 0.265526, 1.05305, 0.549035, 0.91796, 1.50247, -1.04203, 0.817277, 0.706563, -0.129451, 0.0988091, 0.152634, 1.48995, 0.59608, -0.95526, -1.14363, 0.180507, 1.18899, 1.15357, -0.960108, 0.0218545, -0.0561081, -0.481186, -1.41166, -0.169361, -0.622836, -0.779044, 0.411349, -1.21527, 0.921838, 1.18935, -0.301687, -0.864543, -0.141802, -0.516643, -1.38647, 0.252535, -0.360971, -0.508733, -0.0673518, -1.41055, 1.53291, 1.31426, -0.571102, -0.446734, -0.0672017, 1.01414, -1.10658, -0.00227502, -0.582902, 0.214768, 0.193798, 1.47286, 1.2396, -1.08554, -0.995451, 0.289271, -0.141913)
+
+[sub_resource type="BoxMesh" id="BoxMesh_voppr"]
+size = Vector3(0.5, 0.1, 0.5)
+
+[node name="EdenSouthGate" type="Node3D"]
+
+[node name="EdenBigBush" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 1.001)
+material_override = SubResource("ShaderMaterial_vgbtg")
+mesh = ExtResource("3_ee4rj")
+
+[node name="EdenBigBush2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 1.001)
+material_override = SubResource("ShaderMaterial_vgbtg")
+mesh = ExtResource("3_ee4rj")
+
+[node name="HideOnFidelity" parent="EdenBigBush2" instance=ExtResource("4_umovx")]
+
+[node name="EdenBigBush3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, 1.001)
+material_override = SubResource("ShaderMaterial_vgbtg")
+mesh = ExtResource("3_ee4rj")
+
+[node name="EdenBigBush4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 1.001)
+material_override = SubResource("ShaderMaterial_vgbtg")
+mesh = ExtResource("3_ee4rj")
+
+[node name="HideOnFidelity2" parent="EdenBigBush4" instance=ExtResource("4_umovx")]
+
+[node name="EdenBigBush5" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0.5, 1.001)
+material_override = SubResource("ShaderMaterial_vgbtg")
+mesh = ExtResource("3_ee4rj")
+
+[node name="EdenBigBush6" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, -0.999)
+material_override = SubResource("ShaderMaterial_vgbtg")
+mesh = ExtResource("3_ee4rj")
+
+[node name="EdenBigBush7" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -0.999)
+material_override = SubResource("ShaderMaterial_vgbtg")
+mesh = ExtResource("3_ee4rj")
+
+[node name="HideOnFidelity3" parent="EdenBigBush7" instance=ExtResource("4_umovx")]
+
+[node name="EdenBigBush8" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0.5, -0.999)
+material_override = SubResource("ShaderMaterial_vgbtg")
+mesh = ExtResource("3_ee4rj")
+
+[node name="EdenBigBush9" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, -0.999)
+material_override = SubResource("ShaderMaterial_vgbtg")
+mesh = ExtResource("3_ee4rj")
+
+[node name="HideOnFidelity4" parent="EdenBigBush9" instance=ExtResource("4_umovx")]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0.5, 2.38419e-07)
+material_override = ExtResource("4_xcnei")
+mesh = SubResource("PlaneMesh_7k8f0")
+
+[node name="EdenSouthGate" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.6, 0.5, -2.62268e-08)
+mesh = ExtResource("8_6hmj6")
+surface_material_override/0 = ExtResource("6_k8igr")
+surface_material_override/1 = ExtResource("9_tqlbo")
+surface_material_override/2 = ExtResource("9_tqlbo")
+
+[node name="EdenFlowerC" type="MeshInstance3D" parent="EdenSouthGate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227773, 1.33625, -0.0579911)
+material_override = SubResource("ShaderMaterial_cfuxa")
+mesh = ExtResource("10_cply0")
+
+[node name="EdenSouthGateFlowerBase" type="MeshInstance3D" parent="EdenSouthGate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+cast_shadow = 3
+mesh = ExtResource("11_mb3yq")
+
+[node name="Flowers" type="MultiMeshInstance3D" parent="EdenSouthGate/EdenSouthGateFlowerBase"]
+material_override = SubResource("ShaderMaterial_cfuxa")
+multimesh = SubResource("MultiMesh_jsetj")
+
+[node name="HideOnFidelity5" parent="EdenSouthGate/EdenSouthGateFlowerBase/Flowers" instance=ExtResource("4_umovx")]
+fidelity_threshold = 1
+
+[node name="GoldenOrnaments" type="MultiMeshInstance3D" parent="EdenSouthGate"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.37114e-09, 0, 0.1)
+material_override = ExtResource("9_tqlbo")
+multimesh = SubResource("MultiMesh_o0j7l")
+
+[node name="HideOnFidelity5" parent="EdenSouthGate/GoldenOrnaments" instance=ExtResource("4_umovx")]
+
+[node name="StoneBase" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.994347, 0.00386292, -0.106106, -0.00184133, 0.999815, 0.019144, 0.10616, -0.0188404, 0.994171, 1.04181, 0.474079, -0.0680368)
+material_override = ExtResource("9_mbrgb")
+mesh = SubResource("BoxMesh_voppr")
+
+[node name="StoneBase2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.998327, 0.00386293, 0.057687, -0.00494267, 0.999815, 0.0185864, -0.0576046, -0.0188404, 0.998162, 1.6284, 0.471615, -0.0785017)
+material_override = ExtResource("9_mbrgb")
+mesh = SubResource("BoxMesh_voppr")
+
+[node name="StoneBase3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99309, 0.0642099, -0.0982315, -0.0572961, 0.995782, 0.0716559, 0.102418, -0.0655324, 0.992581, 2.26931, 0.47029, -0.0174344)
+material_override = ExtResource("9_mbrgb")
+mesh = SubResource("BoxMesh_voppr")
+
+[node name="StoneBase4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.991843, 0.00386292, 0.127411, -0.00623128, 0.999815, 0.0181949, -0.127318, -0.0188404, 0.991683, 2.90447, 0.46716, -0.0533081)
+material_override = ExtResource("9_mbrgb")
+mesh = SubResource("BoxMesh_voppr")
+
+[node name="StoneBase6" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.99864, 0.00386292, 0.0519884, -0.00483652, 0.999815, 0.0186143, -0.051907, -0.0188404, 0.998474, 4.09974, 0.462287, -0.0668078)
+material_override = ExtResource("9_mbrgb")
+mesh = SubResource("BoxMesh_voppr")
+
+[node name="StoneBase7" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.997738, -0.0467626, -0.0482901, 0.0477266, 0.99868, 0.0190051, 0.0473375, -0.0212668, 0.998653, 4.68317, 0.461288, -0.000219285)
+material_override = ExtResource("9_mbrgb")
+mesh = SubResource("BoxMesh_voppr")
+
+[node name="StoneBase5" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.998463, -0.0538366, 0.0131994, 0.0540263, 0.998435, -0.0144593, -0.0124005, 0.0151501, 0.999808, 3.47878, 0.462901, 0.00241192)
+material_override = ExtResource("9_mbrgb")
+mesh = SubResource("BoxMesh_voppr")
+
+[node name="GrassBlade" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 3.17771, 0.43, 0.36467)
+mesh = ExtResource("6_wfvbf")
+surface_material_override/0 = ExtResource("7_j68rc")
+
+[node name="HideOnFidelity6" parent="GrassBlade" instance=ExtResource("4_umovx")]
+
+[node name="GrassBlade2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.28916, 0.43, -0.280468)
+mesh = ExtResource("6_wfvbf")
+surface_material_override/0 = ExtResource("7_j68rc")
+
+[node name="HideOnFidelity7" parent="GrassBlade2" instance=ExtResource("4_umovx")]
+fidelity_threshold = 1
+
+[node name="GrassBlade3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.1673, 0.43, 0.292368)
+mesh = ExtResource("6_wfvbf")
+surface_material_override/0 = ExtResource("7_j68rc")
+
+[node name="HideOnFidelity8" parent="GrassBlade3" instance=ExtResource("4_umovx")]
+
+[node name="GrassBlade4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.24701, 0.43, 0.327024)
+mesh = ExtResource("6_wfvbf")
+surface_material_override/0 = ExtResource("7_j68rc")
+
+[node name="HideOnFidelity8" parent="GrassBlade4" instance=ExtResource("4_umovx")]
+fidelity_threshold = 1

@@ -1,39 +1,55 @@
-[gd_resource type="Resource" script_class="ArenaTheme" load_steps=5 format=3 uid="uid://cnfu2cqie4ou2"]
+[gd_resource type="Resource" script_class="ArenaTheme" load_steps=7 format=3 uid="uid://cnfu2cqie4ou2"]
 
 [ext_resource type="Script" path="res://src/arena_theme.gd" id="1_oyelt"]
 [ext_resource type="AudioStream" uid="uid://c0nt27qasn0pp" path="res://data/audio/sand_stone_ambience.ogg" id="1_sl3qw"]
+[ext_resource type="AudioStream" uid="uid://cm4i5453v3ke2" path="res://data/audio/hades_game_lost.ogg" id="2_v6yus"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6rfnr"]
-sky_top_color = Color(0.472231, 0.738573, 0.851356, 1)
-sky_horizon_color = Color(1, 1, 1, 1)
-ground_bottom_color = Color(0.187548, 0.244628, 0.0319703, 1)
-ground_horizon_color = Color(0.535187, 0.671063, 0.806526, 1)
+[sub_resource type="Gradient" id="Gradient_54pes"]
+offsets = PackedFloat32Array(0.189873, 1)
 
-[sub_resource type="Sky" id="Sky_ab8dn"]
-sky_material = SubResource("ProceduralSkyMaterial_6rfnr")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ywsc7"]
+frequency = 0.1155
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_avtqd"]
+width = 1024
+height = 1024
+seamless = true
+color_ramp = SubResource("Gradient_54pes")
+noise = SubResource("FastNoiseLite_ywsc7")
 
 [resource]
 script = ExtResource("1_oyelt")
 place_name = "Pantheon"
-opponent = "Hecate"
-volumetric_color = Color(0, 0, 0, 1)
-sky = SubResource("Sky_ab8dn")
-ambient_sound_loop = ExtResource("1_sl3qw")
-dust_particles = ""
+opponent = "Hades"
+volumetric_color = Color(0.831373, 0.556863, 0.0823529, 1)
+ambient_color = Color(0.649318, 0.572683, 0.505549, 1)
+directional_light_left_color = Color(0.867746, 0.820727, 0.806933, 1)
+directional_light_right_color = Color(0.16404, 0.524132, 0.739693, 1)
+cove_light_color = Color(0, 0, 0, 1)
+backdrop_color = Color(0.400669, 0.388261, 0.0155367, 1)
+volumetric_backdrop_texture = SubResource("NoiseTexture2D_avtqd")
+volumetric_backdrop_uv_scale = 1.0
+volumetric_backdrop_scroll_speed = 0.001
+volumetric_backdrop_emission = Color(0, 0, 0, 1)
+volumetric_backdrop_energy = 0.0
+volumetric_backdrop_height = -2.0
 tile = "res://prefabs/themed_blocks/sand_stone/sandstone_tile.tscn"
+imperfection_ratio = 0.01
 north_walls_inner_layer = "res://prefabs/themed_blocks/sand_stone/sandstone_pillar.tscn"
 north_walls_inner_layer_alt = "res://prefabs/themed_blocks/sand_stone/sandstone_pillar_beam.tscn"
 north_walls_outer_layer = "res://prefabs/themed_blocks/sand_stone/sandstorm_north_outer_wall_door.tscn"
 north_walls_outer_layer_alt = "res://prefabs/themed_blocks/sand_stone/sandstone_outer_wall.tscn"
 south_walls = "res://prefabs/themed_blocks/sand_stone/sandstone_wall.tscn"
-east_walls_inner_layer = "res://prefabs/themed_blocks/sand_stone/sandstone_pillar.tscn"
-east_walls_inner_layer_alt = "res://prefabs/themed_blocks/sand_stone/sandstone_pillar_beam.tscn"
-east_walls_outer_layer = "res://prefabs/themed_blocks/sand_stone/sandstone_outer_wall.tscn"
-east_walls_outer_layer_alt = "res://prefabs/themed_blocks/sand_stone/sandstone_outer_wall_window.tscn"
-west_walls = "res://prefabs/themed_blocks/sand_stone/sandstone_wall.tscn"
-north_door = "res://prefabs/themed_blocks/sand_stone/sand_stone_north_door.tscn"
-south_door = "res://prefabs/themed_blocks/sand_stone/sand_stone_door.tscn"
-north_east_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_north_east_corner.tscn"
-south_east_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_south_east_corner.tscn"
-north_west_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_north_west_corner.tscn"
-south_west_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_wall_corner.tscn"
+west_walls_inner_layer = "res://prefabs/themed_blocks/sand_stone/sandstone_pillar.tscn"
+west_walls_inner_layer_alt = "res://prefabs/themed_blocks/sand_stone/sandstone_pillar_beam.tscn"
+west_walls_outer_layer = "res://prefabs/themed_blocks/sand_stone/sandstone_outer_wall.tscn"
+west_walls_outer_layer_alt = "res://prefabs/themed_blocks/sand_stone/sandstone_outer_wall_window.tscn"
+east_walls = "res://prefabs/themed_blocks/sand_stone/sandstone_wall.tscn"
+north_door = "res://prefabs/themed_blocks/sand_stone/sandstone_north_door.tscn"
+south_door = "res://prefabs/themed_blocks/sand_stone/sandstone_door.tscn"
+north_west_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_north_east_corner.tscn"
+south_west_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_south_east_corner.tscn"
+north_east_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_north_west_corner.tscn"
+south_east_corner = "res://prefabs/themed_blocks/sand_stone/sandstone_wall_corner.tscn"
+ambient_sound_loop = ExtResource("1_sl3qw")
+game_lose_dialog = ExtResource("2_v6yus")

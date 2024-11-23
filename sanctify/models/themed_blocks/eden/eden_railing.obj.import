@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b5xmql1ue7r58"
+path="res://.godot/imported/eden_railing.obj-c0c6e528af28016edf78577b0387085b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/eden_railing.obj-c0c6e528af28016edf78577b0387085b.mesh"]
+
+source_file="res://models/themed_blocks/eden/eden_railing.obj"
+dest_files=["res://.godot/imported/eden_railing.obj-c0c6e528af28016edf78577b0387085b.mesh", "res://.godot/imported/eden_railing.obj-c0c6e528af28016edf78577b0387085b.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

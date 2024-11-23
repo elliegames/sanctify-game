@@ -1,0 +1,25 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2p8l33hofgsm"]
+
+[ext_resource type="Material" uid="uid://ddv2sty5wvt1m" path="res://models/themed_blocks/volcano/volcano_wall_low.material" id="1_t6h37"]
+[ext_resource type="ArrayMesh" uid="uid://cjr5oqevm4wqu" path="res://models/themed_blocks/volcano/volcano_main_gate.obj" id="1_vsf6q"]
+[ext_resource type="Material" uid="uid://lblicwfoayv" path="res://models/themed_blocks/volcano/volcano_main_bridge.material" id="2_mby0s"]
+[ext_resource type="Material" uid="uid://cr11puoqh7i4b" path="res://models/themed_blocks/volcano/volcano_main_gate_rocks.material" id="3_8cfnu"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="5_6ma44"]
+
+[node name="VolcanoMainGate" type="Node3D"]
+
+[node name="VolcanoMainGate" type="MeshInstance3D" parent="."]
+cast_shadow = 2
+mesh = ExtResource("1_vsf6q")
+surface_material_override/0 = ExtResource("2_mby0s")
+surface_material_override/1 = ExtResource("1_t6h37")
+surface_material_override/2 = ExtResource("3_8cfnu")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.995403, 6.04059e-09, 0.0957763, 0.0931673, -0.231816, -0.968288, 0.0222025, 0.97276, -0.23075, 0.645867, -1.96121, -1.35021)
+light_color = Color(0.728378, 0.314885, 0, 1)
+light_energy = 5.0
+spot_angle_attenuation = 0.143587
+
+[node name="HideOnFidelity" parent="SpotLight3D" instance=ExtResource("5_6ma44")]
+fidelity_threshold = 1

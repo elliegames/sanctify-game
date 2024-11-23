@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://3fpqjc8fqvei"
+path="res://.godot/imported/eden_south_gate.obj-15463d284783fe57bd5028fe1591986a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/eden_south_gate.obj-15463d284783fe57bd5028fe1591986a.mesh"]
+
+source_file="res://models/themed_blocks/eden/eden_south_gate.obj"
+dest_files=["res://.godot/imported/eden_south_gate.obj-15463d284783fe57bd5028fe1591986a.mesh", "res://.godot/imported/eden_south_gate.obj-15463d284783fe57bd5028fe1591986a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

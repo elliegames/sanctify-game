@@ -1,0 +1,79 @@
+[gd_scene load_steps=17 format=3 uid="uid://kjshagg4kvtk"]
+
+[ext_resource type="Texture2D" uid="uid://b0mcp24e8468t" path="res://models/themed_blocks/eden/textures/rock_tile_floor_diff_1k.png" id="1_mqesl"]
+[ext_resource type="Texture2D" uid="uid://dwi0o4t1x2ip8" path="res://models/themed_blocks/eden/textures/rock_tile_floor_disp_1k.png" id="2_anjpe"]
+[ext_resource type="Texture2D" uid="uid://camn2vnldags4" path="res://models/themed_blocks/eden/textures/rock_tile_floor_nor_gl_1k.png" id="3_6v0xn"]
+[ext_resource type="Texture2D" uid="uid://b30ujdcxxlu8a" path="res://models/themed_blocks/eden/textures/rock_tile_floor_arm_1k.png" id="4_qr35g"]
+[ext_resource type="Shader" path="res://shader_materials/grass.gdshader" id="5_l1e1n"]
+[ext_resource type="Texture2D" uid="uid://bhud25khik4yu" path="res://data/images/glow.png" id="6_x1nev"]
+[ext_resource type="Texture2D" uid="uid://0ctl1p48udlh" path="res://data/images/distribution_noise.tres" id="7_c3iwi"]
+[ext_resource type="ArrayMesh" uid="uid://b4ausdexf04qa" path="res://models/themed_blocks/eden/eden_flower_a.obj" id="8_ktb8s"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="9_80yk1"]
+[ext_resource type="ArrayMesh" uid="uid://d1xe5d6xgmnow" path="res://models/themed_blocks/eden/eden_flower_c.obj" id="9_cevq3"]
+
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_eocer"]
+albedo_texture = ExtResource("1_mqesl")
+orm_texture = ExtResource("4_qr35g")
+normal_enabled = true
+normal_texture = ExtResource("3_6v0xn")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_anjpe")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_f50rv"]
+size = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_024ue"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_oobn2"]
+noise_type = 0
+frequency = 0.0093
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_lxlw5"]
+height = 256
+seamless = true
+seamless_blend_skirt = 0.375
+color_ramp = SubResource("Gradient_024ue")
+noise = SubResource("FastNoiseLite_oobn2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3yrmx"]
+render_priority = 0
+shader = ExtResource("5_l1e1n")
+shader_parameter/distribution_scale = 0.5
+shader_parameter/sway = 1.14
+shader_parameter/sway_pow = 1.3
+shader_parameter/grass_roughness = 0.3
+shader_parameter/sway_noise_sampeling_scale = 0.075
+shader_parameter/sway_time_scale = 0.2
+shader_parameter/sway_dir = Vector3(1, 0, -0.5)
+shader_parameter/color_scale = 5.78
+shader_parameter/color_grad_height = -0.115
+shader_parameter/top_color = Color(0.984554, 2.88785e-07, 0.537386, 1)
+shader_parameter/bot_color = Color(0.61437, 0.154281, 0, 1)
+shader_parameter/grass_scale = Vector3(2, 3, 2)
+shader_parameter/character_radius = 0.2
+shader_parameter/character_push_strength = 0.0
+shader_parameter/distribution_noise = ExtResource("7_c3iwi")
+shader_parameter/sway_noise = SubResource("NoiseTexture2D_lxlw5")
+shader_parameter/character_distance_falloff_curve = ExtResource("6_x1nev")
+
+[node name="EdenStone" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("ORMMaterial3D_eocer")
+mesh = SubResource("PlaneMesh_f50rv")
+
+[node name="EdenFlowerA" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.464616, 5.96046e-08, 0.317747)
+material_override = SubResource("ShaderMaterial_3yrmx")
+mesh = ExtResource("8_ktb8s")
+skeleton = NodePath("../..")
+
+[node name="HideOnFidelity" parent="Floor/EdenFlowerA" instance=ExtResource("9_80yk1")]
+fidelity_threshold = 1
+
+[node name="EdenFlowerC" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.470605, 0, 0.311557)
+material_override = SubResource("ShaderMaterial_3yrmx")
+mesh = ExtResource("9_cevq3")
