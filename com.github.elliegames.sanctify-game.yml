@@ -41,7 +41,7 @@ modules:
 
     sources:
       - type: archive
-        url: https://github.com/elliegames/sanctify-game/releases/download/1.0.0/linux.zip
+        url: https://github.com/elliegames/sanctify-game/releases/download/0.9.9/linux.zip
         sha256: 6de326ad90aa8f495ded545a969dc605f5e0c13c481160162655845357a8fac8
 
       - type: dir
