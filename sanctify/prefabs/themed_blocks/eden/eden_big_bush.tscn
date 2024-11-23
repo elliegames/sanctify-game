@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cyqdimwejrdec"]
+[gd_scene load_steps=21 format=3 uid="uid://cyqdimwejrdec"]
 
 [ext_resource type="Shader" path="res://shader_materials/grass.gdshader" id="1_ksh7s"]
 [ext_resource type="Texture2D" uid="uid://bhud25khik4yu" path="res://data/images/glow.png" id="2_w0afl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://b8s3ob35t8qul" path="res://shader_materials/grassy_ground.material" id="4_2l6m1"]
 [ext_resource type="Texture2D" uid="uid://0ctl1p48udlh" path="res://data/images/distribution_noise.tres" id="5_knoq5"]
 [ext_resource type="ArrayMesh" uid="uid://b0ewx5lx8goo2" path="res://models/themed_blocks/eden/grass_blade.obj" id="6_g044u"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="7_54yx8"]
 [ext_resource type="Material" uid="uid://da0s6rbvrj4w4" path="res://shader_materials/grass.material" id="7_bxnm8"]
 
 [sub_resource type="Gradient" id="Gradient_8irsu"]
@@ -109,6 +110,9 @@ mesh = SubResource("PlaneMesh_hwme4")
 material_override = SubResource("ShaderMaterial_xaqfx")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_hawbo")
+
+[node name="HideOnFidelity" parent="Floor/Grass" instance=ExtResource("7_54yx8")]
+fidelity_threshold = 1
 
 [node name="GrassBlade" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

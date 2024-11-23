@@ -42,11 +42,12 @@ func _process(delta):
 
 
 func mouse_input(camera, event, event_position, normal, shape_idx):
-	if (event as InputEvent).is_action_released("reveal"):
-		if not arena.revealing_multi:
-			arena.reveal_recursive(board_pos)
-	if (event as InputEvent).is_action_released("flag"):
-		flag()
+	if arena.input_enabled:
+		if (event as InputEvent).is_action_released("reveal"):
+			if not arena.revealing_multi:
+				arena.reveal_recursive(board_pos)
+		if (event as InputEvent).is_action_released("flag"):
+			flag()
 
 
 func reveal():

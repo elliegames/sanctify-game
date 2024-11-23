@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d2o7x0p8xwmvt"]
+[gd_scene load_steps=7 format=3 uid="uid://d2o7x0p8xwmvt"]
 
 [ext_resource type="ArrayMesh" uid="uid://bun371bg7k07b" path="res://models/themed_blocks/sand_stone/sand_stone_north_outer_wall_door.obj" id="1_wnf3b"]
 [ext_resource type="Material" uid="uid://clukq4k81w0xx" path="res://models/themed_blocks/sand_stone/sandstone_north_outer_wall_door.material" id="2_euobh"]
 [ext_resource type="Material" uid="uid://blbbt4st3tanr" path="res://models/themed_blocks/sand_stone/sandstone_north_outer_wall_curtain.material" id="3_wduci"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="4_qkno8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g5p1w"]
 disable_ambient_light = true
@@ -42,3 +43,6 @@ distance_fade_begin = 20.0
 distance_fade_shadow = 20.0
 spot_range = 12.0
 spot_angle = 66.5
+
+[node name="HideOnFidelity" parent="MeshInstance3D/OmniLight3D" instance=ExtResource("4_qkno8")]
+fidelity_threshold = 1

@@ -1,7 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://byb5nmde6sejc"]
+[gd_scene load_steps=5 format=3 uid="uid://byb5nmde6sejc"]
 
 [ext_resource type="Material" uid="uid://ccqhgwxcy8njt" path="res://models/themed_blocks/sand_stone/sandstone_north_east_corner.material" id="1_tf3fd"]
 [ext_resource type="ArrayMesh" uid="uid://xnowe20ur0i1" path="res://models/themed_blocks/sand_stone/sand_stone_north_east_corner.obj" id="2_27hxc"]
+[ext_resource type="Material" uid="uid://cketyfy0x4h81" path="res://models/themed_blocks/sand_stone/shadow_mesh.material" id="3_tetbj"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_qvgeg"]
+size = Vector2(2, 10)
+orientation = 0
 
 [node name="SandstoneNorthEastCorner" type="Node3D"]
 
@@ -9,3 +14,9 @@
 material_override = ExtResource("1_tf3fd")
 cast_shadow = 2
 mesh = ExtResource("2_27hxc")
+
+[node name="ShadowMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -4, 8.25, 1.8)
+material_override = ExtResource("3_tetbj")
+cast_shadow = 3
+mesh = SubResource("PlaneMesh_qvgeg")

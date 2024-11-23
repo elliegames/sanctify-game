@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://nfnoiq76tf5l"]
+[gd_scene load_steps=65 format=3 uid="uid://nfnoiq76tf5l"]
 
 [ext_resource type="Material" uid="uid://dyywigo3axpwl" path="res://models/themed_blocks/eden/eden_tree_of_life.material" id="1_ee8tm"]
 [ext_resource type="ArrayMesh" uid="uid://bbu2r2weppv7x" path="res://models/themed_blocks/eden/eden_tree_of_life.obj" id="2_0k7a5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bsir780oayy75" path="res://models/themed_blocks/eden/textures/tree_leaves_3.png" id="4_622p6"]
 [ext_resource type="Texture2D" uid="uid://bfm7ctqdylvxp" path="res://models/themed_blocks/eden/textures/tree_leaves_2.png" id="4_onoox"]
 [ext_resource type="ArrayMesh" uid="uid://dcwd2vbv28e33" path="res://models/themed_blocks/eden/tree_of_life_bushes.obj" id="7_8mclc"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="7_tayrx"]
 [ext_resource type="Shader" path="res://shader_materials/grass.gdshader" id="8_gmqw5"]
 [ext_resource type="Texture2D" uid="uid://bhud25khik4yu" path="res://data/images/glow.png" id="9_i7pmr"]
 [ext_resource type="Texture2D" uid="uid://0ctl1p48udlh" path="res://data/images/distribution_noise.tres" id="10_521al"]
@@ -16,6 +17,7 @@
 [ext_resource type="ArrayMesh" uid="uid://b0ewx5lx8goo2" path="res://models/themed_blocks/eden/grass_blade.obj" id="13_v3403"]
 [ext_resource type="Material" uid="uid://da0s6rbvrj4w4" path="res://shader_materials/grass.material" id="14_1mdxd"]
 [ext_resource type="Material" uid="uid://caij68t703hxk" path="res://models/themed_blocks/eden/eden_white_low.material" id="15_vufuf"]
+[ext_resource type="Shader" path="res://shader_materials/godrays.gdshader" id="18_1jq2u"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7er13"]
 noise_type = 3
@@ -408,6 +410,27 @@ sections = 2
 section_length = 0.05
 curve = SubResource("Curve_1wsxt")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4wu2"]
+render_priority = 0
+shader = ExtResource("18_1jq2u")
+shader_parameter/angle = 0.01
+shader_parameter/position = 0.0
+shader_parameter/spread = 0.5
+shader_parameter/cutoff = 0.1
+shader_parameter/falloff = 1.0
+shader_parameter/edge_fade = 0.824
+shader_parameter/speed = 2.0
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.3
+shader_parameter/color = Vector4(1, 1, 0, 1)
+shader_parameter/hdr = false
+shader_parameter/seed = 5.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_csqrt"]
+size = Vector2(4, 2)
+orientation = 2
+
 [node name="TreeOfLife" type="Node3D"]
 
 [node name="EdenTreeOfLife" type="MeshInstance3D" parent="." node_paths=PackedStringArray("leaves", "apples")]
@@ -494,6 +517,8 @@ light_color = Color(0, 1, 0.983333, 1)
 light_specular = 16.0
 omni_range = 1.0
 
+[node name="HideOnFidelity" parent="EdenTreeOfLife/Apple1/MeshInstance3D2/OmniLight3D" instance=ExtResource("7_tayrx")]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EdenTreeOfLife/Apple1"]
 callback_mode_process = 0
 libraries = {
@@ -521,6 +546,8 @@ skeleton = NodePath("../..")
 light_color = Color(0, 1, 0.983333, 1)
 light_specular = 16.0
 omni_range = 1.0
+
+[node name="HideOnFidelity2" parent="EdenTreeOfLife/Apple2/MeshInstance3D2/OmniLight3D" instance=ExtResource("7_tayrx")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EdenTreeOfLife/Apple2"]
 callback_mode_process = 0
@@ -550,6 +577,8 @@ light_color = Color(0, 1, 0.983333, 1)
 light_specular = 16.0
 omni_range = 1.0
 
+[node name="HideOnFidelity3" parent="EdenTreeOfLife/Apple3/MeshInstance3D2/OmniLight3D" instance=ExtResource("7_tayrx")]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="EdenTreeOfLife/Apple3"]
 callback_mode_process = 0
 libraries = {
@@ -571,6 +600,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53664, -0.009, 0.475982)
 material_override = SubResource("ShaderMaterial_esi4v")
 mesh = ExtResource("11_twxv0")
 
+[node name="HideOnFidelity4" parent="TreeOfLifeBushes/EdenFlowerC2" instance=ExtResource("7_tayrx")]
+fidelity_threshold = 1
+
 [node name="EdenFlowerC3" type="MeshInstance3D" parent="TreeOfLifeBushes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77859, -0.009, 0.475982)
 material_override = SubResource("ShaderMaterial_esi4v")
@@ -580,6 +612,9 @@ mesh = ExtResource("11_twxv0")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.04871, -0.009, -0.451413)
 material_override = SubResource("ShaderMaterial_esi4v")
 mesh = ExtResource("11_twxv0")
+
+[node name="HideOnFidelity5" parent="TreeOfLifeBushes/EdenFlowerC4" instance=ExtResource("7_tayrx")]
+fidelity_threshold = 1
 
 [node name="EdenFlowerC5" type="MeshInstance3D" parent="TreeOfLifeBushes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.53664, -0.009, -0.451413)
@@ -591,9 +626,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.77859, -0.009, -0.451413)
 material_override = SubResource("ShaderMaterial_esi4v")
 mesh = ExtResource("11_twxv0")
 
+[node name="HideOnFidelity6" parent="TreeOfLifeBushes/EdenFlowerC6" instance=ExtResource("7_tayrx")]
+fidelity_threshold = 1
+
 [node name="FlowerBushWhite" type="MultiMeshInstance3D" parent="TreeOfLifeBushes"]
 material_override = SubResource("ShaderMaterial_ifta8")
 multimesh = SubResource("MultiMesh_gqhvr")
+
+[node name="HideOnFidelity7" parent="TreeOfLifeBushes/FlowerBushWhite" instance=ExtResource("7_tayrx")]
 
 [node name="FlowerBushPink" type="MultiMeshInstance3D" parent="TreeOfLifeBushes"]
 material_override = SubResource("ShaderMaterial_0337x")
@@ -625,6 +665,9 @@ material_override = SubResource("ShaderMaterial_tmif5")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_sxcto")
 
+[node name="HideOnFidelity8" parent="GrassField/Grass" instance=ExtResource("7_tayrx")]
+fidelity_threshold = 1
+
 [node name="GrassBlade" type="MeshInstance3D" parent="GrassField"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 visible = false
@@ -640,6 +683,9 @@ mesh = SubResource("PlaneMesh_rv8dc")
 material_override = SubResource("ShaderMaterial_tmif5")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_sxcto")
+
+[node name="HideOnFidelity9" parent="GrassField2/Grass" instance=ExtResource("7_tayrx")]
+fidelity_threshold = 1
 
 [node name="GrassBlade" type="MeshInstance3D" parent="GrassField2"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -674,6 +720,9 @@ fixed_fps = 15
 process_material = SubResource("ParticleProcessMaterial_sx6f2")
 draw_pass_1 = SubResource("RibbonTrailMesh_pl88w")
 
+[node name="HideOnFidelity10" parent="Leaves" instance=ExtResource("7_tayrx")]
+fidelity_threshold = 1
+
 [node name="Spirits" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89866, 2.81574, -0.455052)
 cast_shadow = 0
@@ -684,3 +733,12 @@ randomness = 0.2
 fixed_fps = 15
 process_material = SubResource("ParticleProcessMaterial_5v5vt")
 draw_pass_1 = SubResource("RibbonTrailMesh_kpemb")
+
+[node name="GodRays" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.359141, -0.629802, 0.688743, 0.0617536, 0.720325, 0.690883, -0.931238, 0.290657, -0.219806, -1.789, 1.735, -1.281)
+layers = 128
+material_override = SubResource("ShaderMaterial_q4wu2")
+cast_shadow = 0
+mesh = SubResource("PlaneMesh_csqrt")
+
+[node name="HideOnFidelity10" parent="GodRays" instance=ExtResource("7_tayrx")]

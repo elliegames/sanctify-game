@@ -36,6 +36,38 @@ var pulse_effect_center: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var gfx_idx = ProjectSettings.get_setting("gfx_fidelity")
+	print(gfx_idx)
+	ProjectSettings.set_setting("rendering/quality/directional_shadow/size", 512 if gfx_idx < 2 else 4096)
+	if gfx_idx == 0:
+		ProjectSettings.set_setting("rendering/scaling_3d/scale", 0.6)
+		get_viewport().scaling_3d_scale = 0.6
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_2d", 0)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/screen_space_aa", 0)
+		ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", 1024)
+		ProjectSettings.set_setting("rendering/environment/glow/upscale_mode", 0)
+	elif gfx_idx == 1:
+		ProjectSettings.set_setting("rendering/scaling_3d/scale", 0.75)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_2d", 1)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/screen_space_aa", 0)
+		ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", 2048)
+		ProjectSettings.set_setting("rendering/environment/glow/upscale_mode", 0)
+		get_viewport().scaling_3d_scale = 0.75
+	elif gfx_idx == 2:
+		ProjectSettings.set_setting("rendering/scaling_3d/scale", 0.86)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_2d", 1)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/screen_space_aa", 0)
+		ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", 4096)
+		ProjectSettings.set_setting("rendering/environment/glow/upscale_mode", 1)
+		get_viewport().scaling_3d_scale = 0.86
+	elif gfx_idx == 3:
+		ProjectSettings.set_setting("rendering/scaling_3d/scale", 1.0)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/msaa_2d", 1)
+		ProjectSettings.set_setting("rendering/anti_aliasing/quality/screen_space_aa", 1)
+		ProjectSettings.set_setting("rendering/lights_and_shadows/positional_shadow/atlas_size", 4096)
+		ProjectSettings.set_setting("rendering/environment/glow/upscale_mode", 1)
+		get_viewport().scaling_3d_scale = 1.0
+
 	arena_theme_index = ProjectSettings.get_setting("arena_theme")
 	arena_theme = arena_themes[arena_theme_index]
 

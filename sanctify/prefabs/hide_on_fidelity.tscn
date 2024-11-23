@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtl58ycs2ex"]
+
+[ext_resource type="Script" path="res://src/hide_on_fidelity.gd" id="1_8xuks"]
+
+[node name="HideOnFidelity" type="Node"]
+script = ExtResource("1_8xuks")

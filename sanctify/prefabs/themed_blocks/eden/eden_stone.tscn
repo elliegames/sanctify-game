@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://kjshagg4kvtk"]
+[gd_scene load_steps=17 format=3 uid="uid://kjshagg4kvtk"]
 
 [ext_resource type="Texture2D" uid="uid://b0mcp24e8468t" path="res://models/themed_blocks/eden/textures/rock_tile_floor_diff_1k.png" id="1_mqesl"]
 [ext_resource type="Texture2D" uid="uid://dwi0o4t1x2ip8" path="res://models/themed_blocks/eden/textures/rock_tile_floor_disp_1k.png" id="2_anjpe"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bhud25khik4yu" path="res://data/images/glow.png" id="6_x1nev"]
 [ext_resource type="Texture2D" uid="uid://0ctl1p48udlh" path="res://data/images/distribution_noise.tres" id="7_c3iwi"]
 [ext_resource type="ArrayMesh" uid="uid://b4ausdexf04qa" path="res://models/themed_blocks/eden/eden_flower_a.obj" id="8_ktb8s"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="9_80yk1"]
 [ext_resource type="ArrayMesh" uid="uid://d1xe5d6xgmnow" path="res://models/themed_blocks/eden/eden_flower_c.obj" id="9_cevq3"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_eocer"]
@@ -68,6 +69,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.464616, 5.96046e-08, 0.317
 material_override = SubResource("ShaderMaterial_3yrmx")
 mesh = ExtResource("8_ktb8s")
 skeleton = NodePath("../..")
+
+[node name="HideOnFidelity" parent="Floor/EdenFlowerA" instance=ExtResource("9_80yk1")]
+fidelity_threshold = 1
 
 [node name="EdenFlowerC" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.470605, 0, 0.311557)

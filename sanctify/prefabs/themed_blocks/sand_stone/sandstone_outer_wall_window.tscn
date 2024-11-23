@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://85vckt5o64b5"]
+[gd_scene load_steps=8 format=3 uid="uid://85vckt5o64b5"]
 
 [ext_resource type="Shader" path="res://shader_materials/godrays.gdshader" id="1_svj7t"]
 [ext_resource type="ArrayMesh" uid="uid://cmo8aas3hp86q" path="res://models/themed_blocks/sand_stone/sand_stone_outer_wall_window.obj" id="2_iinsq"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="2_no8jn"]
 [ext_resource type="Material" uid="uid://eu372jhj46m" path="res://models/themed_blocks/sand_stone/sandstone_outer_wall_window.material" id="3_ttvwt"]
 [ext_resource type="Material" uid="uid://dlxd1qo86sori" path="res://models/themed_blocks/sand_stone/sandstone_outer_wall_window_glow.material" id="4_1ukw2"]
 
@@ -35,6 +36,8 @@ material_override = SubResource("ShaderMaterial_13l31")
 cast_shadow = 0
 mesh = SubResource("PlaneMesh_fv70k")
 
+[node name="HideOnFidelity" parent="GodRays" instance=ExtResource("2_no8jn")]
+
 [node name="OmniLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(0.472346, 0.209343, -0.856192, 1.08779e-07, 0.971385, 0.237509, 0.881413, -0.112186, 0.45883, -3.05146, 3.95484, 1)
 light_color = Color(0.885921, 0.879968, 0.573278, 1)
@@ -52,6 +55,9 @@ distance_fade_shadow = 20.0
 spot_range = 16.0
 spot_attenuation = 0.5
 spot_angle = 35.0
+
+[node name="HideOnFidelity" parent="OmniLight3D" instance=ExtResource("2_no8jn")]
+fidelity_threshold = 1
 
 [node name="SandStoneOuterWallWindow" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_iinsq")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://c63plnd6gmemd"]
+[gd_scene load_steps=45 format=3 uid="uid://c63plnd6gmemd"]
 
 [ext_resource type="ArrayMesh" uid="uid://b0ewx5lx8goo2" path="res://models/themed_blocks/eden/grass_blade.obj" id="1_463hj"]
 [ext_resource type="Material" uid="uid://da0s6rbvrj4w4" path="res://shader_materials/grass.material" id="2_hbhic"]
@@ -7,6 +7,7 @@
 [ext_resource type="Material" uid="uid://b8s3ob35t8qul" path="res://shader_materials/grassy_ground.material" id="4_713s4"]
 [ext_resource type="Material" uid="uid://bj0kvnnt4pao4" path="res://shader_materials/grassy_ground_alt.material" id="4_ikr7h"]
 [ext_resource type="Texture2D" uid="uid://3eih52ybnui7" path="res://data/images/fog.png" id="5_hvmrj"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="6_fokex"]
 [ext_resource type="Texture2D" uid="uid://djr73062q5fe1" path="res://data/images/puddle.png" id="6_t0y56"]
 [ext_resource type="Shader" path="res://shader_materials/additive_sprite.gdshader" id="7_7akv4"]
 [ext_resource type="Texture2D" uid="uid://b0cgm640r8xpg" path="res://data/images/flag_frames.png" id="8_dc48b"]
@@ -462,6 +463,9 @@ cast_shadow = 0
 multimesh = SubResource("MultiMesh_vq7hk")
 script = ExtResource("3_snyjr")
 
+[node name="HideOnFidelity" parent="TileMesh/Grass" instance=ExtResource("6_fokex")]
+fidelity_threshold = 1
+
 [node name="Tile" parent="." node_paths=PackedStringArray("tile_mesh", "flag_node", "fog", "imperfection", "smoke", "selection_box", "animator", "cleansing_light") instance=ExtResource("3_gaosc")]
 tile_mesh = NodePath("../TileMesh")
 flag_node = NodePath("../Flags")
@@ -553,6 +557,9 @@ fract_delta = false
 collision_base_size = 0.1
 process_material = SubResource("ParticleProcessMaterial_oqbe6")
 draw_pass_1 = SubResource("PlaneMesh_agmui")
+
+[node name="HideOnFidelity" parent="Smoke" instance=ExtResource("6_fokex")]
+fidelity_threshold = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

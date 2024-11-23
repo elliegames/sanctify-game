@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bjfk8wwv1ymtw"]
+[gd_scene load_steps=28 format=3 uid="uid://bjfk8wwv1ymtw"]
 
 [ext_resource type="Material" uid="uid://b8s3ob35t8qul" path="res://shader_materials/grassy_ground.material" id="1_465jr"]
 [ext_resource type="Shader" path="res://shader_materials/grass.gdshader" id="2_pdkyx"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://0ctl1p48udlh" path="res://data/images/distribution_noise.tres" id="4_unf6k"]
 [ext_resource type="ArrayMesh" uid="uid://b0ewx5lx8goo2" path="res://models/themed_blocks/eden/grass_blade.obj" id="5_b4vo2"]
 [ext_resource type="Material" uid="uid://da0s6rbvrj4w4" path="res://shader_materials/grass.material" id="6_opqy4"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="6_tktlq"]
 [ext_resource type="PackedScene" uid="uid://kjshagg4kvtk" path="res://prefabs/themed_blocks/eden/eden_stone.tscn" id="7_6n7hk"]
 [ext_resource type="ArrayMesh" uid="uid://bnl7y32gia03" path="res://models/themed_blocks/eden/eden_big_bush.obj" id="8_sq4lb"]
 
@@ -150,6 +151,9 @@ material_override = SubResource("ShaderMaterial_s6a02")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_b7r1a")
 
+[node name="HideOnFidelity" parent="Floor/Grass" instance=ExtResource("6_tktlq")]
+fidelity_threshold = 1
+
 [node name="GrassBlade" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 visible = false
@@ -165,6 +169,9 @@ mesh = SubResource("PlaneMesh_b3ooq")
 material_override = SubResource("ShaderMaterial_b4cmo")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_w6v58")
+
+[node name="HideOnFidelity2" parent="Floor2/Grass" instance=ExtResource("6_tktlq")]
+fidelity_threshold = 1
 
 [node name="GrassBlade" type="MeshInstance3D" parent="Floor2"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
@@ -184,6 +191,9 @@ mesh = ExtResource("8_sq4lb")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 0.001)
 material_override = SubResource("ShaderMaterial_vgbtg")
 mesh = ExtResource("8_sq4lb")
+
+[node name="HideOnFidelity3" parent="EdenBigBush2" instance=ExtResource("6_tktlq")]
+fidelity_threshold = 1
 
 [node name="EdenBigBush3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.5, 0.001)

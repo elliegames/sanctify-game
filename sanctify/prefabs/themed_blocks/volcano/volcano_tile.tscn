@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bukwtt5e6fgfj"]
+[gd_scene load_steps=40 format=3 uid="uid://bukwtt5e6fgfj"]
 
 [ext_resource type="Material" uid="uid://de4oh806ug2tn" path="res://models/themed_blocks/volcano/volcano_tile.material" id="2_kcpvl"]
 [ext_resource type="Material" uid="uid://dl31rgw804ryt" path="res://models/themed_blocks/volcano/volcano_tile_alt.material" id="2_v7pan"]
@@ -12,6 +12,7 @@
 [ext_resource type="ArrayMesh" uid="uid://j7krgpfjoul0" path="res://models/themed_blocks/volcano/volcano_tile.obj" id="11_dwwmf"]
 [ext_resource type="Texture2D" uid="uid://h0l2uixfsge5" path="res://data/images/smoke_mask.png" id="11_dyo57"]
 [ext_resource type="Texture2D" uid="uid://b0bdw7doq7xw6" path="res://models/themed_blocks/volcano/textures/VolcanoCurse.png" id="12_a00mo"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="13_7knqe"]
 
 [sub_resource type="Gradient" id="Gradient_wsadc"]
 colors = PackedColorArray(0, 0, 0, 0, 0.976471, 0.768627, 0.25098, 1)
@@ -473,6 +474,9 @@ fract_delta = false
 collision_base_size = 0.1
 process_material = SubResource("ParticleProcessMaterial_uhyvo")
 draw_pass_1 = SubResource("PlaneMesh_txe0g")
+
+[node name="HideOnFidelity" parent="Smoke" instance=ExtResource("13_7knqe")]
+fidelity_threshold = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

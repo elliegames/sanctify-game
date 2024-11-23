@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://qtmmrhv01ilg"]
+[gd_scene load_steps=21 format=3 uid="uid://qtmmrhv01ilg"]
 
 [ext_resource type="Material" uid="uid://b8s3ob35t8qul" path="res://shader_materials/grassy_ground.material" id="1_i43ba"]
 [ext_resource type="Shader" path="res://shader_materials/grass.gdshader" id="2_2luxd"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://0ctl1p48udlh" path="res://data/images/distribution_noise.tres" id="4_7jp1v"]
 [ext_resource type="ArrayMesh" uid="uid://b0ewx5lx8goo2" path="res://models/themed_blocks/eden/grass_blade.obj" id="5_6q5c6"]
 [ext_resource type="Material" uid="uid://da0s6rbvrj4w4" path="res://shader_materials/grass.material" id="6_kkpg2"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="6_u01uc"]
 [ext_resource type="ArrayMesh" uid="uid://bnl7y32gia03" path="res://models/themed_blocks/eden/eden_big_bush.obj" id="7_be6ci"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_36p83"]
@@ -105,6 +106,9 @@ material_override = SubResource("ShaderMaterial_koyve")
 cast_shadow = 0
 multimesh = SubResource("MultiMesh_plhhm")
 
+[node name="HideOnFidelity" parent="Floor/Grass" instance=ExtResource("6_u01uc")]
+fidelity_threshold = 1
+
 [node name="GrassBlade" type="MeshInstance3D" parent="Floor"]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 visible = false
@@ -121,6 +125,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.999)
 material_override = SubResource("ShaderMaterial_vgbtg")
 mesh = ExtResource("7_be6ci")
 
+[node name="HideOnFidelity2" parent="EdenBigBush2" instance=ExtResource("6_u01uc")]
+
 [node name="EdenBigBush3" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -1.999)
 material_override = SubResource("ShaderMaterial_vgbtg")
@@ -131,6 +137,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -2.999)
 material_override = SubResource("ShaderMaterial_vgbtg")
 mesh = ExtResource("7_be6ci")
 
+[node name="HideOnFidelity3" parent="EdenBigBush4" instance=ExtResource("6_u01uc")]
+
 [node name="EdenBigBush5" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -3.999)
 material_override = SubResource("ShaderMaterial_vgbtg")
@@ -140,6 +148,8 @@ mesh = ExtResource("7_be6ci")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -4.999)
 material_override = SubResource("ShaderMaterial_vgbtg")
 mesh = ExtResource("7_be6ci")
+
+[node name="HideOnFidelity4" parent="EdenBigBush6" instance=ExtResource("6_u01uc")]
 
 [node name="EdenBigBush7" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -5.999)

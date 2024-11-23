@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://dp1f6c8k6fjku"]
+[gd_scene load_steps=43 format=3 uid="uid://dp1f6c8k6fjku"]
 
 [ext_resource type="PackedScene" uid="uid://3k3sqnneywit" path="res://prefabs/tile.tscn" id="1_jnsfw"]
 [ext_resource type="Material" uid="uid://devcgal7v5hf4" path="res://models/themed_blocks/sand_stone/sandstone_tile.material" id="2_6q0ec"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://brs023vlj5mob" path="res://prefabs/themed_blocks/sand_stone/sandstone_curse.tscn" id="9_a2t8g"]
 [ext_resource type="AudioStream" uid="uid://87od7wagei55" path="res://data/audio/flag_on.ogg" id="9_behsq"]
 [ext_resource type="AudioStream" uid="uid://0bxbrv38yt6e" path="res://data/audio/flag_off.ogg" id="10_snot4"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="12_gejh8"]
 
 [sub_resource type="Gradient" id="Gradient_cgfep"]
 colors = PackedColorArray(0, 0, 0, 0, 0.976471, 0.768627, 0.25098, 1)
@@ -429,6 +430,8 @@ fract_delta = false
 collision_base_size = 0.1
 process_material = SubResource("ParticleProcessMaterial_3rxxn")
 draw_pass_1 = SubResource("PlaneMesh_6lq1t")
+
+[node name="HideOnFidelity" parent="Smoke" instance=ExtResource("12_gejh8")]
 
 [node name="SandstoneCurse" parent="." instance=ExtResource("9_a2t8g")]
 visible = false

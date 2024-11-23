@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://d2ho5gg1g3mc"]
+[gd_scene load_steps=58 format=3 uid="uid://d2ho5gg1g3mc"]
 
 [ext_resource type="Script" path="res://src/cursor.gd" id="1_g23o2"]
 [ext_resource type="Texture2D" uid="uid://btn3fn8xu0gc7" path="res://data/images/cleansing_circle.png" id="2_gqp8l"]
@@ -10,6 +10,7 @@
 [ext_resource type="Material" uid="uid://dakprjf2j5a03" path="res://models/cursor/cursor_glow.material" id="4_up1lb"]
 [ext_resource type="Material" uid="uid://8vcrlk6gdbmr" path="res://models/cursor/cursor_destroy.material" id="5_8mt2q"]
 [ext_resource type="ArrayMesh" uid="uid://csljkiashaj70" path="res://models/cursor/cursor_destroyed.obj" id="5_srra1"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="7_8illr"]
 [ext_resource type="Texture2D" uid="uid://c224q82v2awa1" path="res://data/images/cursor_boot_frames.png" id="9_1g6wc"]
 [ext_resource type="Texture2D" uid="uid://bt4pmhfoanjqg" path="res://data/images/reveal_frames.png" id="10_1grua"]
 [ext_resource type="Shader" path="res://shader_materials/additive_sprite.gdshader" id="10_menfc"]
@@ -1555,6 +1556,9 @@ shadow_enabled = true
 shadow_bias = 0.001
 shadow_blur = 0.0
 omni_range = 4.0
+
+[node name="HideOnFidelity" parent="OmniLight3D" instance=ExtResource("7_8illr")]
+fidelity_threshold = 1
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.303956, 0)

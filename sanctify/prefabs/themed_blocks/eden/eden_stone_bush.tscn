@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bo1kimksylmrg"]
+[gd_scene load_steps=28 format=3 uid="uid://bo1kimksylmrg"]
 
 [ext_resource type="Texture2D" uid="uid://b0mcp24e8468t" path="res://models/themed_blocks/eden/textures/rock_tile_floor_diff_1k.png" id="1_wjrwq"]
 [ext_resource type="Texture2D" uid="uid://dwi0o4t1x2ip8" path="res://models/themed_blocks/eden/textures/rock_tile_floor_disp_1k.png" id="2_brfja"]
@@ -11,6 +11,7 @@
 [ext_resource type="ArrayMesh" uid="uid://d1xe5d6xgmnow" path="res://models/themed_blocks/eden/eden_flower_c.obj" id="9_d4mc2"]
 [ext_resource type="ArrayMesh" uid="uid://b0ewx5lx8goo2" path="res://models/themed_blocks/eden/grass_blade.obj" id="10_xhtpr"]
 [ext_resource type="Material" uid="uid://da0s6rbvrj4w4" path="res://shader_materials/grass.material" id="11_v5m81"]
+[ext_resource type="PackedScene" uid="uid://dtl58ycs2ex" path="res://prefabs/hide_on_fidelity.tscn" id="12_joftj"]
 
 [sub_resource type="ORMMaterial3D" id="ORMMaterial3D_eocer"]
 albedo_texture = ExtResource("1_wjrwq")
@@ -165,6 +166,8 @@ surface_material_override/0 = ExtResource("11_v5m81")
 [node name="Grasses" type="MultiMeshInstance3D" parent="GrassArea"]
 material_override = SubResource("ShaderMaterial_lt2no")
 multimesh = SubResource("MultiMesh_d4six")
+
+[node name="HideOnFidelity" parent="GrassArea/Grasses" instance=ExtResource("12_joftj")]
 
 [node name="FlowerBushArea" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0263864, 0.498071, 0)
