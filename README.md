@@ -21,6 +21,7 @@ You'll need the following dependencies to build:
 
 - Godot 4.3.x
 - Flatpak Builder
+- io.elementary.Sdk 8
 
 **Build from Godot Editor:**
 

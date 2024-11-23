@@ -7,8 +7,8 @@
   <name>Santify</name>
   <summary>Get rid of curses hidden inside the floors of the Temple</summary>
   <description>
-    <p>Some evil forces have cursed the tiles of the temple.</p>
-    <p>You, the priestess of light, have been tasked with identifying the safe tiles and cleansing the holy place</p>
+    <p>Some evil forces have cursed the floors of the temple.</p>
+    <p>You, the priestess of light, have been tasked with identifying the safe areas and cleansing the holy place.</p>
   </description>
   <custom>
     <value key="x-appcenter-color-primary">#AA7F50</value>
@@ -58,7 +58,7 @@
     <content_attribute id="money-gambling">none</content_attribute>
   </content_rating>
   <releases>
-    <release version="0.0.1" date="2023-03-01">
+    <release version="1.0.0" date="2024-11-24">
       <description>
         <p>Initial Release</p>
       </description>
