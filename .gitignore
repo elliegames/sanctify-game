@@ -1,8 +1,8 @@
 # Godot 4+ specific ignores
 .godot/
 android/
-santify/.godot/
-santify/android/
+sanctify/.godot/
+sanctify/android/
 
 build/
 .flatpak-builder/
