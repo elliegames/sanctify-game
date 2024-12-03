@@ -10,8 +10,10 @@ finish-args:
   - '--socket=fallback-x11'
   - '--socket=wayland'
   - '--socket=pulseaudio'
-  # Required for GPU Access and Gamepad control
+  # Required for Gamepad control
   - '--device=all'
+  # Required for GPU Acceleration
+  - '--device=dri'
   - '--filesystem=home'
 
 modules:
