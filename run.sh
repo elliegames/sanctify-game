@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Define the path to the game binary (relative path since it's in the same folder)
-GAME_BINARY="/app/bin/com.github.elliegames.sanctify-game.x86_64"
+GAME_BINARY="/app/bin/godot-runner"
 
 # Check if the game binary exists
 if [ -f "$GAME_BINARY" ]; then
