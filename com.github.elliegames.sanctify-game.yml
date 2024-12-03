@@ -1,6 +1,8 @@
 app-id: com.github.elliegames.sanctify-game
 runtime: io.elementary.Platform
 runtime-version: '8'
+base: org.godotengine.godot.BaseApp
+base-version: '4.3'
 sdk: io.elementary.Sdk
 command: com.github.elliegames.sanctify-game
 finish-args:
@@ -11,18 +13,15 @@ finish-args:
   # Required for GPU Access and Gamepad control
   - '--device=all'
   - '--filesystem=home'
-  # Required for system wide dark style preference
-  - '--system-talk-name=org.freedesktop.Accounts'
 
 modules:
   - name: sanctify-game
     buildsystem: simple
 
     build-commands:
-      - strip sanctify.x86_64
-      - install -Dm755 sanctify.x86_64 /app/bin/com.github.elliegames.sanctify-game.x86_64
+      - ./Godot_v4.3-stable_linux.x86_64 --path sanctify --headless --verbose --export-pack "Linux" "sanctify.pck"
       - install -Dm755 run.sh /app/bin/com.github.elliegames.sanctify-game
-      - install -D sanctify.pck /app/share/com.github.elliegames.sanctify-game/sanctify.pck
+      - install -D sanctify/sanctify.pck /app/share/com.github.elliegames.sanctify-game/sanctify.pck
       - install -D data/icons/16/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/16x16/apps/com.github.elliegames.sanctify-game.svg
       - install -D data/icons/16/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/16x16@2/apps/com.github.elliegames.sanctify-game.svg
       - install -D data/icons/24/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/24x24/apps/com.github.elliegames.sanctify-game.svg
@@ -41,8 +40,8 @@ modules:
 
     sources:
       - type: archive
-        url: https://github.com/elliegames/sanctify-game/releases/download/0.9.9/linux.zip
-        sha256: 6de326ad90aa8f495ded545a969dc605f5e0c13c481160162655845357a8fac8
-
+        url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux.x86_64.zip
+        sha256: 7de56444b130b10af84d19c7e0cf63cf9e9937ee4ba94364c3b7dd114253ca21
+     
       - type: dir
         path: .
