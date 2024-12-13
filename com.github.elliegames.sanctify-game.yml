@@ -68,18 +68,12 @@ modules:
   - name: godot
     buildsystem: simple
     cleanup:
-      - /app/bin/godot-tools
-      - _sc_
-      - editor_data/
+      - /bin/godot-tools
     sources:
       - type: archive
         url: https://github.com/godotengine/godot/releases/download/4.3-stable/godot-4.3-stable.tar.xz
         sha256: 751e55bfad8e04b846f9cf7b6eb80e058986a2cb1b103fc0fe6a4d8526a20e56
-      # - type: archive
-      #   url: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
-      #   sha512: 476366caf0fd45a8f24136cf9cf1dc0bc2b96f7c82d53e5f82200b55aefd07b286d283fd6f1ce29e0de70648c5a51d3b12f96c6d4fafd4e8c4878ecda6406d6a
-      #   archive-type: zip
-      #   strip-components: 0
+
     build-commands:
       # Tools, to export the PCK file from source at build time
       - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=yes target=editor -j "$FLATPAK_BUILDER_N_JOBS"
