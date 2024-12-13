@@ -12,7 +12,6 @@ finish-args:
   - '--device=all'
   # Required for GPU Acceleration
   - '--device=dri'
-  # - '--filesystem=home'
 build-options:
   env:
     # SCons flags common to all builds
