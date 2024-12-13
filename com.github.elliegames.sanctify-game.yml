@@ -1,8 +1,6 @@
 app-id: com.github.elliegames.sanctify-game
 runtime: io.elementary.Platform
 runtime-version: '8'
-base: org.godotengine.godot.BaseApp
-base-version: '4.3'
 sdk: io.elementary.Sdk
 command: com.github.elliegames.sanctify-game
 finish-args:
@@ -14,36 +12,112 @@ finish-args:
   - '--device=all'
   # Required for GPU Acceleration
   - '--device=dri'
-  - '--filesystem=home'
+  # - '--filesystem=home'
+build-options:
+  env:
+    # SCons flags common to all builds
+    # Shouldn't be quoted when used as it's a single string, not an array
+    SCONS_FLAGS: >
+      platform=linuxbsd
+      CCFLAGS=-I/app/include
+      prefix=/app
+      unix_global_settings_path=/app
+      progress=no
+      builtin_freetype=no
+      builtin_libogg=no
+      builtin_libpng=no
+      builtin_libtheora=no
+      builtin_libvorbis=no
+      builtin_libwebp=no
+      builtin_openssl=no
+      builtin_libvpx=no
+      builtin_zlib=no
+      builtin_graphite=no
+      builtin_harfbuzz=no
+      udev=no
+  arch:
+    x86_64:
+      env:
+        # Only enable when targeting x86_64 (causes issues on other architectures)
+        SCONS_FLAGS_EXTRA: production=yes
 
 modules:
-  - name: sanctify-game
-    buildsystem: simple
-
-    build-commands:
-      - ./Godot_v4.3-stable_linux.x86_64 --path sanctify --headless --verbose --export-pack "Linux" "sanctify.pck"
-      - install -Dm755 run.sh /app/bin/com.github.elliegames.sanctify-game
-      - install -D sanctify/sanctify.pck /app/share/com.github.elliegames.sanctify-game/sanctify.pck
-      - install -D data/icons/16/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/16x16/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/icons/16/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/16x16@2/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/icons/24/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/24x24/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/icons/24/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/24x24@2/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/icons/32/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/32x32/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/icons/32/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/32x32@2/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/icons/48/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/48x48/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/icons/48/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/48x48@2/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/icons/64/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/64x64/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/icons/64/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/64x64@2/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/icons/128/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/128x128/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/icons/128/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/128x128@2/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/icons/symbolic/com.github.elliegames.sanctify-game.svg /app/share/icons/hicolor/symbolic/apps/com.github.elliegames.sanctify-game.svg
-      - install -D data/com.github.elliegames.sanctify-game.desktop /app/share/applications/com.github.elliegames.sanctify-game.desktop
-      - install -D data/com.github.elliegames.sanctify-game.appdata.xml /app/share/appdata/com.github.elliegames.sanctify-game.appdata.xml
-
+  - name: glu
+    buildsystem: meson
     sources:
       - type: archive
-        url: https://downloads.tuxfamily.org/godotengine/4.3/Godot_v4.3-stable_linux.x86_64.zip
-        sha256: 7de56444b130b10af84d19c7e0cf63cf9e9937ee4ba94364c3b7dd114253ca21
-     
+        url: https://archive.mesa3d.org/glu/glu-9.0.3.tar.xz
+        sha256: bd43fe12f374b1192eb15fe20e45ff456b9bc26ab57f0eee919f96ca0f8a330f
+    cleanup:
+      - /include
+      - /lib/*.a
+      - /lib/*.la
+      - /lib/pkgconfig
+
+  - name: scons
+    buildsystem: simple
+    cleanup:
+      - '*'
+    sources:
+      - type: archive
+        sha256: 6e928fc97984e719814270f6863f2183b3b72180b0162a5ed09db68c9994100c
+        url: https://downloads.sourceforge.net/project/scons/scons/4.8.0/SCons-4.8.0.tar.gz
+    build-commands:
+      - pip3 install --no-index --no-build-isolation --prefix=/app .
+
+  - name: godot
+    buildsystem: simple
+    cleanup:
+      - /app/bin/godot-tools
+      - _sc_
+      - editor_data/
+    sources:
+      - type: archive
+        url: https://github.com/godotengine/godot/releases/download/4.3-stable/godot-4.3-stable.tar.xz
+        sha256: 751e55bfad8e04b846f9cf7b6eb80e058986a2cb1b103fc0fe6a4d8526a20e56
+      # - type: archive
+      #   url: https://github.com/godotengine/godot/releases/download/4.3-stable/Godot_v4.3-stable_export_templates.tpz
+      #   sha512: 476366caf0fd45a8f24136cf9cf1dc0bc2b96f7c82d53e5f82200b55aefd07b286d283fd6f1ce29e0de70648c5a51d3b12f96c6d4fafd4e8c4878ecda6406d6a
+      #   archive-type: zip
+      #   strip-components: 0
+    build-commands:
+      # Tools, to export the PCK file from source at build time
+      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=yes target=editor -j "$FLATPAK_BUILDER_N_JOBS"
+      - install -Dm755 bin/godot.linuxbsd.editor.* /app/bin/godot-tools
+
+      # Runner, to be shipped in the Flatpak as the binary
+      - python3 /app/bin/scons $SCONS_FLAGS $SCONS_FLAGS_EXTRA tools=no target=template_release -j "$FLATPAK_BUILDER_N_JOBS"
+      - install -Dm755 bin/godot.linuxbsd.template_release.* /app/bin/${FLATPAK_ID}
+
+      # Export templates, used at build-time to export the PCK file
+      - touch _sc_
+      - mkdir -p ./editor_data/export_templates
+      - mv bin/ editor_data/export_templates/4.3.stable
+
+  - name: sanctify-game
+    buildsystem: simple
+    sources:
       - type: dir
         path: .
+
+    build-commands:
+      # Export the PCK file and install it alongside the Godot Engine runner
+      - godot-tools --path sanctify --headless --verbose --export-pack "Linux" ${FLATPAK_ID}.pck
+      - install -Dm644 sanctify/${FLATPAK_ID}.pck ${FLATPAK_DEST}/bin/${FLATPAK_ID}.pck
+
+      - install -D data/icons/16/${FLATPAK_ID}.svg /app/share/icons/hicolor/16x16/apps/${FLATPAK_ID}.svg
+      - install -D data/icons/16/${FLATPAK_ID}.svg /app/share/icons/hicolor/16x16@2/apps/${FLATPAK_ID}.svg
+      - install -D data/icons/24/${FLATPAK_ID}.svg /app/share/icons/hicolor/24x24/apps/${FLATPAK_ID}.svg
+      - install -D data/icons/24/${FLATPAK_ID}.svg /app/share/icons/hicolor/24x24@2/apps/${FLATPAK_ID}.svg
+      - install -D data/icons/32/${FLATPAK_ID}.svg /app/share/icons/hicolor/32x32/apps/${FLATPAK_ID}.svg
+      - install -D data/icons/32/${FLATPAK_ID}.svg /app/share/icons/hicolor/32x32@2/apps/${FLATPAK_ID}.svg
+      - install -D data/icons/48/${FLATPAK_ID}.svg /app/share/icons/hicolor/48x48/apps/${FLATPAK_ID}.svg
+      - install -D data/icons/48/${FLATPAK_ID}.svg /app/share/icons/hicolor/48x48@2/apps/${FLATPAK_ID}.svg
+      - install -D data/icons/64/${FLATPAK_ID}.svg /app/share/icons/hicolor/64x64/apps/${FLATPAK_ID}.svg
+      - install -D data/icons/64/${FLATPAK_ID}.svg /app/share/icons/hicolor/64x64@2/apps/${FLATPAK_ID}.svg
+      - install -D data/icons/128/${FLATPAK_ID}.svg /app/share/icons/hicolor/128x128/apps/${FLATPAK_ID}.svg
+      - install -D data/icons/128/${FLATPAK_ID}.svg /app/share/icons/hicolor/128x128@2/apps/${FLATPAK_ID}.svg
+      - install -D data/icons/symbolic/${FLATPAK_ID}.svg /app/share/icons/hicolor/symbolic/apps/${FLATPAK_ID}.svg
+
+      - install -D data/${FLATPAK_ID}.desktop /app/share/applications/${FLATPAK_ID}.desktop
+      - install -D data/${FLATPAK_ID}.metainfo.xml /app/share/metainfo/${FLATPAK_ID}.metainfo.xml
