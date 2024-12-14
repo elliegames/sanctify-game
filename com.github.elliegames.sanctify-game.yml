@@ -8,10 +8,10 @@ finish-args:
   - "--socket=fallback-x11"
   - "--socket=wayland"
   - "--socket=pulseaudio"
-  # Required for GPU Access and Gamepad control
+  # Required for Gamepad control
   - "--device=all"
-  # Required for system wide dark style preference
-  - "--system-talk-name=org.freedesktop.Accounts"
+  # Required for GPU acceleration
+  - "--device=dri"
 
 modules:
   - name: scons
@@ -85,7 +85,7 @@ modules:
         done
       - install -D data/icons/symbolic/com.github.elliegames.sanctify-game.svg "/app/share/icons/hicolor/symbolic/apps/$FLATPAK_ID.svg"
       - install -D data/com.github.elliegames.sanctify-game.desktop "/app/share/applications/$FLATPAK_ID.desktop"
-      - install -D data/com.github.elliegames.sanctify-game.appdata.xml "/app/share/appdata/$FLATPAK_ID.appdata.xml"
+      - install -D data/com.github.elliegames.sanctify-game.metainfo.xml "/app/share/metainfo/$FLATPAK_ID.metainfo.xml"
 
     sources:
       - type: dir
