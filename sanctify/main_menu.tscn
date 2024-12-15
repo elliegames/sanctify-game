@@ -253,11 +253,11 @@ fill_to = Vector2(0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_pdifx"]
 font_size = 12
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_7kv76"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_x2gm2"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_hgi02"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_15y8j"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_b0i7v"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_3su7l"]
 
 [sub_resource type="Gradient" id="Gradient_lpqq3"]
 colors = PackedColorArray(0.976471, 0.768627, 0.25098, 0.588235, 0.831373, 0.556863, 0.0823529, 0.67451)
@@ -438,18 +438,18 @@ layout_mode = 2
 [node name="EasyButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
 button_pressed = true
-button_group = SubResource("ButtonGroup_7kv76")
+button_group = SubResource("ButtonGroup_x2gm2")
 label = "Initiate"
 
 [node name="MediumButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_hgi02")
+button_group = SubResource("ButtonGroup_15y8j")
 label = "Acolyte"
 main_icon = ExtResource("11_xx4sp")
 
 [node name="HardButton" parent="VBoxContainer/DifficultyBox" instance=ExtResource("10_p52f1")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_b0i7v")
+button_group = SubResource("ButtonGroup_3su7l")
 main_icon = ExtResource("12_sr57i")
 
 [node name="Scenario" type="Label" parent="VBoxContainer"]
@@ -698,12 +698,15 @@ one_shot = true
 [connection signal="focus_entered" from="VBoxContainer/DifficultyBox/EasyButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/EasyButton" to="VBoxContainer/DifficultyBox/MediumButton" method="_uncheck"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/EasyButton" to="VBoxContainer/DifficultyBox/HardButton" method="_uncheck"]
+[connection signal="pressed" from="VBoxContainer/DifficultyBox/EasyButton" to="." method="set_difficulty" binds= [0]]
 [connection signal="focus_entered" from="VBoxContainer/DifficultyBox/MediumButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/MediumButton" to="VBoxContainer/DifficultyBox/EasyButton" method="_uncheck"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/MediumButton" to="VBoxContainer/DifficultyBox/HardButton" method="_uncheck"]
+[connection signal="pressed" from="VBoxContainer/DifficultyBox/MediumButton" to="." method="set_difficulty" binds= [1]]
 [connection signal="focus_entered" from="VBoxContainer/DifficultyBox/HardButton" to="Audio/UIFocusSound" method="play"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/HardButton" to="VBoxContainer/DifficultyBox/EasyButton" method="_uncheck"]
 [connection signal="pressed" from="VBoxContainer/DifficultyBox/HardButton" to="VBoxContainer/DifficultyBox/MediumButton" method="_uncheck"]
+[connection signal="pressed" from="VBoxContainer/DifficultyBox/HardButton" to="." method="set_difficulty" binds= [2]]
 [connection signal="focus_entered" from="VBoxContainer/ArenaThemeSelect" to="Audio/UIFocusSound" method="play"]
 [connection signal="item_focused" from="VBoxContainer/ArenaThemeSelect" to="Audio/UIFocusSound" method="play"]
 [connection signal="item_selected" from="VBoxContainer/ArenaThemeSelect" to="." method="set_arena_theme"]
