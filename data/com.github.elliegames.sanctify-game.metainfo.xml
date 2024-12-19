@@ -10,11 +10,11 @@
     <p>Some evil forces have cursed the floors of the temple.</p>
     <p>You, the priestess of light, have been tasked with identifying the safe areas and cleansing the holy place.</p>
   </description>
-  <custom>
+  <metadata>
     <value key="x-appcenter-color-primary">#AA7F50</value>
     <value key="x-appcenter-color-primary-text">#FFFFFF</value>
     <value key="x-appcenter-suggested-price">0</value>
-  </custom>
+  </metadata>
   <translation type="gettext">com.github.elliegames.sanctify-game</translation>
   <developer_name>Ellie Games</developer_name>
   <url type="homepage">https://github.com/elliegames/sanctify-game</url>
